@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Vimari global extension page</title>
+   <script type="text/javascript">
+
+	   // Function to handle messages... all messages are sent to this function
+   		function handleMessage(msg) {
+			// Attempt to call a function with the same name as the message name
+			switch(msg.name) {
+				case 'getSettings' :
+					getSettings();
+					break;	
+				case 'changeTab' :
+					changeTab(msg.message);
+					break;	
+			}
+		}
+
+
+
+		// Pass the settings on to the injected script
+   		function getSettings(msg) {
+			var settings = {
+				'linkHintCharacters' : safari.extension.settings.linkHintCharacters,
+				'hintToggle'         : safari.extension.settings.hintToggle,
+				'tabForward'         : safari.extension.settings.tabBack,
+				'tabBack'            : safari.extension.settings.tabForward,
+				'histForward'         : safari.extension.settings.histForward,
+				'histBack'            : safari.extension.settings.histBack
+				};
+			// Send settings to injected page
+			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('setSettings', settings);
+
+		}
+
+	/*
+	 * Changes to the next avail tab
+	 *
+	 * dir - 1 forwards, 0 backwards
+	 */
+	function changeTab(dir) {
+		var tabs = safari.application.activeBrowserWindow.tabs,
+			i;
+
+		for (i=0;i<tabs.length;i++) {
+			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
+				if (dir == 1) {
+					if ((i+1) === tabs.length) {
+						tabs[0].activate();
+					} else {
+						tabs[i+1].activate();
+					}
+				} else {
+					if (i == 0) {
+						tabs[tabs.length-1].activate();
+					} else {
+						tabs[i-1].activate();
+					}
+				}
+				return;
+			}
+		}
+	}
+
+	safari.application.addEventListener('message', handleMessage, false);
+   </script>
+</head>
+</html>
+  
