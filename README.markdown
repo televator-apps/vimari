@@ -30,6 +30,8 @@ Currently:
 Known Bugs
 ----------
 
+- Problems with Google stealing focus
+
 - When opening link in a new tab, the extension does not load properly in the new tab
 
 

@@ -6,7 +6,8 @@
 var topWindow = (window.top === window),
 	settings = {},
 	linkHintCss = {},
-	currentZoomLevel = 100;
+	currentZoomLevel = 100,
+	insertMode = true;
 
 
 /*
@@ -26,6 +27,12 @@ function _init() {
  */
 function keyEvent(event) {
 	var s = settings;
+
+	// If escape, force focus out of an input
+	if (isEscape(event) && insertMode) {
+		exitInsertMode(event);
+		return;
+	}
 
 	// Do nothing if selected element is editable
  	if (document.activeElement && isEditable(document.activeElement))
@@ -50,6 +57,9 @@ function keyEvent(event) {
 		case s.histBack      :
 					window.history.back();
 					break;
+		case s.inserMode    :
+					enterInsertMode();
+					break;
 
 
 	}
@@ -57,6 +67,32 @@ function keyEvent(event) {
 
 }
 
+
+
+/*
+ * Steal focus away from input boxes
+ */
+function exitInsertMode(event) {
+	// Note that we can't programmatically blur out of Flash embeds from Javascript.
+	if (!isEmbed(event.srcElement)) {
+	  // Remove focus so the user can't just get himself back into insert mode by typing in the same input box.
+	  if (isEditable(event.srcElement)) { event.srcElement.blur(); }
+	  insertMode = false;
+
+	  // Added to prevent Google Instant from reclaiming the keystroke and putting us back into the search box.
+	  // TOOD(ilya): Revisit this. Not sure it's the absolute best approach.
+	  event.stopPropagation();
+	}
+}
+
+
+
+/*
+ * Exit insert mode
+ */
+function enterInsertMode() {
+  insertMode = true;
+}
 
 /*
  * Adds the given CSS to the page.
@@ -81,6 +117,16 @@ function isEditable(target) {
   var focusableInputs = ["input", "textarea", "select", "button"];
   return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
 }
+
+
+/*
+ * Embedded elements like Flash and quicktime players can obtain focus but cannot be programmatically
+ * unfocused.
+ */
+function isEmbed(element) { return ["EMBED", "OBJECT"].indexOf(element.tagName) > 0; }
+
+
+
 
 // ==========================
 // Message handling functions
