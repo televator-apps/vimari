@@ -1,26 +1,43 @@
-
-// Vimarmi injected secript
-
-
-// Declare all global vars
-var topWindow = (window.top === window),
-	settings = {},
-	linkHintCss = {},
-	currentZoomLevel = 100,
-	insertMode = true;
+/*
+ * Vimari injected script.
+ *
+ * This script is called before the requested page is loaded.  This allows us
+ * to intercept events before they are passed to the requested pages code and
+ * therefore we can stop certain pages (google) stealing the focus.
+ */
 
 
 /*
- * To be called when the page in the background has been loaded
+ * Global vars
+ *
+ * topWindow        - true if top window, false if iframe
+ * settings         - stores user settings
+ * currentZoomLevel - required for vimium scripts to run correctly
+ * linkHintCss      - required from vimium scripts
+ * insertMode       - if in insert mode, all events are prevented from propagation
+ */
+var topWindow = (window.top === window),
+	settings = {},
+	currentZoomLevel = 100,
+	linkHintCss = {},
+	insertMode = true;
+
+
+
+/*
+ * Initialise the extension
  */
 function _init() {
 	// Only add if topWindow... not iframe
 	if (topWindow) {
+		// Add event listener
+		document.addEventListener('keydown', keyEvent, true);
 		// Retrieve settings
 		safari.self.tab.dispatchMessage('getSettings', '');
-		document.addEventListener('keydown', keyEvent, false);
 	}
 }
+
+
 
 /*
  * Handle key events
@@ -28,21 +45,22 @@ function _init() {
 function keyEvent(event) {
 	var s = settings;
 
-	// If escape, force focus out of an input
-	if (isEscape(event) && insertMode) {
+	// If escape, then exit insert mode
+	if (isEscape(event)) {
 		exitInsertMode(event);
 		return;
 	}
 
 	// Do nothing if selected element is editable
- 	if (document.activeElement && isEditable(document.activeElement))
+ 	if (document.activeElement && isEditable(document.activeElement) && insertMode)
 		return;
 
 	if (linkHintsModeActivated)
 		return;
 
 	switch (getKeyChar(event)) {
-		case s.hintToggle    : 
+		case s.hintToggle    :
+					HUD.showForDuration('Entered link hints mode', 3);
 					activateLinkHintsMode(false, false);
 				  	break;
 		case s.tabForward    :
@@ -57,13 +75,17 @@ function keyEvent(event) {
 		case s.histBack      :
 					window.history.back();
 					break;
-		case s.inserMode    :
+		case s.insertMode    :
 					enterInsertMode();
 					break;
 
 
 	}
 
+	if (!insertMode) {
+		// Override any other event listeners
+		event.stopPropagation();
+	}
 
 }
 
@@ -77,12 +99,9 @@ function exitInsertMode(event) {
 	if (!isEmbed(event.srcElement)) {
 	  // Remove focus so the user can't just get himself back into insert mode by typing in the same input box.
 	  if (isEditable(event.srcElement)) { event.srcElement.blur(); }
-	  insertMode = false;
-
-	  // Added to prevent Google Instant from reclaiming the keystroke and putting us back into the search box.
-	  // TOOD(ilya): Revisit this. Not sure it's the absolute best approach.
-	  event.stopPropagation();
 	}
+	insertMode = false;
+	HUD.show('Not in insert mode');
 }
 
 
@@ -92,6 +111,7 @@ function exitInsertMode(event) {
  */
 function enterInsertMode() {
   insertMode = true;
+  HUD.hide();
 }
 
 /*
@@ -102,6 +122,7 @@ function enterInsertMode() {
 function addCssToPage(css) {
 	return;
 }
+
 
 
 /*
@@ -117,6 +138,7 @@ function isEditable(target) {
   var focusableInputs = ["input", "textarea", "select", "button"];
   return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
 }
+
 
 
 /*
@@ -152,6 +174,7 @@ function handleMessage(msg) {
 function setSettings(msg) {
 	settings = msg;
 }
+
 
 
 // Add event listener and init
