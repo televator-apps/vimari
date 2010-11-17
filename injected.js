@@ -52,15 +52,17 @@ function keyEvent(event) {
 	}
 
 	// Do nothing if selected element is editable
- 	if (document.activeElement && isEditable(document.activeElement) && insertMode)
+ 	if (document.activeElement && isEditable(document.activeElement) || insertMode) {
+		HUD.showForDuration('Press ESC to toggle vimari shortcuts', 3);
 		return;
+	}
 
 	if (linkHintsModeActivated)
 		return;
 
 	switch (getKeyChar(event)) {
 		case s.hintToggle    :
-					HUD.showForDuration('Entered link hints mode', 3);
+					HUD.show('Link hints mode');
 					activateLinkHintsMode(false, false);
 				  	break;
 		case s.tabForward    :
@@ -101,7 +103,6 @@ function exitInsertMode(event) {
 	  if (isEditable(event.srcElement)) { event.srcElement.blur(); }
 	}
 	insertMode = false;
-	HUD.show('Not in insert mode');
 }
 
 
@@ -111,7 +112,6 @@ function exitInsertMode(event) {
  */
 function enterInsertMode() {
   insertMode = true;
-  HUD.hide();
 }
 
 /*

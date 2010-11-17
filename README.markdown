@@ -7,12 +7,17 @@ Vimari attempts to provide a lightweight port of vimium to Safari, taking the be
 
 __Installation Instructions:__
 
-... No instructions yet
+Download the extension and open.  The extension is self installing.
+
+Sounds awesome.  Howto?
+-----------------------
+
+Simply browse to a page, then press the ESC key.  You are now in vimari shortcut mode and all the shortcut keys are now enabled.  Press 'f' to enter link hint mode to easily navigate, q or w to move between tabs and z or x to move forwards or backwards in histroy ;).  All these shortcuts are also configurable through Safari preferences.  Enjoy.
 
 Link Hints
 ----------
 
-The principle feature of Vimari and the principle component taken from vimium is the link hints feature.  Pressing 'f' enters link hint mode which displays a HUD over the page wih a code for each link.  Simply type of code for the link to follow that link.  Link codes are generated according to the home key buttons and so are always easiliy accessible.
+The principle feature of Vimari and the principle component taken from vimium is the link hints feature.  Press ESC to enter 'vimari shortcut mode' and then pressing 'f' enters link hint mode which displays a HUD over the page wih a code for each link.  Simply type of code for the link to follow that link.  Link codes are generated according to the home key buttons and so are always easiliy accessible.
 
 Keyboard Bindings
 -----------------
@@ -20,6 +25,7 @@ Keyboard Bindings
 All bindings are configurable in the Preferences->Extensions options in Safari
 
 Currently:
+	ESC Enter vimium shortcut mode - this toggles the shortcuts below
 	f	Link Hints
 	q 	Previous Tab
 	w	Next Tab
@@ -29,8 +35,6 @@ Currently:
 
 Known Bugs
 ----------
-
-- Problems with Google stealing focus
 
 - When opening link in a new tab, the extension does not load properly in the new tab
 
