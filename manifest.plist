@@ -10,9 +10,9 @@
        <key>Developer Identifier</key>
        <string>(357AUX7M8L) guyht@me.com</string>
        <key>CFBundleVersion</key>
-       <string>1</string>
+       <string>2</string>
        <key>CFBundleShortVersionString</key>
-       <string>0.3</string>
+       <string>0.4</string>
        <key>URL</key>
        <string>http://guyht.github.com/vimari/virami.safariextz</string>
      </dict>
