@@ -7,7 +7,8 @@ Vimari attempts to provide a lightweight port of vimium to Safari, taking the be
 
 __Installation Instructions:__
 
-Download the extension and open.  The extension is self installing.
+Click the download link below:
+	[[https://github.com/downloads/guyht/vimari/vimari.safariextz]]
 
 Sounds awesome.  Howto?
 -----------------------
