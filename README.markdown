@@ -10,6 +10,13 @@ __Installation Instructions:__
 Click the download link below:
 	[[https://github.com/downloads/guyht/vimari/vimari.safariextz]]
 
+
+Screenshots
+-----------
+
+[[https://github.com/downloads/guyht/vimari/shot.png]]
+
+
 Sounds awesome.  Howto?
 -----------------------
 
