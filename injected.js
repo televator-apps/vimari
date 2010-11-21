@@ -19,8 +19,7 @@
 var topWindow = (window.top === window),
 	settings = {},
 	currentZoomLevel = 100,
-	linkHintCss = {},
-	insertMode = true;
+	linkHintCss = {};
 
 
 
@@ -45,19 +44,7 @@ function _init() {
 function keyEvent(event) {
 	var s = settings;
 
-	// If escape, then exit insert mode
-	if (isEscape(event)) {
-		exitInsertMode(event);
-		return;
-	}
-
-	// Do nothing if selected element is editable
- 	if (document.activeElement && isEditable(document.activeElement) || insertMode) {
-		HUD.showForDuration('Press ESC to toggle vimari shortcuts', 3);
-		return;
-	}
-
-	if (linkHintsModeActivated)
+	if (linkHintsModeActivated || !event.ctrlKey)
 		return;
 
 	switch (getKeyChar(event)) {
@@ -77,42 +64,13 @@ function keyEvent(event) {
 		case s.histBack      :
 					window.history.back();
 					break;
-		case s.insertMode    :
-					enterInsertMode();
-					break;
-
-
 	}
 
-	if (!insertMode) {
-		// Override any other event listeners
-		event.stopPropagation();
-	}
+	event.stopPropagation();
 
 }
 
 
-
-/*
- * Steal focus away from input boxes
- */
-function exitInsertMode(event) {
-	// Note that we can't programmatically blur out of Flash embeds from Javascript.
-	if (!isEmbed(event.srcElement)) {
-	  // Remove focus so the user can't just get himself back into insert mode by typing in the same input box.
-	  if (isEditable(event.srcElement)) { event.srcElement.blur(); }
-	}
-	insertMode = false;
-}
-
-
-
-/*
- * Exit insert mode
- */
-function enterInsertMode() {
-  insertMode = true;
-}
 
 /*
  * Adds the given CSS to the page.
