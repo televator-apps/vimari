@@ -1,6 +1,9 @@
 Release Notes
 -------------
 
+### 1.0 (21/11/2010)
+* Changed the way vimari modifier keys work.  ESC key depricated.  Now use CTRL-modifierkey.
+
 ### 0.4 (17/11/2010)
 * First BETA release !
 * Press ESC to enter a permanent state of 'non' insert mode.  Clicking on any input then exits insert mode.  This fixes several issues with google and facebook.

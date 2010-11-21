@@ -12,7 +12,7 @@ Download the extension and open.  The extension is self installing.
 Sounds awesome.  Howto?
 -----------------------
 
-Simply browse to a page, then press the ESC key.  You are now in vimari shortcut mode and all the shortcut keys are now enabled.  Press 'f' to enter link hint mode to easily navigate, q or w to move between tabs and z or x to move forwards or backwards in histroy ;).  All these shortcuts are also configurable through Safari preferences.  Enjoy.
+Simply browse to a page and hold CTRL, then press 'f' to enter link hint mode to easily navigate, q or w to move between tabs and z or x to move forwards or backwards in histroy ;).  All these shortcuts are also configurable through Safari preferences.  Enjoy.
 
 Link Hints
 ----------
@@ -25,12 +25,11 @@ Keyboard Bindings
 All bindings are configurable in the Preferences->Extensions options in Safari
 
 Currently:
-	ESC Enter vimium shortcut mode - this toggles the shortcuts below
-	f	Link Hints
-	q 	Previous Tab
-	w	Next Tab
-	z	History Back
-	x	History Forwards
+	CTRL-f	Link Hints
+	CTRL-q 	Previous Tab
+	CTRL-w	Next Tab
+	CTRL-z	History Back
+	CTRL-x	History Forwards
 
 
 Known Bugs
