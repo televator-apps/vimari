@@ -14,7 +14,7 @@ Click the download link below:
 Screenshots
 -----------
 
-![Screenshot](https://github.com/downloads/guyht/vimari/shot.png)
+![Screenshot](https://github.com/guyht/vimari/raw/gh-pages/shot.png)
 
 
 Sounds awesome.  Howto?
