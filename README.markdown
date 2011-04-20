@@ -8,13 +8,13 @@ Vimari attempts to provide a lightweight port of vimium to Safari, taking the be
 __Installation Instructions:__
 
 Click the download link below:
-	[[https://github.com/downloads/guyht/vimari/vimari.safariextz]]
+	https://github.com/downloads/guyht/vimari/vimari.safariextz
 
 
 Screenshots
 -----------
 
-[[https://github.com/downloads/guyht/vimari/shot.png]]
+![Screenshot][https://github.com/downloads/guyht/vimari/shot.png]
 
 
 Sounds awesome.  Howto?
@@ -48,4 +48,4 @@ Known Bugs
 
 License
 -------
-Copyright (c) 2010 Guy Halford-Thompson. See MIT-LICENSE.txt for details.
+Copyright (c) 2011 Guy Halford-Thompson. See MIT-LICENSE.txt for details.
