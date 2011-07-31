@@ -2,21 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-   <key>Extension Updates</key>
-   <array>
-     <dict>
-       <key>CFBundleIdentifier</key>
-       <string>com.guyht.vimari</string>
-       <key>Developer Identifier</key>
-       <string>(357AUX7M8L) guyht@me.com</string>
-       <key>CFBundleVersion</key>
-       <string>1</string>
-       <key>CFBundleShortVersionString</key>
-       <string>0.3</string>
-       <key>URL</key>
-       <string>http://guyht.github.com/vimari/vimari.safariextz</string>
-     </dict>
-   </array>
+	<key>Extension Updates</key>
+	<array>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.guyht.vimari</string>
+			<key>Developer Identifier</key>
+			<string>(357AUX7M8L) guyht@me.com</string>
+			<key>CFBundleVersion</key>
+			<string>2</string>
+			<key>CFBundleShortVersionString</key>
+			<string>1.1</string>
+			<key>URL</key>
+			<string>https://github.com/downloads/guyht/vimari/vimari-1.1.safariextz</string>
+		</dict>
+	</array>
 </dict>
 </plist>
-
