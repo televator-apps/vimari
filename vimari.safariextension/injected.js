@@ -58,12 +58,6 @@ function keyEvent(event) {
 		case s.tabBack       :
 					safari.self.tab.dispatchMessage('changeTab', 1);
 					break;
-		case s.histForward   :
-					window.history.forward();	
-					break;
-		case s.histBack      :
-					window.history.back();
-					break;
 	}
 
 	event.stopPropagation();

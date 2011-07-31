@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<string>f</string>
+		<key>Key</key>
+		<string>hintToggle</string>
+		<key>Title</key>
+		<string>Link Hint Toggle CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>w</string>
+		<key>Key</key>
+		<string>tabForward</string>
+		<key>Title</key>
+		<string>Next Tab CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>q</string>
+		<key>Key</key>
+		<string>tabBack</string>
+		<key>Title</key>
+		<string>Previous Tab</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>asdfjklqwerzxc</string>
+		<key>Key</key>
+		<string>linkHintCharacters</string>
+	</dict>
+</array>
+</plist>
