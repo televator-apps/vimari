@@ -20,7 +20,7 @@ Screenshots
 Sounds awesome.  Howto?
 -----------------------
 
-Simply browse to a page and hold CTRL, then press 'f' to enter link hint mode to easily navigate, q or w to move between tabs and z or x to move forwards or backwards in histroy ;).  All these shortcuts are also configurable through Safari preferences.  Enjoy.
+Simply browse to a page and hold CTRL, then press 'f' to enter link hint mode to easily navigate, q or w to move between tabs ;).  All these shortcuts are also configurable through Safari preferences.  Enjoy.
 
 Link Hints
 ----------
@@ -36,14 +36,7 @@ Currently:
 	CTRL-f	Link Hints
 	CTRL-q 	Previous Tab
 	CTRL-w	Next Tab
-	CTRL-z	History Back
-	CTRL-x	History Forwards
 
-
-Known Bugs
-----------
-
-- When opening link in a new tab, the extension does not load properly in the new tab
 
 
 License

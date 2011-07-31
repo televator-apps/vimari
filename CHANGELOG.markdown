@@ -1,6 +1,11 @@
 Release Notes
 -------------
 
+### 1.1 (31/07/2011)
+* Updated to work with the new version of Safari on lion
+* Removed history forward / back
+* Changed directory structure to make it more developer friendly
+
 ### 1.0 (21/11/2010)
 * Changed the way vimari modifier keys work.  ESC key depricated.  Now use CTRL-modifierkey.
 
