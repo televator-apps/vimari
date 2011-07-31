@@ -25,10 +25,7 @@
 				'linkHintCharacters' : safari.extension.settings.linkHintCharacters,
 				'hintToggle'         : safari.extension.settings.hintToggle,
 				'tabForward'         : safari.extension.settings.tabBack,
-				'tabBack'            : safari.extension.settings.tabForward,
-				'histForward'         : safari.extension.settings.histForward,
-				'histBack'            : safari.extension.settings.histBack,
-				'insertMode'         : safari.extension.settings.insertMode 
+				'tabBack'            : safari.extension.settings.tabForward
 				};
 			// Send settings to injected page
 			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('setSettings', settings);
