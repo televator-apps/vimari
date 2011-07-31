@@ -4,14 +4,14 @@
 <dict>
 	<key>Author</key>
 	<string>Guy Halford-Thompson</string>
-	<key>CFBundleExecutable</key>
-	<string></string>
 	<key>Builder Version</key>
 	<string>7534.48.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>vimari</string>
+	<key>CFBundleExecutable</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ginkapps.vimari</string>
+	<string>com.guyht.vimari</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
