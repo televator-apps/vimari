@@ -58,6 +58,12 @@ function keyEvent(event) {
 		case s.tabBack       :
 					safari.self.tab.dispatchMessage('changeTab', 1);
 					break;
+		case s.scrollDown    :
+					window.scrollBy(0, 60);
+					break;
+		case s.scrollUp      :
+					window.scrollBy(0, -60);
+					break;
 	}
 
 	event.stopPropagation();
