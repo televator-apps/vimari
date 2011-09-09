@@ -28,7 +28,7 @@
 		<key>Key</key>
 		<string>tabBack</string>
 		<key>Title</key>
-		<string>Previous Tab</string>
+		<string>Previous Tab CRTL-</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
