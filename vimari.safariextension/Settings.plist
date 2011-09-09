@@ -34,6 +34,26 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
+		<string>j</string>
+		<key>Key</key>
+		<string>scrollDown</string>
+		<key>Title</key>
+		<string>Scroll Down Toggle CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>k</string>
+		<key>Key</key>
+		<string>scrollUp</string>
+		<key>Title</key>
+		<string>Scroll Up Toggle CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
 		<string>asdfjklqwerzxc</string>
 		<key>Key</key>
 		<string>linkHintCharacters</string>

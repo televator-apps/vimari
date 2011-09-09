@@ -24,8 +24,10 @@
 			var settings = {
 				'linkHintCharacters' : safari.extension.settings.linkHintCharacters,
 				'hintToggle'         : safari.extension.settings.hintToggle,
-				'tabForward'         : safari.extension.settings.tabBack,
-				'tabBack'            : safari.extension.settings.tabForward
+				'tabForward'         : safari.extension.settings.tabForward,
+				'tabBack'            : safari.extension.settings.tabBack,
+				'scrollDown'         : safari.extension.settings.scrollDown,
+				'scrollUp'           : safari.extension.settings.scrollUp
 				};
 			// Send settings to injected page
 			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('setSettings', settings);
