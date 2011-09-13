@@ -1,3 +1,5 @@
+**NOTE: If you have a pre 1.2 version of Vimari, you need to manually update to the latest version as there is a bug in the auto-update code.  Versions post 1.2 will automatically update to the lastest version.**
+
 Vimari - Keyboard Shortcuts extension for Safari
 ================================================
 
