@@ -9,7 +9,7 @@
 			// Attempt to call a function with the same name as the message name
 			switch(msg.name) {
 				case 'getSettings' :
-					getSettings();
+					getSettings(msg);
 					break;	
 				case 'changeTab' :
 					changeTab(msg.message);
@@ -20,7 +20,7 @@
 
 
 		// Pass the settings on to the injected script
-   		function getSettings(msg) {
+   		function getSettings() {
 			var settings = {
 				'linkHintCharacters' : safari.extension.settings.linkHintCharacters,
 				'hintToggle'         : safari.extension.settings.hintToggle,
@@ -28,9 +28,9 @@
 				'tabBack'            : safari.extension.settings.tabBack,
 				'scrollDown'         : safari.extension.settings.scrollDown,
 				'scrollUp'           : safari.extension.settings.scrollUp
-				};
-			// Send settings to injected page
-			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('setSettings', settings);
+			};
+
+			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage('setSettings', settings);
 
 		}
 
@@ -63,7 +63,29 @@
 		}
 	}
 
+	/*
+	 * Get the active tab
+	 *
+	 */
+	function getActiveTab() {
+		var tabs = safari.application.activeBrowserWindow.tabs,
+			i;
+
+		for (i=0;i<tabs.length;i++) {
+			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
+				return i;
+			}
+		}
+	}
+
 	safari.application.addEventListener('message', handleMessage, false);
+
+	// Need to detect if a new tab becomes active and if so, reload the extension
+	safari.application.addEventListener('activate', function(event) {
+		getSettings();
+		}, true);
+
+
    </script>
 </head>
 </html>

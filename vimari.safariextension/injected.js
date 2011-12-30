@@ -50,7 +50,7 @@ function keyEvent(event) {
 	switch (getKeyChar(event)) {
 		case s.hintToggle    :
 					HUD.show('Link hints mode');
-					activateLinkHintsMode(false, false);
+					activateLinkHintsMode(true, false);
 				  	break;
 		case s.tabForward    :
 					safari.self.tab.dispatchMessage('changeTab', 0);
