@@ -1,6 +1,8 @@
 Release Notes
 -------------
 
+**Note, changelog no longer updated :)**
+
 ### 1.1 (31/07/2011)
 * Updated to work with the new version of Safari on lion
 * Removed history forward / back

@@ -14,12 +14,15 @@
  * settings         - stores user settings
  * currentZoomLevel - required for vimium scripts to run correctly
  * linkHintCss      - required from vimium scripts
- * insertMode       - if in insert mode, all events are prevented from propagation
+ * extensionActive  - is the extension currently enabled (should only be true when tab is active)
+ * shiftKeyToggle   - is shift key currently toggled
  */
 var topWindow = (window.top === window),
 	settings = {},
 	currentZoomLevel = 100,
-	linkHintCss = {};
+	linkHintCss = {},
+	extensionActive = true,
+	shiftKeyToggle = false;
 
 
 
@@ -29,7 +32,6 @@ var topWindow = (window.top === window),
 function _init() {
 	// Only add if topWindow... not iframe
 	if (topWindow) {
-		// Add event listener
 		document.addEventListener('keydown', keyEvent, true);
 		// Retrieve settings
 		safari.self.tab.dispatchMessage('getSettings', '');
@@ -44,19 +46,25 @@ function _init() {
 function keyEvent(event) {
 	var s = settings;
 
-	if (linkHintsModeActivated || !event.ctrlKey)
+	console.log('Key event - ' + getKeyChar(event));
+
+	if (linkHintsModeActivated || !event.ctrlKey || !extensionActive)
 		return;
+
+	console.log('Switching key event');
+	event.stopPropagation();
+	event.preventDefault();
 
 	switch (getKeyChar(event)) {
 		case s.hintToggle    :
 					HUD.show('Link hints mode');
-					activateLinkHintsMode(true, false);
+					activateLinkHintsMode(event.shiftKey, false);
 				  	break;
 		case s.tabForward    :
-					safari.self.tab.dispatchMessage('changeTab', 0);
+					safari.self.tab.dispatchMessage('changeTab', 1);
 					break;
 		case s.tabBack       :
-					safari.self.tab.dispatchMessage('changeTab', 1);
+					safari.self.tab.dispatchMessage('changeTab', 0);
 					break;
 		case s.scrollDown    :
 					window.scrollBy(0, 60);
@@ -66,7 +74,6 @@ function keyEvent(event) {
 					break;
 	}
 
-	event.stopPropagation();
 
 }
 
@@ -121,6 +128,9 @@ function handleMessage(msg) {
 		case 'setSettings':
 			setSettings(msg.message);
 			break;
+		case 'setActive':
+			setActive(msg.message);
+			break;
 	}
 }
 
@@ -133,6 +143,21 @@ function setSettings(msg) {
 	settings = msg;
 }
 
+/*
+ * Enable or disable the extension on this tab
+ */
+function setActive(msg) {
+
+	extensionActive = msg;
+	if(msg) {
+		// Add event listener...
+		console.log('Enabling Vimari for this tab');
+		document.addEventListener('keydown', keyEvent, true);
+	} else {
+		console.log('Disabling Vimari for this tab');
+		document.removeEventListener('keydown', keyEvent, true);
+	}
+}
 
 
 // Add event listener and init

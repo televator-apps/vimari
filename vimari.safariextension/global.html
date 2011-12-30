@@ -78,11 +78,37 @@
 		}
 	}
 
+
+	/*
+	 * Disable extension on non active tabs,
+	 * enable on active tab
+	 *
+	 * Need to do it in 2 seperate loops to make sure all tabs are disabled first
+	 */
+	function activateTab() {
+		var tabs = safari.application.activeBrowserWindow.tabs,
+			i;
+
+		for (i=0;i<tabs.length;i++) {
+			safari.application.activeBrowserWindow.tabs[i].page.dispatchMessage('setActive', false);
+		}
+
+		for (i=0;i<tabs.length;i++) {
+			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
+				safari.application.activeBrowserWindow.tabs[i].page.dispatchMessage('setActive', true);
+			}
+		}
+
+	}
+
+
+
 	safari.application.addEventListener('message', handleMessage, false);
 
 	// Need to detect if a new tab becomes active and if so, reload the extension
 	safari.application.addEventListener('activate', function(event) {
-		getSettings();
+			activateTab();
+			getSettings();
 		}, true);
 
 
