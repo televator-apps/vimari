@@ -252,6 +252,11 @@
             return false;
         }
 
+        // if the event has modifiers, no need to stop. Vimari-specific.
+        if (_eventModifiers(e).length !== 0) {
+            return false;
+        }
+
         // stop for input, select, and textarea
         return tag_name == 'INPUT' || tag_name == 'SELECT' || tag_name == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
     }
