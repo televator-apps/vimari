@@ -27,7 +27,8 @@
 				'tabForward'         : safari.extension.settings.tabForward,
 				'tabBack'            : safari.extension.settings.tabBack,
 				'scrollDown'         : safari.extension.settings.scrollDown,
-				'scrollUp'           : safari.extension.settings.scrollUp
+				'scrollUp'           : safari.extension.settings.scrollUp,
+				'modifier'           : safari.extension.settings.modifier
 			};
 
 			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage('setSettings', settings);

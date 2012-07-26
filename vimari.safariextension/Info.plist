@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Guy Halford-Thompson</string>
 	<key>Builder Version</key>
-	<string>7534.52.7</string>
+	<string>7536.25</string>
 	<key>CFBundleDisplayName</key>
 	<string>vimari</string>
 	<key>CFBundleExecutable</key>
@@ -32,6 +32,7 @@
 				<string>keyboardUtils.js</string>
 				<string>vimium-scripts.js</string>
 				<string>linkHints.js</string>
+				<string>mousetrap.js</string>
 				<string>injected.js</string>
 			</array>
 		</dict>

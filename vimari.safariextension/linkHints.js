@@ -44,6 +44,7 @@ function activateLinkHintsMode(openInNewTab, withQueue) {
   linkHintsModeActivated = true;
   setOpenLinkMode(openInNewTab, withQueue);
   buildLinkHints();
+  unbindKeyCodes();
   document.addEventListener("keydown", onKeyDownInLinkHintsMode, true);
   document.addEventListener("keyup", onKeyUpInLinkHintsMode, true);
 }
@@ -304,6 +305,7 @@ function deactivateLinkHintsMode() {
   document.removeEventListener("keydown", onKeyDownInLinkHintsMode, true);
   document.removeEventListener("keyup", onKeyUpInLinkHintsMode, true);
   linkHintsModeActivated = false;
+  bindKeyCodesToActions();
   //HUD.hide();
 }
 

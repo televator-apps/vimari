@@ -17,6 +17,7 @@
  * extensionActive  - is the extension currently enabled (should only be true when tab is active)
  * shiftKeyToggle   - is shift key currently toggled
  */
+
 var topWindow = (window.top === window),
 	settings = {},
 	currentZoomLevel = 100,
@@ -24,57 +25,61 @@ var topWindow = (window.top === window),
 	extensionActive = true,
 	shiftKeyToggle = false;
 
+var actionMap = {
+	'hintToggle' : function() {
+		HUD.show('Link hints mode');
+		activateLinkHintsMode(false, false); },
 
+	'tabForward' : function() {
+		safari.self.tab.dispatchMessage('changeTab', 1); },
 
-/*
- * Initialise the extension
- */
-function _init() {
+	'tabBack'    : function() {
+		safari.self.tab.dispatchMessage('changeTab', 0); },
+
+	'scrollDown' : function() { window.scrollBy(0, 60); },
+
+	'scrollUp'   : function() { window.scrollBy(0, -60); }
+};
+
+// Set up key codes to event handlers
+function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
 	if (topWindow) {
-		document.addEventListener('keydown', keyEvent, true);
-		// Retrieve settings
-		safari.self.tab.dispatchMessage('getSettings', '');
+		Mousetrap.reset();
+		for (var actionName in actionMap) {
+			if (actionMap.hasOwnProperty(actionName)) {
+				var keyCode = getKeyCode(actionName);
+				Mousetrap.bind(keyCode, executeAction(actionName), 'keyup');
+			}
+		}
 	}
 }
 
+function executeAction(actionName) {
+	return function() {
+		// don't do anything if we're not supposed to
+		if (linkHintsModeActivated || !extensionActive)
+			return;
 
+		//Call the action function
+		actionMap[actionName]();
 
-/*
- * Handle key events
- */
-function keyEvent(event) {
-	var s = settings;
-
-	console.log('Key event - ' + getKeyChar(event));
-
-	if (linkHintsModeActivated || !event.ctrlKey || !extensionActive)
-		return;
-
-	console.log('Switching key event');
-	event.stopPropagation();
-	event.preventDefault();
-
-	switch (getKeyChar(event)) {
-		case s.hintToggle    :
-					HUD.show('Link hints mode');
-					activateLinkHintsMode(event.shiftKey, false);
-				  	break;
-		case s.tabForward    :
-					safari.self.tab.dispatchMessage('changeTab', 1);
-					break;
-		case s.tabBack       :
-					safari.self.tab.dispatchMessage('changeTab', 0);
-					break;
-		case s.scrollDown    :
-					window.scrollBy(0, 60);
-					break;
-		case s.scrollUp      :
-					window.scrollBy(0, -60);
-					break;
+		// Tell mousetrap to stop propagation
+		return false;
 	}
+}
 
+function unbindKeyCodes() {
+	Mousetrap.reset();
+}
 
+// Adds an optional modifier to the configured key code for the action
+function getKeyCode(actionName) {
+	var keyCode = '';
+	if(settings.modifier) {
+		keyCode += settings.modifier + '+';
+	}
+	return keyCode + settings[actionName];
 }
 
 
@@ -98,10 +103,10 @@ function addCssToPage(css) {
  * can be controlled via the keyboard, particuarlly SELECT combo boxes.
  */
 function isEditable(target) {
-  if (target.getAttribute("contentEditable") == "true")
-    return true;
-  var focusableInputs = ["input", "textarea", "select", "button"];
-  return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
+	if (target.getAttribute("contentEditable") == "true")
+		return true;
+	var focusableInputs = ["input", "textarea", "select", "button"];
+	return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
 }
 
 
@@ -134,13 +139,12 @@ function handleMessage(msg) {
 	}
 }
 
-
-
 /*
  * Callback to pass settings to injected script
  */
 function setSettings(msg) {
 	settings = msg;
+	bindKeyCodesToActions();
 }
 
 /*
@@ -152,15 +156,15 @@ function setActive(msg) {
 	if(msg) {
 		// Add event listener...
 		console.log('Enabling Vimari for this tab');
-		document.addEventListener('keydown', keyEvent, true);
+		bindKeyCodesToActions();
 	} else {
 		console.log('Disabling Vimari for this tab');
-		document.removeEventListener('keydown', keyEvent, true);
+		unbindKeyCodes();
 	}
 }
 
-
-// Add event listener and init
+// Add event listener
 safari.self.addEventListener("message", handleMessage, false);
-_init();
+// Retrieve settings
+safari.self.tab.dispatchMessage('getSettings', '');
 
