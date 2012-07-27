@@ -30,6 +30,10 @@ var actionMap = {
 		HUD.show('Link hints mode');
 		activateLinkHintsMode(false, false); },
 
+	'newTabHintToggle' : function() {
+		HUD.show('Link hints mode');
+		activateLinkHintsMode(true, false); },
+
 	'tabForward' : function() {
 		safari.self.tab.dispatchMessage('changeTab', 1); },
 
