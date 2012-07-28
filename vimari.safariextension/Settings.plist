@@ -4,11 +4,31 @@
 <array>
 	<dict>
 		<key>DefaultValue</key>
+		<string>ctrl</string>
+		<key>Key</key>
+		<string>modifier</string>
+		<key>Title</key>
+		<string>Modifier key to preceed commands (blank for none)</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
 		<string>f</string>
 		<key>Key</key>
 		<string>hintToggle</string>
 		<key>Title</key>
 		<string>Link Hint Toggle CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>shift+f</string>
+		<key>Key</key>
+		<string>newTabHintToggle</string>
+		<key>Title</key>
+		<string>Link Hint Toggle (open in new tab) CTRL-</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
