@@ -53,7 +53,7 @@ function bindKeyCodesToActions() {
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
 				var keyCode = getKeyCode(actionName);
-				Mousetrap.bind(keyCode, executeAction(actionName), 'keyup');
+				Mousetrap.bind(keyCode, executeAction(actionName), 'keydown');
 			}
 		}
 	}
