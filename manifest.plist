@@ -10,11 +10,11 @@
 			<key>Developer Identifier</key>
 			<string>357AUX7M8L</string>
 			<key>CFBundleVersion</key>
-			<string>15</string>
+			<string>16</string>
 			<key>CFBundleShortVersionString</key>
-			<string>1.5</string>
+			<string>1.6</string>
 			<key>URL</key>
-			<string>http://s3.amazonaws.com/static.cach.me/vimari/vimari-1.5.safariextz</string>
+			<string>http://s3.amazonaws.com/static.cach.me/vimari/vimari-1.6.safariextz</string>
 		</dict>
 	</array>
 </dict>
