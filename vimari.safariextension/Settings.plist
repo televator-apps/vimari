@@ -18,7 +18,7 @@
 		<key>Key</key>
 		<string>hintToggle</string>
 		<key>Title</key>
-		<string>Link Hint Toggle CTRL-</string>
+		<string>Link Hint Toggle</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -28,7 +28,7 @@
 		<key>Key</key>
 		<string>newTabHintToggle</string>
 		<key>Title</key>
-		<string>Link Hint Toggle (open in new tab) CTRL-</string>
+		<string>Link Hint Toggle (open in new tab)</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -38,7 +38,7 @@
 		<key>Key</key>
 		<string>tabForward</string>
 		<key>Title</key>
-		<string>Next Tab CTRL-</string>
+		<string>Next Tab</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -48,7 +48,7 @@
 		<key>Key</key>
 		<string>tabBack</string>
 		<key>Title</key>
-		<string>Previous Tab CRTL-</string>
+		<string>Previous Tab</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -58,7 +58,7 @@
 		<key>Key</key>
 		<string>scrollDown</string>
 		<key>Title</key>
-		<string>Scroll Down Toggle CTRL-</string>
+		<string>Scroll Down Toggle</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -68,7 +68,7 @@
 		<key>Key</key>
 		<string>scrollUp</string>
 		<key>Title</key>
-		<string>Scroll Up Toggle CTRL-</string>
+		<string>Scroll Up Toggle</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
