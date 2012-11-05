@@ -253,7 +253,8 @@
         }
 
         // if the event has modifiers, no need to stop. Vimari-specific.
-        if (_eventModifiers(e).length !== 0) {
+        var modifiers = _eventModifiers(e);
+        if (modifiers.length !== 0 && !(modifiers.length === 1 && modifiers[0] === 'shift')) {
             return false;
         }
 
