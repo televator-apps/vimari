@@ -45,11 +45,26 @@ var actionMap = {
 	'scrollUp'   : function() { window.scrollBy(0, -60); }
 };
 
+// Meant to be overridden, but still has to be copy/pasted from the original...
+Mousetrap.stopCallback = function(e, element, combo) {
+	// Escape key is special, no need to stop. Vimari-specific.
+	if (combo === 'esc') { return false; }
+
+	// if the element has the class "mousetrap" then no need to stop
+	if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
+		return false;
+	}
+
+	// stop for input, select, and textarea
+	return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
+}
+
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
 	if (topWindow) {
 		Mousetrap.reset();
+		Mousetrap.bind('esc', enterNormalMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
 				var keyCode = getKeyCode(actionName);
@@ -57,6 +72,14 @@ function bindKeyCodesToActions() {
 			}
 		}
 	}
+}
+
+function enterNormalMode() {
+	// Clear input focus
+	document.activeElement.blur();
+
+	// Clear link hints (if any)
+	deactivateLinkHintsMode();
 }
 
 function executeAction(actionName) {
