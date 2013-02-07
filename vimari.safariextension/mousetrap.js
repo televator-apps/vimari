@@ -16,7 +16,7 @@
  * Mousetrap is a simple keyboard shortcut library for Javascript with
  * no external dependencies
  *
- * @version 1.1.2
+ * @version 1.3.0
  * @url craig.is/killing/mice
  */
 (function() {
@@ -148,7 +148,7 @@
          *
          * @type {Object}
          */
-        _direct_map = {},
+        _directMap = {},
 
         /**
          * keeps track of what level each sequence is at since multiple
@@ -156,21 +156,21 @@
          *
          * @type {Object}
          */
-        _sequence_levels = {},
+        _sequenceLevels = {},
 
         /**
          * variable to store the setTimeout call
          *
          * @type {null|number}
          */
-        _reset_timer,
+        _resetTimer,
 
         /**
          * temporary state where we will ignore the next keyup
          *
          * @type {boolean|string}
          */
-        _ignore_next_keyup = false,
+        _ignoreNextKeyup = false,
 
         /**
          * are we currently inside of a sequence?
@@ -178,7 +178,7 @@
          *
          * @type {boolean|string}
          */
-        _inside_sequence = false;
+        _sequenceType = false;
 
     /**
      * loop through the f keys, f1 to f19 and add them to the map
@@ -205,7 +205,8 @@
      */
     function _addEvent(object, type, callback) {
         if (object.addEventListener) {
-            return object.addEventListener(type, callback, false);
+            object.addEventListener(type, callback, false);
+            return;
         }
 
         object.attachEvent('on' + type, callback);
@@ -238,30 +239,6 @@
     }
 
     /**
-     * should we stop this event before firing off callbacks
-     *
-     * @param {Event} e
-     * @return {boolean}
-     */
-    function _stop(e) {
-        var element = e.target || e.srcElement,
-            tag_name = element.tagName;
-
-        // if the element has the class "mousetrap" then no need to stop
-        if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
-            return false;
-        }
-
-        // if the event has modifiers, no need to stop. Vimari-specific.
-        if (_eventModifiers(e).length !== 0) {
-            return false;
-        }
-
-        // stop for input, select, and textarea
-        return tag_name == 'INPUT' || tag_name == 'SELECT' || tag_name == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
-    }
-
-    /**
      * checks if two arrays are equal
      *
      * @param {Array} modifiers1
@@ -275,25 +252,25 @@
     /**
      * resets all sequence counters except for the ones passed in
      *
-     * @param {Object} do_not_reset
+     * @param {Object} doNotReset
      * @returns void
      */
-    function _resetSequences(do_not_reset) {
-        do_not_reset = do_not_reset || {};
+    function _resetSequences(doNotReset, maxLevel) {
+        doNotReset = doNotReset || {};
 
-        var active_sequences = false,
+        var activeSequences = false,
             key;
 
-        for (key in _sequence_levels) {
-            if (do_not_reset[key]) {
-                active_sequences = true;
+        for (key in _sequenceLevels) {
+            if (doNotReset[key] && _sequenceLevels[key] > maxLevel) {
+                activeSequences = true;
                 continue;
             }
-            _sequence_levels[key] = 0;
+            _sequenceLevels[key] = 0;
         }
 
-        if (!active_sequences) {
-            _inside_sequence = false;
+        if (!activeSequences) {
+            _sequenceType = false;
         }
     }
 
@@ -303,15 +280,16 @@
      *
      * @param {string} character
      * @param {Array} modifiers
-     * @param {string} action
+     * @param {Event|Object} e
      * @param {boolean=} remove - should we remove any matches
      * @param {string=} combination
      * @returns {Array}
      */
-    function _getMatches(character, modifiers, action, remove, combination) {
+    function _getMatches(character, modifiers, e, remove, combination) {
         var i,
             callback,
-            matches = [];
+            matches = [],
+            action = e.type;
 
         // if there are no events related to this keycode
         if (!_callbacks[character]) {
@@ -330,7 +308,7 @@
 
             // if this is a sequence but it is not at the right level
             // then move onto the next match
-            if (callback.seq && _sequence_levels[callback.seq] != callback.level) {
+            if (callback.seq && _sequenceLevels[callback.seq] != callback.level) {
                 continue;
             }
 
@@ -340,10 +318,14 @@
                 continue;
             }
 
-            // if this is a keypress event that means that we need to only
-            // look at the character, otherwise check the modifiers as
-            // well
-            if (action == 'keypress' || _modifiersMatch(modifiers, callback.modifiers)) {
+            // if this is a keypress event and the meta key and control key
+            // are not pressed that means that we need to only look at the
+            // character, otherwise check the modifiers as well
+            //
+            // chrome will not fire a keypress if meta or control is down
+            // safari will fire a keypress if meta or meta+shift is down
+            // firefox will fire a keypress if meta or control is down
+            if ((action == 'keypress' && !e.metaKey && !e.ctrlKey) || _modifiersMatch(modifiers, callback.modifiers)) {
 
                 // remove is used so if you change your mind and call bind a
                 // second time with a new function the first one is overwritten
@@ -396,8 +378,14 @@
      * @param {Event} e
      * @returns void
      */
-    function _fireCallback(callback, e) {
-        if (callback(e) === false) {
+    function _fireCallback(callback, e, combo) {
+
+        // if this event should not happen stop here
+        if (Mousetrap.stopCallback(e, e.target || e.srcElement, combo)) {
+            return;
+        }
+
+        if (callback(e, combo) === false) {
             if (e.preventDefault) {
                 e.preventDefault();
             }
@@ -419,16 +407,11 @@
      * @returns void
      */
     function _handleCharacter(character, e) {
-
-        // if this event should not happen stop here
-        if (_stop(e)) {
-            return;
-        }
-
-        var callbacks = _getMatches(character, _eventModifiers(e), e.type),
+        var callbacks = _getMatches(character, _eventModifiers(e), e),
             i,
-            do_not_reset = {},
-            processed_sequence_callback = false;
+            doNotReset = {},
+            maxLevel = 0,
+            processedSequenceCallback = false;
 
         // loop through matching callbacks for this key event
         for (i = 0; i < callbacks.length; ++i) {
@@ -439,26 +422,30 @@
             // callback for matching g cause otherwise you can only ever
             // match the first one
             if (callbacks[i].seq) {
-                processed_sequence_callback = true;
+                processedSequenceCallback = true;
+
+                // as we loop through keep track of the max
+                // any sequence at a lower level will be discarded
+                maxLevel = Math.max(maxLevel, callbacks[i].level);
 
                 // keep a list of which sequences were matches for later
-                do_not_reset[callbacks[i].seq] = 1;
-                _fireCallback(callbacks[i].callback, e);
+                doNotReset[callbacks[i].seq] = 1;
+                _fireCallback(callbacks[i].callback, e, callbacks[i].combo);
                 continue;
             }
 
             // if there were no sequence matches but we are still here
             // that means this is a regular match so we should fire that
-            if (!processed_sequence_callback && !_inside_sequence) {
-                _fireCallback(callbacks[i].callback, e);
+            if (!processedSequenceCallback && !_sequenceType) {
+                _fireCallback(callbacks[i].callback, e, callbacks[i].combo);
             }
         }
 
         // if you are inside of a sequence and the key you are pressing
         // is not a modifier key then we should reset all sequences
         // that were not matched by this key event
-        if (e.type == _inside_sequence && !_isModifier(character)) {
-            _resetSequences(do_not_reset);
+        if (e.type == _sequenceType && !_isModifier(character)) {
+            _resetSequences(doNotReset, maxLevel);
         }
     }
 
@@ -472,7 +459,9 @@
 
         // normalize e.which for key events
         // @see http://stackoverflow.com/questions/4285627/javascript-keycode-vs-charcode-utter-confusion
-        e.which = typeof e.which == "number" ? e.which : e.keyCode;
+        if (typeof e.which !== 'number') {
+            e.which = e.keyCode;
+        }
 
         var character = _characterFromEvent(e);
 
@@ -481,8 +470,8 @@
             return;
         }
 
-        if (e.type == 'keyup' && _ignore_next_keyup == character) {
-            _ignore_next_keyup = false;
+        if (e.type == 'keyup' && _ignoreNextKeyup == character) {
+            _ignoreNextKeyup = false;
             return;
         }
 
@@ -508,8 +497,8 @@
      * @returns void
      */
     function _resetSequenceTimer() {
-        clearTimeout(_reset_timer);
-        _reset_timer = setTimeout(_resetSequences, 1000);
+        clearTimeout(_resetTimer);
+        _resetTimer = setTimeout(_resetSequences, 1000);
     }
 
     /**
@@ -574,7 +563,7 @@
 
         // start off by adding a sequence level record for this combination
         // and setting the level to 0
-        _sequence_levels[combo] = 0;
+        _sequenceLevels[combo] = 0;
 
         // if there is no action pick the best one for the first key
         // in the sequence
@@ -590,8 +579,8 @@
          * @returns void
          */
         var _increaseSequence = function(e) {
-                _inside_sequence = action;
-                ++_sequence_levels[combo];
+                _sequenceType = action;
+                ++_sequenceLevels[combo];
                 _resetSequenceTimer();
             },
 
@@ -603,13 +592,13 @@
              * @returns void
              */
             _callbackAndReset = function(e) {
-                _fireCallback(callback, e);
+                _fireCallback(callback, e, combo);
 
                 // we should ignore the next key up if the action is key down
                 // or keypress.  this is so if you finish a sequence and
                 // release the key the final key will not trigger a keyup
                 if (action !== 'keyup') {
-                    _ignore_next_keyup = _characterFromEvent(e);
+                    _ignoreNextKeyup = _characterFromEvent(e);
                 }
 
                 // weird race condition if a sequence ends with the key
@@ -632,11 +621,14 @@
      * @param {string} combination
      * @param {Function} callback
      * @param {string=} action
-     * @param {string=} sequence_name - name of sequence if part of sequence
+     * @param {string=} sequenceName - name of sequence if part of sequence
      * @param {number=} level - what part of the sequence the command is
      * @returns void
      */
-    function _bindSingle(combination, callback, action, sequence_name, level) {
+    function _bindSingle(combination, callback, action, sequenceName, level) {
+
+        // store a direct mapped reference for use with Mousetrap.trigger
+        _directMap[combination + ':' + action] = callback;
 
         // make sure multiple spaces in a row become a single space
         combination = combination.replace(/\s+/g, ' ');
@@ -650,7 +642,8 @@
         // if this pattern is a sequence of keys then run through this method
         // to reprocess each pattern one key at a time
         if (sequence.length > 1) {
-            return _bindSequence(combination, sequence, callback, action);
+            _bindSequence(combination, sequence, callback, action);
+            return;
         }
 
         // take the keys from this pattern and figure out what the actual
@@ -690,7 +683,7 @@
         }
 
         // remove an existing match if there is one
-        _getMatches(key, modifiers, action, !sequence_name, combination);
+        _getMatches(key, modifiers, {type: action}, !sequenceName, combination);
 
         // add this call back to the array
         // if it is a sequence put it at the beginning
@@ -698,11 +691,11 @@
         //
         // this is important because the way these are processed expects
         // the sequence ones to come first
-        _callbacks[key][sequence_name ? 'unshift' : 'push']({
+        _callbacks[key][sequenceName ? 'unshift' : 'push']({
             callback: callback,
             modifiers: modifiers,
             action: action,
-            seq: sequence_name,
+            seq: sequenceName,
             level: level,
             combo: combination
         });
@@ -727,14 +720,13 @@
     _addEvent(document, 'keydown', _handleKey);
     _addEvent(document, 'keyup', _handleKey);
 
-    var mousetrap = {
+    var Mousetrap = {
 
         /**
          * binds an event to mousetrap
          *
          * can be a single key, a combination of keys separated with +,
-         * a comma separated list of keys, an array of keys, or
-         * a sequence of keys separated by spaces
+         * an array of keys, or a sequence of keys separated by spaces
          *
          * be sure to list the modifier keys first to make sure that the
          * correct key ends up getting bound (the last key in the pattern)
@@ -745,8 +737,8 @@
          * @returns void
          */
         bind: function(keys, callback, action) {
-            _bindMultiple(keys instanceof Array ? keys : [keys], callback, action);
-            _direct_map[keys + ':' + action] = callback;
+            keys = keys instanceof Array ? keys : [keys];
+            _bindMultiple(keys, callback, action);
             return this;
         },
 
@@ -755,24 +747,20 @@
          *
          * the unbinding sets the callback function of the specified key combo
          * to an empty function and deletes the corresponding key in the
-         * _direct_map dict.
-         *
-         * the keycombo+action has to be exactly the same as
-         * it was defined in the bind method
+         * _directMap dict.
          *
          * TODO: actually remove this from the _callbacks dictionary instead
          * of binding an empty function
+         *
+         * the keycombo+action has to be exactly the same as
+         * it was defined in the bind method
          *
          * @param {string|Array} keys
          * @param {string} action
          * @returns void
          */
         unbind: function(keys, action) {
-            if (_direct_map[keys + ':' + action]) {
-                delete _direct_map[keys + ':' + action];
-                this.bind(keys, function() {}, action);
-            }
-            return this;
+            return Mousetrap.bind(keys, function() {}, action);
         },
 
         /**
@@ -783,7 +771,9 @@
          * @returns void
          */
         trigger: function(keys, action) {
-            _direct_map[keys + ':' + action]();
+            if (_directMap[keys + ':' + action]) {
+                _directMap[keys + ':' + action]();
+            }
             return this;
         },
 
@@ -796,16 +786,34 @@
          */
         reset: function() {
             _callbacks = {};
-            _direct_map = {};
+            _directMap = {};
             return this;
+        },
+
+       /**
+        * should we stop this event before firing off callbacks
+        *
+        * @param {Event} e
+        * @param {Element} element
+        * @return {boolean}
+        */
+        stopCallback: function(e, element, combo) {
+
+            // if the element has the class "mousetrap" then no need to stop
+            if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
+                return false;
+            }
+
+            // stop for input, select, and textarea
+            return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
         }
     };
 
     // expose mousetrap to the global object
-    window.Mousetrap = mousetrap;
+    window.Mousetrap = Mousetrap;
 
     // expose mousetrap as an AMD module
-    if (typeof define == 'function' && define.amd) {
-        define('mousetrap', function() { return mousetrap; });
+    if (typeof define === 'function' && define.amd) {
+        define(Mousetrap);
     }
 }) ();
