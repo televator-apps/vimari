@@ -23,6 +23,7 @@ var topWindow = (window.top === window),
 	currentZoomLevel = 100,
 	linkHintCss = {},
 	extensionActive = true,
+	insertMode = false,
 	shiftKeyToggle = false;
 
 var actionMap = {
@@ -65,6 +66,7 @@ function bindKeyCodesToActions() {
 	if (topWindow) {
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
+		Mousetrap.bind('i', enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
 				var keyCode = getKeyCode(actionName);
@@ -80,12 +82,23 @@ function enterNormalMode() {
 
 	// Clear link hints (if any)
 	deactivateLinkHintsMode();
+
+	// Re-enable if in insert mode
+	insertMode = false;
+	Mousetrap.bind('i', enterInsertMode);
+}
+
+// Calling it 'insert mode', but it's really just a user-triggered
+// off switch for the actions.
+function enterInsertMode() {
+	insertMode = true;
+	Mousetrap.unbind('i');
 }
 
 function executeAction(actionName) {
 	return function() {
 		// don't do anything if we're not supposed to
-		if (linkHintsModeActivated || !extensionActive)
+		if (linkHintsModeActivated || !extensionActive || insertMode)
 			return;
 
 		//Call the action function
