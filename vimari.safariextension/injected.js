@@ -51,6 +51,9 @@ Mousetrap.stopCallback = function(e, element, combo) {
 	// Escape key is special, no need to stop. Vimari-specific.
 	if (combo === 'esc') { return false; }
 
+  // Preserve the behavior of allowing ex. ctrl-j in an input
+  if (settings.modifier) { return false; }
+
 	// if the element has the class "mousetrap" then no need to stop
 	if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
 		return false;
