@@ -23,6 +23,7 @@ var topWindow = (window.top === window),
 	currentZoomLevel = 100,
 	linkHintCss = {},
 	extensionActive = true,
+	insertMode = false,
 	shiftKeyToggle = false;
 
 var actionMap = {
@@ -45,11 +46,30 @@ var actionMap = {
 	'scrollUp'   : function() { window.scrollBy(0, -60); }
 };
 
+// Meant to be overridden, but still has to be copy/pasted from the original...
+Mousetrap.stopCallback = function(e, element, combo) {
+	// Escape key is special, no need to stop. Vimari-specific.
+	if (combo === 'esc') { return false; }
+
+  // Preserve the behavior of allowing ex. ctrl-j in an input
+  if (settings.modifier) { return false; }
+
+	// if the element has the class "mousetrap" then no need to stop
+	if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
+		return false;
+	}
+
+	// stop for input, select, and textarea
+	return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
+}
+
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
 	if (topWindow) {
 		Mousetrap.reset();
+		Mousetrap.bind('esc', enterNormalMode);
+		Mousetrap.bind('i', enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
 				var keyCode = getKeyCode(actionName);
@@ -59,10 +79,29 @@ function bindKeyCodesToActions() {
 	}
 }
 
+function enterNormalMode() {
+	// Clear input focus
+	document.activeElement.blur();
+
+	// Clear link hints (if any)
+	deactivateLinkHintsMode();
+
+	// Re-enable if in insert mode
+	insertMode = false;
+	Mousetrap.bind('i', enterInsertMode);
+}
+
+// Calling it 'insert mode', but it's really just a user-triggered
+// off switch for the actions.
+function enterInsertMode() {
+	insertMode = true;
+	Mousetrap.unbind('i');
+}
+
 function executeAction(actionName) {
 	return function() {
 		// don't do anything if we're not supposed to
-		if (linkHintsModeActivated || !extensionActive)
+		if (linkHintsModeActivated || !extensionActive || insertMode)
 			return;
 
 		//Call the action function
