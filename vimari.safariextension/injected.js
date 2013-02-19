@@ -43,7 +43,19 @@ var actionMap = {
 
 	'scrollDown' : function() { window.scrollBy(0, 60); },
 
-	'scrollUp'   : function() { window.scrollBy(0, -60); }
+	'scrollUp'   : function() { window.scrollBy(0, -60); },
+
+	'scrollDownHalfPage' :
+		function() { window.scrollBy(0, window.innerHeight / 2); },
+
+	'scrollUpHalfPage'   :
+		function() { window.scrollBy(0, window.innerHeight / -2); },
+
+	'goToPageBottom'     :
+		function() { window.scrollBy(0, document.body.scrollHeight); },
+
+	'goToPageTop'        :
+		function() { window.scrollBy(0, -document.body.scrollHeight); }
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...

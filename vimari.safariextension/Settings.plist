@@ -74,6 +74,46 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
+		<string>d</string>
+		<key>Key</key>
+		<string>scrollDownHalfPage</string>
+		<key>Title</key>
+		<string>Scroll Down Half Page CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>u</string>
+		<key>Key</key>
+		<string>scrollUpHalfPage</string>
+		<key>Title</key>
+		<string>Scroll Up Half Page CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>g g</string>
+		<key>Key</key>
+		<string>goToPageTop</string>
+		<key>Title</key>
+		<string>Go to the top of the page CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>shift+g</string>
+		<key>Key</key>
+		<string>goToPageBottom</string>
+		<key>Title</key>
+		<string>Go to the bottom of the page CTRL-</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
 		<string>asdfjklqwerzxc</string>
 		<key>Key</key>
 		<string>linkHintCharacters</string>
