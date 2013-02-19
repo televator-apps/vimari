@@ -77,6 +77,10 @@
 		<string>asdfjklqwerzxc</string>
 		<key>Key</key>
 		<string>linkHintCharacters</string>
+		<key>Title</key>
+		<string>Link hint characters</string>
+		<key>Type</key>
+		<string>TextField</string>
 	</dict>
 </array>
 </plist>
