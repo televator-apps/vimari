@@ -209,11 +209,8 @@ function setActive(msg) {
 
 	extensionActive = msg;
 	if(msg) {
-		// Add event listener...
-		console.log('Enabling Vimari for this tab');
 		bindKeyCodesToActions();
 	} else {
-		console.log('Disabling Vimari for this tab');
 		unbindKeyCodes();
 	}
 }
