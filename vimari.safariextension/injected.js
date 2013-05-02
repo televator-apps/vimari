@@ -45,6 +45,10 @@ var actionMap = {
 
 	'scrollUp'   : function() { window.scrollBy(0, -60); },
 
+	'closeTab'   : function() {
+		safari.self.tab.dispatchMessage('closeTab', 0);
+	},
+
 	'scrollDownHalfPage' :
 		function() { window.scrollBy(0, window.innerHeight / 2); },
 
