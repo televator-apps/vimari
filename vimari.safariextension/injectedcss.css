@@ -1,19 +1,20 @@
 .internalVimiumHintMarker {
 		  position:absolute;
-		  background-color:yellow;
-		  color:black;
+		  background-color:rgba(255, 239, 123, .75)!important;
+		  color:#222;
 		  font-weight:bold;
 		  font-size:12px;
 		  padding:0 1px;
+		  border-radius: 2px;
 		  line-height:100%;
 		  width:auto;
 		  display:block;
 		  border:1px solid #E3BE23;
 		  z-index:99999999;
-		  font-family:"Helvetica Neue", "Helvetica", "Arial", "Sans";
-		  top:-1px;
-		  left:-1px;
-		} 
+		  font-family: "Helvetica Neue", "Helvetica", "Arial", "Sans";
+		  top:-2px;
+		  left:-10px;
+		}
 .internalVimiumHintMarker > .matchingCharacter {
 		  color:#C79F0B;
  }
