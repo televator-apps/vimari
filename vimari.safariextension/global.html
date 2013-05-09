@@ -10,10 +10,13 @@
 			switch(msg.name) {
 				case 'getSettings' :
 					getSettings(msg);
-					break;	
+					break;
 				case 'changeTab' :
 					changeTab(msg.message);
-					break;	
+					break;
+				case 'closeTab' :
+					closeTab();
+					break;
 			}
 		}
 
@@ -25,6 +28,7 @@
 				'linkHintCharacters' : safari.extension.settings.linkHintCharacters,
 				'hintToggle'         : safari.extension.settings.hintToggle,
 				'newTabHintToggle'   : safari.extension.settings.newTabHintToggle,
+				'tabClose'           : safari.extension.settings.tabClose,
 				'tabForward'         : safari.extension.settings.tabForward,
 				'tabBack'            : safari.extension.settings.tabBack,
 				'scrollDown'         : safari.extension.settings.scrollDown,
@@ -40,6 +44,10 @@
 
 		}
 
+	function closeTab() {
+		console.log('Called close tab');
+		safari.application.activeBrowserWindow.activeTab.close();
+	}
 	/*
 	 * Changes to the next avail tab
 	 *
@@ -107,8 +115,6 @@
 
 	}
 
-
-
 	safari.application.addEventListener('message', handleMessage, false);
 
 	// Need to detect if a new tab becomes active and if so, reload the extension
@@ -121,4 +127,4 @@
    </script>
 </head>
 </html>
-  
+

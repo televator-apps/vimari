@@ -54,6 +54,16 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
+		<string>x</string>
+		<key>Key</key>
+		<string>tabClose</string>
+		<key>Title</key>
+		<string>Close Tab</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
 		<string>j</string>
 		<key>Key</key>
 		<string>scrollDown</string>

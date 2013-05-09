@@ -41,6 +41,10 @@ var actionMap = {
 	'tabBack'    : function() {
 		safari.self.tab.dispatchMessage('changeTab', 0); },
 
+	'tabClose'   : function() {
+		console.log("close tab");
+		safari.self.tab.dispatchMessage('closeTab', 0); },
+
 	'scrollDown' : function() { window.scrollBy(0, 60); },
 
 	'scrollUp'   : function() { window.scrollBy(0, -60); },
