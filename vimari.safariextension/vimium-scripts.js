@@ -12,57 +12,6 @@ HUD = {
   _displayElement: null,
   _upgradeNotificationElement: null,
 
-  // This HUD is styled to precisely mimick the chrome HUD on Mac. Use the "has_popup_and_link_hud.html"
-  // test harness to tweak these styles to match Chrome's. One limitation of our HUD display is that
-  // it doesn't sit on top of horizontal scrollbars like Chrome's HUD does.
-  _hudCss:
-    ".vimiumHUD, .vimiumHUD * {" +
-      "line-height: 100%;" +
-      "font-size: 11px;" +
-      "font-weight: normal;" +
-    "}" +
-    ".vimiumHUD {" +
-      "position: fixed;" +
-      "bottom: 0px;" +
-      "color: black;" +
-      "height: 13px;" +
-      "max-width: 400px;" +
-      "min-width: 150px;" +
-      "text-align: left;" +
-      "background-color: #ebebeb;" +
-      "padding: 3px 3px 2px 3px;" +
-      "border: 1px solid #b3b3b3;" +
-      "border-radius: 4px 4px 0 0;" +
-      "font-family: Lucida Grande, Arial, Sans;" +
-      // One less than vimium's hint markers, so link hints can be shown e.g. for the panel's close button.
-      "z-index: 99999998;" +
-      "text-shadow: 0px 1px 2px #FFF;" +
-      "line-height: 1.0;" +
-      "opacity: 0;" +
-    "}" +
-    ".vimiumHUD a, .vimiumHUD a:hover {" +
-      "background: transparent;" +
-      "color: blue;" +
-      "text-decoration: underline;" +
-    "}" +
-    ".vimiumHUD a.close-button {" +
-      "float:right;" +
-      "font-family:courier new;" +
-      "font-weight:bold;" +
-      "color:#9C9A9A;" +
-      "text-decoration:none;" +
-      "padding-left:10px;" +
-      "margin-top:-1px;" +
-      "font-size:14px;" +
-    "}" +
-    ".vimiumHUD a.close-button:hover {" +
-      "color:#333333;" +
-      "cursor:default;" +
-      "-webkit-user-select:none;" +
-    "}",
-
-  _cssHasBeenAdded: false,
-
   showForDuration: function(text, duration) {
     HUD.show(text);
     HUD._showForDurationTimerId = setTimeout(function() { HUD.hide(); }, duration);
@@ -132,10 +81,6 @@ HUD = {
   },
 
   createHudElement: function() {
-    if (!HUD._cssHasBeenAdded) {
-      addCssToPage(HUD._hudCss);
-      HUD._cssHasBeenAdded = true;
-    }
     var element = document.createElement("div");
     element.className = "vimiumHUD";
     document.body.appendChild(element);
@@ -185,21 +130,3 @@ Tween = {
   }
 };
 
-
-
-
-
-/*
- * Adds the given CSS to the page.
- */
-function addCssToPage(css) {
-  var head = document.getElementsByTagName("head")[0];
-  if (!head) {
-    console.log("Warning: unable to add CSS to the page.");
-    return;
-  }
-  var style = document.createElement("style");
-  style.type = "text/css";
-  style.appendChild(document.createTextNode(css));
-  head.appendChild(style);
-}
