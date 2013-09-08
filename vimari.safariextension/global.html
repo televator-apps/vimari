@@ -11,6 +11,10 @@
 				case 'getSettings' :
 					getSettings(msg);
 					break;	
+				case 'closeTab':
+					var tab = safari.application.activeBrowserWindow.activeTab;
+					tab.close();
+					break;
 				case 'changeTab' :
 					changeTab(msg.message);
 					break;	
@@ -33,6 +37,7 @@
 				'scrollUpHalfPage'   : safari.extension.settings.scrollUpHalfPage,
 				'goToPageBottom'     : safari.extension.settings.goToPageBottom,
 				'goToPageTop'        : safari.extension.settings.goToPageTop,
+				'closeTab'	         : safari.extension.settings.closeTab,
 				'modifier'           : safari.extension.settings.modifier
 			};
 
