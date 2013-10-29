@@ -12,8 +12,7 @@
 					getSettings(msg);
 					break;	
 				case 'closeTab':
-					var tab = safari.application.activeBrowserWindow.activeTab;
-					tab.close();
+					closeTab(msg.message);
 					break;
 				case 'changeTab' :
 					changeTab(msg.message);
@@ -33,11 +32,17 @@
 				'tabBack'            : safari.extension.settings.tabBack,
 				'scrollDown'         : safari.extension.settings.scrollDown,
 				'scrollUp'           : safari.extension.settings.scrollUp,
+				'scrollLeft'         : safari.extension.settings.scrollLeft,
+				'scrollRight'        : safari.extension.settings.scrollRight,
+				'goBack'             : safari.extension.settings.goBack,
+				'goForward'          : safari.extension.settings.goForward,
+				'reload'             : safari.extension.settings.reload,
 				'scrollDownHalfPage' : safari.extension.settings.scrollDownHalfPage,
 				'scrollUpHalfPage'   : safari.extension.settings.scrollUpHalfPage,
 				'goToPageBottom'     : safari.extension.settings.goToPageBottom,
 				'goToPageTop'        : safari.extension.settings.goToPageTop,
 				'closeTab'	         : safari.extension.settings.closeTab,
+				'closeTabReverse'    : safari.extension.settings.closeTabReverse,
 				'modifier'           : safari.extension.settings.modifier
 			};
 
@@ -72,6 +77,17 @@
 				return;
 			}
 		}
+	}
+
+	/*
+	 * Closes to current tab
+	 *
+	 * dir - 1 forwards, 0 backwards
+	 */
+	function closeTab(dir) {
+		var tab = safari.application.activeBrowserWindow.activeTab;
+		changeTab(dir);
+		tab.close();
 	}
 
 	/*

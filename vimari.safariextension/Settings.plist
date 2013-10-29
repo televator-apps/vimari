@@ -38,7 +38,17 @@
 		<key>Key</key>
 		<string>closeTab</string>
 		<key>Title</key>
-		<string>Close current tab</string>
+		<string>Close Current Tab (open left tab)</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>shift+x</string>
+		<key>Key</key>
+		<string>closeTabReverse</string>
+		<key>Title</key>
+		<string>Close Current Tab (open right tab)</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -68,7 +78,7 @@
 		<key>Key</key>
 		<string>scrollDown</string>
 		<key>Title</key>
-		<string>Scroll Down Toggle</string>
+		<string>Scroll Down</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -78,7 +88,57 @@
 		<key>Key</key>
 		<string>scrollUp</string>
 		<key>Title</key>
-		<string>Scroll Up Toggle</string>
+		<string>Scroll Up</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>h</string>
+		<key>Key</key>
+		<string>scrollLeft</string>
+		<key>Title</key>
+		<string>Scroll Left</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>l</string>
+		<key>Key</key>
+		<string>scrollRight</string>
+		<key>Title</key>
+		<string>Scroll Right</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>shift+h</string>
+		<key>Key</key>
+		<string>goBack</string>
+		<key>Title</key>
+		<string>History Back</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>shift+l</string>
+		<key>Key</key>
+		<string>goForward</string>
+		<key>Title</key>
+		<string>History Forward</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>r</string>
+		<key>Key</key>
+		<string>reload</string>
+		<key>Title</key>
+		<string>Reload</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
