@@ -41,13 +41,32 @@ var actionMap = {
 	'tabBack'    : function() {
 		safari.self.tab.dispatchMessage('changeTab', 0); },
 
-	'scrollDown' : function() { window.scrollBy(0, 60); },
+	'scrollDown' :
+		function() { window.scrollBy(0, 60); },
 
-	'scrollUp'   : function() { window.scrollBy(0, -60); },
+	'scrollUp' :
+		function() { window.scrollBy(0, -60); },
 
-	'closeTab'   : function() {
-		safari.self.tab.dispatchMessage('closeTab', 0);
-	},
+	'scrollLeft' :
+		function() { window.scrollBy(-60, 0); },
+
+	'scrollRight' :
+		function() { window.scrollBy(60, 0); },
+
+	'goBack' :
+		function() { window.history.back(); },
+
+	'goForward' :
+		function() { window.history.forward(); },
+
+	'reload' :
+		function() { window.location.reload(); },
+
+	'closeTab'   :
+		function() { safari.self.tab.dispatchMessage('closeTab', 0); },
+
+	'closeTabReverse'   :
+		function() { safari.self.tab.dispatchMessage('closeTab', 1); },
 
 	'scrollDownHalfPage' :
 		function() { window.scrollBy(0, window.innerHeight / 2); },
