@@ -192,5 +192,21 @@
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>60</real>
+		<key>Key</key>
+		<string>scrollSize</string>
+		<key>MaximumValue</key>
+		<real>200</real>
+		<key>MinimumValue</key>
+		<real>20</real>
+		<key>StepValue</key>
+		<real>20</real>
+		<key>Title</key>
+		<string>Scroll Size</string>
+		<key>Type</key>
+		<string>Slider</string>
+	</dict>
 </array>
 </plist>

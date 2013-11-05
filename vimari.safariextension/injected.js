@@ -42,16 +42,16 @@ var actionMap = {
 		safari.self.tab.dispatchMessage('changeTab', 0); },
 
 	'scrollDown' :
-		function() { window.scrollBy(0, 60); },
+		function() { window.scrollBy(0, settings.scrollSize); },
 
 	'scrollUp' :
-		function() { window.scrollBy(0, -60); },
+		function() { window.scrollBy(0, -settings.scrollSize); },
 
 	'scrollLeft' :
-		function() { window.scrollBy(-60, 0); },
+		function() { window.scrollBy(-settings.scrollSize, 0); },
 
 	'scrollRight' :
-		function() { window.scrollBy(60, 0); },
+		function() { window.scrollBy(settings.scrollSize, 0); },
 
 	'goBack' :
 		function() { window.history.back(); },

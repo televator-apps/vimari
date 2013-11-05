@@ -43,7 +43,8 @@
 				'goToPageTop'        : safari.extension.settings.goToPageTop,
 				'closeTab'	         : safari.extension.settings.closeTab,
 				'closeTabReverse'    : safari.extension.settings.closeTabReverse,
-				'modifier'           : safari.extension.settings.modifier
+				'modifier'           : safari.extension.settings.modifier,
+				'scrollSize'           : safari.extension.settings.scrollSize,
 			};
 
 			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage('setSettings', settings);
