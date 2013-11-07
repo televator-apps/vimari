@@ -25,7 +25,7 @@ var topWindow = (window.top === window),
 	linkHintCss = {},
 	extensionActive = true,
 	insertMode = false,
-	shiftKeyToggle = false
+	shiftKeyToggle = false,
 	activeUrl = '';
 
 var actionMap = {
@@ -103,9 +103,7 @@ Mousetrap.stopCallback = function(e, element, combo) {
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
-	console.log('binding');
 	if (topWindow && isEnabledForUrl() ) {
-		console.log('binding more');
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
 		Mousetrap.bind('i', enterInsertMode);
