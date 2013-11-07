@@ -17,6 +17,9 @@
 				case 'changeTab' :
 					changeTab(msg.message);
 					break;	
+				case 'getActiveTabUrl' :
+					getActiveTabUrl(msg.message);
+					break;	
 			}
 		}
 
@@ -43,7 +46,8 @@
 				'goToPageTop'        : safari.extension.settings.goToPageTop,
 				'closeTab'	         : safari.extension.settings.closeTab,
 				'closeTabReverse'    : safari.extension.settings.closeTabReverse,
-				'modifier'           : safari.extension.settings.modifier
+				'modifier'           : safari.extension.settings.modifier,
+				'excludedUrls'       : safari.extension.settings.excludedUrls
 			};
 
 			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage('setSettings', settings);
@@ -105,6 +109,16 @@
 		}
 	}
 
+	/*
+	 * Get the current url of the active tab
+	 *
+	 */
+	function getActiveTabUrl() {
+			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage(
+				'setActiveUrl', 
+				safari.application.activeBrowserWindow.activeTab.url
+			);
+	}
 
 	/*
 	 * Disable extension on non active tabs,

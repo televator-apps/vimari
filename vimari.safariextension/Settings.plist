@@ -192,5 +192,15 @@
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>http*://mail.google.com/*,http*://duckduckgo.com/*</string>
+		<key>Key</key>
+		<string>excludedUrls</string>
+		<key>Title</key>
+		<string>Excluded URLs (comma separated)</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
 </array>
 </plist>
