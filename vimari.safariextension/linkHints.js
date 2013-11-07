@@ -82,7 +82,8 @@ function buildLinkHints() {
   // that if you scroll the page and the link has position=fixed, the marker will not stay fixed.
   // Also note that adding these nodes to document.body all at once is significantly faster than one-by-one.
   hintMarkerContainingDiv = document.createElement("div");
-  hintMarkerContainingDiv.className = "internalVimiumHintMarker";
+  hintMarkerContainingDiv.id = "vimiumHintMarkerContainer";
+  hintMarkerContainingDiv.className = "vimiumReset";
   for (var i = 0; i < hintMarkers.length; i++)
     hintMarkerContainingDiv.appendChild(hintMarkers[i]);
   document.body.appendChild(hintMarkerContainingDiv);
@@ -318,7 +319,7 @@ function resetLinkHintsMode() {
 function createMarkerFor(link, linkHintNumber, linkHintDigits) {
   var hintString = numberToHintString(linkHintNumber, linkHintDigits);
   var marker = document.createElement("div");
-  marker.className = "internalVimiumHintMarker vimiumHintMarker";
+  marker.className = "internalVimiumHintMarker";
   var innerHTML = [];
   // Make each hint character a span, so that we can highlight the typed characters as you type them.
   for (var i = 0; i < hintString.length; i++)
