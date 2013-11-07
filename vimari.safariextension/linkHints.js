@@ -319,11 +319,11 @@ function resetLinkHintsMode() {
 function createMarkerFor(link, linkHintNumber, linkHintDigits) {
   var hintString = numberToHintString(linkHintNumber, linkHintDigits);
   var marker = document.createElement("div");
-  marker.className = "internalVimiumHintMarker";
+  marker.className = "internalVimiumHintMarker vimiumReset";
   var innerHTML = [];
   // Make each hint character a span, so that we can highlight the typed characters as you type them.
   for (var i = 0; i < hintString.length; i++)
-    innerHTML.push("<span>" + hintString[i].toUpperCase() + "</span>");
+    innerHTML.push('<span class="vimiumReset">' + hintString[i].toUpperCase() + '</span>');
   marker.innerHTML = innerHTML.join("");
   marker.setAttribute("hintString", hintString);
 
