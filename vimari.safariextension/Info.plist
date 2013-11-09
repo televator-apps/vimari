@@ -56,7 +56,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://guyht.github.com/vimari/manifest.plist</string>
+    <string>http://guyht.github.io/vimari/manifest.plist</string>
 	<key>Website</key>
 	<string>http://guyht.github.com/vimari/</string>
 </dict>
