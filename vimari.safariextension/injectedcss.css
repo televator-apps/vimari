@@ -1,19 +1,65 @@
-.internalVimiumHintMarker {
-		  position:absolute;
-		  background-color:yellow;
-		  color:black;
-		  font-weight:bold;
-		  font-size:12px;
-		  padding:0 1px;
-		  line-height:100%;
-		  width:auto;
-		  display:block;
-		  border:1px solid #E3BE23;
-		  z-index:99999999;
-		  font-family:"Helvetica Neue", "Helvetica", "Arial", "Sans";
-		  top:-1px;
-		  left:-1px;
-		} 
-.internalVimiumHintMarker > .matchingCharacter {
-		  color:#C79F0B;
- }
+.vimiumReset {
+  background: none;
+  border: none;
+  bottom: auto;
+  box-shadow: none;
+  color: black;
+  cursor: auto;
+  display: inline;
+  float: none;
+  font-family : "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: inherit;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  height: auto;
+  left: auto;
+  letter-spacing: 0;
+  line-height: 100%;
+  margin: 0;
+  max-height: none;
+  max-width: none;
+  min-height: 0;
+  min-width: 0;
+  opacity: 1;
+  padding: 0;
+  position: static;
+  right: auto;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  top: auto;
+  vertical-align: baseline;
+  white-space: normal;
+  width: auto;
+  z-index: 2147483647; /* Maximum value in Safari */
+}
+
+div.internalVimiumHintMarker {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 11px;
+  padding: 1px 3px 0px 3px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785), color-stop(100%,#FFC542));
+  border: 1px solid #E3BE23;
+  border-radius: 3px;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.3);
+}
+
+div.internalVimiumHintMarker span {
+  color: #000000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);	
+}
+
+div.internalVimiumHintMarker > .matchingCharacter {
+  color: #D4AC3A;
+}
