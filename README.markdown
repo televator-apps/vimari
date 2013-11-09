@@ -3,17 +3,9 @@
 Vimari - Keyboard Shortcuts extension for Safari
 ================================================
 
-### New in version 1.5
+### New in version 1.9
+See [Release note](https://github.com/guyht/vimari/releases/tag/v1.9)
 
-* Fixed tab movement.  This now works again.  Issue was caused because
-events were propagated across all tabs.
-
-* Fixed extension not being loaded in new tabs.  This was caused because
-messages from the global page can only be sent to the 'active' tab (not
-the case when a new tab is opened).  The extension is now
-enabled/disabled on tab activation.
-
-* **Added new feature.  CTRL-SHIFT-F now opens links in a new tab!!**
 
 Vimari is a Safari extension that provides keyboard based navigation.  The code is heavily based on 'vimium', a chrome extension that provides much more extensive features.
 
@@ -22,7 +14,7 @@ Vimari attempts to provide a lightweight port of vimium to Safari, taking the be
 __Installation Instructions:__
 
 Click the download link below:
-	https://github.com/downloads/guyht/vimari/vimari-1.2.safariextz
+	https://github.com/guyht/vimari/releases/download/v1.9/vimari-1.9.safariextz
 
 
 Screenshots
