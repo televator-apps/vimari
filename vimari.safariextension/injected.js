@@ -84,7 +84,7 @@ var actionMap = {
 // Meant to be overridden, but still has to be copy/pasted from the original...
 Mousetrap.stopCallback = function(e, element, combo) {
 	// Escape key is special, no need to stop. Vimari-specific.
-	if (combo === 'esc') { return false; }
+	if (combo === 'esc' || combo === 'ctrl+[') { return false; }
 
   // Preserve the behavior of allowing ex. ctrl-j in an input
   if (settings.modifier) { return false; }
@@ -104,6 +104,7 @@ function bindKeyCodesToActions() {
 	if (topWindow) {
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
+		Mousetrap.bind('ctrl+[', enterNormalMode);
 		Mousetrap.bind('i', enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
