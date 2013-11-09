@@ -10,11 +10,11 @@
 			<key>Developer Identifier</key>
 			<string>357AUX7M8L</string>
 			<key>CFBundleVersion</key>
-			<string>18</string>
+			<string>19</string>
 			<key>CFBundleShortVersionString</key>
-			<string>1.8</string>
+			<string>1.9</string>
 			<key>URL</key>
-			<string>http://s3.amazonaws.com/static.cach.me/vimari/vimari-1.8.safariextz</string>
+            <string>https://github.com/guyht/vimari/releases/download/v1.9/vimari-1.9.safariextz</string>
 		</dict>
 	</array>
 </dict>
