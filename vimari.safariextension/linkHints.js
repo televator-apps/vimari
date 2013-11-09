@@ -304,7 +304,7 @@ function deactivateLinkHintsMode() {
   document.removeEventListener("keydown", onKeyDownInLinkHintsMode, true);
   document.removeEventListener("keyup", onKeyUpInLinkHintsMode, true);
   linkHintsModeActivated = false;
-  //HUD.hide();
+  HUD.hide();
 }
 
 function resetLinkHintsMode() {

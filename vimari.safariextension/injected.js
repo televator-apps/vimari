@@ -131,6 +131,7 @@ function enterNormalMode() {
 function enterInsertMode() {
 	insertMode = true;
 	Mousetrap.unbind('i');
+	HUD.show("Insert mode");
 }
 
 function executeAction(actionName) {
