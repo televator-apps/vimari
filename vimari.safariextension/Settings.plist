@@ -148,7 +148,7 @@
 		<key>Key</key>
 		<string>scrollDownHalfPage</string>
 		<key>Title</key>
-		<string>Scroll Down Half Page CTRL-</string>
+		<string>Scroll Down Half Page</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -158,7 +158,7 @@
 		<key>Key</key>
 		<string>scrollUpHalfPage</string>
 		<key>Title</key>
-		<string>Scroll Up Half Page CTRL-</string>
+		<string>Scroll Up Half Page</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -168,7 +168,7 @@
 		<key>Key</key>
 		<string>goToPageTop</string>
 		<key>Title</key>
-		<string>Go to the top of the page CTRL-</string>
+		<string>Go to the top of the page</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -178,7 +178,7 @@
 		<key>Key</key>
 		<string>goToPageBottom</string>
 		<key>Title</key>
-		<string>Go to the bottom of the page CTRL-</string>
+		<string>Go to the bottom of the page</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
