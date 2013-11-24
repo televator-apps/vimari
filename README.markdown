@@ -16,7 +16,7 @@ Vimari attempts to provide a lightweight port of vimium to Safari, taking the be
 __Installation Instructions:__
 
 Click the download link below:
-	https://github.com/guyht/vimari/releases/download/v1.9/vimari-1.9.safariextz
+	https://github.com/guyht/vimari/releases/download/v1.10/vimari-1.10.safariextz
 
 
 Screenshots
