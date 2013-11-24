@@ -207,6 +207,15 @@
 		<string>Scroll Size</string>
 		<key>Type</key>
 		<string>Slider</string>
+	<dict>
+		<key>DefaultValue</key>
+		<string></string>
+		<key>Key</key>
+		<string>excludedUrls</string>
+		<key>Title</key>
+		<string>Excluded URLs (comma separated)</string>
+		<key>Type</key>
+		<string>TextField</string>
 	</dict>
 </array>
 </plist>

@@ -16,6 +16,7 @@
  * linkHintCss      - required from vimium scripts
  * extensionActive  - is the extension currently enabled (should only be true when tab is active)
  * shiftKeyToggle   - is shift key currently toggled
+ * activeUrl 				- current url string
  */
 
 var topWindow = (window.top === window),
@@ -24,7 +25,8 @@ var topWindow = (window.top === window),
 	linkHintCss = {},
 	extensionActive = true,
 	insertMode = false,
-	shiftKeyToggle = false;
+	shiftKeyToggle = false,
+	activeUrl = '';
 
 var actionMap = {
 	'hintToggle' : function() {
@@ -101,7 +103,7 @@ Mousetrap.stopCallback = function(e, element, combo) {
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
-	if (topWindow) {
+	if (topWindow && isEnabledForUrl() ) {
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
 		Mousetrap.bind('ctrl+[', enterNormalMode);
@@ -212,6 +214,9 @@ function handleMessage(msg) {
 		case 'setSettings':
 			setSettings(msg.message);
 			break;
+		case 'setActiveUrl':
+			setActiveUrl(msg.message);
+			break;
 		case 'setActive':
 			setActive(msg.message);
 			break;
@@ -227,6 +232,13 @@ function setSettings(msg) {
 }
 
 /*
+ * Callback to pass active url to injected script
+ */
+function setActiveUrl(msg) {
+	activeUrl = msg;
+}
+
+/*
  * Enable or disable the extension on this tab
  */
 function setActive(msg) {
@@ -239,8 +251,27 @@ function setActive(msg) {
 	}
 }
 
+/*
+ * Check to see if the current url is in the blacklist
+ */
+function isEnabledForUrl() {
+  var excludedUrls, isEnabled, regexp, url, _i, _len;
+  excludedUrls = settings.excludedUrls.split(",");
+  for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
+    url = excludedUrls[_i];
+    regexp = new RegExp("^" + url.replace(/\*/g, ".*") + "$");
+    if (activeUrl.match(regexp)) {
+      return false;
+    }
+  }
+  return true;
+};
+
+
 // Add event listener
 safari.self.addEventListener("message", handleMessage, false);
+// Retrieve active url
+safari.self.tab.dispatchMessage('getActiveTabUrl', '');
 // Retrieve settings
 safari.self.tab.dispatchMessage('getSettings', '');
 
