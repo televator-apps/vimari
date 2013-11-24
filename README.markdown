@@ -5,6 +5,7 @@ Vimari - Keyboard Shortcuts extension for Safari
 
 ### Releases
 [Release note for version 1.10](https://github.com/guyht/vimari/releases/tag/v1.10)
+
 [Release note for version 1.9](https://github.com/guyht/vimari/releases/tag/v1.9)
 
 
