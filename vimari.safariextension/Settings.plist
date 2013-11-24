@@ -206,7 +206,8 @@
 		<key>Title</key>
 		<string>Scroll Size</string>
 		<key>Type</key>
-		<string>Slider</string>
+        <string>Slider</string>
+    </dict>
 	<dict>
 		<key>DefaultValue</key>
 		<string></string>
