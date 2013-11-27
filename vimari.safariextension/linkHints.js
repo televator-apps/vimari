@@ -109,16 +109,29 @@ function getVisibleClickableElements() {
   // Find all visible clickable elements.
   for (var i = 0; i < resultSet.snapshotLength; i++) {
     var element = resultSet.snapshotItem(i);
-    var clientRect = element.getClientRects()[0];
 
-    if (isVisible(element, clientRect))
-      visibleElements.push({element: element, rect: clientRect});
+    // Inline elements can have more than one rect.
+    // Block elemens only have one rect.
+    // So, in general, add first visible rect, if any.
+    var clientRects = element.getClientRects();
+    var selectedClientRect = null;
+    for (var j = 0; j < clientRects.length; j++) {
+      var clientRect = clientRects[j];
 
-    // If the link has zero dimensions, it may be wrapping visible
-    // but floated elements. Check for this.
-    if (clientRect && (clientRect.width == 0 || clientRect.height == 0)) {
+      if (isVisible(element, clientRect)) {
+        selectedClientRect = clientRect;
+        visibleElements.push({element: element, rect: selectedClientRect});
+        break;
+      }
+    }
+
+    // If element did not have any visible rect, 
+    // it could still be wrapping other floated children.
+    // In that case, add the first visible floated child, if any.
+    if (!selectedClientRect) {
       for (var j = 0; j < element.children.length; j++) {
         if (window.getComputedStyle(element.children[j], null).getPropertyValue('float') != 'none') {
+          // Floated elements are block level, and so, only have one rect.
           var childClientRect = element.children[j].getClientRects()[0];
           if (isVisible(element.children[j], childClientRect)) {
             visibleElements.push({element: element.children[j], rect: childClientRect});
