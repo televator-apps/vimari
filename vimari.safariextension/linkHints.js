@@ -103,47 +103,50 @@ function getVisibleClickableElements() {
     },
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
-
+  // Find all visible clickable elements.
   var visibleElements = [];
 
-  // Find all visible clickable elements.
   for (var i = 0; i < resultSet.snapshotLength; i++) {
     var element = resultSet.snapshotItem(i);
 
     // Inline elements can have more than one rect.
     // Block elemens only have one rect.
-    // So, in general, add first visible rect, if any.
-    var clientRects = element.getClientRects();
-    var selectedClientRect = null;
-    for (var j = 0; j < clientRects.length; j++) {
-      var clientRect = clientRects[j];
-
-      if (isVisible(element, clientRect)) {
-        selectedClientRect = clientRect;
-        visibleElements.push({element: element, rect: selectedClientRect});
-        break;
-      }
-    }
-
-    // If element did not have any visible rect, 
-    // it could still be wrapping other floated children.
-    // In that case, add the first visible floated child, if any.
-    if (!selectedClientRect) {
-      for (var j = 0; j < element.children.length; j++) {
-        if (window.getComputedStyle(element.children[j], null).getPropertyValue('float') != 'none') {
-          // Floated elements are block level, and so, only have one rect.
-          var childClientRect = element.children[j].getClientRects()[0];
-          if (isVisible(element.children[j], childClientRect)) {
-            visibleElements.push({element: element.children[j], rect: childClientRect});
-            break;
-          }
-        }
-      }
+    // So, in general, add element's first visible rect, if any.
+    // If element does not have any visible rect, 
+    // it can still be wrapping other floated children.
+    // In that case, add rect of first visible floated child, if any.
+    var selectedRect = getFirstVisibleRect(element) || getFirstVisibleFloatedChildRect(element);
+    if (selectedRect) {
+      visibleElements.push(selectedRect);
     }
   }
+
   return visibleElements;
 }
 
+function getFirstVisibleRect(element) {
+  var clientRects = element.getClientRects();
+  for (var i = 0; i < clientRects.length; i++) {
+    var clientRect = clientRects[i];
+    if (isVisible(element, clientRect)) {
+      return {element: element, rect: clientRect};
+    }
+  }
+  return null;
+}
+
+function getFirstVisibleFloatedChildRect(element) {
+  for (var i = 0; i < element.children.length; i++) {
+    if (window.getComputedStyle(element.children[i], null).getPropertyValue('float') != 'none') {
+      // Floated elements are block level, and so, only have one rect.
+      var childClientRect = element.children[i].getClientRects()[0];
+      if (isVisible(element.children[i], childClientRect)) {
+        return {element: element.children[i], rect: childClientRect};
+      }
+    }
+  }
+  return null;
+}
 /*
  * Returns true if element is visible.
  */
