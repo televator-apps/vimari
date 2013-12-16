@@ -143,7 +143,10 @@ function isClickable(element) {
     role == 'tab' || 
     role == 'textbox' || 
     // other ways by which we can know an element is clickable
-    element.hasAttribute('onclick')
+    element.hasAttribute('onclick') || 
+    settings.detectByCursorStyle && window.getComputedStyle(element).cursor == 'pointer' && 
+      (!element.parentNode || 
+       window.getComputedStyle(element.parentNode).cursor != 'pointer')
   );
 }
 
