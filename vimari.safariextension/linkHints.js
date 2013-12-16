@@ -121,6 +121,7 @@ function getClickableElements() {
 
 function isClickable(element) {
   var name = element.nodeName.toLowerCase();
+  var role = element.getAttribute('role');
 
   return (
     // normal html elements that can be clicked
@@ -129,6 +130,18 @@ function isClickable(element) {
     name == 'input' && element.getAttribute('type') != 'hidden' ||
     name == 'select' ||
     name == 'textarea' || 
+    // elements having an ARIA role implying clickability
+    // (see http://www.w3.org/TR/wai-aria/roles#widget_roles)
+    role == 'button' || 
+    role == 'checkbox' || 
+    role == 'combobox' || 
+    role == 'link' || 
+    role == 'menuitem' || 
+    role == 'menuitemcheckbox' || 
+    role == 'menuitemradio' || 
+    role == 'radio' || 
+    role == 'tab' || 
+    role == 'textbox' || 
     // other ways by which we can know an element is clickable
     element.hasAttribute('onclick')
   );
