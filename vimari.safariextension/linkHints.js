@@ -19,19 +19,6 @@ var openLinkModeToggle = false;
 // Whether we have added to the page the CSS needed to display link hints.
 var linkHintsCssAdded = false;
 
-/* 
- * Generate an XPath describing what a clickable element is.
- * The final expression will be something like "//button | //xhtml:button | ..."
- */
-var clickableElementsXPath = (function() {
-  var clickableElements = ["a", "textarea", "button", "select", "input[not(@type='hidden')]"];
-  var xpath = [];
-  for (var i in clickableElements)
-    xpath.push("//" + clickableElements[i], "//xhtml:" + clickableElements[i]);
-  xpath.push("//*[@onclick]");
-  return xpath.join(" | ")
-})();
-
 // We need this as a top-level function because our command system doesn't yet support arguments.
 function activateLinkHintsModeToOpenInNewTab() { activateLinkHintsMode(true, false); }
 
@@ -97,17 +84,14 @@ function logXOfBase(x, base) { return Math.log(x) / Math.log(base); }
  * of digits needed to enumerate all of the links on screen.
  */
 function getVisibleClickableElements() {
-  var resultSet = document.evaluate(clickableElementsXPath, document.body,
-    function (namespace) {
-      return namespace == "xhtml" ? "http://www.w3.org/1999/xhtml" : null;
-    },
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+  // Get all clickable elements.
+  var elements = getClickableElements();
 
-  // Find all visible clickable elements.
+  // Get those that are visible too.
   var visibleElements = [];
 
-  for (var i = 0; i < resultSet.snapshotLength; i++) {
-    var element = resultSet.snapshotItem(i);
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
 
     // Inline elements can have more than one rect.
     // Block elemens only have one rect.
@@ -122,6 +106,32 @@ function getVisibleClickableElements() {
   }
 
   return visibleElements;
+}
+
+function getClickableElements() {
+  var elements = document.getElementsByTagName('*');
+  var clickableElements = [];
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    if (isClickable(element))
+      clickableElements.push(element);
+  }
+  return clickableElements;
+}
+
+function isClickable(element) {
+  var name = element.nodeName.toLowerCase();
+
+  return (
+    // normal html elements that can be clicked
+    name == 'a' || 
+    name == 'button' || 
+    name == 'input' && element.getAttribute('type') != 'hidden' ||
+    name == 'select' ||
+    name == 'textarea' || 
+    // other ways by which we can know an element is clickable
+    element.hasAttribute('onclick')
+  );
 }
 
 function getFirstVisibleRect(element) {
