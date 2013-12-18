@@ -17,9 +17,6 @@
 				case 'changeTab' :
 					changeTab(msg.message);
 					break;	
-				case 'getActiveTabUrl' :
-					getActiveTabUrl(msg.message);
-					break;	
 			}
 		}
 
@@ -109,17 +106,6 @@
 				return i;
 			}
 		}
-	}
-
-	/*
-	 * Get the current url of the active tab
-	 *
-	 */
-	function getActiveTabUrl() {
-			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage(
-				'setActiveUrl', 
-				safari.application.activeBrowserWindow.activeTab.url
-			);
 	}
 
 	/*

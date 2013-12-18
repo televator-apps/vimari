@@ -16,7 +16,6 @@
  * linkHintCss      - required from vimium scripts
  * extensionActive  - is the extension currently enabled (should only be true when tab is active)
  * shiftKeyToggle   - is shift key currently toggled
- * activeUrl 				- current url string
  */
 
 var topWindow = (window.top === window),
@@ -25,8 +24,7 @@ var topWindow = (window.top === window),
 	linkHintCss = {},
 	extensionActive = true,
 	insertMode = false,
-	shiftKeyToggle = false,
-	activeUrl = '';
+	shiftKeyToggle = false;
 
 var actionMap = {
 	'hintToggle' : function() {
@@ -214,9 +212,6 @@ function handleMessage(msg) {
 		case 'setSettings':
 			setSettings(msg.message);
 			break;
-		case 'setActiveUrl':
-			setActiveUrl(msg.message);
-			break;
 		case 'setActive':
 			setActive(msg.message);
 			break;
@@ -229,13 +224,6 @@ function handleMessage(msg) {
 function setSettings(msg) {
 	settings = msg;
 	bindKeyCodesToActions();
-}
-
-/*
- * Callback to pass active url to injected script
- */
-function setActiveUrl(msg) {
-	activeUrl = msg;
 }
 
 /*
@@ -260,18 +248,14 @@ function isEnabledForUrl() {
   for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
     url = excludedUrls[_i];
     regexp = new RegExp("^" + url.replace(/\*/g, ".*") + "$");
-    if (activeUrl.match(regexp)) {
+    if (document.URL.match(regexp)) {
       return false;
     }
   }
   return true;
 };
 
-
 // Add event listener
 safari.self.addEventListener("message", handleMessage, false);
-// Retrieve active url
-safari.self.tab.dispatchMessage('getActiveTabUrl', '');
 // Retrieve settings
 safari.self.tab.dispatchMessage('getSettings', '');
-
