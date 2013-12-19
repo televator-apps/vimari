@@ -193,16 +193,21 @@ function isVisible(element, clientRect) {
     return false;
 
   // eliminate elements hidden by another overlapping element;
-  // to do that, get topmost element at coordinates specified by upper-left corner of clientRect
-  // and check whether it is the element itself or one of its descendants
-  var el = document.elementFromPoint(
-      clientRect.left + 1, // +1 is heuristics to compensate for rounding in clientRect coordinates;
-      clientRect.top + 1   // we know +1 is enough because the above code ensures height & width >= 4
-  ); 
-  while (el && el != element)
-    el = el.parentNode;
-  if (!el)
-    return false;
+  // to do that, get topmost element at some offset from upper-left corner of clientRect
+  // and check whether it is the element itself or one of its descendants;
+  // offset is needed to account for coordinates truncation and elements with rounded borders
+  var offset = 0;
+  offset += 1; // when using zoom, clientRect coords should be float, but we get integers; compensate that
+  var radius = parseFloat(computedStyle.borderTopLeftRadius);
+  if (radius) // when topleft rounded border present, get nearest point at or within the border
+    offset += Math.ceil(radius * (1 - Math.sin(Math.PI / 4)));
+  if (offset < clientRect.width && offset < clientRect.height) {
+    var el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
+    while (el && el != element)
+      el = el.parentNode;
+    if (!el)
+      return false;
+  }
 
   return true;
 }
