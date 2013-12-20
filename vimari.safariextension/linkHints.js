@@ -192,22 +192,32 @@ function isVisible(element, clientRect) {
       computedStyle.getPropertyValue('display') == 'none')
     return false;
 
-  // eliminate elements hidden by another overlapping element;
-  // to do that, get topmost element at some offset from upper-left corner of clientRect
-  // and check whether it is the element itself or one of its descendants;
-  // offset is needed to account for coordinates truncation and elements with rounded borders
-  var offset = 0;
-  offset += 1; // when using zoom, clientRect coords should be float, but we get integers; compensate that
-  var radius = parseFloat(computedStyle.borderTopLeftRadius);
-  if (radius) // when topleft rounded border present, get nearest point at or within the border
-    offset += Math.ceil(radius * (1 - Math.sin(Math.PI / 4)));
-  if (offset < clientRect.width && offset < clientRect.height) {
-    var el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
-    while (el && el != element)
-      el = el.parentNode;
-    if (!el)
-      return false;
-  }
+  // Eliminate elements hidden by another overlapping element.
+  // To do that, get topmost element at some offset from upper-left corner of clientRect
+  // and check whether it is the element itself or one of its descendants.
+  // The offset is needed to account for coordinates truncation and elements with rounded borders.
+  // 
+  // Coordinates truncation occcurs when using zoom. In that case, clientRect coords should be float, 
+  // but we get integers instead. That makes so that elementFromPoint(clientRect.left, clientRect.top)
+  // sometimes returns an element different from the one clientRect was obtained from.
+  // So we introduce an offset to make sure elementFromPoint hits the right element.
+  //
+  // For elements with a rounded topleft border, the upper left corner lies outside the element.
+  // Then, we need an offset to get to the point nearest to the upper left corner, but within border.
+  var coordTruncationOffset = 2, // A value of 1 has been observed not to be enough, 
+                                 // so we heuristically choose 2, which seems to work well. 
+                                 // We know a value of 2 is still safe (lies within the element) because, 
+                                 // from the code above, widht & height are >= 3.
+      radius = parseFloat(computedStyle.borderTopLeftRadius), 
+      roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4))), 
+      offset = Math.max(coordTruncationOffset, roundedBorderOffset);
+  if (offset >= clientRect.width || offset >= clientRect.height) 
+    return false;
+  var el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
+  while (el && el != element)
+    el = el.parentNode;
+  if (!el)
+    return false;
 
   return true;
 }
