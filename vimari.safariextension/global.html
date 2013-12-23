@@ -17,9 +17,6 @@
 				case 'changeTab' :
 					changeTab(msg.message);
 					break;	
-				case 'getActiveTabUrl' :
-					getActiveTabUrl(msg.message);
-					break;	
 			}
 		}
 
@@ -48,7 +45,8 @@
 				'closeTabReverse'    : safari.extension.settings.closeTabReverse,
 				'modifier'           : safari.extension.settings.modifier,
 				'scrollSize'         : safari.extension.settings.scrollSize,
-				'excludedUrls'       : safari.extension.settings.excludedUrls
+				'excludedUrls'       : safari.extension.settings.excludedUrls, 
+				'detectByCursorStyle': safari.extension.settings.detectByCursorStyle
 			};
 
 			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage('setSettings', settings);
@@ -108,17 +106,6 @@
 				return i;
 			}
 		}
-	}
-
-	/*
-	 * Get the current url of the active tab
-	 *
-	 */
-	function getActiveTabUrl() {
-			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage(
-				'setActiveUrl', 
-				safari.application.activeBrowserWindow.activeTab.url
-			);
 	}
 
 	/*

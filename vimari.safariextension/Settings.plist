@@ -3,14 +3,36 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>Title</key>
+		<string>General</string>
+		<key>Type</key>
+		<string>Group</string>
+	</dict>
+	<dict>
 		<key>DefaultValue</key>
 		<string>ctrl</string>
 		<key>Key</key>
 		<string>modifier</string>
 		<key>Title</key>
-		<string>Modifier key to preceed commands (blank for none)</string>
+        <string>Command prefix (blank for none)</string>
 		<key>Type</key>
 		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string></string>
+		<key>Key</key>
+		<string>excludedUrls</string>
+		<key>Title</key>
+		<string>Excluded URLs (comma separated)</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>Link hinting</string>
+		<key>Type</key>
+		<string>Group</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
@@ -34,41 +56,37 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>x</string>
+		<string>asdfjklqwerzxc</string>
 		<key>Key</key>
-		<string>closeTab</string>
+		<string>linkHintCharacters</string>
 		<key>Title</key>
-		<string>Close Current Tab (open left tab)</string>
+		<string>Link hint characters</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>shift+x</string>
+		<false/>
 		<key>Key</key>
-		<string>closeTabReverse</string>
+		<string>detectByCursorStyle</string>
 		<key>Title</key>
-		<string>Close Current Tab (open right tab)</string>
+		<string>Extra detection by cursor style</string>
 		<key>Type</key>
-		<string>TextField</string>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>In-page navigation</string>
+		<key>Type</key>
+		<string>Group</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>w</string>
+		<string>k</string>
 		<key>Key</key>
-		<string>tabForward</string>
+		<string>scrollUp</string>
 		<key>Title</key>
-		<string>Next Tab</string>
-		<key>Type</key>
-		<string>TextField</string>
-	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<string>q</string>
-		<key>Key</key>
-		<string>tabBack</string>
-		<key>Title</key>
-		<string>Previous Tab</string>
+		<string>Scroll Up</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -79,16 +97,6 @@
 		<string>scrollDown</string>
 		<key>Title</key>
 		<string>Scroll Down</string>
-		<key>Type</key>
-		<string>TextField</string>
-	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<string>k</string>
-		<key>Key</key>
-		<string>scrollUp</string>
-		<key>Title</key>
-		<string>Scroll Up</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -111,6 +119,68 @@
 		<string>Scroll Right</string>
 		<key>Type</key>
 		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>60</real>
+		<key>Key</key>
+		<string>scrollSize</string>
+		<key>MaximumValue</key>
+		<real>200</real>
+		<key>MinimumValue</key>
+		<real>20</real>
+		<key>StepValue</key>
+		<real>20</real>
+		<key>Title</key>
+		<string>Scroll Size</string>
+		<key>Type</key>
+		<string>Slider</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>u</string>
+		<key>Key</key>
+		<string>scrollUpHalfPage</string>
+		<key>Title</key>
+		<string>Scroll Up Half Page</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>d</string>
+		<key>Key</key>
+		<string>scrollDownHalfPage</string>
+		<key>Title</key>
+		<string>Scroll Down Half Page</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>g g</string>
+		<key>Key</key>
+		<string>goToPageTop</string>
+		<key>Title</key>
+		<string>Go to the top of the page</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>shift+g</string>
+		<key>Key</key>
+		<string>goToPageBottom</string>
+		<key>Title</key>
+		<string>Go to the bottom of the page</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Title</key>
+        <string>Page/Tab navigation</string>
+		<key>Type</key>
+		<string>Group</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
@@ -144,77 +214,41 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>d</string>
+		<string>w</string>
 		<key>Key</key>
-		<string>scrollDownHalfPage</string>
+		<string>tabForward</string>
 		<key>Title</key>
-		<string>Scroll Down Half Page</string>
+		<string>Next Tab</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>u</string>
+		<string>q</string>
 		<key>Key</key>
-		<string>scrollUpHalfPage</string>
+		<string>tabBack</string>
 		<key>Title</key>
-		<string>Scroll Up Half Page</string>
+		<string>Previous Tab</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>g g</string>
+		<string>x</string>
 		<key>Key</key>
-		<string>goToPageTop</string>
+		<string>closeTab</string>
 		<key>Title</key>
-		<string>Go to the top of the page</string>
+		<string>Close Current Tab (open left tab)</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>shift+g</string>
+		<string>shift+x</string>
 		<key>Key</key>
-		<string>goToPageBottom</string>
+		<string>closeTabReverse</string>
 		<key>Title</key>
-		<string>Go to the bottom of the page</string>
-		<key>Type</key>
-		<string>TextField</string>
-	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<string>asdfjklqwerzxc</string>
-		<key>Key</key>
-		<string>linkHintCharacters</string>
-		<key>Title</key>
-		<string>Link hint characters</string>
-		<key>Type</key>
-		<string>TextField</string>
-	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<real>60</real>
-		<key>Key</key>
-		<string>scrollSize</string>
-		<key>MaximumValue</key>
-		<real>200</real>
-		<key>MinimumValue</key>
-		<real>20</real>
-		<key>StepValue</key>
-		<real>20</real>
-		<key>Title</key>
-		<string>Scroll Size</string>
-		<key>Type</key>
-        <string>Slider</string>
-    </dict>
-	<dict>
-		<key>DefaultValue</key>
-		<string></string>
-		<key>Key</key>
-		<string>excludedUrls</string>
-		<key>Title</key>
-		<string>Excluded URLs (comma separated)</string>
+		<string>Close Current Tab (open right tab)</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
