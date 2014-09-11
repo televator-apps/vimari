@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Various</string>
 	<key>Builder Version</key>
-	<string>9537.73.11</string>
+	<string>9537.76.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>vimari</string>
 	<key>CFBundleExecutable</key>
@@ -15,9 +15,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.10</string>
+	<string>1.11</string>
 	<key>CFBundleVersion</key>
-	<string>20</string>
+	<string>21</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
