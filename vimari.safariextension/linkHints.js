@@ -93,13 +93,7 @@ function getVisibleClickableElements() {
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
 
-    // Inline elements can have more than one rect.
-    // Block elemens only have one rect.
-    // So, in general, add element's first visible rect, if any.
-    // If element does not have any visible rect, 
-    // it can still be wrapping other floated children.
-    // In that case, add rect of first visible floated child, if any.
-    var selectedRect = getFirstVisibleRect(element) || getFirstVisibleFloatedChildRect(element);
+    var selectedRect = getFirstVisibleRect(element);
     if (selectedRect) {
       visibleElements.push(selectedRect);
     }
@@ -150,7 +144,19 @@ function isClickable(element) {
   );
 }
 
+/*
+ * Get firs visible rect under an element.
+ *
+ * Inline elements can have more than one rect.
+ * Block elemens only have one rect.
+ * So, in general, add element's first visible rect, if any.
+ * If element does not have any visible rect, 
+ * it can still be wrapping other visible children.
+ * So, in that case, recurse to get the first visible rect
+ * of the first child that has one.
+ */
 function getFirstVisibleRect(element) {
+  // find visible clientRect of element itself
   var clientRects = element.getClientRects();
   for (var i = 0; i < clientRects.length; i++) {
     var clientRect = clientRects[i];
@@ -158,21 +164,16 @@ function getFirstVisibleRect(element) {
       return {element: element, rect: clientRect};
     }
   }
-  return null;
-}
-
-function getFirstVisibleFloatedChildRect(element) {
-  for (var i = 0; i < element.children.length; i++) {
-    if (window.getComputedStyle(element.children[i], null).getPropertyValue('float') != 'none') {
-      // Floated elements are block level, and so, only have one rect.
-      var childClientRect = element.children[i].getClientRects()[0];
-      if (isVisible(element.children[i], childClientRect)) {
-        return {element: element.children[i], rect: childClientRect};
-      }
+  // find visible clientRect of child
+  for (var j = 0; j < element.children.length; j++) {
+    var childClientRect = getFirstVisibleRect(element.children[j]);
+    if (childClientRect) {
+      return childClientRect;
     }
   }
   return null;
 }
+
 /*
  * Returns true if element is visible.
  */
