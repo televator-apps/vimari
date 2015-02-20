@@ -164,11 +164,16 @@ function getFirstVisibleRect(element) {
       return {element: element, rect: clientRect};
     }
   }
-  // find visible clientRect of child
-  for (var j = 0; j < element.children.length; j++) {
-    var childClientRect = getFirstVisibleRect(element.children[j]);
-    if (childClientRect) {
-      return childClientRect;
+  // Only iterate over elements with a children property. This is mainly to
+  // avoid issues with SVG elements, as Safari doesn't expose a children
+  // property on them.
+  if (element.children) {
+    // find visible clientRect of child
+    for (var j = 0; j < element.children.length; j++) {
+      var childClientRect = getFirstVisibleRect(element.children[j]);
+      if (childClientRect) {
+        return childClientRect;
+      }
     }
   }
   return null;
