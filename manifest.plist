@@ -10,11 +10,11 @@
 			<key>Developer Identifier</key>
 			<string>357AUX7M8L</string>
 			<key>CFBundleVersion</key>
-			<string>21</string>
+			<string>22</string>
 			<key>CFBundleShortVersionString</key>
-			<string>1.11</string>
+			<string>1.12</string>
 			<key>URL</key>
-            <string>https://github.com/guyht/vimari/releases/download/v1.11/vimari-1.11.safariextz</string>
+            <string>https://github.com/guyht/vimari/releases/download/v1.12/vimari-1.12.safariextz</string>
 		</dict>
 	</array>
 </dict>
