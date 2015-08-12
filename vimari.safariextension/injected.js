@@ -24,15 +24,16 @@ var topWindow = (window.top === window),
 	linkHintCss = {},
 	extensionActive = true,
 	insertMode = false,
-	shiftKeyToggle = false;
+	shiftKeyToggle = false,
+	hudDuration = 2500;
 
 var actionMap = {
 	'hintToggle' : function() {
-		HUD.show('Link hints mode');
+		HUD.showForDuration('Link hints mode', hudDuration);
 		activateLinkHintsMode(false, false); },
 
 	'newTabHintToggle' : function() {
-		HUD.show('Link hints mode');
+		HUD.showForDuration('Link hints mode', hudDuration);
 		activateLinkHintsMode(true, false); },
 
 	'tabForward' : function() {
