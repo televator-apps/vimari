@@ -42,16 +42,16 @@ var actionMap = {
 		safari.self.tab.dispatchMessage('changeTab', 0); },
 
 	'scrollDown' :
-		function() { window.scrollBy(0, 60); },
+		function() { window.scrollBy(0, settings.scrollSize); },
 
 	'scrollUp' :
-		function() { window.scrollBy(0, -60); },
+		function() { window.scrollBy(0, -settings.scrollSize); },
 
 	'scrollLeft' :
-		function() { window.scrollBy(-60, 0); },
+		function() { window.scrollBy(-settings.scrollSize, 0); },
 
 	'scrollRight' :
-		function() { window.scrollBy(60, 0); },
+		function() { window.scrollBy(settings.scrollSize, 0); },
 
 	'goBack' :
 		function() { window.history.back(); },
@@ -84,7 +84,7 @@ var actionMap = {
 // Meant to be overridden, but still has to be copy/pasted from the original...
 Mousetrap.stopCallback = function(e, element, combo) {
 	// Escape key is special, no need to stop. Vimari-specific.
-	if (combo === 'esc') { return false; }
+	if (combo === 'esc' || combo === 'ctrl+[') { return false; }
 
   // Preserve the behavior of allowing ex. ctrl-j in an input
   if (settings.modifier) { return false; }
@@ -101,9 +101,10 @@ Mousetrap.stopCallback = function(e, element, combo) {
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
-	if (topWindow) {
+	if (topWindow && isEnabledForUrl() ) {
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
+		Mousetrap.bind('ctrl+[', enterNormalMode);
 		Mousetrap.bind('i', enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
@@ -238,8 +239,23 @@ function setActive(msg) {
 	}
 }
 
+/*
+ * Check to see if the current url is in the blacklist
+ */
+function isEnabledForUrl() {
+  var excludedUrls, isEnabled, regexp, url, _i, _len;
+  excludedUrls = settings.excludedUrls.split(",");
+  for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
+    url = excludedUrls[_i];
+    regexp = new RegExp("^" + url.replace(/\*/g, ".*") + "$");
+    if (document.URL.match(regexp)) {
+      return false;
+    }
+  }
+  return true;
+};
+
 // Add event listener
 safari.self.addEventListener("message", handleMessage, false);
 // Retrieve settings
 safari.self.tab.dispatchMessage('getSettings', '');
-

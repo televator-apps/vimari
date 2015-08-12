@@ -20,10 +20,21 @@
 			}
 		}
 
-
+		// Dispatch a message to a tab's page or reader view
+		function dispatchMessage(target, name, message) {
+		  if (target) {
+		    // Do some checks on the target to make sure we aren't trying to send a
+		    // message to inaccessible tabs (e.g. Top Sites)
+		    if (target.page && typeof target.page.dispatchMessage === "function") {
+		      target.page.dispatchMessage(name, message);
+		    } else if (typeof target.dispatchMessage === "function") {
+		      target.dispatchMessage(name, message);
+		    }
+		  }
+		}
 
 		// Pass the settings on to the injected script
-   		function getSettings() {
+   		function getSettings(event) {
 			var settings = {
 				'linkHintCharacters' : safari.extension.settings.linkHintCharacters,
 				'hintToggle'         : safari.extension.settings.hintToggle,
@@ -43,10 +54,13 @@
 				'goToPageTop'        : safari.extension.settings.goToPageTop,
 				'closeTab'	         : safari.extension.settings.closeTab,
 				'closeTabReverse'    : safari.extension.settings.closeTabReverse,
-				'modifier'           : safari.extension.settings.modifier
+				'modifier'           : safari.extension.settings.modifier,
+				'scrollSize'         : safari.extension.settings.scrollSize,
+				'excludedUrls'       : safari.extension.settings.excludedUrls, 
+				'detectByCursorStyle': safari.extension.settings.detectByCursorStyle
 			};
 
-			safari.application.activeBrowserWindow.tabs[getActiveTab()].page.dispatchMessage('setSettings', settings);
+			dispatchMessage(event.target, 'setSettings', settings);
 
 		}
 
@@ -105,7 +119,6 @@
 		}
 	}
 
-
 	/*
 	 * Disable extension on non active tabs,
 	 * enable on active tab
@@ -117,12 +130,12 @@
 			i;
 
 		for (i=0;i<tabs.length;i++) {
-			safari.application.activeBrowserWindow.tabs[i].page.dispatchMessage('setActive', false);
+			dispatchMessage(safari.application.activeBrowserWindow.tabs[i], 'setActive', false);
 		}
 
 		for (i=0;i<tabs.length;i++) {
 			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
-				safari.application.activeBrowserWindow.tabs[i].page.dispatchMessage('setActive', true);
+				dispatchMessage(safari.application.activeBrowserWindow.tabs[i], 'setActive', true);
 			}
 		}
 
@@ -135,7 +148,7 @@
 	// Need to detect if a new tab becomes active and if so, reload the extension
 	safari.application.addEventListener('activate', function(event) {
 			activateTab();
-			getSettings();
+			getSettings(event);
 		}, true);
 
 

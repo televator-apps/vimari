@@ -19,19 +19,6 @@ var openLinkModeToggle = false;
 // Whether we have added to the page the CSS needed to display link hints.
 var linkHintsCssAdded = false;
 
-/* 
- * Generate an XPath describing what a clickable element is.
- * The final expression will be something like "//button | //xhtml:button | ..."
- */
-var clickableElementsXPath = (function() {
-  var clickableElements = ["a", "textarea", "button", "select", "input[not(@type='hidden')]"];
-  var xpath = [];
-  for (var i in clickableElements)
-    xpath.push("//" + clickableElements[i], "//xhtml:" + clickableElements[i]);
-  xpath.push("//*[@onclick]");
-  return xpath.join(" | ")
-})();
-
 // We need this as a top-level function because our command system doesn't yet support arguments.
 function activateLinkHintsModeToOpenInNewTab() { activateLinkHintsMode(true, false); }
 
@@ -82,7 +69,8 @@ function buildLinkHints() {
   // that if you scroll the page and the link has position=fixed, the marker will not stay fixed.
   // Also note that adding these nodes to document.body all at once is significantly faster than one-by-one.
   hintMarkerContainingDiv = document.createElement("div");
-  hintMarkerContainingDiv.className = "internalVimiumHintMarker";
+  hintMarkerContainingDiv.id = "vimiumHintMarkerContainer";
+  hintMarkerContainingDiv.className = "vimiumReset";
   for (var i = 0; i < hintMarkers.length; i++)
     hintMarkerContainingDiv.appendChild(hintMarkers[i]);
   document.body.appendChild(hintMarkerContainingDiv);
@@ -96,38 +84,99 @@ function logXOfBase(x, base) { return Math.log(x) / Math.log(base); }
  * of digits needed to enumerate all of the links on screen.
  */
 function getVisibleClickableElements() {
-  var resultSet = document.evaluate(clickableElementsXPath, document.body,
-    function (namespace) {
-      return namespace == "xhtml" ? "http://www.w3.org/1999/xhtml" : null;
-    },
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+  // Get all clickable elements.
+  var elements = getClickableElements();
 
-
+  // Get those that are visible too.
   var visibleElements = [];
 
-  // Find all visible clickable elements.
-  for (var i = 0; i < resultSet.snapshotLength; i++) {
-    var element = resultSet.snapshotItem(i);
-    var clientRect = element.getClientRects()[0];
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
 
-    if (isVisible(element, clientRect))
-      visibleElements.push({element: element, rect: clientRect});
+    var selectedRect = getFirstVisibleRect(element);
+    if (selectedRect) {
+      visibleElements.push(selectedRect);
+    }
+  }
 
-    // If the link has zero dimensions, it may be wrapping visible
-    // but floated elements. Check for this.
-    if (clientRect && (clientRect.width == 0 || clientRect.height == 0)) {
-      for (var j = 0; j < element.children.length; j++) {
-        if (window.getComputedStyle(element.children[j], null).getPropertyValue('float') != 'none') {
-          var childClientRect = element.children[j].getClientRects()[0];
-          if (isVisible(element.children[j], childClientRect)) {
-            visibleElements.push({element: element.children[j], rect: childClientRect});
-            break;
-          }
-        }
+  return visibleElements;
+}
+
+function getClickableElements() {
+  var elements = document.getElementsByTagName('*');
+  var clickableElements = [];
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    if (isClickable(element))
+      clickableElements.push(element);
+  }
+  return clickableElements;
+}
+
+function isClickable(element) {
+  var name = element.nodeName.toLowerCase();
+  var role = element.getAttribute('role');
+
+  return (
+    // normal html elements that can be clicked
+    name == 'a' || 
+    name == 'button' || 
+    name == 'input' && element.getAttribute('type') != 'hidden' ||
+    name == 'select' ||
+    name == 'textarea' || 
+    // elements having an ARIA role implying clickability
+    // (see http://www.w3.org/TR/wai-aria/roles#widget_roles)
+    role == 'button' || 
+    role == 'checkbox' || 
+    role == 'combobox' || 
+    role == 'link' || 
+    role == 'menuitem' || 
+    role == 'menuitemcheckbox' || 
+    role == 'menuitemradio' || 
+    role == 'radio' || 
+    role == 'tab' || 
+    role == 'textbox' || 
+    // other ways by which we can know an element is clickable
+    element.hasAttribute('onclick') || 
+    settings.detectByCursorStyle && window.getComputedStyle(element).cursor == 'pointer' && 
+      (!element.parentNode || 
+       window.getComputedStyle(element.parentNode).cursor != 'pointer')
+  );
+}
+
+/*
+ * Get firs visible rect under an element.
+ *
+ * Inline elements can have more than one rect.
+ * Block elemens only have one rect.
+ * So, in general, add element's first visible rect, if any.
+ * If element does not have any visible rect, 
+ * it can still be wrapping other visible children.
+ * So, in that case, recurse to get the first visible rect
+ * of the first child that has one.
+ */
+function getFirstVisibleRect(element) {
+  // find visible clientRect of element itself
+  var clientRects = element.getClientRects();
+  for (var i = 0; i < clientRects.length; i++) {
+    var clientRect = clientRects[i];
+    if (isVisible(element, clientRect)) {
+      return {element: element, rect: clientRect};
+    }
+  }
+  // Only iterate over elements with a children property. This is mainly to
+  // avoid issues with SVG elements, as Safari doesn't expose a children
+  // property on them.
+  if (element.children) {
+    // find visible clientRect of child
+    for (var j = 0; j < element.children.length; j++) {
+      var childClientRect = getFirstVisibleRect(element.children[j]);
+      if (childClientRect) {
+        return childClientRect;
       }
     }
   }
-  return visibleElements;
+  return null;
 }
 
 /*
@@ -147,6 +196,33 @@ function isVisible(element, clientRect) {
   var computedStyle = window.getComputedStyle(element, null);
   if (computedStyle.getPropertyValue('visibility') != 'visible' ||
       computedStyle.getPropertyValue('display') == 'none')
+    return false;
+
+  // Eliminate elements hidden by another overlapping element.
+  // To do that, get topmost element at some offset from upper-left corner of clientRect
+  // and check whether it is the element itself or one of its descendants.
+  // The offset is needed to account for coordinates truncation and elements with rounded borders.
+  // 
+  // Coordinates truncation occcurs when using zoom. In that case, clientRect coords should be float, 
+  // but we get integers instead. That makes so that elementFromPoint(clientRect.left, clientRect.top)
+  // sometimes returns an element different from the one clientRect was obtained from.
+  // So we introduce an offset to make sure elementFromPoint hits the right element.
+  //
+  // For elements with a rounded topleft border, the upper left corner lies outside the element.
+  // Then, we need an offset to get to the point nearest to the upper left corner, but within border.
+  var coordTruncationOffset = 2, // A value of 1 has been observed not to be enough, 
+                                 // so we heuristically choose 2, which seems to work well. 
+                                 // We know a value of 2 is still safe (lies within the element) because, 
+                                 // from the code above, widht & height are >= 3.
+      radius = parseFloat(computedStyle.borderTopLeftRadius), 
+      roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4))), 
+      offset = Math.max(coordTruncationOffset, roundedBorderOffset);
+  if (offset >= clientRect.width || offset >= clientRect.height) 
+    return false;
+  var el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
+  while (el && el != element)
+    el = el.parentNode;
+  if (!el)
     return false;
 
   return true;
@@ -283,16 +359,31 @@ function numberToHintString(number, numHintDigits) {
 }
 
 function simulateClick(link) {
-  var event = document.createEvent("MouseEvents");
-  // When "clicking" on a link, dispatch the event with the appropriate meta key (CMD on Mac, CTRL on windows)
-  // to open it in a new tab if necessary.
+  // Configure events with appropriate meta key (CMD on Mac, CTRL on windows) 
+  // to open links in new tabs if necessary.
   var metaKey = (platform == "Mac" && shouldOpenLinkHintInNewTab);
   var ctrlKey = (platform != "Mac" && shouldOpenLinkHintInNewTab);
-  event.initMouseEvent("click", true, true, window, 1, 0, 0, 0, 0, ctrlKey, false, false, metaKey, 0, null);
 
-  // Debugging note: Firefox will not execute the link's default action if we dispatch this click event,
-  // but Webkit will. Dispatching a click on an input box does not seem to focus it; we do that separately
-  link.dispatchEvent(event);
+  // A full click will be simulated by the sequence:
+  // focus --> mouseDown --> mouseUp --> click
+  // The focus step is there because Safari has been observed to do so.
+
+  link.focus();
+
+  var mouseDownEvent = document.createEvent("MouseEvents");
+  mouseDownEvent.initMouseEvent("mousedown", true, true, window, 1, 0, 0, 0, 0, ctrlKey, false, false, metaKey, 0, null);
+  link.dispatchEvent(mouseDownEvent)
+
+  var mouseUpEvent = document.createEvent("MouseEvents");
+  mouseUpEvent.initMouseEvent("mouseup", true, true, window, 1, 0, 0, 0, 0, ctrlKey, false, false, metaKey, 0, null);
+  link.dispatchEvent(mouseUpEvent);
+
+  var clickEvent = document.createEvent("MouseEvents");
+  clickEvent.initMouseEvent("click", true, true, window, 1, 0, 0, 0, 0, ctrlKey, false, false, metaKey, 0, null);
+  link.dispatchEvent(clickEvent);
+
+  // On click event dispatch, Firefox will not execute the link's default action, but Webkit will. 
+  // This is a Safari extension, so that's ok for now, if no easy cross-browser solution is available.
 }
 
 function deactivateLinkHintsMode() {
@@ -318,11 +409,11 @@ function resetLinkHintsMode() {
 function createMarkerFor(link, linkHintNumber, linkHintDigits) {
   var hintString = numberToHintString(linkHintNumber, linkHintDigits);
   var marker = document.createElement("div");
-  marker.className = "internalVimiumHintMarker vimiumHintMarker";
+  marker.className = "internalVimiumHintMarker vimiumReset";
   var innerHTML = [];
   // Make each hint character a span, so that we can highlight the typed characters as you type them.
   for (var i = 0; i < hintString.length; i++)
-    innerHTML.push("<span>" + hintString[i].toUpperCase() + "</span>");
+    innerHTML.push('<span class="vimiumReset">' + hintString[i].toUpperCase() + '</span>');
   marker.innerHTML = innerHTML.join("");
   marker.setAttribute("hintString", hintString);
 

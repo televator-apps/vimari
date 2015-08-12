@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Various</string>
 	<key>Builder Version</key>
-	<string>7536.28.10</string>
+	<string>10600.3.18</string>
 	<key>CFBundleDisplayName</key>
 	<string>vimari</string>
 	<key>CFBundleExecutable</key>
@@ -15,9 +15,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.8</string>
+	<string>1.12</string>
 	<key>CFBundleVersion</key>
-	<string>18</string>
+	<string>22</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -43,6 +43,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Vim style shortcuts for safari</string>
+	<key>DeveloperIdentifier</key>
+	<string>357AUX7M8L</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -56,7 +58,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://guyht.github.com/vimari/manifest.plist</string>
+	<string>http://guyht.github.io/vimari/manifest.plist</string>
 	<key>Website</key>
 	<string>http://guyht.github.com/vimari/</string>
 </dict>
