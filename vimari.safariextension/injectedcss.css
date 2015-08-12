@@ -61,3 +61,54 @@ div.internalVimiumHintMarker span {
 div.internalVimiumHintMarker > .matchingCharacter {
   color: #dcbc2a;
 }
+
+.vimiumHUD, .vimiumHUD * {
+  line-height: 100%;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.vimiumHUD {
+  position: fixed;
+  bottom: 0px;
+  left: 40px;
+  color: black;
+  max-width: 400px;
+  min-width: 150px;
+  text-align: center;
+  background-color: #ebebeb;
+  padding: 3px 3px 5px 3px;
+  border: 1px solid #b3b3b3;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  font-family: Lucida Grande, Arial, Sans;
+  /* One less than vimium's hint markers, so link hints can be shown e.g. for the panel's close button. */
+  z-index: 99999998;
+  text-shadow: 0px 1px 2px #FFF;
+  line-height: 1.0;
+  opacity: 0;
+}
+
+.vimiumHUD a, .vimiumHUD a:hover {
+  background: transparent;
+  color: blue;
+  text-decoration: underline;
+}
+
+.vimiumHUD a.close-button {
+  float:right;
+  font-family:courier new;
+  font-weight:bold;
+  color:#9C9A9A;
+  text-decoration:none;
+  padding-left:10px;
+  margin-top:-1px;
+  font-size:14px;
+}
+
+.vimiumHUD a.close-button:hover {
+  color:#333333;
+  cursor:default;
+  -webkit-user-select:none;
+}
+
