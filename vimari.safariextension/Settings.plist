@@ -252,5 +252,15 @@
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>t</string>
+		<key>Key</key>
+		<string>openTab</string>
+		<key>Title</key>
+		<string>Open new Tab</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
 </array>
 </plist>

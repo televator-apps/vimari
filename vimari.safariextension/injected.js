@@ -62,7 +62,10 @@ var actionMap = {
 	'reload':
 		function() { window.location.reload(); },
 
-	'closeTab':
+	'openTab' :
+		function() { safari.self.tab.dispatchMessage('openTab'); },
+
+	'closeTab'   :
 		function() { safari.self.tab.dispatchMessage('closeTab', 0); },
 
 	'closeTabReverse':
