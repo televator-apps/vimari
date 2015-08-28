@@ -11,6 +11,9 @@
 				case 'getSettings' :
 					getSettings(msg);
 					break;	
+				case 'openTab' :
+					openTab();
+					break;
 				case 'closeTab':
 					closeTab(msg.message);
 					break;
@@ -54,6 +57,7 @@
 				'goToPageTop'        : safari.extension.settings.goToPageTop,
 				'closeTab'	         : safari.extension.settings.closeTab,
 				'closeTabReverse'    : safari.extension.settings.closeTabReverse,
+				'openTab'			 : safari.extension.settings.openTab,
 				'modifier'           : safari.extension.settings.modifier,
 				'scrollSize'         : safari.extension.settings.scrollSize,
 				'excludedUrls'       : safari.extension.settings.excludedUrls, 
@@ -102,6 +106,14 @@
 		var tab = safari.application.activeBrowserWindow.activeTab;
 		changeTab(dir);
 		tab.close();
+	}
+
+	/*
+	 * Opens a new tab
+	 */
+	function openTab() {
+		var win = safari.application.activeBrowserWindow;
+		win.openTab();
 	}
 
 	/*

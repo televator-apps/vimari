@@ -14,7 +14,7 @@
 		<key>Key</key>
 		<string>modifier</string>
 		<key>Title</key>
-        <string>Command prefix (blank for none)</string>
+		<string>Command prefix (blank for none)</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -178,7 +178,7 @@
 	</dict>
 	<dict>
 		<key>Title</key>
-        <string>Page/Tab navigation</string>
+		<string>Page/Tab navigation</string>
 		<key>Type</key>
 		<string>Group</string>
 	</dict>
@@ -249,6 +249,16 @@
 		<string>closeTabReverse</string>
 		<key>Title</key>
 		<string>Close Current Tab (open right tab)</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>t</string>
+		<key>Key</key>
+		<string>openTab</string>
+		<key>Title</key>
+		<string>Open new Tab</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
