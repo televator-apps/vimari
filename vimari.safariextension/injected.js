@@ -108,10 +108,8 @@ function bindKeyCodesToActions() {
 		Mousetrap.bind('i', enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
-				var keyCodes = getKeyCode(actionName).split(",");
-				for (var _i = 0; _i < keyCodes.length; _i++) {
-					Mousetrap.bind(keyCodes[_i], executeAction(actionName), 'keydown');
-				}
+				var keyCode = getKeyCode(actionName).split(",");
+				Mousetrap.bind(keyCode, executeAction(actionName), 'keydown');
 			}
 		}
 	}
