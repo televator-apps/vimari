@@ -108,8 +108,8 @@ function bindKeyCodesToActions() {
 		Mousetrap.bind('i', enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
-				var keyCode = getKeyCode(actionName);
-				Mousetrap.bind(keyCode, executeAction(actionName), 'keydown');
+				var keyCodes = getKeyCodes(actionName);
+				Mousetrap.bind(keyCodes, executeAction(actionName), 'keydown');
 			}
 		}
 	}
@@ -153,12 +153,21 @@ function unbindKeyCodes() {
 }
 
 // Adds an optional modifier to the configured key code for the action
-function getKeyCode(actionName) {
-	var keyCode = '';
+function getKeyCodes(actionName) {
+	var modifier = '';
+		keyCodes = settings[actionName].split(','),
+		acc = [],
+		i = 0;
+
 	if(settings.modifier) {
-		keyCode += settings.modifier + '+';
+		modifier += settings.modifier + '+';
 	}
-	return keyCode + settings[actionName];
+
+	for (i=0;i<keyCodes.length;i++) {
+		acc[i] = modifier + keyCodes[i].trim();
+	}
+
+	return acc;
 }
 
 
