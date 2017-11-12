@@ -29,57 +29,57 @@ var topWindow = (window.top === window),
 	shiftKeyToggle = false;
 
 var actionMap = {
-	'hintToggle' : function() {
+	'hintToggle': function() {
 		HUD.show('Link hints mode');
 		activateLinkHintsMode(false, false); },
 
-	'newTabHintToggle' : function() {
+	'newTabHintToggle': function() {
 		HUD.show('Link hints mode');
 		activateLinkHintsMode(true, false); },
 
-	'tabForward' : function() {
+	'tabForward': function() {
 		safari.self.tab.dispatchMessage('changeTab', 1); },
 
-	'tabBack'    : function() {
+	'tabBack': function() {
 		safari.self.tab.dispatchMessage('changeTab', 0); },
 
-	'scrollDown' :
+	'scrollDown':
 		function() { window.scrollBy(0, settings.scrollSize); },
 
-	'scrollUp' :
+	'scrollUp':
 		function() { window.scrollBy(0, -settings.scrollSize); },
 
-	'scrollLeft' :
+	'scrollLeft':
 		function() { window.scrollBy(-settings.scrollSize, 0); },
 
-	'scrollRight' :
+	'scrollRight':
 		function() { window.scrollBy(settings.scrollSize, 0); },
 
-	'goBack' :
+	'goBack':
 		function() { window.history.back(); },
 
-	'goForward' :
+	'goForward':
 		function() { window.history.forward(); },
 
-	'reload' :
+	'reload':
 		function() { window.location.reload(); },
 
-	'closeTab'   :
+	'closeTab':
 		function() { safari.self.tab.dispatchMessage('closeTab', 0); },
 
-	'closeTabReverse'   :
+	'closeTabReverse':
 		function() { safari.self.tab.dispatchMessage('closeTab', 1); },
 
-	'scrollDownHalfPage' :
+	'scrollDownHalfPage':
 		function() { window.scrollBy(0, window.innerHeight / 2); },
 
-	'scrollUpHalfPage'   :
+	'scrollUpHalfPage':
 		function() { window.scrollBy(0, window.innerHeight / -2); },
 
-	'goToPageBottom'     :
+	'goToPageBottom':
 		function() { window.scrollBy(0, document.body.scrollHeight); },
 
-	'goToPageTop'        :
+	'goToPageTop':
 		function() { window.scrollBy(0, -document.body.scrollHeight); }
 };
 
@@ -96,8 +96,11 @@ Mousetrap.stopCallback = function(e, element, combo) {
 		return false;
 	}
 
-	// stop for input, select, and textarea
-	return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
+    var tagName = element.tagName;
+    var contentIsEditable = (element.contentEditable && element.contentEditable === 'true');
+
+    // stop for input, select, and textarea
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA' || contentIsEditable;
 };
 
 // Set up key codes to event handlers
@@ -184,7 +187,7 @@ function addCssToPage(css) {
  * can be controlled via the keyboard, particuarlly SELECT combo boxes.
  */
 function isEditable(target) {
-	if (target.getAttribute("contentEditable") == "true")
+	if (target.getAttribute("contentEditable") === "true")
 		return true;
 	var focusableInputs = ["input", "textarea", "select", "button"];
 	return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
@@ -232,7 +235,6 @@ function setSettings(msg) {
  * Enable or disable the extension on this tab
  */
 function setActive(msg) {
-
 	extensionActive = msg;
 	if(msg) {
 		bindKeyCodesToActions();

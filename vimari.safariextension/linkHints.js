@@ -39,15 +39,6 @@ function setOpenLinkMode(openInNewTab, withQueue) {
   shouldOpenLinkHintInNewTab = openInNewTab;
   shouldOpenLinkHintWithQueue = withQueue;
   return;
-  /*
-  if (shouldOpenLinkHintWithQueue) {
-    HUD.show("Open multiple links in a new tab");
-  } else {
-    if (shouldOpenLinkHintInNewTab)
-      HUD.show("Open link in new tab");
-    else
-      HUD.show("Open link in current tab");
-  }*/
 }
 
 /*
@@ -119,28 +110,28 @@ function isClickable(element) {
 
   return (
     // normal html elements that can be clicked
-    name == 'a' || 
-    name == 'button' || 
-    name == 'input' && element.getAttribute('type') != 'hidden' ||
-    name == 'select' ||
-    name == 'textarea' || 
+    name === 'a' ||
+    name === 'button' ||
+    name === 'input' && element.getAttribute('type') !== 'hidden' ||
+    name === 'select' ||
+    name === 'textarea' ||
     // elements having an ARIA role implying clickability
     // (see http://www.w3.org/TR/wai-aria/roles#widget_roles)
-    role == 'button' || 
-    role == 'checkbox' || 
-    role == 'combobox' || 
-    role == 'link' || 
-    role == 'menuitem' || 
-    role == 'menuitemcheckbox' || 
-    role == 'menuitemradio' || 
-    role == 'radio' || 
-    role == 'tab' || 
-    role == 'textbox' || 
+    role === 'button' ||
+    role === 'checkbox' ||
+    role === 'combobox' ||
+    role === 'link' ||
+    role === 'menuitem' ||
+    role === 'menuitemcheckbox' ||
+    role === 'menuitemradio' ||
+    role === 'radio' ||
+    role === 'tab' ||
+    role === 'textbox' ||
     // other ways by which we can know an element is clickable
     element.hasAttribute('onclick') || 
-    settings.detectByCursorStyle && window.getComputedStyle(element).cursor == 'pointer' && 
+    settings.detectByCursorStyle && window.getComputedStyle(element).cursor === 'pointer' &&
       (!element.parentNode || 
-       window.getComputedStyle(element.parentNode).cursor != 'pointer')
+       window.getComputedStyle(element.parentNode).cursor !== 'pointer')
   );
 }
 
@@ -194,8 +185,8 @@ function isVisible(element, clientRect) {
 
   // eliminate invisible elements (see test_harnesses/visibility_test.html)
   var computedStyle = window.getComputedStyle(element, null);
-  if (computedStyle.getPropertyValue('visibility') != 'visible' ||
-      computedStyle.getPropertyValue('display') == 'none')
+  if (computedStyle.getPropertyValue('visibility') !== 'visible' ||
+      computedStyle.getPropertyValue('display') === 'none')
     return false;
 
   // Eliminate elements hidden by another overlapping element.
@@ -220,7 +211,7 @@ function isVisible(element, clientRect) {
   if (offset >= clientRect.width || offset >= clientRect.height) 
     return false;
   var el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
-  while (el && el != element)
+  while (el && el !== element)
     el = el.parentNode;
   if (!el)
     return false;
@@ -230,7 +221,7 @@ function isVisible(element, clientRect) {
 
 function onKeyDownInLinkHintsMode(event) {
   console.log("Key Down");
-  if (event.keyCode == keyCodes.shiftKey && !openLinkModeToggle) {
+  if (event.keyCode === keyCodes.shiftKey && !openLinkModeToggle) {
     // Toggle whether to open link in a new or current tab.
     setOpenLinkMode(!shouldOpenLinkHintInNewTab, shouldOpenLinkHintWithQueue);
     openLinkModeToggle = true;
@@ -243,8 +234,8 @@ function onKeyDownInLinkHintsMode(event) {
   // TODO(philc): Ignore keys that have modifiers.
   if (isEscape(event)) {
     deactivateLinkHintsMode();
-  } else if (event.keyCode == keyCodes.backspace || event.keyCode == keyCodes.deleteKey) {
-    if (hintKeystrokeQueue.length == 0) {
+  } else if (event.keyCode === keyCodes.backspace || event.keyCode === keyCodes.deleteKey) {
+    if (hintKeystrokeQueue.length === 0) {
       deactivateLinkHintsMode();
     } else {
       hintKeystrokeQueue.pop();
@@ -262,7 +253,7 @@ function onKeyDownInLinkHintsMode(event) {
 }
 
 function onKeyUpInLinkHintsMode(event) {
-  if (event.keyCode == keyCodes.shiftKey && openLinkModeToggle) {
+  if (event.keyCode === keyCodes.shiftKey && openLinkModeToggle) {
     // Revert toggle on whether to open link in new or current tab. 
     setOpenLinkMode(!shouldOpenLinkHintInNewTab, shouldOpenLinkHintWithQueue);
     openLinkModeToggle = false;
@@ -278,9 +269,9 @@ function onKeyUpInLinkHintsMode(event) {
 function updateLinkHints() {
   var matchString = hintKeystrokeQueue.join("");
   var linksMatched = highlightLinkMatches(matchString);
-  if (linksMatched.length == 0)
+  if (linksMatched.length === 0)
     deactivateLinkHintsMode();
-  else if (linksMatched.length == 1) {
+  else if (linksMatched.length === 1) {
     var matchedLink = linksMatched[0];
     if (isSelectable(matchedLink)) {
       matchedLink.focus();
@@ -311,8 +302,8 @@ function updateLinkHints() {
  */
 function isSelectable(element) {
   var selectableTypes = ["search", "text", "password"];
-  return (element.tagName == "INPUT" && selectableTypes.indexOf(element.type) >= 0) ||
-      element.tagName == "TEXTAREA";
+  return (element.tagName === "INPUT" && selectableTypes.indexOf(element.type) >= 0) ||
+      element.tagName === "TEXTAREA";
 }
 
 /*
@@ -323,8 +314,8 @@ function highlightLinkMatches(searchString) {
   var linksMatched = [];
   for (var i = 0; i < hintMarkers.length; i++) {
     var linkMarker = hintMarkers[i];
-    if (linkMarker.getAttribute("hintString").indexOf(searchString) == 0) {
-      if (linkMarker.style.display == "none")
+    if (linkMarker.getAttribute("hintString").indexOf(searchString) === 0) {
+      if (linkMarker.style.display === "none")
         linkMarker.style.display = "";
       for (var j = 0; j < linkMarker.childNodes.length; j++)
         linkMarker.childNodes[j].className = (j >= searchString.length) ? "" : "matchingCharacter";
@@ -361,8 +352,8 @@ function numberToHintString(number, numHintDigits) {
 function simulateClick(link) {
   // Configure events with appropriate meta key (CMD on Mac, CTRL on windows) 
   // to open links in new tabs if necessary.
-  var metaKey = (platform == "Mac" && shouldOpenLinkHintInNewTab);
-  var ctrlKey = (platform != "Mac" && shouldOpenLinkHintInNewTab);
+  var metaKey = (platform === "Mac" && shouldOpenLinkHintInNewTab);
+  var ctrlKey = (platform !== "Mac" && shouldOpenLinkHintInNewTab);
 
   // A full click will be simulated by the sequence:
   // focus --> mouseDown --> mouseUp --> click
@@ -395,7 +386,6 @@ function deactivateLinkHintsMode() {
   document.removeEventListener("keydown", onKeyDownInLinkHintsMode, true);
   document.removeEventListener("keyup", onKeyUpInLinkHintsMode, true);
   linkHintsModeActivated = false;
-  //HUD.hide();
 }
 
 function resetLinkHintsMode() {
