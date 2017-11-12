@@ -1,0 +1,10 @@
+{
+  "name": "vimari",
+  "author": "Guy Halford-Thompson",
+  "license": "MIT",
+  "homepage": "https://github.com/guyht/vimari",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "jest": "^21.2.1"
+  }
+}
