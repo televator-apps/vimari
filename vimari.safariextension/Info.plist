@@ -34,6 +34,7 @@
 				<string>linkHints.js</string>
 				<string>mousetrap.js</string>
 				<string>injected.js</string>
+				<string>utils.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
