@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Vimari global extension page</title>
+	<title>Vimari Global Extension Page</title>
     <script type="text/javascript">
 
 	   // Function to handle messages... all messages are sent to this function
@@ -61,7 +61,6 @@
 			};
 
 			dispatchMessage(event.target, 'setSettings', settings);
-
 		}
 
 	/*
@@ -73,7 +72,7 @@
 		var tabs = safari.application.activeBrowserWindow.tabs,
 			i;
 
-		for (i=0;i<tabs.length;i++) {
+		for (i = 0; i < tabs.length; i++) {
 			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
 				if (dir === 1) {
 					if ((i+1) === tabs.length) {
@@ -112,7 +111,7 @@
 		var tabs = safari.application.activeBrowserWindow.tabs,
 			i;
 
-		for (i=0;i<tabs.length;i++) {
+		for (i = 0; i < tabs.length; i++) {
 			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
 				return i;
 			}
@@ -129,19 +128,17 @@
 		var tabs = safari.application.activeBrowserWindow.tabs,
 			i;
 
-		for (i=0;i<tabs.length;i++) {
+		for (i = 0; i < tabs.length; i++) {
 			dispatchMessage(safari.application.activeBrowserWindow.tabs[i], 'setActive', false);
 		}
 
-		for (i=0;i<tabs.length;i++) {
+		for (i = 0; i < tabs.length; i++) {
 			if (tabs[i] === safari.application.activeBrowserWindow.activeTab) {
 				dispatchMessage(safari.application.activeBrowserWindow.tabs[i], 'setActive', true);
 			}
 		}
 
 	}
-
-
 
 	safari.application.addEventListener('message', handleMessage, false);
 
@@ -151,7 +148,6 @@
 			getSettings(event);
 		}, true);
 
-
-   </script>
+    </script>
 </head>
 </html>

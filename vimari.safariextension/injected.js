@@ -167,7 +167,6 @@ function getKeyCode(actionName) {
 }
 
 
-
 /*
  * Adds the given CSS to the page.
  * This function is required by vimium but depracated for vimari as the
@@ -178,13 +177,12 @@ function addCssToPage(css) {
 }
 
 
-
 /*
- * Input or text elements are considered focusable and able to receieve their own keyboard events,
+ * Input or text elements are considered focusable and able to receive their own keyboard events,
  * and will enter enter mode if focused. Also note that the "contentEditable" attribute can be set on
  * any element which makes it a rich text editor, like the notes on jjot.com.
  * Note: we used to discriminate for text-only inputs, but this is not accurate since all input fields
- * can be controlled via the keyboard, particuarlly SELECT combo boxes.
+ * can be controlled via the keyboard, particularly SELECT combo boxes.
  */
 function isEditable(target) {
 	if (target.getAttribute("contentEditable") === "true")
@@ -194,14 +192,11 @@ function isEditable(target) {
 }
 
 
-
 /*
  * Embedded elements like Flash and quicktime players can obtain focus but cannot be programmatically
  * unfocused.
  */
 function isEmbed(element) { return ["EMBED", "OBJECT"].indexOf(element.tagName) > 0; }
-
-
 
 
 // ==========================
