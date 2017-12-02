@@ -1,5 +1,3 @@
-var utils = require('utils');
-
 /*
  * Vimari injected script.
  *
@@ -106,7 +104,7 @@ Mousetrap.stopCallback = function(e, element, combo) {
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
-	if (topWindow && utils.isEnabledForUrl(settings.excludedUrls, document.URL)) {
+	if (topWindow && isEnabledForUrl(settings.excludedUrls, document.URL)) {
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
 		Mousetrap.bind('ctrl+[', enterNormalMode);
@@ -237,6 +235,20 @@ function setActive(msg) {
 		unbindKeyCodes();
 	}
 }
+
+function isEnabledForUrl(storedExcludedUrls, currentUrl) {
+    var excludedUrls, regexp, url, _i, _len;
+    excludedUrls = storedExcludedUrls.split(",");
+    for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
+        url = excludedUrls[_i];
+        regexp = new RegExp("^" + url.replace(/\*/g, ".*") + "$");
+        if (currentUrl.match(regexp)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 // Add event listener
 safari.self.addEventListener("message", handleMessage, false);
