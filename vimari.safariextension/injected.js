@@ -254,3 +254,6 @@ function isEnabledForUrl(storedExcludedUrls, currentUrl) {
 safari.self.addEventListener("message", handleMessage, false);
 // Retrieve settings
 safari.self.tab.dispatchMessage('getSettings', '');
+
+// Export to make it testable
+window.isEnabledForUrl = isEnabledForUrl;
