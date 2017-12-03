@@ -1,17 +1,41 @@
 const expect = require('expect.js');
 
-describe('utilites', () => {
-    describe('isEnabledForUrl', () => {
-        it('returns true on same exact domain', () => {
-            const excludedUrl = 'http://specific-domain.com';
-            const currentUrl = excludedUrl;
-            expect(window.isEnabledForUrl(excludedUrl, currentUrl)).to.not.be.ok();
-        });
+describe('isExcludedUrl', () => {
+    const isExcludedUrl = window.isExcludedUrl;
 
-        it('returns false on slightly different domains', () => {
-            const excludedUrls = 'http://www.specific-domain.com,www.specific-domain.com,specific-domain.com';
-            const currentUrl = 'http://specific-domain.com';
-            expect(window.isEnabledForUrl(excludedUrls, currentUrl)).to.be.ok();
-        });
+    it('returns true on same exact domain', () => {
+        const excludedUrl = 'specific-domain.com';
+        const currentUrl = excludedUrl;
+        expect(isExcludedUrl(excludedUrl, currentUrl)).to.be.ok();
+    });
+
+    it('returns true on duplicate domains', () => {
+        const excludedUrls = 'specific-domain.com,specific-domain.com';
+        const currentUrl = 'specific-domain.com';
+        expect(isExcludedUrl(excludedUrls, currentUrl)).to.be.ok();
+    });
+
+    it('returns true if domain match', () => {
+        const excludedUrls = 'specific-domain.com,different-domain.com';
+        const currentUrl = 'specific-domain.com';
+        expect(isExcludedUrl(excludedUrls, currentUrl)).to.be.ok();
+    });
+
+    it('returns true on comma separated domains', () => {
+        const excludedUrls = 'specific-domain.com,different-domain.com';
+        const currentUrl = 'specific-domain.com';
+        expect(isExcludedUrl(excludedUrls, currentUrl)).to.be.ok();
+    });
+
+    it('returns false on different domain', () => {
+        const excludedUrls = 'www.different-domain.com';
+        const currentUrl = 'specific-domain.com';
+        expect(isExcludedUrl(excludedUrls, currentUrl)).to.not.be.ok();
+    });
+
+    it('returns false on space separated domains', () => {
+        const excludedUrls = 'specific-domain.com different-domain.com';
+        const currentUrl = 'specific-domain.com';
+        expect(isExcludedUrl(excludedUrls, currentUrl)).to.not.be.ok();
     });
 });

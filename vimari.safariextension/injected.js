@@ -104,7 +104,7 @@ Mousetrap.stopCallback = function(e, element, combo) {
 // Set up key codes to event handlers
 function bindKeyCodesToActions() {
 	// Only add if topWindow... not iframe
-	if (topWindow && isEnabledForUrl(settings.excludedUrls, document.URL)) {
+	if (topWindow && !isExcludedUrl(settings.excludedUrls, document.URL)) {
 		Mousetrap.reset();
 		Mousetrap.bind('esc', enterNormalMode);
 		Mousetrap.bind('ctrl+[', enterNormalMode);
@@ -236,17 +236,17 @@ function setActive(msg) {
 	}
 }
 
-function isEnabledForUrl(storedExcludedUrls, currentUrl) {
+function isExcludedUrl(storedExcludedUrls, currentUrl) {
     var excludedUrls, regexp, url, _i, _len;
     excludedUrls = storedExcludedUrls.split(",");
     for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
         url = excludedUrls[_i];
         regexp = new RegExp("^" + url.replace(/\*/g, ".*") + "$");
         if (currentUrl.match(regexp)) {
-            return false;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 
@@ -256,4 +256,4 @@ safari.self.addEventListener("message", handleMessage, false);
 safari.self.tab.dispatchMessage('getSettings', '');
 
 // Export to make it testable
-window.isEnabledForUrl = isEnabledForUrl;
+window.isExcludedUrl = isExcludedUrl;
