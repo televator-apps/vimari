@@ -10,11 +10,11 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>ctrl</string>
+		<string></string>
 		<key>Key</key>
 		<string>modifier</string>
 		<key>Title</key>
-        <string>Command prefix (blank for none)</string>
+        <string>Command Prefix (blank for none)</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
