@@ -30,7 +30,7 @@
 	</dict>
 	<dict>
 		<key>Title</key>
-		<string>Link hinting</string>
+		<string>Link Hinting</string>
 		<key>Type</key>
 		<string>Group</string>
 	</dict>
@@ -60,7 +60,7 @@
 		<key>Key</key>
 		<string>linkHintCharacters</string>
 		<key>Title</key>
-		<string>Link hint characters</string>
+		<string>Link Hint Characters</string>
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
@@ -76,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>Title</key>
-		<string>In-page navigation</string>
+		<string>In-page Navigation</string>
 		<key>Type</key>
 		<string>Group</string>
 	</dict>
@@ -178,7 +178,7 @@
 	</dict>
 	<dict>
 		<key>Title</key>
-        <string>Page/Tab navigation</string>
+        <string>Page/Tab Navigation</string>
 		<key>Type</key>
 		<string>Group</string>
 	</dict>
