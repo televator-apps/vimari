@@ -78,6 +78,7 @@ settings of the extension. You can find them in
     q       Previous tab
     x       Close current tab and go to left tab
     X       Close current tab and go to right tab
+    t       Open new tab
 
 License
 -------
