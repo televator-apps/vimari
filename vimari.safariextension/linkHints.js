@@ -351,6 +351,9 @@ function numberToHintString(number, numHintDigits) {
 
 function simulateClick(link) {
   link.click();
+  // If clicking the link doesn't take you to a new page
+  // the focus should not stay on the link, hence calling blur()
+  link.blur();
 }
 
 function deactivateLinkHintsMode() {
