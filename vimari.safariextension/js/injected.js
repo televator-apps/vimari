@@ -241,18 +241,32 @@ function setActive(msg) {
 }
 
 function isExcludedUrl(storedExcludedUrls, currentUrl) {
-    var excludedUrls, regexp, url, _i, _len;
+    var excludedUrls, regexp, url, formattedUrl, _i, _len;
     excludedUrls = storedExcludedUrls.split(",");
     for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
         url = excludedUrls[_i];
-        regexp = new RegExp("^" + url.replace(/\*/g, ".*") + "$");
-        if (currentUrl.match(regexp)) {
+        formattedUrl = stripProtocolAndWww(url);
+        formattedUrl = formattedUrl.toLowerCase();
+        regexp = new RegExp('((.*)?(' + formattedUrl + ')+(.*))');
+        if (currentUrl.toLowerCase().match(regexp)) {
             return true;
         }
     }
     return false;
 }
 
+// These formations removes the protocol and www so that
+// the regexp can catch less AND more specific excluded
+// domains than the current URL.
+function stripProtocolAndWww(url) {
+  url = url.replace('http://', '');
+  url = url.replace('https://', '');
+  if (url.startsWith('www.')) {
+      url = url.slice(4);
+  }
+
+  return url;
+}
 
 // Add event listener
 safari.self.addEventListener("message", handleMessage, false);
@@ -261,3 +275,4 @@ safari.self.tab.dispatchMessage('getSettings', '');
 
 // Export to make it testable
 window.isExcludedUrl = isExcludedUrl;
+window.stripProtocolAndWww = stripProtocolAndWww;
