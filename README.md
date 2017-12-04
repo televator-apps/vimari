@@ -40,10 +40,9 @@ you leave it blank you don't need to hold down anything (default
 setting).
 
 **Excluded URLs** - Comma separated list of website URLs you don't want
-to use vimari with. Requires the exact address right now, e.g.
-`https://github.com/` for GitHub. Setting GitHub as excluded will not
-exclude any sub-pages such as `https://github.com/about` (this will
-change in the near future to be smarter).
+to use vimari with. To exclude GitHub for example, provide the value
+`github.com` or `http://github.com`. It's smart and should handle all
+possible domain cases though.
 
 **Link Hint Characters** - Allowed characters to be used when generating
 link shortcuts.
