@@ -21,7 +21,7 @@
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
-		<string>global.html</string>
+		<string>html/global.html</string>
 	</dict>
 	<key>Content</key>
 	<dict>
@@ -29,16 +29,16 @@
 		<dict>
 			<key>Start</key>
 			<array>
-				<string>keyboardUtils.js</string>
-				<string>vimium-scripts.js</string>
-				<string>linkHints.js</string>
-				<string>mousetrap.js</string>
-				<string>injected.js</string>
+				<string>js/keyboardUtils.js</string>
+				<string>js/vimium-scripts.js</string>
+				<string>js/linkHints.js</string>
+				<string>js/mousetrap.js</string>
+				<string>js/injected.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>injectedcss.css</string>
+			<string>css/injected.css</string>
 		</array>
 	</dict>
 	<key>Description</key>
