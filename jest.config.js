@@ -1,7 +1,7 @@
 module.exports = {
     setupFiles: [
-        './vimari.safariextension/mocks.js',
-        './vimari.safariextension/mousetrap.js',
-        './vimari.safariextension/injected.js',
+        './vimari.safariextension/js/mocks.js',
+        './vimari.safariextension/js/lib/mousetrap.js',
+        './vimari.safariextension/js/injected.js',
     ]
 };
