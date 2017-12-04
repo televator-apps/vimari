@@ -241,6 +241,10 @@ function setActive(msg) {
 }
 
 function isExcludedUrl(storedExcludedUrls, currentUrl) {
+	if (!storedExcludedUrls.length) {
+		return false;
+	}
+
     var excludedUrls, regexp, url, formattedUrl, _i, _len;
     excludedUrls = storedExcludedUrls.split(",");
     for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
