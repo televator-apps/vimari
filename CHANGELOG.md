@@ -1,7 +1,15 @@
-Release Notes
+Changelog
 -------------
 
-**Note, changelog no longer updated :)**
+### 1.13.0 (4/12/2017)
+* New fresh icon
+* Removed shift as default modifier key
+* 't' now opens new tab
+* HUD now looks nicer
+* Open link in new tab now works (bugfix)
+* Excluded URL doesn't need to be exact anymore (bugfix)
+
+### 1.2 - 1.12 skipped
 
 ### 1.1 (31/07/2011)
 * Updated to work with the new version of Safari on lion
