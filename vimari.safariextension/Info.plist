@@ -29,9 +29,9 @@
 		<dict>
 			<key>Start</key>
 			<array>
-				<string>js/keyboardUtils.js</string>
+				<string>js/keyboard-utils.js</string>
 				<string>js/lib/vimium-scripts.js</string>
-				<string>js/linkHints.js</string>
+				<string>js/link-hints.js</string>
 				<string>js/lib/mousetrap.js</string>
 				<string>js/injected.js</string>
 			</array>
