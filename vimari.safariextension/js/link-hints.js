@@ -282,14 +282,14 @@ function updateLinkHints() {
       // When we're opening the link in the current tab, don't navigate to the selected link immediately;
       // we want to give the user some feedback depicting which link they've selected by focusing it.
       if (shouldOpenLinkHintWithQueue) {
-        simulateClick(matchedLink);
+        simulateClick(matchedLink, false);
         resetLinkHintsMode();
       } else if (shouldOpenLinkHintInNewTab) {
-        simulateClick(matchedLink);
+        simulateClick(matchedLink, true);
         matchedLink.focus();
         deactivateLinkHintsMode();
       } else {
-        setTimeout(function() { simulateClick(matchedLink); }, 400);
+        setTimeout(function() { simulateClick(matchedLink, false); }, 400);
         matchedLink.focus();
         deactivateLinkHintsMode();
       }
@@ -349,8 +349,13 @@ function numberToHintString(number, numHintDigits) {
   return hintString.join("");
 }
 
-function simulateClick(link) {
-  link.click();
+function simulateClick(link, openInNewTab) {
+  if (openInNewTab) {
+    window.open(link, "_blank");
+  } else {
+    link.click();
+  }
+
   // If clicking the link doesn't take you to a new page
   // the focus should not stay on the link, hence calling blur()
   link.blur();
