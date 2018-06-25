@@ -1,4 +1,4 @@
-:rotating_light: **Attention!** Do you want to help improve this extension and have a Apple Developer Program (ADP) subscription? We are currently blocked from releasing new versions of this this extensions because none of the maintainers has an ADP subscription - and to build a Safari extension you are required to have it. If you have this subscription and want to help maintain this extension send an e-mail to [simeg](syc5h+vimari@hotmail.com). We currently have a new version with lots of bug fixes that just needs to be built and released. Thank you. :pray: :rotating_light:
+:rotating_light: **Attention!** We are currently blocked from releasing new version and we are discussing how we proceed forward. We need your opinion on the matter, please read [this issue](https://github.com/guyht/vimari/issues/100) :rotating_light:
 
 ---
 
