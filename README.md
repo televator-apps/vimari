@@ -1,4 +1,33 @@
-:rotating_light: **Attention!** We are currently blocked from releasing new version and we are discussing how we proceed forward. We need your opinion on the matter, please read [this issue](https://github.com/guyht/vimari/issues/100) :rotating_light:
+:rotating_light: **Attention!** We are currently blocked from releasing new
+version of this extension, and we have a proposal solving this problem
+:rotating_light:
+
+**For full context, read [the full proposal](/docs/crowdfunding.md).**
+
+## Proposal
+
+I propose we use [Ko-fi](https://ko-fi.com) as a crowdfunding platform in order
+to collect $99 for a ADP membership to be registered in my name (Simon
+Egersand).
+
+## If we reach our goal
+
+If we reach the goal and successfully raise all the money we need, what
+happens? First of all, I will register my account for a ADP membership and then
+make all the changes required to publish the extension to the Safari Extension
+Gallery (some changes are required, see
+[#100](https://github.com/guyht/vimari/issues/100)). But what happens after
+that?
+
+I commit to being active in maintaining this extension for the next year. That
+means I will work on fixing bugs, developing new features, increasing test
+coverage and generally improving the code. And I welcome everyone to join me!
+
+## How to donate
+
+Use this button to donate one or multiple coffees, every coffee is worth $3!
+
+[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/T6T0FK7H)
 
 ---
 
