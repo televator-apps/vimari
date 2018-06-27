@@ -47,7 +47,7 @@ found on [Apple's
 website](https://developer.apple.com/support/compare-memberships/).
 
 I chose Ko-fi because it deals with one-off payments nicely - there's no fee
-involved and the money is payed out immediately. Before making this decision I
+involved and the money is paid out immediately. Before making this decision I
 reviewed other platforms such as [Open
 Collective](https://opencollective.com/), [flattr](https://flattr.com/) and
 [Liberapay](https://en.liberapay.com/). None of them offer one-off payments but
