@@ -2,6 +2,10 @@
 version of this extension, and we have a proposal solving this problem
 :rotating_light:
 
+**Funding Progress**
+
+![Funding progress](http://progressed.io/bar/21)
+
 **For full context, read [the full proposal](/docs/crowdfunding.md).**
 
 ## Proposal
