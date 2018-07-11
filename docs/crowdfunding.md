@@ -73,9 +73,7 @@ coverage and generally improving the code. And I welcome everyone to join me!
 
 ## How to donate
 
-Use this button to donate one or multiple coffees, every coffee is worth $3!
-
-[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/T6T0FK7H)
+~~Use this button to donate one or multiple coffees, every coffee is worth $3!~~
 
 Thank you,
 Simon
