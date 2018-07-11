@@ -4,7 +4,7 @@ version of this extension, and we have a proposal solving this problem
 
 **Funding Progress**
 
-![Funding progress](http://progressed.io/bar/87)
+![Funding progress](http://progressed.io/bar/100)
 
 **For full context, read [the full proposal](/docs/crowdfunding.md).**
 
@@ -26,12 +26,6 @@ that?
 I commit to being active in maintaining this extension for the next year. That
 means I will work on fixing bugs, developing new features, increasing test
 coverage and generally improving the code. And I welcome everyone to join me!
-
-## How to donate
-
-Use this button to donate one or multiple coffees, every coffee is worth $3!
-
-[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/T6T0FK7H)
 
 ---
 
