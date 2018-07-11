@@ -4,7 +4,7 @@ version of this extension, and we have a proposal solving this problem
 
 **Funding Progress**
 
-![Funding progress](http://progressed.io/bar/60)
+![Funding progress](http://progressed.io/bar/82)
 
 **For full context, read [the full proposal](/docs/crowdfunding.md).**
 
