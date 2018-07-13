@@ -272,10 +272,14 @@ function stripProtocolAndWww(url) {
   return url;
 }
 
+// Bootstrap extension
+setSettings(window.getSettings());
+
+// TODO: Implement settings management in Swift
 // Add event listener
-safari.self.addEventListener("message", handleMessage, false);
+// safari.self.addEventListener("message", handleMessage, false);
 // Retrieve settings
-safari.self.tab.dispatchMessage('getSettings', '');
+// safari.self.tab.dispatchMessage('getSettings', '');
 
 // Export to make it testable
 window.isExcludedUrl = isExcludedUrl;

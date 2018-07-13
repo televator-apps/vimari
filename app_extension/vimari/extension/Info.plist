@@ -28,7 +28,7 @@
 		<array>
 			<dict>
 				<key>Style Sheet</key>
-				<string>css/injected.css</string>
+				<string>injected.css</string>
 			</dict>
 		</array>
 		<key>NSExtensionPointIdentifier</key>
@@ -37,6 +37,10 @@
 		<string>$(PRODUCT_MODULE_NAME).SafariExtensionHandler</string>
 		<key>SFSafariContentScript</key>
 		<array>
+            <dict>
+				<key>Script</key>
+				<string>settings.js</string>
+			</dict>
 			<dict>
 				<key>Script</key>
 				<string>keyboard-utils.js</string>

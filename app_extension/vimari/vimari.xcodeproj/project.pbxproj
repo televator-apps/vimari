@@ -23,6 +23,7 @@
 		F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C120F93EE00049445F /* keyboard-utils.js */; };
 		F43C52CA20F93EE00049445F /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C320F93EE00049445F /* mousetrap.js */; };
 		F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C420F93EE00049445F /* vimium-scripts.js */; };
+		F48E129520F96604007357DF /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = F48E129420F96603007357DF /* settings.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		F43C52C120F93EE00049445F /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
 		F43C52C320F93EE00049445F /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
 		F43C52C420F93EE00049445F /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
+		F48E129420F96603007357DF /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				F43C52BD20F93EE00049445F /* link-hints.js */,
+				F48E129420F96603007357DF /* settings.js */,
 				F43C52BE20F93EE00049445F /* global.js */,
 				F43C52BF20F93EE00049445F /* injected.js */,
 				F43C52C020F93EE00049445F /* mocks.js */,
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43C52C620F93EE00049445F /* global.js in Resources */,
+				F48E129520F96604007357DF /* settings.js in Resources */,
 				F43C52C520F93EE00049445F /* link-hints.js in Resources */,
 				F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */,
 				F43C52CA20F93EE00049445F /* mousetrap.js in Resources */,

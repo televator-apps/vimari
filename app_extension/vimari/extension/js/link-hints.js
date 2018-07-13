@@ -220,7 +220,7 @@ function isVisible(element, clientRect) {
 }
 
 function onKeyDownInLinkHintsMode(event) {
-  console.log("Key Down");
+  console.log("-- key down pressed --");
   if (event.keyCode === keyCodes.shiftKey && !openLinkModeToggle) {
     // Toggle whether to open link in a new or current tab.
     setOpenLinkMode(!shouldOpenLinkHintInNewTab, shouldOpenLinkHintWithQueue);
