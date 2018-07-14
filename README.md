@@ -1,38 +1,3 @@
-:rotating_light: **Attention!** We are currently blocked from releasing new
-version of this extension, and we have a proposal solving this problem
-:rotating_light:
-
-**Funding Progress**
-
-![Funding progress](http://progressed.io/bar/100)
-
-**For full context, read [the full proposal](/docs/crowdfunding.md).**
-
-## Proposal
-
-I propose we use [Ko-fi](https://ko-fi.com) as a crowdfunding platform in order
-to collect $99 for a ADP membership to be registered in my name (Simon
-Egersand).
-
-## If we reach our goal
-
-If we reach the goal and successfully raise all the money we need, what
-happens? First of all, I will register my account for a ADP membership and then
-make all the changes required to publish the extension to the Safari Extension
-Gallery (some changes are required, see
-[#100](https://github.com/guyht/vimari/issues/100)). But what happens after
-that?
-
-I commit to being active in maintaining this extension for the next year. That
-means I will work on fixing bugs, developing new features, increasing test
-coverage and generally improving the code. And I welcome everyone to join me!
-
----
-
-**NOTE: If you have a pre 1.2 version of Vimari, you need to manually
-update to the latest version as there is a bug in the auto-update code.
-Versions post 1.2 will automatically update to the lastest version.**
-
 Vimari - Keyboard Shortcuts extension for Safari
 ================================================
 
@@ -44,6 +9,7 @@ Vimari attempts to provide a lightweight port of vimium to Safari,
 taking the best components of vimium and adapting them to Safari.
 
 ### Releases
+  - [Version 2.0.0](docs/safari_12.md) (Safari v12)
   - [Version 1.12](https://github.com/guyht/vimari/releases/tag/v1.12)
   - [Version 1.11](https://github.com/guyht/vimari/releases/tag/v1.11)
   - [Version 1.10](https://github.com/guyht/vimari/releases/tag/v1.10)

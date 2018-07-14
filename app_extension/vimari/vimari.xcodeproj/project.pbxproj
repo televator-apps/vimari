@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F43C527020F93B6C0049445F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C526F20F93B6C0049445F /* AppDelegate.swift */; };
+		F43C527220F93B6D0049445F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43C527120F93B6D0049445F /* Assets.xcassets */; };
+		F43C527520F93B6D0049445F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43C527320F93B6D0049445F /* MainMenu.xib */; };
+		F43C528420F93B840049445F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43C528320F93B840049445F /* Cocoa.framework */; };
+		F43C528720F93B840049445F /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C528620F93B840049445F /* SafariExtensionHandler.swift */; };
+		F43C528920F93B840049445F /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C528820F93B840049445F /* SafariExtensionViewController.swift */; };
+		F43C528C20F93B840049445F /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43C528A20F93B840049445F /* SafariExtensionViewController.xib */; };
+		F43C529520F93B840049445F /* extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F43C528120F93B840049445F /* extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F43C52AC20F93BDF0049445F /* injected.css in Resources */ = {isa = PBXBuildFile; fileRef = F43C52AB20F93BDF0049445F /* injected.css */; };
+		F43C52C520F93EE00049445F /* link-hints.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52BD20F93EE00049445F /* link-hints.js */; };
+		F43C52C620F93EE00049445F /* global.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52BE20F93EE00049445F /* global.js */; };
+		F43C52C720F93EE00049445F /* injected.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52BF20F93EE00049445F /* injected.js */; };
+		F43C52C820F93EE00049445F /* mocks.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C020F93EE00049445F /* mocks.js */; };
+		F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C120F93EE00049445F /* keyboard-utils.js */; };
+		F43C52CA20F93EE00049445F /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C320F93EE00049445F /* mousetrap.js */; };
+		F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C420F93EE00049445F /* vimium-scripts.js */; };
+		F48E129520F96604007357DF /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = F48E129420F96603007357DF /* settings.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F43C529320F93B840049445F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F43C526420F93B6C0049445F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F43C528020F93B840049445F;
+			remoteInfo = extension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F43C529920F93B840049445F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F43C529520F93B840049445F /* extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F43C526C20F93B6C0049445F /* vimari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vimari.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43C526F20F93B6C0049445F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F43C527120F93B6D0049445F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F43C527420F93B6D0049445F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F43C527620F93B6D0049445F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F43C527720F93B6D0049445F /* vimari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vimari.entitlements; sourceTree = "<group>"; };
+		F43C528120F93B840049445F /* extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43C528320F93B840049445F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F43C528620F93B840049445F /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		F43C528820F93B840049445F /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		F43C528B20F93B840049445F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		F43C528D20F93B840049445F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F43C529220F93B840049445F /* extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = extension.entitlements; sourceTree = "<group>"; };
+		F43C52AB20F93BDF0049445F /* injected.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = injected.css; sourceTree = "<group>"; };
+		F43C52BD20F93EE00049445F /* link-hints.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "link-hints.js"; sourceTree = "<group>"; };
+		F43C52BE20F93EE00049445F /* global.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = global.js; sourceTree = "<group>"; };
+		F43C52BF20F93EE00049445F /* injected.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = injected.js; sourceTree = "<group>"; };
+		F43C52C020F93EE00049445F /* mocks.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mocks.js; sourceTree = "<group>"; };
+		F43C52C120F93EE00049445F /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
+		F43C52C320F93EE00049445F /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
+		F43C52C420F93EE00049445F /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
+		F48E129420F96603007357DF /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F43C526920F93B6C0049445F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F43C527E20F93B840049445F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43C528420F93B840049445F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F43C526320F93B6C0049445F = {
+			isa = PBXGroup;
+			children = (
+				F43C526E20F93B6C0049445F /* vimari */,
+				F43C528520F93B840049445F /* extension */,
+				F43C528220F93B840049445F /* Frameworks */,
+				F43C526D20F93B6C0049445F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F43C526D20F93B6C0049445F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F43C526C20F93B6C0049445F /* vimari.app */,
+				F43C528120F93B840049445F /* extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F43C526E20F93B6C0049445F /* vimari */ = {
+			isa = PBXGroup;
+			children = (
+				F43C526F20F93B6C0049445F /* AppDelegate.swift */,
+				F43C527120F93B6D0049445F /* Assets.xcassets */,
+				F43C527320F93B6D0049445F /* MainMenu.xib */,
+				F43C527620F93B6D0049445F /* Info.plist */,
+				F43C527720F93B6D0049445F /* vimari.entitlements */,
+			);
+			path = vimari;
+			sourceTree = "<group>";
+		};
+		F43C528220F93B840049445F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F43C528320F93B840049445F /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F43C528520F93B840049445F /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				F43C52AD20F93CAF0049445F /* css */,
+				F43C52BC20F93EE00049445F /* js */,
+				F43C528620F93B840049445F /* SafariExtensionHandler.swift */,
+				F43C528820F93B840049445F /* SafariExtensionViewController.swift */,
+				F43C528A20F93B840049445F /* SafariExtensionViewController.xib */,
+				F43C528D20F93B840049445F /* Info.plist */,
+				F43C529220F93B840049445F /* extension.entitlements */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		F43C52AD20F93CAF0049445F /* css */ = {
+			isa = PBXGroup;
+			children = (
+				F43C52AB20F93BDF0049445F /* injected.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		F43C52BC20F93EE00049445F /* js */ = {
+			isa = PBXGroup;
+			children = (
+				F43C52BD20F93EE00049445F /* link-hints.js */,
+				F48E129420F96603007357DF /* settings.js */,
+				F43C52BE20F93EE00049445F /* global.js */,
+				F43C52BF20F93EE00049445F /* injected.js */,
+				F43C52C020F93EE00049445F /* mocks.js */,
+				F43C52C320F93EE00049445F /* mousetrap.js */,
+				F43C52C420F93EE00049445F /* vimium-scripts.js */,
+				F43C52C120F93EE00049445F /* keyboard-utils.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F43C526B20F93B6C0049445F /* vimari */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F43C527A20F93B6D0049445F /* Build configuration list for PBXNativeTarget "vimari" */;
+			buildPhases = (
+				F43C526820F93B6C0049445F /* Sources */,
+				F43C526920F93B6C0049445F /* Frameworks */,
+				F43C526A20F93B6C0049445F /* Resources */,
+				F43C529920F93B840049445F /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F43C529420F93B840049445F /* PBXTargetDependency */,
+			);
+			name = vimari;
+			productName = vimari;
+			productReference = F43C526C20F93B6C0049445F /* vimari.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F43C528020F93B840049445F /* extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F43C529620F93B840049445F /* Build configuration list for PBXNativeTarget "extension" */;
+			buildPhases = (
+				F43C527D20F93B840049445F /* Sources */,
+				F43C527E20F93B840049445F /* Frameworks */,
+				F43C527F20F93B840049445F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = extension;
+			productName = extension;
+			productReference = F43C528120F93B840049445F /* extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F43C526420F93B6C0049445F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = vimari;
+				TargetAttributes = {
+					F43C526B20F93B6C0049445F = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					F43C528020F93B840049445F = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = F43C526720F93B6C0049445F /* Build configuration list for PBXProject "vimari" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F43C526320F93B6C0049445F;
+			productRefGroup = F43C526D20F93B6C0049445F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F43C526B20F93B6C0049445F /* vimari */,
+				F43C528020F93B840049445F /* extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F43C526A20F93B6C0049445F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43C527220F93B6D0049445F /* Assets.xcassets in Resources */,
+				F43C527520F93B6D0049445F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F43C527F20F93B840049445F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43C52C620F93EE00049445F /* global.js in Resources */,
+				F48E129520F96604007357DF /* settings.js in Resources */,
+				F43C52C520F93EE00049445F /* link-hints.js in Resources */,
+				F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */,
+				F43C52CA20F93EE00049445F /* mousetrap.js in Resources */,
+				F43C52AC20F93BDF0049445F /* injected.css in Resources */,
+				F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */,
+				F43C52C720F93EE00049445F /* injected.js in Resources */,
+				F43C52C820F93EE00049445F /* mocks.js in Resources */,
+				F43C528C20F93B840049445F /* SafariExtensionViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F43C526820F93B6C0049445F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43C527020F93B6C0049445F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F43C527D20F93B840049445F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43C528920F93B840049445F /* SafariExtensionViewController.swift in Sources */,
+				F43C528720F93B840049445F /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F43C529420F93B840049445F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F43C528020F93B840049445F /* extension */;
+			targetProxy = F43C529320F93B840049445F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F43C527320F93B6D0049445F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F43C527420F93B6D0049445F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F43C528A20F93B840049445F /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F43C528B20F93B840049445F /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F43C527820F93B6D0049445F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F43C527920F93B6D0049445F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F43C527B20F93B6D0049445F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = vimari/vimari.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = SK24TBMYCC;
+				INFOPLIST_FILE = vimari/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.vimari.vimari;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F43C527C20F93B6D0049445F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = vimari/vimari.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = SK24TBMYCC;
+				INFOPLIST_FILE = vimari/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.vimari.vimari;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		F43C529720F93B840049445F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SK24TBMYCC;
+				INFOPLIST_FILE = extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.vimari.vimari.extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F43C529820F93B840049445F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = extension/extension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SK24TBMYCC;
+				INFOPLIST_FILE = extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.vimari.vimari.extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F43C526720F93B6C0049445F /* Build configuration list for PBXProject "vimari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43C527820F93B6D0049445F /* Debug */,
+				F43C527920F93B6D0049445F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F43C527A20F93B6D0049445F /* Build configuration list for PBXNativeTarget "vimari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43C527B20F93B6D0049445F /* Debug */,
+				F43C527C20F93B6D0049445F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F43C529620F93B840049445F /* Build configuration list for PBXNativeTarget "extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43C529720F93B840049445F /* Debug */,
+				F43C529820F93B840049445F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F43C526420F93B6C0049445F /* Project object */;
+}
