@@ -158,16 +158,24 @@
 		F43C52BC20F93EE00049445F /* js */ = {
 			isa = PBXGroup;
 			children = (
+				F493A43420FA4ED2000B2F97 /* lib */,
 				F43C52BD20F93EE00049445F /* link-hints.js */,
 				F48E129420F96603007357DF /* settings.js */,
 				F43C52BE20F93EE00049445F /* global.js */,
 				F43C52BF20F93EE00049445F /* injected.js */,
 				F43C52C020F93EE00049445F /* mocks.js */,
-				F43C52C320F93EE00049445F /* mousetrap.js */,
-				F43C52C420F93EE00049445F /* vimium-scripts.js */,
 				F43C52C120F93EE00049445F /* keyboard-utils.js */,
 			);
 			path = js;
+			sourceTree = "<group>";
+		};
+		F493A43420FA4ED2000B2F97 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F43C52C320F93EE00049445F /* mousetrap.js */,
+				F43C52C420F93EE00049445F /* vimium-scripts.js */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
