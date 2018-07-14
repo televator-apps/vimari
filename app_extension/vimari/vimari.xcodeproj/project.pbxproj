@@ -17,9 +17,7 @@
 		F43C529520F93B840049445F /* extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F43C528120F93B840049445F /* extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F43C52AC20F93BDF0049445F /* injected.css in Resources */ = {isa = PBXBuildFile; fileRef = F43C52AB20F93BDF0049445F /* injected.css */; };
 		F43C52C520F93EE00049445F /* link-hints.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52BD20F93EE00049445F /* link-hints.js */; };
-		F43C52C620F93EE00049445F /* global.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52BE20F93EE00049445F /* global.js */; };
 		F43C52C720F93EE00049445F /* injected.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52BF20F93EE00049445F /* injected.js */; };
-		F43C52C820F93EE00049445F /* mocks.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C020F93EE00049445F /* mocks.js */; };
 		F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C120F93EE00049445F /* keyboard-utils.js */; };
 		F43C52CA20F93EE00049445F /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C320F93EE00049445F /* mousetrap.js */; };
 		F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C420F93EE00049445F /* vimium-scripts.js */; };
@@ -66,9 +64,7 @@
 		F43C529220F93B840049445F /* extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = extension.entitlements; sourceTree = "<group>"; };
 		F43C52AB20F93BDF0049445F /* injected.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = injected.css; sourceTree = "<group>"; };
 		F43C52BD20F93EE00049445F /* link-hints.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "link-hints.js"; sourceTree = "<group>"; };
-		F43C52BE20F93EE00049445F /* global.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = global.js; sourceTree = "<group>"; };
 		F43C52BF20F93EE00049445F /* injected.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = injected.js; sourceTree = "<group>"; };
-		F43C52C020F93EE00049445F /* mocks.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mocks.js; sourceTree = "<group>"; };
 		F43C52C120F93EE00049445F /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
 		F43C52C320F93EE00049445F /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
 		F43C52C420F93EE00049445F /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
@@ -161,9 +157,7 @@
 				F493A43420FA4ED2000B2F97 /* lib */,
 				F43C52BD20F93EE00049445F /* link-hints.js */,
 				F48E129420F96603007357DF /* settings.js */,
-				F43C52BE20F93EE00049445F /* global.js */,
 				F43C52BF20F93EE00049445F /* injected.js */,
-				F43C52C020F93EE00049445F /* mocks.js */,
 				F43C52C120F93EE00049445F /* keyboard-utils.js */,
 			);
 			path = js;
@@ -268,7 +262,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43C52C620F93EE00049445F /* global.js in Resources */,
 				F48E129520F96604007357DF /* settings.js in Resources */,
 				F43C52C520F93EE00049445F /* link-hints.js in Resources */,
 				F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */,
@@ -276,7 +269,6 @@
 				F43C52AC20F93BDF0049445F /* injected.css in Resources */,
 				F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */,
 				F43C52C720F93EE00049445F /* injected.js in Resources */,
-				F43C52C820F93EE00049445F /* mocks.js in Resources */,
 				F43C528C20F93B840049445F /* SafariExtensionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
