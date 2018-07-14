@@ -137,12 +137,12 @@
 			isa = PBXGroup;
 			children = (
 				F43C52AD20F93CAF0049445F /* css */,
+				F43C52BC20F93EE00049445F /* js */,
 				F43C528620F93B840049445F /* SafariExtensionHandler.swift */,
 				F43C528820F93B840049445F /* SafariExtensionViewController.swift */,
 				F43C528A20F93B840049445F /* SafariExtensionViewController.xib */,
 				F43C528D20F93B840049445F /* Info.plist */,
 				F43C529220F93B840049445F /* extension.entitlements */,
-				F43C52BC20F93EE00049445F /* js */,
 			);
 			path = extension;
 			sourceTree = "<group>";
