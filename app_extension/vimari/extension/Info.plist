@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>2.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSExtension</key>
@@ -37,7 +37,7 @@
 		<string>$(PRODUCT_MODULE_NAME).SafariExtensionHandler</string>
 		<key>SFSafariContentScript</key>
 		<array>
-            <dict>
+			<dict>
 				<key>Script</key>
 				<string>settings.js</string>
 			</dict>
@@ -69,8 +69,8 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2018 simeg. All rights reserved.</string>
+	<string>MIT license</string>
 	<key>NSHumanReadableDescription</key>
-	<string>TODO description</string>
+	<string>Safari port of vimium</string>
 </dict>
 </plist>
