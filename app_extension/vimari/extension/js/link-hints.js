@@ -351,7 +351,8 @@ function numberToHintString(number, numHintDigits) {
 
 function simulateClick(link, openInNewTab) {
   if (openInNewTab) {
-    window.open(link, "_blank");
+    console.log("-- Open link in new tab --");
+    safari.extension.dispatchMessage("openLinkInTab", { url: link.href });
   } else {
     link.click();
   }
