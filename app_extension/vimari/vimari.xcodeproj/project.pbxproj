@@ -22,6 +22,7 @@
 		F43C52CA20F93EE00049445F /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C320F93EE00049445F /* mousetrap.js */; };
 		F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = F43C52C420F93EE00049445F /* vimium-scripts.js */; };
 		F48E129520F96604007357DF /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = F48E129420F96603007357DF /* settings.js */; };
+		F4C4DA3D210A518F009A8D56 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F4C4DA3C210A518F009A8D56 /* ToolbarItemIcon.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		F43C52C320F93EE00049445F /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
 		F43C52C420F93EE00049445F /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
 		F48E129420F96603007357DF /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
+		F4C4DA3C210A518F009A8D56 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				F43C528820F93B840049445F /* SafariExtensionViewController.swift */,
 				F43C528A20F93B840049445F /* SafariExtensionViewController.xib */,
 				F43C528D20F93B840049445F /* Info.plist */,
+				F4C4DA3C210A518F009A8D56 /* ToolbarItemIcon.pdf */,
 				F43C529220F93B840049445F /* extension.entitlements */,
 			);
 			path = extension;
@@ -265,6 +268,7 @@
 				F48E129520F96604007357DF /* settings.js in Resources */,
 				F43C52C520F93EE00049445F /* link-hints.js in Resources */,
 				F43C52C920F93EE00049445F /* keyboard-utils.js in Resources */,
+				F4C4DA3D210A518F009A8D56 /* ToolbarItemIcon.pdf in Resources */,
 				F43C52CA20F93EE00049445F /* mousetrap.js in Resources */,
 				F43C52AC20F93BDF0049445F /* injected.css in Resources */,
 				F43C52CB20F93EE00049445F /* vimium-scripts.js in Resources */,
