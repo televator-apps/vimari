@@ -57,4 +57,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         validationHandler(true, "")
     }
     
+    override func popoverViewController() -> SFSafariExtensionViewController {
+        return SafariExtensionViewController.shared
+    }
 }

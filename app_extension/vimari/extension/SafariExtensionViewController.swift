@@ -1,15 +1,16 @@
-//
-//  SafariExtensionViewController.swift
-//  extension
-//
-//  Created by simeg on 2018-07-13.
-//  Copyright © 2018 vimari. All rights reserved.
-//
-
 import SafariServices
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
     
+    @IBOutlet weak var btnSettings: NSButton!
+    
     static let shared = SafariExtensionViewController()
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func settingsClick(_ sender: NSButton) {
+        NSWorkspace.shared.launchApplication("vimari")
+    }
 }
