@@ -30,18 +30,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func openInNewTab(url: URL) {
-        SFSafariApplication.getActiveWindow { (activeWindow) in
-            activeWindow?.openTab(with: url, makeActiveIfPossible: false, completionHandler: {_ in
+        SFSafariApplication.getActiveWindow(completionHandler: {
+            $0?.openTab(with: url, makeActiveIfPossible: false, completionHandler: {_ in
                 // Perform some action here after the page loads
             })
-        }
+        })
     }
     
     func openNewTab() {
         // Ideally this URL would be something that represents an empty tab better than localhost
         let url = URL(string: "http://localhost")!
-        SFSafariApplication.getActiveWindow { (activeWindow) in
-            activeWindow?.openTab(with: url, makeActiveIfPossible: true, completionHandler: {_ in
+        SFSafariApplication.getActiveWindow(completionHandler: {
+            $0?.openTab(with: url, makeActiveIfPossible: true, completionHandler: {_ in
                 // Perform some action here after the page loads
             })
         })
