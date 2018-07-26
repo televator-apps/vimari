@@ -2,7 +2,7 @@
 //  SafariExtensionViewController.swift
 //  extension
 //
-//  Created by Simon on 2018-07-13.
+//  Created by simeg on 2018-07-13.
 //  Copyright © 2018 vimari. All rights reserved.
 //
 
