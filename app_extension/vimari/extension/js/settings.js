@@ -26,7 +26,7 @@ function getSettings() {
         'closeTab': 'x',
         'closeTabReverse': 'shift+x',
 
-        'openTab': '', // This doesn't map to anything from what I can tell
+        'openTab': 't',
     };
 }
 

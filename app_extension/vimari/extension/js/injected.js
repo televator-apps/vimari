@@ -64,7 +64,7 @@ var actionMap = {
 		function() { window.location.reload(); },
 
 	'openTab':
-		function() { safari.self.tab.dispatchMessage('openTab'); },
+		function() { openNewTab(); },
 
 	'closeTab':
 		function() { safari.self.tab.dispatchMessage('closeTab', 0); },
@@ -257,6 +257,11 @@ function isExcludedUrl(storedExcludedUrls, currentUrl) {
         }
     }
     return false;
+}
+
+function openNewTab() {
+    console.log("-- Open new empty tab --");
+    safari.extension.dispatchMessage("openNewTab");
 }
 
 // These formations removes the protocol and www so that
