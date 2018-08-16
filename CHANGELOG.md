@@ -5,7 +5,7 @@ Changelog
 * vimari now exists as a Safari App Extension, making it compatible with Safari
   version 12
 
-### 1.13.0 (4/12/2017)
+### 1.3.0 (16/8/2018)
 * New fresh icon
 * Removed shift as default modifier key
 * 't' now opens new tab
