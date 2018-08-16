@@ -1,10 +1,15 @@
-.PHONY: all test
+.PHONY: all test test-watch
 
-all:
-	npm install
+NPM=$(shell which npm)
+NPM_BIN=$(shell npm bin)
+
+all: deps
+
+deps:
+	@$(NPM) install
 
 test:
-	./node_modules/.bin/jest tests
+	@$(NPM_BIN)/jest tests
 
 test-watch:
-	./node_modules/.bin/jest --watch tests
+	@$(NPM_BIN)/jest --watch tests

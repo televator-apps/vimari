@@ -1,35 +1,39 @@
-Vimari - Keyboard Shortcuts extension for Safari
-================================================
+# Vimari - Keyboard Shortcuts extension for Safari
 
 Vimari is a Safari extension that provides keyboard based navigation.
-The code is heavily based on [vimium](https://github.com/philc/vimium),
-a Chrome extension that provides much more extensive features.
+The code is heavily based on [vimium](https://github.com/philc/vimium), a
+Chrome extension that provides much more extensive features.
 
-Vimari attempts to provide a lightweight port of vimium to Safari,
-taking the best components of vimium and adapting them to Safari.
+Vimari attempts to provide a lightweight port of vimium to Safari, taking the
+best components of vimium and adapting them to Safari.
 
-### Releases
-  - [Version 2.0.0](docs/safari_12.md) (Safari v12)
-  - [Version 1.12](https://github.com/guyht/vimari/releases/tag/v1.12)
-  - [Version 1.11](https://github.com/guyht/vimari/releases/tag/v1.11)
-  - [Version 1.10](https://github.com/guyht/vimari/releases/tag/v1.10)
-  - [Version 1.9](https://github.com/guyht/vimari/releases/tag/v1.9)
+![Screenshot](assets/screenshot.png)
 
-__Installation Instructions__
+## Releases
 
-Click the download link below and double-click the file to get the
-latest version of vimari:
+### Safari 12
+ - [v2.0.0](docs/safari_12.md)
 
-https://github.com/guyht/vimari/releases/latest
+### Safari 11 and below
+ - [v1.13](https://github.com/guyht/vimari/releases/tag/v1.13)
+ - [v1.12](https://github.com/guyht/vimari/releases/tag/v1.12)
+ - [v1.11](https://github.com/guyht/vimari/releases/tag/v1.11)
+ - [v1.10](https://github.com/guyht/vimari/releases/tag/v1.10)
+ - [v1.9](https://github.com/guyht/vimari/releases/tag/v1.9)
 
+## Installation
 
-Screenshot
------------
+### Safari 12
 
-![Screenshot](https://github.com/guyht/vimari/raw/gh-pages/shot.png)
+Read [this guide](docs/safari_12.md).
 
-Usage
------
+### Safari 11
+
+[Download the latest
+version](https://github.com/guyht/vimari/releases/tag/v1.13) and double-click
+the file.
+
+## Usage
 
 ### Settings
 **Command Prefix** - Modifier key to hold down with your action key. If
@@ -39,7 +43,7 @@ setting).
 **Excluded URLs** - Comma separated list of website URLs you don't want
 to use vimari with. To exclude GitHub for example, provide the value
 `github.com` or `http://github.com`. It's smart and should handle all
-possible domain cases though.
+possible domain cases.
 
 **Link Hint Characters** - Allowed characters to be used when generating
 link shortcuts.
@@ -76,7 +80,6 @@ settings of the extension. You can find them in
     X       Close current tab and go to right tab
     t       Open new tab
 
-License
--------
-Copyright (c) 2011 Guy Halford-Thompson. See MIT-LICENSE.txt for
-details.
+## License
+
+Copyright (C) 2011 Guy Halford-Thompson. See [LICENSE](LICENSE) for details.
