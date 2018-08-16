@@ -27,7 +27,7 @@ https://github.com/guyht/vimari/releases/latest
 Screenshot
 -----------
 
-![Screenshot](https://github.com/guyht/vimari/raw/gh-pages/shot.png)
+![Screenshot](assets/screenshot.png)
 
 Usage
 -----
