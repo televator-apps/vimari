@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Various</string>
 	<key>Builder Version</key>
-	<string>10600.3.18</string>
+	<string>13605.3.8</string>
 	<key>CFBundleDisplayName</key>
 	<string>vimari</string>
 	<key>CFBundleExecutable</key>
@@ -15,9 +15,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.12</string>
+	<string>1.13</string>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>23</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -44,7 +44,7 @@
 	<key>Description</key>
 	<string>Vim style shortcuts for Safari</string>
 	<key>DeveloperIdentifier</key>
-	<string>357AUX7M8L</string>
+	<string>SK24TBMYCC</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
