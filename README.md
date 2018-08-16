@@ -10,6 +10,7 @@ taking the best components of vimium and adapting them to Safari.
 
 ### Releases
   - [Version 2.0.0](docs/safari_12.md) (Safari v12)
+  - [Version 1.13](https://github.com/guyht/vimari/releases/tag/v1.13)
   - [Version 1.12](https://github.com/guyht/vimari/releases/tag/v1.12)
   - [Version 1.11](https://github.com/guyht/vimari/releases/tag/v1.11)
   - [Version 1.10](https://github.com/guyht/vimari/releases/tag/v1.10)
