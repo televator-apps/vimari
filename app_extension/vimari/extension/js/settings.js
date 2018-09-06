@@ -13,6 +13,7 @@ function getSettings() {
         'scrollLeft': 'h',
         'scrollRight': 'l',
         'scrollSize': 50,
+        'scrollType': 'smooth',
         'scrollUpHalfPage': 'u',
         'scrollDownHalfPage': 'd',
         'goToPageTop': 'g g',

@@ -43,16 +43,16 @@ var actionMap = {
 		safari.self.tab.dispatchMessage('changeTab', 0); },
 
 	'scrollDown':
-		function() { window.scrollBy(0, settings.scrollSize); },
+		function() { window.scrollBy(0, settings.scrollSize, settings.scrollType); },
 
 	'scrollUp':
-		function() { window.scrollBy(0, -settings.scrollSize); },
+		function() { window.scrollBy(0, -settings.scrollSize, settings.scrollType); },
 
 	'scrollLeft':
-		function() { window.scrollBy(-settings.scrollSize, 0); },
+		function() { window.scrollBy(-settings.scrollSize, 0, settings.scrollType); },
 
 	'scrollRight':
-		function() { window.scrollBy(settings.scrollSize, 0); },
+		function() { window.scrollBy(settings.scrollSize, 0, settings.scrollType); },
 
 	'goBack':
 		function() { window.history.back(); },
@@ -73,16 +73,16 @@ var actionMap = {
 		function() { safari.self.tab.dispatchMessage('closeTab', 1); },
 
 	'scrollDownHalfPage':
-		function() { window.scrollBy(0, window.innerHeight / 2); },
+		function() { window.scrollBy(0, window.innerHeight / 2, settings.scrollType); },
 
 	'scrollUpHalfPage':
-		function() { window.scrollBy(0, window.innerHeight / -2); },
+		function() { window.scrollBy(0, window.innerHeight / -2, settings.scrollType); },
 
 	'goToPageBottom':
-		function() { window.scrollBy(0, document.body.scrollHeight); },
+		function() { window.scrollBy(0, document.body.scrollHeight, settings.scrollType); },
 
 	'goToPageTop':
-		function() { window.scrollBy(0, -document.body.scrollHeight); }
+		function() { window.scrollBy(0, -document.body.scrollHeight, settings.scrollType); }
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...
