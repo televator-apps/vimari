@@ -20,13 +20,15 @@ this version. It's a learning process for us so bare with us.**
     $ git clone git@github.com:guyht/vimari.git
     ```
 2. Open the Swift project located at `app_extension/vimari` in Xcode
-3. If you want different settings than the default ones, make your changes in
+3. Configure the Signing settings for both the `vimari` and `extension` targets
+   to use your information rather than the Vimari team's.
+4. If you want different settings than the default ones, make your changes in
    `settings.js`. You can always come back later to change the settings again.
-4. Build and run the project (`⌘ + r`)
-5. An empty GUI box will show up - ignore it (we'll fix it later). Go to 
-   Safari and open up settings (`⌘ + ,`). Go to _Extensions_ and you should 
+5. Build and run the project (`⌘ + r`)
+6. An empty GUI box will show up - ignore it (we'll fix it later). Go to
+   Safari and open up settings (`⌘ + ,`). Go to _Extensions_ and you should
    see **vimari** in the list of extensions. Enable it.
-6. You may now press stop in Xcode and close Xcode. The extension will be 
+7. You may now press stop in Xcode and close Xcode. The extension will be
    available even if you restart Safari.
 
 This was tested on High Sierra with Safari Technology Preview (version 12). Let 
