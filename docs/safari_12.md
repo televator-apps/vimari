@@ -21,7 +21,8 @@ this version. It's a learning process for us so bare with us.**
     ```
 2. Open the Swift project located at `app_extension/vimari` in Xcode
 3. Configure the Signing settings for both the `vimari` and `extension` targets
-   to use your information rather than the Vimari team's.
+   to use your information rather than the Vimari team's (see [this SO answer](https://stackoverflow.com/questions/39754341/none-of-your-accounts-are-a-member-code-signing-errors-after-upgrading-to-xcode)
+   for more information).
 4. If you want different settings than the default ones, make your changes in
    `settings.js`. You can always come back later to change the settings again.
 5. Build and run the project (`⌘ + r`)
