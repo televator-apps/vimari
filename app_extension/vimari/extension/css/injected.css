@@ -39,7 +39,7 @@
 
 div.internalVimiumHintMarker {
   position: absolute !important;
-  display: block !important;
+  display: block;
   top: -1px;
   left: -1px;
   white-space: nowrap !important;
