@@ -11,6 +11,7 @@ import SafariServices
 enum ActionType: String {
     case openLinkInTab
     case openNewTab
+    case closeTab
 }
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
@@ -23,6 +24,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             break
         case ActionType.openNewTab.rawValue:
             openNewTab()
+            break
+        case ActionType.closeTab.rawValue:
+            closeTab()
             break
         default:
             NSLog("Received message with unsupported type: \(messageName)")
@@ -47,6 +51,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         })
     }
     
+    func closeTab() {
+        SFSafariApplication.getActiveWindow { (window) in
+            window?.getActiveTab(completionHandler: { (tab) in
+                tab?.close()
+            })
+        }
+    }
+
     override func toolbarItemClicked(in window: SFSafariWindow) {
         // This method will be called when your toolbar item is clicked.
         NSLog("The extension's toolbar item was clicked")
