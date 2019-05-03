@@ -12,6 +12,12 @@ enum ActionType: String {
     case openLinkInTab
     case openNewTab
     case closeTab
+    case changeTab
+}
+
+enum ChangeTabDirection: String {
+    case forward
+    case backward
 }
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
@@ -28,11 +34,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         case ActionType.closeTab.rawValue:
             closeTab()
             break
+        case ActionType.changeTab.rawValue:
+            let rawDirection = userInfo?["direction"] as? String
+
+            if rawDirection == "forward" {
+                changeTab(inDirection: .forward)
+            } else if rawDirection == "backward" {
+                changeTab(inDirection: .backward)
+            } else {
+                NSLog("Received invalid changeTab direction: \(rawDirection)")
+            }
+
+            break
         default:
             NSLog("Received message with unsupported type: \(messageName)")
         }
     }
-    
+
     func openInNewTab(url: URL) {
         SFSafariApplication.getActiveWindow(completionHandler: {
             $0?.openTab(with: url, makeActiveIfPossible: false, completionHandler: {_ in
@@ -55,6 +73,38 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         SFSafariApplication.getActiveWindow { (window) in
             window?.getActiveTab(completionHandler: { (tab) in
                 tab?.close()
+            })
+        }
+    }
+
+    func changeTab(inDirection direction: ChangeTabDirection) {
+        SFSafariApplication.getActiveWindow { (window) in
+            window?.getAllTabs(completionHandler: { (allTabs) in
+                window?.getActiveTab(completionHandler: { (activeTab) in
+                    if activeTab == nil {
+                        NSLog("Failed to get active tab")
+                        return
+                    }
+
+                    let activeID = allTabs.firstIndex(of: activeTab!)
+
+                    if activeID == nil {
+                        NSLog("Failed to get active tab ID")
+                        return
+                    }
+
+                    var nextID = activeID!;
+                    switch direction {
+                    case .forward:
+                        nextID = (nextID + 1) % allTabs.count
+                        break
+                    case .backward:
+                        nextID = (nextID + (allTabs.count - 1)) % allTabs.count
+                        break
+                    }
+
+                    allTabs[nextID].activate(completionHandler: {})
+                })
             })
         }
     }

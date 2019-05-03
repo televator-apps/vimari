@@ -37,10 +37,10 @@ var actionMap = {
 		activateLinkHintsMode(true, false); },
 
 	'tabForward': function() {
-		safari.self.tab.dispatchMessage('changeTab', 1); },
+		safari.extension.dispatchMessage('changeTab', {direction: 'forward'}); },
 
 	'tabBack': function() {
-		safari.self.tab.dispatchMessage('changeTab', 0); },
+		safari.extension.dispatchMessage('changeTab', {direction: 'backward'}); },
 
 	'scrollDown':
 		function() { window.scrollBy(0, settings.scrollSize); },
