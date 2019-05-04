@@ -80,7 +80,60 @@ var actionMap = {
 		function() { window.scrollBy(0, document.body.scrollHeight); },
 
 	'goToPageTop':
-		function() { window.scrollBy(0, -document.body.scrollHeight); }
+		function() { window.scrollBy(0, -document.body.scrollHeight); },
+
+	'goToFirstInput':
+		function() { goToFirstInput(); },
+};
+
+// Inspiration and general algorithm taken from sVim.
+function goToFirstInput() {
+  var inputs = document.querySelectorAll('input,textarea');
+
+  var bestInput = null;
+  var bestInViewInput = null;
+
+  inputs.forEach(function(input) {
+    // Skip if hidden or disabled
+    if ((input.offsetParent === null) ||
+        input.disabled ||
+        (input.getAttribute('type') === 'hidden') ||
+        (getComputedStyle(input).visibility === 'hidden') ||
+        (input.getAttribute('display') === 'none')) {
+      return;
+    }
+
+    // Skip things that are not actual inputs
+    if ((input.localName !== 'textarea') &&
+        (input.localName !== 'input') &&
+        (input.getAttribute('contenteditable') !== 'true')) {
+      return;
+    }
+
+    // Skip non-text inputs
+    if (/button|radio|file|image|checkbox|submit/i.test(input.getAttribute('type'))) {
+      return;
+    }
+
+    var inputRect = input.getClientRects()[0];
+    var isInView = (inputRect.top >= -inputRect.height) &&
+                   (inputRect.top <= window.innerHeight) &&
+                   (inputRect.left >= -inputRect.width) &&
+                   (inputRect.left <= window.innerWidth);
+
+    if (bestInput === null) {
+      bestInput = input;
+    }
+
+    if (isInView && (bestInViewInput === null)) {
+      bestInViewInput = input;
+    }
+  });
+
+  var inputToFocus = bestInViewInput || bestInput;
+  if (inputToFocus !== null) {
+    inputToFocus.focus();
+  }
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...
