@@ -12,7 +12,38 @@
 		E3ED5988232EFC5F002F78DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED5987232EFC5F002F78DD /* Assets.xcassets */; };
 		E3ED598B232EFC5F002F78DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED598A232EFC5F002F78DD /* Preview Assets.xcassets */; };
 		E3ED598E232EFC5F002F78DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED598C232EFC5F002F78DD /* Main.storyboard */; };
+		E3ED599D232F01D6002F78DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3ED599C232F01D6002F78DD /* Cocoa.framework */; };
+		E3ED59A0232F01D6002F78DD /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED599F232F01D6002F78DD /* SafariExtensionHandler.swift */; };
+		E3ED59A2232F01D6002F78DD /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED59A1232F01D6002F78DD /* SafariExtensionViewController.swift */; };
+		E3ED59A5232F01D6002F78DD /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59A3232F01D6002F78DD /* SafariExtensionViewController.xib */; };
+		E3ED59A8232F01D6002F78DD /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59A7232F01D6002F78DD /* script.js */; };
+		E3ED59AA232F01D6002F78DD /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59A9232F01D6002F78DD /* ToolbarItemIcon.pdf */; };
+		E3ED59AE232F01D6002F78DD /* Vimari Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E3ED59AC232F01D6002F78DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3ED5978232EFC5D002F78DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3ED5999232F01D6002F78DD;
+			remoteInfo = "Vimari Safari Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E3ED59AF232F01D6002F78DD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E3ED59AE232F01D6002F78DD /* Vimari Safari Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E3ED5980232EFC5D002F78DD /* Vimari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vimari.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +54,15 @@
 		E3ED598D232EFC5F002F78DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3ED598F232EFC5F002F78DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3ED5990232EFC5F002F78DD /* Vimari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari.entitlements; sourceTree = "<group>"; };
+		E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vimari Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3ED599C232F01D6002F78DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E3ED599F232F01D6002F78DD /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		E3ED59A1232F01D6002F78DD /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		E3ED59A4232F01D6002F78DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		E3ED59A6232F01D6002F78DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3ED59A7232F01D6002F78DD /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		E3ED59A9232F01D6002F78DD /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		E3ED59AB232F01D6002F78DD /* Vimari_Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari_Safari_Extension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +73,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3ED5997232F01D6002F78DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3ED599D232F01D6002F78DD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -40,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				E3ED5982232EFC5D002F78DD /* Vimari */,
+				E3ED599E232F01D6002F78DD /* Vimari Safari Extension */,
+				E3ED599B232F01D6002F78DD /* Frameworks */,
 				E3ED5981232EFC5D002F78DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				E3ED5980232EFC5D002F78DD /* Vimari.app */,
+				E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +125,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E3ED599B232F01D6002F78DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED599C232F01D6002F78DD /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3ED599E232F01D6002F78DD /* Vimari Safari Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E3ED599F232F01D6002F78DD /* SafariExtensionHandler.swift */,
+				E3ED59A1232F01D6002F78DD /* SafariExtensionViewController.swift */,
+				E3ED59A3232F01D6002F78DD /* SafariExtensionViewController.xib */,
+				E3ED59A6232F01D6002F78DD /* Info.plist */,
+				E3ED59A7232F01D6002F78DD /* script.js */,
+				E3ED59A9232F01D6002F78DD /* ToolbarItemIcon.pdf */,
+				E3ED59AB232F01D6002F78DD /* Vimari_Safari_Extension.entitlements */,
+			);
+			path = "Vimari Safari Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -84,15 +157,34 @@
 				E3ED597C232EFC5D002F78DD /* Sources */,
 				E3ED597D232EFC5D002F78DD /* Frameworks */,
 				E3ED597E232EFC5D002F78DD /* Resources */,
+				E3ED59AF232F01D6002F78DD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E3ED59AD232F01D6002F78DD /* PBXTargetDependency */,
 			);
 			name = Vimari;
 			productName = Vimari;
 			productReference = E3ED5980232EFC5D002F78DD /* Vimari.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E3ED5999232F01D6002F78DD /* Vimari Safari Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3ED59B2232F01D6002F78DD /* Build configuration list for PBXNativeTarget "Vimari Safari Extension" */;
+			buildPhases = (
+				E3ED5996232F01D6002F78DD /* Sources */,
+				E3ED5997232F01D6002F78DD /* Frameworks */,
+				E3ED5998232F01D6002F78DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vimari Safari Extension";
+			productName = "Vimari Safari Extension";
+			productReference = E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -105,6 +197,9 @@
 				ORGANIZATIONNAME = Televator;
 				TargetAttributes = {
 					E3ED597F232EFC5D002F78DD = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					E3ED5999232F01D6002F78DD = {
 						CreatedOnToolsVersion = 11.0;
 					};
 				};
@@ -123,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				E3ED597F232EFC5D002F78DD /* Vimari */,
+				E3ED5999232F01D6002F78DD /* Vimari Safari Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +234,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3ED5998232F01D6002F78DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3ED59AA232F01D6002F78DD /* ToolbarItemIcon.pdf in Resources */,
+				E3ED59A5232F01D6002F78DD /* SafariExtensionViewController.xib in Resources */,
+				E3ED59A8232F01D6002F78DD /* script.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -150,7 +256,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3ED5996232F01D6002F78DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3ED59A2232F01D6002F78DD /* SafariExtensionViewController.swift in Sources */,
+				E3ED59A0232F01D6002F78DD /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E3ED59AD232F01D6002F78DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3ED5999232F01D6002F78DD /* Vimari Safari Extension */;
+			targetProxy = E3ED59AC232F01D6002F78DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E3ED598C232EFC5F002F78DD /* Main.storyboard */ = {
@@ -159,6 +282,14 @@
 				E3ED598D232EFC5F002F78DD /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E3ED59A3232F01D6002F78DD /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3ED59A4232F01D6002F78DD /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -280,6 +411,7 @@
 		E3ED5994232EFC5F002F78DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Vimari/Vimari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +435,7 @@
 		E3ED5995232EFC5F002F78DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Vimari/Vimari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -319,6 +452,46 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E3ED59B0232F01D6002F78DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Vimari Safari Extension/Vimari_Safari_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y48UDGWSSQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Vimari Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.televator.Vimari.Vimari-Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E3ED59B1232F01D6002F78DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Vimari Safari Extension/Vimari_Safari_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y48UDGWSSQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Vimari Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.televator.Vimari.Vimari-Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -340,6 +513,15 @@
 			buildConfigurations = (
 				E3ED5994232EFC5F002F78DD /* Debug */,
 				E3ED5995232EFC5F002F78DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3ED59B2232F01D6002F78DD /* Build configuration list for PBXNativeTarget "Vimari Safari Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3ED59B0232F01D6002F78DD /* Debug */,
+				E3ED59B1232F01D6002F78DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
