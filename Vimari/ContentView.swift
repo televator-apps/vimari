@@ -1,11 +1,3 @@
-//
-//  ContentView.swift
-//  Vimari
-//
-//  Created by Daniel Compton on 15/09/19.
-//  Copyright © 2019 Televator. All rights reserved.
-//
-
 import SwiftUI
 
 struct ContentView: View {

@@ -1,11 +1,3 @@
-//
-//  SafariExtensionHandler.swift
-//  Vimari Safari Extension
-//
-//  Created by Daniel Compton on 15/09/19.
-//  Copyright © 2019 Televator. All rights reserved.
-//
-
 import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
