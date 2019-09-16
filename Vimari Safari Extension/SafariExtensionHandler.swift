@@ -38,4 +38,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             })
         }
     }
+    
+    override func toolbarItemClicked(in window: SFSafariWindow) {
+        // This method will be called when your toolbar item is clicked.
+        NSLog("The extension's toolbar item was clicked")
+    }
+    
+    override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
+        // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
+        validationHandler(true, "")
+    }
 }
