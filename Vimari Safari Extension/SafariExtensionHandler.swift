@@ -1,19 +1,19 @@
 import SafariServices
 
+enum ActionType: String {
+    case openLinkInTab
+    case openNewTab
+}
+
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    
-    enum MessageType: String {
-        case openLinkInTab
-        case openNewTab
-    }
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         switch messageName {
-        case MessageType.openLinkInTab.rawValue:
+        case ActionType.openLinkInTab.rawValue:
             let url = URL(string: userInfo?["url"] as! String)
             openInNewTab(url: url!)
             break
-        case MessageType.openNewTab.rawValue:
+        case ActionType.openNewTab.rawValue:
             openNewTab()
             break
         default:
