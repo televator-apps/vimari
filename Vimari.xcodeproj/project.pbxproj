@@ -27,6 +27,7 @@
 		E3ED59D4232F0B07002F78DD /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CB232F0B07002F78DD /* keyboard-utils.js */; };
 		E3ED59D5232F0B07002F78DD /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CD232F0B07002F78DD /* mousetrap.js */; };
 		E3ED59D6232F0B07002F78DD /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CE232F0B07002F78DD /* vimium-scripts.js */; };
+		E3ED59D8232F39C1002F78DD /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59D7232F39C1002F78DD /* settings.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E3ED59CB232F0B07002F78DD /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
 		E3ED59CD232F0B07002F78DD /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
 		E3ED59CE232F0B07002F78DD /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
+		E3ED59D7232F39C1002F78DD /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				E3ED59C9232F0B07002F78DD /* injected.js */,
 				E3ED59CA232F0B07002F78DD /* mocks.js */,
 				E3ED59CB232F0B07002F78DD /* keyboard-utils.js */,
+				E3ED59D7232F39C1002F78DD /* settings.js */,
 				E3ED59CC232F0B07002F78DD /* lib */,
 			);
 			path = js;
@@ -297,6 +300,7 @@
 				E3ED59D1232F0B07002F78DD /* global.js in Resources */,
 				E3ED59A8232F01D6002F78DD /* script.js in Resources */,
 				E3ED59D0232F0B07002F78DD /* link-hints.js in Resources */,
+				E3ED59D8232F39C1002F78DD /* settings.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
