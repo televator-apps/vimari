@@ -257,6 +257,7 @@ function isExcludedUrl(storedExcludedUrls, currentUrl) {
         }
     }
     return false;
+}
 
 function openNewTab() {
   console.log("-- Open new empty tab --");
@@ -282,7 +283,7 @@ setSettings(window.getSettings());
 // safari.self.addEventListener("message", handleMessage, false);
 // Retrieve settings
 // safari.self.tab.dispatchMessage('getSettings', '');
-                                     
+
 // Export to make it testable
 window.isExcludedUrl = isExcludedUrl;
 window.stripProtocolAndWww = stripProtocolAndWww;
