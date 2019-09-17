@@ -346,7 +346,7 @@ function numberToHintString(number, numHintDigits) {
   var hintStringLength = hintString.length;
   for (var i = 0; i < numHintDigits - hintStringLength; i++)
     hintString.unshift(settings.linkHintCharacters[0]);
-  return hintString.join("");
+  return hintString.reverse().join("");
 }
 
 function simulateClick(link, openInNewTab) {
