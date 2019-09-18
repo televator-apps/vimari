@@ -7,46 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E3ED5984232EFC5D002F78DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED5983232EFC5D002F78DD /* AppDelegate.swift */; };
-		E3ED5986232EFC5D002F78DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED5985232EFC5D002F78DD /* ContentView.swift */; };
-		E3ED5988232EFC5F002F78DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED5987232EFC5F002F78DD /* Assets.xcassets */; };
-		E3ED598B232EFC5F002F78DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3ED598A232EFC5F002F78DD /* Preview Assets.xcassets */; };
-		E3ED598E232EFC5F002F78DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3ED598C232EFC5F002F78DD /* Main.storyboard */; };
-		E3ED599D232F01D6002F78DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3ED599C232F01D6002F78DD /* Cocoa.framework */; };
-		E3ED59A0232F01D6002F78DD /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED599F232F01D6002F78DD /* SafariExtensionHandler.swift */; };
-		E3ED59A2232F01D6002F78DD /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ED59A1232F01D6002F78DD /* SafariExtensionViewController.swift */; };
-		E3ED59A5232F01D6002F78DD /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59A3232F01D6002F78DD /* SafariExtensionViewController.xib */; };
-		E3ED59AA232F01D6002F78DD /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59A9232F01D6002F78DD /* ToolbarItemIcon.pdf */; };
-		E3ED59AE232F01D6002F78DD /* Vimari Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E3ED59CF232F0B07002F78DD /* injected.css in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59C5232F0B07002F78DD /* injected.css */; };
-		E3ED59D0232F0B07002F78DD /* link-hints.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59C7232F0B07002F78DD /* link-hints.js */; };
-		E3ED59D1232F0B07002F78DD /* global.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59C8232F0B07002F78DD /* global.js */; };
-		E3ED59D2232F0B07002F78DD /* injected.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59C9232F0B07002F78DD /* injected.js */; };
-		E3ED59D3232F0B07002F78DD /* mocks.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CA232F0B07002F78DD /* mocks.js */; };
-		E3ED59D4232F0B07002F78DD /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CB232F0B07002F78DD /* keyboard-utils.js */; };
-		E3ED59D5232F0B07002F78DD /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CD232F0B07002F78DD /* mousetrap.js */; };
-		E3ED59D6232F0B07002F78DD /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59CE232F0B07002F78DD /* vimium-scripts.js */; };
-		E3ED59D8232F39C1002F78DD /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = E3ED59D7232F39C1002F78DD /* settings.js */; };
+		E380F24A2331806400640547 /* Vimari.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E380F2492331806400640547 /* Vimari.entitlements */; };
+		E380F24C2331806400640547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F24B2331806400640547 /* AppDelegate.swift */; };
+		E380F24F2331806400640547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E380F24D2331806400640547 /* Main.storyboard */; };
+		E380F2512331806400640547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F2502331806400640547 /* ViewController.swift */; };
+		E380F2532331806500640547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E380F2522331806500640547 /* Assets.xcassets */; };
+		E380F25A2331806500640547 /* Vimari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E380F2592331806500640547 /* Vimari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E380F25F2331806500640547 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E380F25E2331806500640547 /* Cocoa.framework */; };
+		E380F2622331806500640547 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F2612331806500640547 /* SafariExtensionHandler.swift */; };
+		E380F2642331806500640547 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F2632331806500640547 /* SafariExtensionViewController.swift */; };
+		E380F2672331806500640547 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E380F2652331806500640547 /* SafariExtensionViewController.xib */; };
+		E380F26C2331806500640547 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E380F26B2331806500640547 /* ToolbarItemIcon.pdf */; };
+		E380F283233183EF00640547 /* link-hints.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F278233183EE00640547 /* link-hints.js */; };
+		E380F284233183EF00640547 /* global.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F279233183EE00640547 /* global.js */; };
+		E380F285233183EF00640547 /* injected.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27A233183EE00640547 /* injected.js */; };
+		E380F286233183EF00640547 /* mocks.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27B233183EE00640547 /* mocks.js */; };
+		E380F287233183EF00640547 /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27C233183EE00640547 /* keyboard-utils.js */; };
+		E380F288233183EF00640547 /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27E233183EE00640547 /* mousetrap.js */; };
+		E380F289233183EF00640547 /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27F233183EE00640547 /* vimium-scripts.js */; };
+		E380F28A233183EF00640547 /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F280233183EE00640547 /* settings.js */; };
+		E380F28B233183EF00640547 /* injected.css in Resources */ = {isa = PBXBuildFile; fileRef = E380F282233183EE00640547 /* injected.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E3ED59AC232F01D6002F78DD /* PBXContainerItemProxy */ = {
+		E380F25B2331806500640547 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E3ED5978232EFC5D002F78DD /* Project object */;
+			containerPortal = E380F23E2331806400640547 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E3ED5999232F01D6002F78DD;
-			remoteInfo = "Vimari Safari Extension";
+			remoteGlobalIDString = E380F2582331806500640547;
+			remoteInfo = "Vimari Extension";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E3ED59AF232F01D6002F78DD /* Embed App Extensions */ = {
+		E380F2732331806500640547 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E3ED59AE232F01D6002F78DD /* Vimari Safari Extension.appex in Embed App Extensions */,
+				E380F25A2331806500640547 /* Vimari Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,205 +54,195 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E3ED5980232EFC5D002F78DD /* Vimari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vimari.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED5983232EFC5D002F78DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3ED5985232EFC5D002F78DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E3ED5987232EFC5F002F78DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E3ED598A232EFC5F002F78DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E3ED598D232EFC5F002F78DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E3ED598F232EFC5F002F78DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED5990232EFC5F002F78DD /* Vimari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari.entitlements; sourceTree = "<group>"; };
-		E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vimari Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3ED599C232F01D6002F78DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		E3ED599F232F01D6002F78DD /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
-		E3ED59A1232F01D6002F78DD /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
-		E3ED59A4232F01D6002F78DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
-		E3ED59A6232F01D6002F78DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3ED59A9232F01D6002F78DD /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
-		E3ED59AB232F01D6002F78DD /* Vimari_Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari_Safari_Extension.entitlements; sourceTree = "<group>"; };
-		E3ED59C5232F0B07002F78DD /* injected.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = injected.css; sourceTree = "<group>"; };
-		E3ED59C7232F0B07002F78DD /* link-hints.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "link-hints.js"; sourceTree = "<group>"; };
-		E3ED59C8232F0B07002F78DD /* global.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = global.js; sourceTree = "<group>"; };
-		E3ED59C9232F0B07002F78DD /* injected.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = injected.js; sourceTree = "<group>"; };
-		E3ED59CA232F0B07002F78DD /* mocks.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mocks.js; sourceTree = "<group>"; };
-		E3ED59CB232F0B07002F78DD /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
-		E3ED59CD232F0B07002F78DD /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
-		E3ED59CE232F0B07002F78DD /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
-		E3ED59D7232F39C1002F78DD /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
+		E380F2462331806400640547 /* Vimari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vimari.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E380F2492331806400640547 /* Vimari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari.entitlements; sourceTree = "<group>"; };
+		E380F24B2331806400640547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E380F24E2331806400640547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E380F2502331806400640547 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E380F2522331806500640547 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E380F2542331806500640547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E380F2592331806500640547 /* Vimari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Vimari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E380F25E2331806500640547 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E380F2612331806500640547 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		E380F2632331806500640547 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		E380F2662331806500640547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		E380F2682331806500640547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E380F26B2331806500640547 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		E380F26D2331806500640547 /* Vimari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari_Extension.entitlements; sourceTree = "<group>"; };
+		E380F278233183EE00640547 /* link-hints.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "link-hints.js"; sourceTree = "<group>"; };
+		E380F279233183EE00640547 /* global.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = global.js; sourceTree = "<group>"; };
+		E380F27A233183EE00640547 /* injected.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = injected.js; sourceTree = "<group>"; };
+		E380F27B233183EE00640547 /* mocks.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mocks.js; sourceTree = "<group>"; };
+		E380F27C233183EE00640547 /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
+		E380F27E233183EE00640547 /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
+		E380F27F233183EE00640547 /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
+		E380F280233183EE00640547 /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
+		E380F282233183EE00640547 /* injected.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = injected.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E3ED597D232EFC5D002F78DD /* Frameworks */ = {
+		E380F2432331806400640547 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3ED5997232F01D6002F78DD /* Frameworks */ = {
+		E380F2562331806500640547 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3ED599D232F01D6002F78DD /* Cocoa.framework in Frameworks */,
+				E380F25F2331806500640547 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E3ED5977232EFC5D002F78DD = {
+		E380F23D2331806300640547 = {
 			isa = PBXGroup;
 			children = (
-				E3ED5982232EFC5D002F78DD /* Vimari */,
-				E3ED599E232F01D6002F78DD /* Vimari Safari Extension */,
-				E3ED599B232F01D6002F78DD /* Frameworks */,
-				E3ED5981232EFC5D002F78DD /* Products */,
+				E380F2482331806400640547 /* Vimari */,
+				E380F2602331806500640547 /* Vimari Extension */,
+				E380F25D2331806500640547 /* Frameworks */,
+				E380F2472331806400640547 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E3ED5981232EFC5D002F78DD /* Products */ = {
+		E380F2472331806400640547 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED5980232EFC5D002F78DD /* Vimari.app */,
-				E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */,
+				E380F2462331806400640547 /* Vimari.app */,
+				E380F2592331806500640547 /* Vimari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E3ED5982232EFC5D002F78DD /* Vimari */ = {
+		E380F2482331806400640547 /* Vimari */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED5983232EFC5D002F78DD /* AppDelegate.swift */,
-				E3ED5985232EFC5D002F78DD /* ContentView.swift */,
-				E3ED5987232EFC5F002F78DD /* Assets.xcassets */,
-				E3ED598C232EFC5F002F78DD /* Main.storyboard */,
-				E3ED598F232EFC5F002F78DD /* Info.plist */,
-				E3ED5990232EFC5F002F78DD /* Vimari.entitlements */,
-				E3ED5989232EFC5F002F78DD /* Preview Content */,
+				E380F2492331806400640547 /* Vimari.entitlements */,
+				E380F24B2331806400640547 /* AppDelegate.swift */,
+				E380F24D2331806400640547 /* Main.storyboard */,
+				E380F2502331806400640547 /* ViewController.swift */,
+				E380F2522331806500640547 /* Assets.xcassets */,
+				E380F2542331806500640547 /* Info.plist */,
 			);
 			path = Vimari;
 			sourceTree = "<group>";
 		};
-		E3ED5989232EFC5F002F78DD /* Preview Content */ = {
+		E380F25D2331806500640547 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED598A232EFC5F002F78DD /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E3ED599B232F01D6002F78DD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED599C232F01D6002F78DD /* Cocoa.framework */,
+				E380F25E2331806500640547 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E3ED599E232F01D6002F78DD /* Vimari Safari Extension */ = {
+		E380F2602331806500640547 /* Vimari Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED59C4232F0B07002F78DD /* css */,
-				E3ED59C6232F0B07002F78DD /* js */,
-				E3ED599F232F01D6002F78DD /* SafariExtensionHandler.swift */,
-				E3ED59A1232F01D6002F78DD /* SafariExtensionViewController.swift */,
-				E3ED59A3232F01D6002F78DD /* SafariExtensionViewController.xib */,
-				E3ED59A6232F01D6002F78DD /* Info.plist */,
-				E3ED59A9232F01D6002F78DD /* ToolbarItemIcon.pdf */,
-				E3ED59AB232F01D6002F78DD /* Vimari_Safari_Extension.entitlements */,
+				E380F2612331806500640547 /* SafariExtensionHandler.swift */,
+				E380F2632331806500640547 /* SafariExtensionViewController.swift */,
+				E380F2652331806500640547 /* SafariExtensionViewController.xib */,
+				E380F281233183EE00640547 /* css */,
+				E380F277233183EE00640547 /* js */,
+				E380F2682331806500640547 /* Info.plist */,
+				E380F26B2331806500640547 /* ToolbarItemIcon.pdf */,
+				E380F26D2331806500640547 /* Vimari_Extension.entitlements */,
 			);
-			path = "Vimari Safari Extension";
+			path = "Vimari Extension";
 			sourceTree = "<group>";
 		};
-		E3ED59C4232F0B07002F78DD /* css */ = {
+		E380F277233183EE00640547 /* js */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED59C5232F0B07002F78DD /* injected.css */,
-			);
-			path = css;
-			sourceTree = "<group>";
-		};
-		E3ED59C6232F0B07002F78DD /* js */ = {
-			isa = PBXGroup;
-			children = (
-				E3ED59C7232F0B07002F78DD /* link-hints.js */,
-				E3ED59C8232F0B07002F78DD /* global.js */,
-				E3ED59C9232F0B07002F78DD /* injected.js */,
-				E3ED59CA232F0B07002F78DD /* mocks.js */,
-				E3ED59CB232F0B07002F78DD /* keyboard-utils.js */,
-				E3ED59D7232F39C1002F78DD /* settings.js */,
-				E3ED59CC232F0B07002F78DD /* lib */,
+				E380F278233183EE00640547 /* link-hints.js */,
+				E380F279233183EE00640547 /* global.js */,
+				E380F27A233183EE00640547 /* injected.js */,
+				E380F27B233183EE00640547 /* mocks.js */,
+				E380F27C233183EE00640547 /* keyboard-utils.js */,
+				E380F27D233183EE00640547 /* lib */,
+				E380F280233183EE00640547 /* settings.js */,
 			);
 			path = js;
 			sourceTree = "<group>";
 		};
-		E3ED59CC232F0B07002F78DD /* lib */ = {
+		E380F27D233183EE00640547 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				E3ED59CD232F0B07002F78DD /* mousetrap.js */,
-				E3ED59CE232F0B07002F78DD /* vimium-scripts.js */,
+				E380F27E233183EE00640547 /* mousetrap.js */,
+				E380F27F233183EE00640547 /* vimium-scripts.js */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		E380F281233183EE00640547 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				E380F282233183EE00640547 /* injected.css */,
+			);
+			path = css;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E3ED597F232EFC5D002F78DD /* Vimari */ = {
+		E380F2452331806400640547 /* Vimari */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E3ED5993232EFC5F002F78DD /* Build configuration list for PBXNativeTarget "Vimari" */;
+			buildConfigurationList = E380F2742331806500640547 /* Build configuration list for PBXNativeTarget "Vimari" */;
 			buildPhases = (
-				E3ED597C232EFC5D002F78DD /* Sources */,
-				E3ED597D232EFC5D002F78DD /* Frameworks */,
-				E3ED597E232EFC5D002F78DD /* Resources */,
-				E3ED59AF232F01D6002F78DD /* Embed App Extensions */,
+				E380F2422331806400640547 /* Sources */,
+				E380F2432331806400640547 /* Frameworks */,
+				E380F2442331806400640547 /* Resources */,
+				E380F2732331806500640547 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E3ED59AD232F01D6002F78DD /* PBXTargetDependency */,
+				E380F25C2331806500640547 /* PBXTargetDependency */,
 			);
 			name = Vimari;
 			productName = Vimari;
-			productReference = E3ED5980232EFC5D002F78DD /* Vimari.app */;
+			productReference = E380F2462331806400640547 /* Vimari.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E3ED5999232F01D6002F78DD /* Vimari Safari Extension */ = {
+		E380F2582331806500640547 /* Vimari Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E3ED59B2232F01D6002F78DD /* Build configuration list for PBXNativeTarget "Vimari Safari Extension" */;
+			buildConfigurationList = E380F2702331806500640547 /* Build configuration list for PBXNativeTarget "Vimari Extension" */;
 			buildPhases = (
-				E3ED5996232F01D6002F78DD /* Sources */,
-				E3ED5997232F01D6002F78DD /* Frameworks */,
-				E3ED5998232F01D6002F78DD /* Resources */,
+				E380F2552331806500640547 /* Sources */,
+				E380F2562331806500640547 /* Frameworks */,
+				E380F2572331806500640547 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Vimari Safari Extension";
-			productName = "Vimari Safari Extension";
-			productReference = E3ED599A232F01D6002F78DD /* Vimari Safari Extension.appex */;
+			name = "Vimari Extension";
+			productName = "Vimari Extension";
+			productReference = E380F2592331806500640547 /* Vimari Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E3ED5978232EFC5D002F78DD /* Project object */ = {
+		E380F23E2331806400640547 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = Televator;
+				ORGANIZATIONNAME = net.televator;
 				TargetAttributes = {
-					E3ED597F232EFC5D002F78DD = {
+					E380F2452331806400640547 = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					E3ED5999232F01D6002F78DD = {
+					E380F2582331806500640547 = {
 						CreatedOnToolsVersion = 11.0;
 					};
 				};
 			};
-			buildConfigurationList = E3ED597B232EFC5D002F78DD /* Build configuration list for PBXProject "Vimari" */;
+			buildConfigurationList = E380F2412331806400640547 /* Build configuration list for PBXProject "Vimari" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -260,90 +250,90 @@
 				en,
 				Base,
 			);
-			mainGroup = E3ED5977232EFC5D002F78DD;
-			productRefGroup = E3ED5981232EFC5D002F78DD /* Products */;
+			mainGroup = E380F23D2331806300640547;
+			productRefGroup = E380F2472331806400640547 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E3ED597F232EFC5D002F78DD /* Vimari */,
-				E3ED5999232F01D6002F78DD /* Vimari Safari Extension */,
+				E380F2452331806400640547 /* Vimari */,
+				E380F2582331806500640547 /* Vimari Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E3ED597E232EFC5D002F78DD /* Resources */ = {
+		E380F2442331806400640547 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3ED598E232EFC5F002F78DD /* Main.storyboard in Resources */,
-				E3ED598B232EFC5F002F78DD /* Preview Assets.xcassets in Resources */,
-				E3ED5988232EFC5F002F78DD /* Assets.xcassets in Resources */,
+				E380F24A2331806400640547 /* Vimari.entitlements in Resources */,
+				E380F2532331806500640547 /* Assets.xcassets in Resources */,
+				E380F24F2331806400640547 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3ED5998232F01D6002F78DD /* Resources */ = {
+		E380F2572331806500640547 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3ED59D3232F0B07002F78DD /* mocks.js in Resources */,
-				E3ED59D5232F0B07002F78DD /* mousetrap.js in Resources */,
-				E3ED59D2232F0B07002F78DD /* injected.js in Resources */,
-				E3ED59D4232F0B07002F78DD /* keyboard-utils.js in Resources */,
-				E3ED59AA232F01D6002F78DD /* ToolbarItemIcon.pdf in Resources */,
-				E3ED59CF232F0B07002F78DD /* injected.css in Resources */,
-				E3ED59A5232F01D6002F78DD /* SafariExtensionViewController.xib in Resources */,
-				E3ED59D6232F0B07002F78DD /* vimium-scripts.js in Resources */,
-				E3ED59D1232F0B07002F78DD /* global.js in Resources */,
-				E3ED59D0232F0B07002F78DD /* link-hints.js in Resources */,
-				E3ED59D8232F39C1002F78DD /* settings.js in Resources */,
+				E380F26C2331806500640547 /* ToolbarItemIcon.pdf in Resources */,
+				E380F28A233183EF00640547 /* settings.js in Resources */,
+				E380F28B233183EF00640547 /* injected.css in Resources */,
+				E380F285233183EF00640547 /* injected.js in Resources */,
+				E380F287233183EF00640547 /* keyboard-utils.js in Resources */,
+				E380F284233183EF00640547 /* global.js in Resources */,
+				E380F289233183EF00640547 /* vimium-scripts.js in Resources */,
+				E380F2672331806500640547 /* SafariExtensionViewController.xib in Resources */,
+				E380F286233183EF00640547 /* mocks.js in Resources */,
+				E380F283233183EF00640547 /* link-hints.js in Resources */,
+				E380F288233183EF00640547 /* mousetrap.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E3ED597C232EFC5D002F78DD /* Sources */ = {
+		E380F2422331806400640547 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3ED5986232EFC5D002F78DD /* ContentView.swift in Sources */,
-				E3ED5984232EFC5D002F78DD /* AppDelegate.swift in Sources */,
+				E380F2512331806400640547 /* ViewController.swift in Sources */,
+				E380F24C2331806400640547 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3ED5996232F01D6002F78DD /* Sources */ = {
+		E380F2552331806500640547 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3ED59A2232F01D6002F78DD /* SafariExtensionViewController.swift in Sources */,
-				E3ED59A0232F01D6002F78DD /* SafariExtensionHandler.swift in Sources */,
+				E380F2642331806500640547 /* SafariExtensionViewController.swift in Sources */,
+				E380F2622331806500640547 /* SafariExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E3ED59AD232F01D6002F78DD /* PBXTargetDependency */ = {
+		E380F25C2331806500640547 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E3ED5999232F01D6002F78DD /* Vimari Safari Extension */;
-			targetProxy = E3ED59AC232F01D6002F78DD /* PBXContainerItemProxy */;
+			target = E380F2582331806500640547 /* Vimari Extension */;
+			targetProxy = E380F25B2331806500640547 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E3ED598C232EFC5F002F78DD /* Main.storyboard */ = {
+		E380F24D2331806400640547 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E3ED598D232EFC5F002F78DD /* Base */,
+				E380F24E2331806400640547 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		E3ED59A3232F01D6002F78DD /* SafariExtensionViewController.xib */ = {
+		E380F2652331806500640547 /* SafariExtensionViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E3ED59A4232F01D6002F78DD /* Base */,
+				E380F2662331806500640547 /* Base */,
 			);
 			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
@@ -351,7 +341,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E3ED5991232EFC5F002F78DD /* Debug */ = {
+		E380F26E2331806500640547 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -411,7 +401,7 @@
 			};
 			name = Debug;
 		};
-		E3ED5992232EFC5F002F78DD /* Release */ = {
+		E380F26F2331806500640547 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -464,90 +454,84 @@
 			};
 			name = Release;
 		};
-		E3ED5994232EFC5F002F78DD /* Debug */ = {
+		E380F2712331806500640547 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Vimari/Vimari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Vimari Extension/Vimari_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Vimari/Preview Content\"";
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Vimari/Info.plist;
+				INFOPLIST_FILE = "Vimari Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.televator.Vimari-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		E3ED5995232EFC5F002F78DD /* Release */ = {
+		E380F2722331806500640547 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Vimari/Vimari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Vimari Extension/Vimari_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Vimari/Preview Content\"";
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Vimari/Info.plist;
+				INFOPLIST_FILE = "Vimari Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.televator.Vimari-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		E3ED59B0232F01D6002F78DD /* Debug */ = {
+		E380F2752331806500640547 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Vimari Safari Extension/Vimari_Safari_Extension.entitlements";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Vimari/Vimari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Vimari Safari Extension/Info.plist";
+				INFOPLIST_FILE = Vimari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.televator.Vimari.Vimari-Safari-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		E3ED59B1232F01D6002F78DD /* Release */ = {
+		E380F2762331806500640547 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Vimari Safari Extension/Vimari_Safari_Extension.entitlements";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Vimari/Vimari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Vimari Safari Extension/Info.plist";
+				INFOPLIST_FILE = Vimari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.televator.Vimari.Vimari-Safari-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -555,34 +539,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E3ED597B232EFC5D002F78DD /* Build configuration list for PBXProject "Vimari" */ = {
+		E380F2412331806400640547 /* Build configuration list for PBXProject "Vimari" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3ED5991232EFC5F002F78DD /* Debug */,
-				E3ED5992232EFC5F002F78DD /* Release */,
+				E380F26E2331806500640547 /* Debug */,
+				E380F26F2331806500640547 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E3ED5993232EFC5F002F78DD /* Build configuration list for PBXNativeTarget "Vimari" */ = {
+		E380F2702331806500640547 /* Build configuration list for PBXNativeTarget "Vimari Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3ED5994232EFC5F002F78DD /* Debug */,
-				E3ED5995232EFC5F002F78DD /* Release */,
+				E380F2712331806500640547 /* Debug */,
+				E380F2722331806500640547 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E3ED59B2232F01D6002F78DD /* Build configuration list for PBXNativeTarget "Vimari Safari Extension" */ = {
+		E380F2742331806500640547 /* Build configuration list for PBXNativeTarget "Vimari" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3ED59B0232F01D6002F78DD /* Debug */,
-				E3ED59B1232F01D6002F78DD /* Release */,
+				E380F2752331806500640547 /* Debug */,
+				E380F2762331806500640547 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E3ED5978232EFC5D002F78DD /* Project object */;
+	rootObject = E380F23E2331806400640547 /* Project object */;
 }

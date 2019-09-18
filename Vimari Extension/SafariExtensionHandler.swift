@@ -28,7 +28,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             })
         }
     }
-
+    
     func openNewTab() {
         // Ideally this URL would be something that represents an empty tab better than localhost
         let url = URL(string: "http://localhost")!
@@ -47,5 +47,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
         validationHandler(true, "")
+    }
+    
+    override func popoverViewController() -> SFSafariExtensionViewController {
+        return SafariExtensionViewController.shared
     }
 }
