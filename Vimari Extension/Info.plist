@@ -80,7 +80,7 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2019 Televator. All rights reserved.</string>
+	<string>Copyright © 2019 Televator, Guy Halford-Thompson, Phil Crosby, Ilya Sukhar. MIT Licensed</string>
 	<key>NSHumanReadableDescription</key>
 	<string>Adds Vim keybindings to Safari. Vimari is a port of Vimium.</string>
 </dict>
