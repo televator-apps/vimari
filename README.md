@@ -25,7 +25,7 @@ best components of vimium and adapting them to Safari.
 
 ## Installation
 
-### Safari 12
+### Safari 12 and 13
 
 Read [this guide](docs/safari_12.md).
 
