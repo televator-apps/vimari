@@ -12,7 +12,7 @@ class ViewController: NSViewController {
         self.extensionStatus.stringValue = "Checking extension status"
         
         if SFSafariServicesAvailable() {
-            SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: "net.televator.Vimari-Extension") {
+            SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: "net.televator.Vimari.Extension") {
                 (state, error) in
 //                print(state as Any, error as Any, state?.isEnabled as Any)
                 
@@ -47,7 +47,7 @@ class ViewController: NSViewController {
     }
     
     @IBAction func openSafariExtensionPreferences(_ sender: AnyObject?) {
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: "net.televator.Vimari-Extension") { error in
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: "net.televator.Vimari.Extension") { error in
             if let _ = error {
                 // Insert code to inform the user that something went wrong.
 
