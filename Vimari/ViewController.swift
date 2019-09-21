@@ -14,7 +14,7 @@ class ViewController: NSViewController {
         if SFSafariServicesAvailable() {
             SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: "net.televator.Vimari-Extension") {
                 (state, error) in
-                print(state as Any, error as Any, state?.isEnabled as Any)
+//                print(state as Any, error as Any, state?.isEnabled as Any)
                 
                 DispatchQueue.main.async {
                     // TODO: handle this getting updated in the Safari preferences too.

@@ -100,14 +100,14 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Vimari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="442"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="351"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="42" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLV-xE-AGT">
-                                <rect key="frame" x="0.0" y="34" width="480" height="363"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLV-xE-AGT">
+                                <rect key="frame" x="0.0" y="34" width="480" height="272"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWV-e2-WQh" userLabel="IconView">
-                                        <rect key="frame" x="165" y="213" width="150" height="150"/>
+                                        <rect key="frame" x="165" y="122" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FWV-e2-WQh" secondAttribute="height" multiplier="1:1" id="Hsj-E3-na4"/>
                                             <constraint firstAttribute="width" constant="150" id="Vot-Rc-SwK"/>
@@ -116,18 +116,18 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="AppIcon" id="Hhb-TZ-Dhg"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EB0-ac-UZR">
-                                        <rect key="frame" x="206" y="155" width="68" height="16"/>
+                                        <rect key="frame" x="206" y="91" width="68" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="App Name" id="S7v-7o-3vW">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5MW-46-2Gy">
-                                        <rect key="frame" x="138" y="63" width="205" height="50"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5MW-46-2Gy">
+                                        <rect key="frame" x="141" y="36" width="199" height="40"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h1t-YI-DbV">
-                                                <rect key="frame" x="-0.5" y="13" width="21" height="23"/>
+                                                <rect key="frame" x="-0.5" y="8" width="21" height="23"/>
                                                 <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p6Q-eY-RoF">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -137,7 +137,7 @@
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XZl-8O-KEE">
-                                                <rect key="frame" x="26" y="17" width="47" height="16"/>
+                                                <rect key="frame" x="24" y="12" width="47" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Status:" placeholderString="Status:" id="nCM-pV-RKy">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -145,7 +145,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IFl-M5-VGt">
-                                                <rect key="frame" x="77" y="17" width="106" height="16"/>
+                                                <rect key="frame" x="73" y="12" width="106" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Extension Status" id="yln-jE-Mwg">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -153,11 +153,11 @@
                                                 </textFieldCell>
                                             </textField>
                                             <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7PE-Oq-ICl">
-                                                <rect key="frame" x="189" y="17" width="16" height="16"/>
+                                                <rect key="frame" x="183" y="12" width="16" height="16"/>
                                             </progressIndicator>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="SXF-XB-fEy"/>
+                                            <constraint firstAttribute="height" constant="40" id="SXF-XB-fEy"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
