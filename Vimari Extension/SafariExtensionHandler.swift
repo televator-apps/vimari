@@ -21,19 +21,22 @@ func mod(_ a: Int, _ n: Int) -> Int {
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
+        guard let action = ActionType(rawValue: messageName) else {
+            NSLog("Received message with unsupported type: \(messageName)")
+            return
+        }
+
         NSLog("Received message: \(messageName)")
-        switch messageName {
-        case ActionType.openLinkInTab.rawValue:
+        switch action {
+        case .openLinkInTab:
             let url = URL(string: userInfo?["url"] as! String)
             openInNewTab(url: url!)
-        case ActionType.openNewTab.rawValue:
+        case .openNewTab:
             openNewTab()
-        case ActionType.tabForward.rawValue:
+        case .tabForward:
             changeTab(withDirection: .forward, from: page)
-        case ActionType.tabBackward.rawValue:
+        case .tabBackward:
             changeTab(withDirection: .backward, from: page)
-        default:
-            NSLog("Received message with unsupported type: \(messageName)")
         }
     }
 
