@@ -20,8 +20,7 @@ func mod(_ a: Int, _ n: Int) -> Int {
 }
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    
-    override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
+    override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
         NSLog("Received message: \(messageName)")
         switch messageName {
         case ActionType.openLinkInTab.rawValue:
@@ -32,12 +31,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         case ActionType.tabForward.rawValue:
             changeTab(withDirection: .forward, from: page)
         case ActionType.tabBackward.rawValue:
-             changeTab(withDirection: .backward, from: page)
+            changeTab(withDirection: .backward, from: page)
         default:
             NSLog("Received message with unsupported type: \(messageName)")
         }
     }
-    
+
     func openInNewTab(url: URL) {
         SFSafariApplication.getActiveWindow { activeWindow in
             activeWindow?.openTab(with: url, makeActiveIfPossible: false, completionHandler: { _ in
@@ -45,7 +44,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             })
         }
     }
-    
+
     func openNewTab() {
         // Ideally this URL would be something that represents an empty tab better than localhost
         let url = URL(string: "http://localhost")!
@@ -55,19 +54,19 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             })
         }
     }
-    
+
     func changeTab(withDirection direction: TabDirection, from page: SFSafariPage) {
         page.getContainingTab(completionHandler: { currentTab in
             currentTab.getContainingWindow(completionHandler: { window in
                 window?.getAllTabs(completionHandler: { tabs in
                     if let currentIndex = tabs.firstIndex(of: currentTab) {
                         let indexStep = direction == TabDirection.forward ? 1 : -1
-                        
+
                         // Wrap around the ends with a modulus operator.
                         // % calculates the remainder, not the modulus, so we need a
                         // custom function.
                         let newIndex = mod(currentIndex + indexStep, tabs.count)
-                        
+
                         tabs[newIndex].activate {}
                     }
                 })
@@ -80,12 +79,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         NSLog("The extension's toolbar item was clicked")
         NSWorkspace.shared.launchApplication("Vimari")
     }
-    
-    override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
+
+    override func validateToolbarItem(in _: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
         validationHandler(true, "")
     }
-    
+
     override func popoverViewController() -> SFSafariExtensionViewController {
         return SafariExtensionViewController.shared
     }

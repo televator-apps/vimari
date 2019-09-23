@@ -2,21 +2,20 @@ import Cocoa
 import SafariServices.SFSafariApplication
 
 class ViewController: NSViewController {
-
     @IBOutlet var appNameLabel: NSTextField!
     @IBOutlet var extensionStatus: NSTextField!
     @IBOutlet var spinner: NSProgressIndicator!
-    
-    func refreshExtensionStatus () {
+
+    func refreshExtensionStatus() {
         NSLog("Refreshing extension status")
-        self.spinner.startAnimation(self)
-        self.extensionStatus.stringValue = "Checking extension status"
-        
+        spinner.startAnimation(self)
+        extensionStatus.stringValue = "Checking extension status"
+
         if SFSafariServicesAvailable() {
             SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: "net.televator.Vimari.SafariExtension") {
-                (state, error) in
+                state, error in
                 print("State", state as Any, "Error", error as Any, state?.isEnabled as Any)
-                
+
                 DispatchQueue.main.async {
                     // TODO: handle this getting updated in the Safari preferences too.
                     if let state = state {
@@ -35,30 +34,27 @@ class ViewController: NSViewController {
             }
         } else {
             NSLog("SFSafariServices not available")
-            self.extensionStatus.stringValue = "Unavailable, Vimari requires Safari 10 or greater."
-            self.spinner.stopAnimation(self)
+            extensionStatus.stringValue = "Unavailable, Vimari requires Safari 10 or greater."
+            spinner.stopAnimation(self)
         }
     }
-    
-    @IBAction func refreshButton(_ sender: NSButton) {
+
+    @IBAction func refreshButton(_: NSButton) {
         refreshExtensionStatus()
     }
-    
+
     override func viewDidLoad() {
-        super.viewDidLoad();
-        self.appNameLabel.stringValue = "Vimari";
-        
-        
-        refreshExtensionStatus();
+        super.viewDidLoad()
+        appNameLabel.stringValue = "Vimari"
+
+        refreshExtensionStatus()
     }
-    
-    @IBAction func openSafariExtensionPreferences(_ sender: AnyObject?) {
+
+    @IBAction func openSafariExtensionPreferences(_: AnyObject?) {
         SFSafariApplication.showPreferencesForExtension(withIdentifier: "net.televator.Vimari.SafariExtension") { error in
             if let _ = error {
                 // Insert code to inform the user that something went wrong.
-
             }
         }
     }
-
 }
