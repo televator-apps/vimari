@@ -14,7 +14,7 @@ best components of vimium and adapting them to Safari.
 ## Releases
 
 ### Safari 12 and 13
- - [v2.0.0](https://github.com/televator-apps/vimari/releases/tag/v2.0.2)
+ - [v2.0.2](https://github.com/televator-apps/vimari/releases/tag/v2.0.2)
 
 ### Safari 11 and below (DEPRECATED)
  - [v1.13](https://github.com/guyht/vimari/releases/tag/v1.13)
