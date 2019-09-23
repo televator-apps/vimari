@@ -36,11 +36,11 @@ var actionMap = {
 		HUD.showForDuration('Open link in new tab', hudDuration);
 		activateLinkHintsMode(true, false); },
 
-	'tabForward': function() {
-		safari.self.tab.dispatchMessage('changeTab', 1); },
+	'tabForward':
+        function() { safari.extension.dispatchMessage("tabForward"); },
 
-	'tabBack': function() {
-		safari.self.tab.dispatchMessage('changeTab', 0); },
+	'tabBack':
+        function() { safari.extension.dispatchMessage("tabBackward"); },
 
 	'scrollDown':
 		function() { window.scrollBy(0, settings.scrollSize); },

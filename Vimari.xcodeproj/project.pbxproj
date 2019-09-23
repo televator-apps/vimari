@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E320D0662337FC9800F2C3A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E320D0652337FC9800F2C3A4 /* Credits.rtf */; };
+		E320D06823397C5C00F2C3A4 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = E320D06723397C5C00F2C3A4 /* CHANGELOG.md */; };
 		E380F24A2331806400640547 /* Vimari.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E380F2492331806400640547 /* Vimari.entitlements */; };
 		E380F24C2331806400640547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F24B2331806400640547 /* AppDelegate.swift */; };
 		E380F24F2331806400640547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E380F24D2331806400640547 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		E320D0652337FC9800F2C3A4 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		E320D06723397C5C00F2C3A4 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		E380F2462331806400640547 /* Vimari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vimari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E380F2492331806400640547 /* Vimari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari.entitlements; sourceTree = "<group>"; };
 		E380F24B2331806400640547 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		E380F23D2331806300640547 = {
 			isa = PBXGroup;
 			children = (
+				E320D06723397C5C00F2C3A4 /* CHANGELOG.md */,
 				E380F2482331806400640547 /* Vimari */,
 				E380F2602331806500640547 /* Vimari Extension */,
 				E380F25D2331806500640547 /* Frameworks */,
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E380F24A2331806400640547 /* Vimari.entitlements in Resources */,
+				E320D06823397C5C00F2C3A4 /* CHANGELOG.md in Resources */,
 				E380F2532331806500640547 /* Assets.xcassets in Resources */,
 				E380F24F2331806400640547 /* Main.storyboard in Resources */,
 				E320D0662337FC9800F2C3A4 /* Credits.rtf in Resources */,

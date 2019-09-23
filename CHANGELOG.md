@@ -1,6 +1,18 @@
 Changelog
 -------------
 
+### Unreleased
+
+* Fix newTabHintToggle to use shift+f instead of F
+* Implement forward tab and backward tab commands.
+
+### 2.0.2 (2019-09-23)
+
+* Release a signed, notarized App and Safari App Extension 
+* Reverse link hints, so nearby links have different hints [#77](https://github.com/televator-apps/vimari/issues/77)
+* Hide non-matching link hints [#79](https://github.com/televator-apps/vimari/issues/79)
+* Show state of extension in main application
+
 ### 2.0.0 (14/7/2018)
 * vimari now exists as a Safari App Extension, making it compatible with Safari
   version 12
