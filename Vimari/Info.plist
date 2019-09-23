@@ -25,7 +25,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2019 Televator, Guy Halford-Thompson, Phil Crosby, Ilya Sukhar. MIT Licensed</string>
+	<string>Copyright © 2019 Televator, Guy Halford-Thompson, Simon Egersand, Phil Crosby, Ilya Sukhar, and other contributors. MIT Licensed</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
