@@ -4,7 +4,7 @@ function getSettings() {
         'excludedUrls': '',
 
         'hintToggle': 'f',
-        'newTabHintToggle': 'F',
+        'newTabHintToggle': 'shift+f',
         'linkHintCharacters': 'asdfjklqwerzxc',
         'detectByCursorStyle': false,
 
