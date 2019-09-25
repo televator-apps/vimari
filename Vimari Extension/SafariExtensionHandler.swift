@@ -5,6 +5,7 @@ enum ActionType: String {
     case openNewTab
     case tabForward
     case tabBackward
+    case closeTab
 }
 
 enum TabDirection: String {
@@ -37,6 +38,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             changeTab(withDirection: .forward, from: page)
         case .tabBackward:
             changeTab(withDirection: .backward, from: page)
+        case .closeTab:
+            closeTab(from: page)
         }
     }
 
@@ -58,7 +61,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
 
-    func changeTab(withDirection direction: TabDirection, from page: SFSafariPage) {
+    func changeTab(withDirection direction: TabDirection, from page: SFSafariPage, completionHandler: (() -> Void)? = nil ) {
         page.getContainingTab(completionHandler: { currentTab in
             currentTab.getContainingWindow(completionHandler: { window in
                 window?.getAllTabs(completionHandler: { tabs in
@@ -69,12 +72,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         // % calculates the remainder, not the modulus, so we need a
                         // custom function.
                         let newIndex = mod(currentIndex + indexStep, tabs.count)
-
-                        tabs[newIndex].activate {}
+    
+                        tabs[newIndex].activate(completionHandler: completionHandler ?? {})
+                        
                     }
                 })
             })
         })
+    }
+    
+    func closeTab(from page: SFSafariPage) {
+        page.getContainingTab {
+            tab in
+            tab.close()
+        }
     }
 
     override func toolbarItemClicked(in _: SFSafariWindow) {

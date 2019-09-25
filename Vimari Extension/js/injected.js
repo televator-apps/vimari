@@ -67,7 +67,7 @@ var actionMap = {
 		function() { openNewTab(); },
 
 	'closeTab':
-		function() { safari.self.tab.dispatchMessage('closeTab', 0); },
+		function() { safari.extension.dispatchMessage("closeTab"); },
 
 	'closeTabReverse':
 		function() { safari.self.tab.dispatchMessage('closeTab', 1); },
