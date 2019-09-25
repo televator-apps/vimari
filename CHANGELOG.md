@@ -3,6 +3,8 @@ Changelog
 
 ### Unreleased
 
+### 2.0.3 (2019-09-26)
+
 * Fix newTabHintToggle to use shift+f instead of F
 * Implement forward tab and backward tab commands.
 * Close tab with x is now implemented. Note that this relies on Safari's default behaviour to choose whether to switch to the left or right tab after closing the current tab.
