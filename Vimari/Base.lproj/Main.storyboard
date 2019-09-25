@@ -55,7 +55,7 @@
                                     <items>
                                         <menuItem title="Vimari Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                                <action selector="openHelpUrl:" target="Voe-Tx-rLC" id="rLO-Vs-w8n"/>
                                             </connections>
                                         </menuItem>
                                     </items>
