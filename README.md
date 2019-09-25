@@ -14,7 +14,7 @@ best components of vimium and adapting them to Safari.
 ## Releases
 
 ### Safari 12 and 13
- - [v2.0.2](https://github.com/televator-apps/vimari/releases/tag/v2.0.2)
+ - [Latest release](https://github.com/televator-apps/vimari/releases/latest)
 
 ### Safari 11 and below (DEPRECATED)
  - [v1.13](https://github.com/guyht/vimari/releases/tag/v1.13)
@@ -33,8 +33,8 @@ best components of vimium and adapting them to Safari.
 2. Unzip it
 3. Move it to your `/Applications` folder
 4. Launch Vimari.app
-5. Click "Open in Safari Extensions Preferences..."; Safari's Extension Preferences should open
-6. Make sure that the extension checkbox is ticked
+5. Click "Open in Safari Extensions Preferences...", Safari's Extension Preferences should open
+6. Make sure that the checkbox for the Vimari extension is ticked
 7. Go back to Vimari.app and press the reload button to check the status of the app. If it says "Enabled" then it is ready.
 8. You may need to relaunch Safari for the extension to work
 
