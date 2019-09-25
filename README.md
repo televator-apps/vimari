@@ -69,9 +69,6 @@ for HTML elements having cursor style set to "pointer".
 **Scroll Size** - How much each scroll will move on the page.
 
 ### Keyboard Bindings
-These are the default keyboard bindings, they can all be changed in the
-settings of the extension. You can find them in
-`Preferences->Extensions`.
 
 #### In-page navigation
     f       Toggle links
@@ -91,8 +88,7 @@ settings of the extension. You can find them in
     r       Reload
     w       Next tab
     q       Previous tab
-    x       Close current tab and go to left tab
-    X       Close current tab and go to right tab
+    x       Close current tab
     t       Open new tab
 
 ## License
