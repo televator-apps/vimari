@@ -50,8 +50,6 @@ best components of vimium and adapting them to Safari.
 7. Go back to Vimari.app and press the reload button to check the status of the app. If it says "Enabled" then it is ready.
 8. You may need to relaunch Safari for the extension to work
 
-
-
 ### Safari 11 (legacy Safari Extension method)
 
 [Download the Vimari 1.13](https://github.com/guyht/vimari/releases/tag/v1.13) and double-click
@@ -99,6 +97,17 @@ for HTML elements having cursor style set to "pointer".
     q       Previous tab
     x       Close current tab
     t       Open new tab
+
+## Known Limitations
+
+There are some limitations in the Safari extensions API, which in turn
+limit Vimari. 
+
+1. On an "Empty Page", a "Top Sites" page, a "Favourites" page, 
+or a page which doesn't load like localhost, Vimari is not injected, 
+and cannot provide any keyboard shortcuts. To work around this, use
+the regular Safari shortcuts for navigating away from a new window
+or new tab.
 
 ## License
 
