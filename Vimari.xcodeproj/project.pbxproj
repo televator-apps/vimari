@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1E3C17023A65ED400A56807 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */; };
+		B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = B1FD3B9823A588DE00677A52 /* defaultSettings.json */; };
 		E320D0662337FC9800F2C3A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E320D0652337FC9800F2C3A4 /* Credits.rtf */; };
 		E320D06823397C5C00F2C3A4 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = E320D06723397C5C00F2C3A4 /* CHANGELOG.md */; };
 		E380F24A2331806400640547 /* Vimari.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E380F2492331806400640547 /* Vimari.entitlements */; };
@@ -27,7 +29,6 @@
 		E380F287233183EF00640547 /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27C233183EE00640547 /* keyboard-utils.js */; };
 		E380F288233183EF00640547 /* mousetrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27E233183EE00640547 /* mousetrap.js */; };
 		E380F289233183EF00640547 /* vimium-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27F233183EE00640547 /* vimium-scripts.js */; };
-		E380F28A233183EF00640547 /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F280233183EE00640547 /* settings.js */; };
 		E380F28B233183EF00640547 /* injected.css in Resources */ = {isa = PBXBuildFile; fileRef = E380F282233183EE00640547 /* injected.css */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
+		B1FD3B9823A588DE00677A52 /* defaultSettings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultSettings.json; sourceTree = "<group>"; };
 		E320D0652337FC9800F2C3A4 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		E320D06723397C5C00F2C3A4 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		E380F2462331806400640547 /* Vimari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vimari.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +83,6 @@
 		E380F27C233183EE00640547 /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
 		E380F27E233183EE00640547 /* mousetrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mousetrap.js; sourceTree = "<group>"; };
 		E380F27F233183EE00640547 /* vimium-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "vimium-scripts.js"; sourceTree = "<group>"; };
-		E380F280233183EE00640547 /* settings.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = settings.js; sourceTree = "<group>"; };
 		E380F282233183EE00640547 /* injected.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = injected.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1FD3B9723A588DE00677A52 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				B1FD3B9823A588DE00677A52 /* defaultSettings.json */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
 		E380F23D2331806300640547 = {
 			isa = PBXGroup;
 			children = (
@@ -149,8 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				E380F2612331806500640547 /* SafariExtensionHandler.swift */,
+				B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */,
 				E380F2632331806500640547 /* SafariExtensionViewController.swift */,
 				E380F2652331806500640547 /* SafariExtensionViewController.xib */,
+				B1FD3B9723A588DE00677A52 /* json */,
 				E380F281233183EE00640547 /* css */,
 				E380F277233183EE00640547 /* js */,
 				E380F2682331806500640547 /* Info.plist */,
@@ -169,7 +181,6 @@
 				E380F27B233183EE00640547 /* mocks.js */,
 				E380F27C233183EE00640547 /* keyboard-utils.js */,
 				E380F27D233183EE00640547 /* lib */,
-				E380F280233183EE00640547 /* settings.js */,
 			);
 			path = js;
 			sourceTree = "<group>";
@@ -285,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E380F26C2331806500640547 /* ToolbarItemIcon.pdf in Resources */,
-				E380F28A233183EF00640547 /* settings.js in Resources */,
+				B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */,
 				E380F28B233183EF00640547 /* injected.css in Resources */,
 				E380F285233183EF00640547 /* injected.js in Resources */,
 				E380F287233183EF00640547 /* keyboard-utils.js in Resources */,
@@ -316,6 +327,7 @@
 			files = (
 				E380F2642331806500640547 /* SafariExtensionViewController.swift in Sources */,
 				E380F2622331806500640547 /* SafariExtensionHandler.swift in Sources */,
+				B1E3C17023A65ED400A56807 /* ConfigurationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

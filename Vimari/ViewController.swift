@@ -1,10 +1,17 @@
 import Cocoa
 import SafariServices.SFSafariApplication
+import OSLog
 
 class ViewController: NSViewController {
     @IBOutlet var appNameLabel: NSTextField!
     @IBOutlet var extensionStatus: NSTextField!
     @IBOutlet var spinner: NSProgressIndicator!
+    
+    private enum Constant {
+        static let extensionIdentifier = "net.televator.Vimari.SafariExtension"
+        static let openSettings = "openSettings"
+        static let resetSettings = "resetSettings"
+    }
 
     func refreshExtensionStatus() {
         NSLog("Refreshing extension status")
@@ -12,7 +19,8 @@ class ViewController: NSViewController {
         extensionStatus.stringValue = "Checking extension status"
 
         if SFSafariServicesAvailable() {
-            SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: "net.televator.Vimari.SafariExtension") {
+            SFSafariExtensionManager.getStateOfSafariExtension(
+            withIdentifier: Constant.extensionIdentifier) {
                 state, error in
                 print("State", state as Any, "Error", error as Any, state?.isEnabled as Any)
 
@@ -51,10 +59,41 @@ class ViewController: NSViewController {
     }
 
     @IBAction func openSafariExtensionPreferences(_: AnyObject?) {
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: "net.televator.Vimari.SafariExtension") { error in
+        SFSafariApplication.showPreferencesForExtension(
+            withIdentifier: Constant.extensionIdentifier) { error in
             if let _ = error {
                 // Insert code to inform the user that something went wrong.
             }
+        }
+    }
+    
+    @IBAction func openSettingsAction(_ sender: Any) {
+        dispatchOpenSettings()
+    }
+    
+    @IBAction func resetSettingsAction(_ sender: Any) {
+        dispatchResetSettings()
+    }
+    
+    func dispatchOpenSettings() {
+        SFSafariApplication.dispatchMessage(
+            withName: Constant.openSettings,
+            toExtensionWithIdentifier: Constant.extensionIdentifier,
+            userInfo: nil) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+        }
+    }
+    
+    func dispatchResetSettings() {
+        SFSafariApplication.dispatchMessage(
+            withName: Constant.resetSettings,
+            toExtensionWithIdentifier: Constant.extensionIdentifier,
+            userInfo: nil) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
         }
     }
 }
