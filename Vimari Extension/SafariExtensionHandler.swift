@@ -106,9 +106,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     private func changeTab(withDirection direction: TabDirection, from page: SFSafariPage, completionHandler: (() -> Void)? = nil ) {
-        page.getContainingTab(completionHandler: { currentTab in
-            currentTab.getContainingWindow(completionHandler: { window in
-                window?.getAllTabs(completionHandler: { tabs in
+        page.getContainingTab() { currentTab in
+            // Using .currentWindow instead of .containingWindow, this prevents the window being nil in the case of a pinned tab.
+            self.currentWindow(from: page) { window in
+                window?.getAllTabs() { tabs in
+                    tabs.forEach { tab in NSLog(tab.description) }
                     if let currentIndex = tabs.firstIndex(of: currentTab) {
                         let indexStep = direction == TabDirection.forward ? 1 : -1
 
@@ -116,13 +118,28 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         // % calculates the remainder, not the modulus, so we need a
                         // custom function.
                         let newIndex = mod(currentIndex + indexStep, tabs.count)
-    
+
                         tabs[newIndex].activate(completionHandler: completionHandler ?? {})
-                        
+
                     }
-                })
-            })
-        })
+                }
+            }
+        }
+    }
+
+    /**
+     Returns the containing window of a SFSafariPage, if not available default to the current active window.
+     */
+    private func currentWindow(from page: SFSafariPage, completionHandler: @escaping ((SFSafariWindow?) -> Void)) {
+        page.getContainingTab() { $0.getContainingWindow() { window in
+            if window != nil {
+                return completionHandler(window)
+            } else {
+                SFSafariApplication.getActiveWindow() { window in
+                    return completionHandler(window)
+                }
+            }
+        }}
     }
     
     private func closeTab(from page: SFSafariPage) {
