@@ -3,7 +3,6 @@ import SafariServices.SFSafariApplication
 import OSLog
 
 class ViewController: NSViewController {
-    @IBOutlet var appNameLabel: NSTextField!
     @IBOutlet var extensionStatus: NSTextField!
     @IBOutlet var spinner: NSProgressIndicator!
     
@@ -53,7 +52,6 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        appNameLabel.stringValue = "Vimari"
 
         refreshExtensionStatus()
     }

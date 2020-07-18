@@ -100,17 +100,17 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Vimari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="260"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="240"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="24" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rW-Ks-POM">
-                                <rect key="frame" x="24" y="16" width="492" height="220"/>
+                                <rect key="frame" x="24" y="16" width="492" height="200"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLV-xE-AGT">
-                                        <rect key="frame" x="0.0" y="23" width="173" height="174"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLV-xE-AGT">
+                                        <rect key="frame" x="0.0" y="25" width="173" height="150"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWV-e2-WQh" userLabel="IconView">
-                                                <rect key="frame" x="12" y="24" width="150" height="150"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWV-e2-WQh" userLabel="IconView">
+                                                <rect key="frame" x="12" y="0.0" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="FWV-e2-WQh" secondAttribute="height" multiplier="1:1" id="Hsj-E3-na4"/>
                                                     <constraint firstAttribute="width" constant="150" id="Vot-Rc-SwK"/>
@@ -118,37 +118,16 @@
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="AppIcon" id="Hhb-TZ-Dhg"/>
                                             </imageView>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrs-Qz-OxA">
-                                                <rect key="frame" x="55" y="0.0" width="64" height="16"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EB0-ac-UZR">
-                                                        <rect key="frame" x="-2" y="0.0" width="68" height="16"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="App Name" id="S7v-7o-3vW">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
                                         </subviews>
                                         <visibilityPriorities>
-                                            <integer value="1000"/>
                                             <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
                                             <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnd-9v-Q3Z">
-                                        <rect key="frame" x="197" y="42" width="295" height="137"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnd-9v-Q3Z">
+                                        <rect key="frame" x="197" y="32" width="295" height="137"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JLq-JJ-dVk">
                                                 <rect key="frame" x="0.0" y="77" width="263" height="60"/>
@@ -225,7 +204,7 @@ DQ
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <box verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" ambiguous="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="R0c-hq-YMr">
+                                            <box verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="R0c-hq-YMr">
                                                 <rect key="frame" x="0.0" y="58" width="295" height="5"/>
                                             </box>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmT-fl-uPc">
@@ -294,7 +273,6 @@ DQ
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="appNameLabel" destination="EB0-ac-UZR" id="SDO-j1-PQa"/>
                         <outlet property="extensionStatus" destination="IFl-M5-VGt" id="tnX-8u-TFI"/>
                         <outlet property="spinner" destination="7PE-Oq-ICl" id="jdq-Eg-oS8"/>
                     </connections>
