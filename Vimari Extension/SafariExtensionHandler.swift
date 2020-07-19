@@ -95,8 +95,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     private func openNewTab() {
-        // Ideally this URL would be something that represents an empty tab better than localhost
-        let url = URL(string: Constant.newTabPageURL)!
+        var newPageUrl: String? = getSetting("openTabUrl") as? String
+        if newPageUrl == nil || newPageUrl!.isEmpty {
+            newPageUrl = Constant.newTabPageURL
+        }
+        let url = URL(string: newPageUrl!)!
         SFSafariApplication.getActiveWindow { activeWindow in
             activeWindow?.openTab(with: url, makeActiveIfPossible: true, completionHandler: { _ in
                 // Perform some action here after the page loads
@@ -149,6 +152,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     // MARK: Settings
+
+    private func getSetting(_ settingKey: String) -> Any? {
+        do {
+            let settings = try configuration.getUserSettings()
+            return settings[settingKey]
+        } catch {
+            NSLog("Was not able to retrieve the user settings\n\(error.localizedDescription)")
+            return nil
+        }
+    }
     
     private func updateSettings() {
         do {
