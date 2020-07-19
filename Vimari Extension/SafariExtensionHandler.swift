@@ -37,7 +37,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 try configuration.editConfigFile()
             case .resetSettings:
                 try configuration.resetConfigFile()
-            default:
+            case .none:
                 NSLog("Input not supported " + messageName)
             }
         } catch {
@@ -47,13 +47,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
-        guard let action = ActionType(rawValue: messageName) else {
-            NSLog("Received message with unsupported type: \(messageName)")
-            return
-        }
 
         NSLog("Received message: \(messageName)")
-        switch action {
+        switch ActionType(rawValue: messageName) {
         case .openLinkInTab:
             let url = URL(string: userInfo?["url"] as! String)
             openInNewTab(url: url!)
@@ -67,6 +63,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             closeTab(from: page)
         case .updateSettings:
             updateSettings()
+        case .none:
+            NSLog("Received message with unsupported type: \(messageName)")
         }
     }
 
