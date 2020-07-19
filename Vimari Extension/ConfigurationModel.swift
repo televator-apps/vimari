@@ -23,6 +23,10 @@ class ConfigurationModel: ConfigurationModelProtocol {
         static let userSettingsFileName = "userSettings"
         static let defaultEditor = "TextEdit"
     }
+
+    let userSettingsUrl: URL = FileManager.documentDirectoryURL
+        .appendingPathComponent(Constant.userSettingsFileName)
+        .appendingPathExtension("json")
     
     func editConfigFile() throws {
         let settingsFilePath = try findOrCreateUserSettings()
@@ -57,9 +61,7 @@ class ConfigurationModel: ConfigurationModelProtocol {
     }
     
     private func findOrCreateUserSettings() throws -> String {
-        let url = FileManager.documentDirectoryURL
-            .appendingPathComponent(Constant.userSettingsFileName)
-            .appendingPathExtension("json")
+        let url = userSettingsUrl
         let urlString = url.path
         if FileManager.default.fileExists(atPath: urlString) {
             return urlString
@@ -70,10 +72,8 @@ class ConfigurationModel: ConfigurationModelProtocol {
     }
     
     private func overwriteUserSettings() throws -> String {
-        let url = FileManager.documentDirectoryURL
-            .appendingPathComponent(Constant.userSettingsFileName)
-            .appendingPathExtension("json")
-        let urlString = url.path
+        let url = userSettingsUrl
+        let urlString = userSettingsUrl.path
         let data = try Bundle.main.getJSONData(from: Constant.settingsFileName)
         try data.write(to: url)
         return urlString
