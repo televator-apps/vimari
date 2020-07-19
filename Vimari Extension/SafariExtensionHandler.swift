@@ -156,7 +156,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             if let userSettings = try? configuration.getUserSettings() {
                 settings = userSettings
             } else {
-                settings = try configuration.getSettings()
+                settings = try configuration.getDefaultSettings()
             }
             SFSafariApplication.getActivePage {
                 $0?.dispatch(settings: settings)

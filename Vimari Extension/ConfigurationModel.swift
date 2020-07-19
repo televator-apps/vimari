@@ -9,7 +9,7 @@
 protocol ConfigurationModelProtocol {
     func editConfigFile() throws
     func resetConfigFile() throws
-    func getSettings() throws -> [String: Any]
+    func getDefaultSettings() throws -> [String: Any]
     func getUserSettings() throws -> [String : Any]
 }
 
@@ -44,7 +44,7 @@ class ConfigurationModel: ConfigurationModelProtocol {
         )
     }
     
-    func getSettings() throws -> [String : Any] {
+    func getDefaultSettings() throws -> [String : Any] {
         return try loadSettings(fromFile: Constant.settingsFileName)
     }
     
