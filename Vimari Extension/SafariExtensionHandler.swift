@@ -29,7 +29,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     let configuration: ConfigurationModelProtocol = ConfigurationModel()
     
     //MARK: Overrides
-    
+
+    // This method handles messages from the Vimari App (located /Vimari in the repository)
     override func messageReceivedFromContainingApp(withName messageName: String, userInfo: [String : Any]? = nil) {
         do {
             switch InputAction(rawValue: messageName) {
@@ -45,9 +46,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
 
     }
-    
-    override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
 
+    // This method handles messages from the extension (in the browser page)
+    override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
         NSLog("Received message: \(messageName)")
         switch ActionType(rawValue: messageName) {
         case .openLinkInTab:
