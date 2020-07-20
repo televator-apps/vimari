@@ -20,7 +20,6 @@
   "tabForward": "w",
   "tabBack": "q",
   "closeTab": "x",
-  "closeTabReverse": "shift+x",
   "openTab": "t",
   "openTabUrl": "https://duckduckgo.com/"
 }

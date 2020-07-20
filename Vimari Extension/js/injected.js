@@ -69,9 +69,6 @@ var actionMap = {
 	'closeTab':
 		function() { safari.extension.dispatchMessage("closeTab"); },
 
-	'closeTabReverse':
-		function() { safari.self.tab.dispatchMessage('closeTab', 1); },
-
 	'scrollDownHalfPage':
 		function() { window.scrollBy(0, window.innerHeight / 2); },
 
