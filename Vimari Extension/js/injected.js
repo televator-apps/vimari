@@ -167,7 +167,7 @@ function getKeyCode(actionName) {
         if(settings.modifier) {
             keyCode += settings.modifier + '+';
         }
-        return keyCode + settings[actionName];
+        return keyCode + settings["bindings"][actionName];
     }
 	return keyCode;
 }
