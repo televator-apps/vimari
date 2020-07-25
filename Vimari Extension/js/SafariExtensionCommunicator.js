@@ -1,6 +1,9 @@
-var SafariExtensionCommunicator = (function () {
+var SafariExtensionCommunicator = (function (msgHandler) {
     'use strict'
     var publicAPI = {}
+
+    // Connect the provided message handler to the received messages.
+    safari.self.addEventListener("message", msgHandler)
 
     var sendMessage = function(msgName) {
         safari.extension.dispatchMessage(msgName)
@@ -24,4 +27,4 @@ var SafariExtensionCommunicator = (function () {
 
     // Return only the public methods.
     return publicAPI;
-})();
+});

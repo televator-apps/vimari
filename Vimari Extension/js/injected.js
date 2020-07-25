@@ -25,7 +25,8 @@ var topWindow = (window.top === window),
 	extensionActive = true,
 	insertMode = false,
 	shiftKeyToggle = false,
-	hudDuration = 5000;
+	hudDuration = 5000,
+    extensionCommunicator = SafariExtensionCommunicator(messageHandler);
 
 var actionMap = {
 	'hintToggle' : function() {
@@ -37,10 +38,10 @@ var actionMap = {
 		activateLinkHintsMode(true, false); },
 
 	'tabForward':
-        function() { SafariExtensionCommunicator.requestTabForward(); },
+        function() { extensionCommunicator.requestTabForward(); },
 
 	'tabBack':
-        function() { SafariExtensionCommunicator.requestTabBackward() },
+        function() { extensionCommunicator.requestTabBackward() },
 
 	'scrollDown':
 		function() { window.scrollBy(0, settings.scrollSize); },
@@ -67,7 +68,7 @@ var actionMap = {
 		function() { openNewTab(); },
 
 	'closeTab':
-	    function() { SafariExtensionCommunicator.requestCloseTab(); },
+	    function() { extensionCommunicator.requestCloseTab(); },
 
 	'scrollDownHalfPage':
 		function() { window.scrollBy(0, window.innerHeight / 2); },
@@ -265,7 +266,7 @@ function isExcludedUrl(storedExcludedUrls, currentUrl) {
 
 function openNewTab() {
   console.log("-- Open new empty tab --");
-  SafariExtensionCommunicator.requestNewTab()
+  extensionCommunicator.requestNewTab()
 }
 
 // These formations removes the protocol and www so that
@@ -292,8 +293,7 @@ function inIframe () {
 }
 
 if(!inIframe()){
-    safari.self.addEventListener("message", messageHandler);
-    SafariExtensionCommunicator.requestSettingsUpdate()
+    extensionCommunicator.requestSettingsUpdate()
 }
 
 function messageHandler(event){
