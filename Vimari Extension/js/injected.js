@@ -86,7 +86,7 @@ var actionMap = {
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...
-Mousetrap.stopCallback = function(e, element, combo) {
+Mousetrap.prototype.stopCallback = function(e, element, combo) {
 	// Escape key is special, no need to stop. Vimari-specific.
 	if (combo === 'esc' || combo === 'ctrl+[') { return false; }
 
