@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65E444F324CC3A1B008EA1DC /* SafariExtensionCommunicator.js in Resources */ = {isa = PBXBuildFile; fileRef = 65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */; };
 		B1E3C17023A65ED400A56807 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */; };
 		B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = B1FD3B9823A588DE00677A52 /* defaultSettings.json */; };
 		E320D0662337FC9800F2C3A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E320D0652337FC9800F2C3A4 /* Credits.rtf */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = SafariExtensionCommunicator.js; sourceTree = "<group>"; };
 		B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
 		B1FD3B9823A588DE00677A52 /* defaultSettings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultSettings.json; sourceTree = "<group>"; };
 		E320D0652337FC9800F2C3A4 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				E380F27B233183EE00640547 /* mocks.js */,
 				E380F27C233183EE00640547 /* keyboard-utils.js */,
 				E380F27D233183EE00640547 /* lib */,
+				65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */,
 			);
 			path = js;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			files = (
 				E380F26C2331806500640547 /* ToolbarItemIcon.pdf in Resources */,
 				B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */,
+				65E444F324CC3A1B008EA1DC /* SafariExtensionCommunicator.js in Resources */,
 				E380F28B233183EF00640547 /* injected.css in Resources */,
 				E380F285233183EF00640547 /* injected.js in Resources */,
 				E380F287233183EF00640547 /* keyboard-utils.js in Resources */,

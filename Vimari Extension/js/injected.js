@@ -37,10 +37,10 @@ var actionMap = {
 		activateLinkHintsMode(true, false); },
 
 	'tabForward':
-        function() { safari.extension.dispatchMessage("tabForward"); },
+        function() { SafariExtensionCommunicator.requestTabForward(); },
 
 	'tabBack':
-        function() { safari.extension.dispatchMessage("tabBackward"); },
+        function() { SafariExtensionCommunicator.requestTabBackward() },
 
 	'scrollDown':
 		function() { window.scrollBy(0, settings.scrollSize); },
@@ -67,7 +67,7 @@ var actionMap = {
 		function() { openNewTab(); },
 
 	'closeTab':
-		function() { safari.extension.dispatchMessage("closeTab"); },
+	    function() { SafariExtensionCommunicator.requestCloseTab(); },
 
 	'scrollDownHalfPage':
 		function() { window.scrollBy(0, window.innerHeight / 2); },
@@ -265,7 +265,7 @@ function isExcludedUrl(storedExcludedUrls, currentUrl) {
 
 function openNewTab() {
   console.log("-- Open new empty tab --");
-  safari.extension.dispatchMessage("openNewTab");
+  SafariExtensionCommunicator.requestNewTab()
 }
 
 // These formations removes the protocol and www so that
@@ -293,7 +293,7 @@ function inIframe () {
 
 if(!inIframe()){
     safari.self.addEventListener("message", messageHandler);
-    safari.extension.dispatchMessage("updateSettings");
+    SafariExtensionCommunicator.requestSettingsUpdate()
 }
 
 function messageHandler(event){
