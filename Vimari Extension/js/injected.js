@@ -65,7 +65,7 @@ var actionMap = {
 		function() { window.location.reload(); },
 
 	'openTab':
-		function() { openNewTab(); },
+		function() { extensionCommunicator.requestNewTab(); },
 
 	'closeTab':
 	    function() { extensionCommunicator.requestCloseTab(); },
@@ -247,11 +247,6 @@ function isExcludedUrl(storedExcludedUrls, currentUrl) {
         }
     }
     return false;
-}
-
-function openNewTab() {
-  console.log("-- Open new empty tab --");
-  extensionCommunicator.requestNewTab()
 }
 
 // These formations removes the protocol and www so that
