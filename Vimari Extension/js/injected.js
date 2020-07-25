@@ -157,7 +157,26 @@ function executeAction(actionName) {
 
 function unbindKeyCodes() {
 	Mousetrap.reset();
+    document.removeEventListener("keydown", stopSitePropagation);
 }
+
+// Stops propagation of keyboard events in normal mode.  Adding this
+// callback to the document using the useCapture flag allows us to
+// prevent custom key behaviour implemented by the underlying website.
+function stopSitePropagation() {
+    return function (e) {
+        if (insertMode == false && !isActiveElementEditable()) {
+            e.stopPropagation()
+        }
+    }
+}
+
+// Check whether the current active element is editable.
+function isActiveElementEditable() {
+    const el = document.activeElement;
+    return (el != null && isEditable(el))
+}
+ 
 
 // Adds an optional modifier to the configured key code for the action
 function getKeyCode(actionName) {
@@ -225,7 +244,7 @@ function handleMessage(msg) {
  */
 function setSettings(msg) {
 	settings = msg;
-	bindKeyCodesToActions();
+	activateExtension();
 }
 
 /*
@@ -234,10 +253,16 @@ function setSettings(msg) {
 function setActive(msg) {
 	extensionActive = msg;
 	if(msg) {
-		bindKeyCodesToActions();
+        activateExtension();
 	} else {
 		unbindKeyCodes();
 	}
+}
+
+function activateExtension() {
+    // Stop keydown propagation
+    document.addEventListener("keydown", stopSitePropagation(), true);
+    bindKeyCodesToActions();
 }
 
 function isExcludedUrl(storedExcludedUrls, currentUrl) {
