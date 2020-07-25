@@ -1,3 +1,6 @@
+// Custom behaviour for Vimari implemented at line 185. Be aware of this
+// when upgrading mousetrap.
+
 /*global define:false */
 /**
  * Copyright 2012-2017 Craig Campbell
@@ -175,7 +178,10 @@
      */
     function _addEvent(object, type, callback) {
         if (object.addEventListener) {
-            object.addEventListener(type, callback, false);
+            // VIMARI CUSTOMISATION:
+            // We set the useCapture to true such that events are handled before
+            // being dispatched to any EventTarget beneath it in the DOM tree.
+            object.addEventListener(type, callback, true);
             return;
         }
 
