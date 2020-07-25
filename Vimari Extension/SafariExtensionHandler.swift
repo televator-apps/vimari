@@ -63,7 +63,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         case .closeTab:
             closeTab(from: page)
         case .updateSettings:
-            updateSettings()
+            updateSettings(page: page)
         case .none:
             NSLog("Received message with unsupported type: \(messageName)")
         }
@@ -163,7 +163,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
     
-    private func updateSettings() {
+    private func updateSettings(page: SFSafariPage) {
         do {
             let settings: [String: Any]
             if let userSettings = try? configuration.getUserSettings() {
@@ -171,20 +171,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             } else {
                 settings = try configuration.getDefaultSettings()
             }
-            SFSafariApplication.getActivePage {
-                $0?.dispatch(settings: settings)
-            }
+            page.dispatch(settings: settings)
         } catch {
             NSLog(error.localizedDescription)
         }
     }
     
-    private func fallbackSettings() {
+    private func fallbackSettings(page: SFSafariPage) {
         do {
             let settings = try configuration.getUserSettings()
-            SFSafariApplication.getActivePage {
-                $0?.dispatch(settings: settings)
-            }
+            page.dispatch(settings: settings)
         } catch {
             NSLog(error.localizedDescription)
         }
