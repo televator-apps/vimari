@@ -211,21 +211,6 @@ function isEmbed(element) { return ["EMBED", "OBJECT"].indexOf(element.tagName) 
 // ==========================
 
 /*
- * All messages are handled by this function
- */
-function handleMessage(msg) {
-	// Attempt to call a function with the same name as the message name
-	switch(msg.name) {
-		case 'setSettings':
-			setSettings(msg.message);
-			break;
-		case 'setActive':
-			setActive(msg.message);
-			break;
-	}
-}
-
-/*
  * Callback to pass settings to injected script
  */
 function setSettings(msg) {
