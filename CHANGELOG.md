@@ -3,6 +3,10 @@ Changelog
 
 ### Unreleased
 
+* Normal mode now isolates keybindings from the underlying website, this means that to interact with the underlying website you need to enter insert mode.
+* You can enter insert mode by pressing <kbd>i</kbd> and exit the mode by pressing <kbd>esc</kbd>.
+* In insert mode Vimari keybindings are disabled (except for <kbd>esc</kbd> which brings you back to normal mode) allowing you to interact with the underlying website.
+
 ### 2.0.3 (2019-09-26)
 
 * Fix newTabHintToggle to use shift+f instead of F
