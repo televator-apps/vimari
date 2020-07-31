@@ -25,7 +25,8 @@ var topWindow = (window.top === window),
 	extensionActive = true,
 	insertMode = false,
 	shiftKeyToggle = false,
-	hudDuration = 5000;
+	hudDuration = 5000,
+    extensionCommunicator = SafariExtensionCommunicator(messageHandler);
 
 var actionMap = {
 	'hintToggle' : function() {
@@ -37,10 +38,10 @@ var actionMap = {
 		activateLinkHintsMode(true, false); },
 
 	'tabForward':
-        function() { safari.extension.dispatchMessage("tabForward"); },
+        function() { extensionCommunicator.requestTabForward(); },
 
 	'tabBack':
-        function() { safari.extension.dispatchMessage("tabBackward"); },
+        function() { extensionCommunicator.requestTabBackward() },
 
 	'scrollDown':
 		function() { window.scrollBy(0, settings.scrollSize); },
@@ -64,13 +65,10 @@ var actionMap = {
 		function() { window.location.reload(); },
 
 	'openTab':
-		function() { openNewTab(); },
+		function() { extensionCommunicator.requestNewTab(); },
 
 	'closeTab':
-		function() { safari.extension.dispatchMessage("closeTab"); },
-
-	'closeTabReverse':
-		function() { safari.self.tab.dispatchMessage('closeTab', 1); },
+	    function() { extensionCommunicator.requestCloseTab(); },
 
 	'scrollDownHalfPage':
 		function() { window.scrollBy(0, window.innerHeight / 2); },
@@ -106,10 +104,14 @@ Mousetrap.prototype.stopCallback = function(e, element, combo) {
 };
 
 // Set up key codes to event handlers
-function bindKeyCodesToActions() {
+function bindKeyCodesToActions(settings) {
+    var excludedUrl = false
+    if (typeof settings != "undefined") {
+        excludedUrl = isExcludedUrl(settings.excludedUrls, document.URL)
+    }
 	// Only add if topWindow... not iframe
-	if (topWindow && !isExcludedUrl(settings.excludedUrls, document.URL)) {
-		Mousetrap.reset();
+    Mousetrap.reset();
+	if (topWindow && !excludedUrl) {
 		Mousetrap.bind('esc', enterNormalMode);
 		Mousetrap.bind('ctrl+[', enterNormalMode);
 		Mousetrap.bind('i', enterInsertMode);
@@ -181,10 +183,13 @@ function isActiveElementEditable() {
 // Adds an optional modifier to the configured key code for the action
 function getKeyCode(actionName) {
 	var keyCode = '';
-	if(settings.modifier) {
-		keyCode += settings.modifier + '+';
-	}
-	return keyCode + settings[actionName];
+    if (typeof settings != 'undefined') {
+        if(settings.modifier) {
+            keyCode += settings.modifier + '+';
+        }
+        return keyCode + settings["bindings"][actionName];
+    }
+	return keyCode;
 }
 
 
@@ -224,19 +229,10 @@ function isEmbed(element) { return ["EMBED", "OBJECT"].indexOf(element.tagName) 
 // Message handling functions
 // ==========================
 
-/*
- * All messages are handled by this function
- */
-function handleMessage(msg) {
-	// Attempt to call a function with the same name as the message name
-	switch(msg.name) {
-		case 'setSettings':
-			setSettings(msg.message);
-			break;
-		case 'setActive':
-			setActive(msg.message);
-			break;
-	}
+function messageHandler(event){
+    if (event.name == "updateSettingsEvent") {
+        setSettings(event.message);
+    }
 }
 
 /*
@@ -244,25 +240,13 @@ function handleMessage(msg) {
  */
 function setSettings(msg) {
 	settings = msg;
-	activateExtension();
+	activateExtension(settings);
 }
 
-/*
- * Enable or disable the extension on this tab
- */
-function setActive(msg) {
-	extensionActive = msg;
-	if(msg) {
-        activateExtension();
-	} else {
-		unbindKeyCodes();
-	}
-}
-
-function activateExtension() {
+function activateExtension(settings) {
     // Stop keydown propagation
     document.addEventListener("keydown", stopSitePropagation(), true);
-    bindKeyCodesToActions();
+    bindKeyCodesToActions(settings);
 }
 
 function isExcludedUrl(storedExcludedUrls, currentUrl) {
@@ -275,18 +259,13 @@ function isExcludedUrl(storedExcludedUrls, currentUrl) {
     for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
         url = excludedUrls[_i];
         formattedUrl = stripProtocolAndWww(url);
-        formattedUrl = formattedUrl.toLowerCase();
+        formattedUrl = formattedUrl.toLowerCase().trim();
         regexp = new RegExp('((.*)?(' + formattedUrl + ')+(.*))');
         if (currentUrl.toLowerCase().match(regexp)) {
             return true;
         }
     }
     return false;
-}
-
-function openNewTab() {
-  console.log("-- Open new empty tab --");
-  safari.extension.dispatchMessage("openNewTab");
 }
 
 // These formations removes the protocol and www so that
@@ -302,13 +281,20 @@ function stripProtocolAndWww(url) {
   return url;
 }
 
-// Bootstrap extension
-setSettings(window.getSettings());
 // Add event listener
-// safari.self.addEventListener("message", handleMessage, false);
-// Retrieve settings
-// safari.self.tab.dispatchMessage('getSettings', '');
+function inIframe () {
+    try {
+        return window.self !== window.top;
+    }
+    catch (e) {
+        return true;
+    }
+}
 
+if(!inIframe()){
+    extensionCommunicator.requestSettingsUpdate()
+}
+                                 
 // Export to make it testable
 window.isExcludedUrl = isExcludedUrl;
 window.stripProtocolAndWww = stripProtocolAndWww;
