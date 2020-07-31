@@ -112,7 +112,7 @@ private extension Bundle {
 
 private extension FileManager {
     static var documentDirectoryURL: URL {
-        let documentDirectoryURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let documentDirectoryURL = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         return documentDirectoryURL
     }
 }
