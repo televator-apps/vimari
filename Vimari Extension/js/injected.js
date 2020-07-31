@@ -84,7 +84,7 @@ var actionMap = {
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...
-Mousetrap.stopCallback = function(e, element, combo) {
+Mousetrap.prototype.stopCallback = function(e, element, combo) {
 	// Escape key is special, no need to stop. Vimari-specific.
 	if (combo === 'esc' || combo === 'ctrl+[') { return false; }
 
@@ -159,7 +159,26 @@ function executeAction(actionName) {
 
 function unbindKeyCodes() {
 	Mousetrap.reset();
+    document.removeEventListener("keydown", stopSitePropagation);
 }
+
+// Stops propagation of keyboard events in normal mode.  Adding this
+// callback to the document using the useCapture flag allows us to
+// prevent custom key behaviour implemented by the underlying website.
+function stopSitePropagation() {
+    return function (e) {
+        if (insertMode == false && !isActiveElementEditable()) {
+            e.stopPropagation()
+        }
+    }
+}
+
+// Check whether the current active element is editable.
+function isActiveElementEditable() {
+    const el = document.activeElement;
+    return (el != null && isEditable(el))
+}
+ 
 
 // Adds an optional modifier to the configured key code for the action
 function getKeyCode(actionName) {
@@ -210,24 +229,24 @@ function isEmbed(element) { return ["EMBED", "OBJECT"].indexOf(element.tagName) 
 // Message handling functions
 // ==========================
 
+function messageHandler(event){
+    if (event.name == "updateSettingsEvent") {
+        setSettings(event.message);
+    }
+}
+
 /*
  * Callback to pass settings to injected script
  */
 function setSettings(msg) {
 	settings = msg;
-	bindKeyCodesToActions(msg);
+	activateExtension(settings);
 }
 
-/*
- * Enable or disable the extension on this tab
- */
-function setActive(msg) {
-	extensionActive = msg;
-	if(msg) {
-		bindKeyCodesToActions();
-	} else {
-		unbindKeyCodes();
-	}
+function activateExtension(settings) {
+    // Stop keydown propagation
+    document.addEventListener("keydown", stopSitePropagation(), true);
+    bindKeyCodesToActions(settings);
 }
 
 function isExcludedUrl(storedExcludedUrls, currentUrl) {
@@ -274,12 +293,6 @@ function inIframe () {
 
 if(!inIframe()){
     extensionCommunicator.requestSettingsUpdate()
-}
-
-function messageHandler(event){
-    if (event.name == "updateSettingsEvent") {
-        setSettings(event.message);
-    }
 }
                                  
 // Export to make it testable
