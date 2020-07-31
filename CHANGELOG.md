@@ -2,6 +2,9 @@ Changelog
 -------------
 
 ### Unreleased
+* Add user customisation (based on the work of @nieldm [#163](https://github.com/televator-apps/vimari/pull/163)).
+* Update Vimari interface to allow users access to their configuration.
+* Remove `closeTabReverse` action.
 
 ### 2.0.3 (2019-09-26)
 

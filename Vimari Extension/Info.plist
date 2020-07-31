@@ -32,7 +32,7 @@
 		<array>
 			<dict>
 				<key>Script</key>
-				<string>settings.js</string>
+				<string>SafariExtensionCommunicator.js</string>
 			</dict>
 			<dict>
 				<key>Script</key>
