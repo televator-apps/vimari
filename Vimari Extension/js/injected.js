@@ -44,16 +44,16 @@ var actionMap = {
         function() { extensionCommunicator.requestTabBackward() },
 
 	'scrollDown':
-		function() { window.scrollBy(0, settings.scrollSize); },
+		function() { customScrollBy(0, settings.scrollSize); },
 
 	'scrollUp':
-		function() { window.scrollBy(0, -settings.scrollSize); },
+		function() { customScrollBy(0, -settings.scrollSize); },
 
 	'scrollLeft':
-		function() { window.scrollBy(-settings.scrollSize, 0); },
+		function() { customScrollBy(-settings.scrollSize, 0); },
 
 	'scrollRight':
-		function() { window.scrollBy(settings.scrollSize, 0); },
+		function() { customScrollBy(settings.scrollSize, 0); },
 
 	'goBack':
 		function() { window.history.back(); },
@@ -71,16 +71,16 @@ var actionMap = {
 	    function() { extensionCommunicator.requestCloseTab(); },
 
 	'scrollDownHalfPage':
-		function() { window.scrollBy(0, window.innerHeight / 2); },
+		function() { customScrollBy(0, window.innerHeight / 2); },
 
 	'scrollUpHalfPage':
-		function() { window.scrollBy(0, window.innerHeight / -2); },
+		function() { customScrollBy(0, window.innerHeight / -2); },
 
 	'goToPageBottom':
-		function() { window.scrollBy(0, document.body.scrollHeight); },
+		function() { customScrollBy(0, document.body.scrollHeight); },
 
 	'goToPageTop':
-		function() { window.scrollBy(0, -document.body.scrollHeight); }
+		function() { customScrollBy(0, -document.body.scrollHeight); }
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...

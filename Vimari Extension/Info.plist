@@ -32,6 +32,10 @@
 		<array>
 			<dict>
 				<key>Script</key>
+				<string>svim-scripts.js</string>
+			</dict>
+			<dict>
+				<key>Script</key>
 				<string>SafariExtensionCommunicator.js</string>
 			</dict>
 			<dict>
