@@ -5,10 +5,10 @@ Changelog
 * Add user customisation (based on the work of @nieldm [#163](https://github.com/televator-apps/vimari/pull/163)).
 * Update Vimari interface to allow users access to their configuration.
 * Remove `closeTabReverse` action.
-
 * Normal mode now isolates keybindings from the underlying website, this means that to interact with the underlying website you need to enter insert mode.
 * You can enter insert mode by pressing <kbd>i</kbd> and exit the mode by pressing <kbd>esc</kbd>.
 * In insert mode Vimari keybindings are disabled (except for <kbd>esc</kbd> which brings you back to normal mode) allowing you to interact with the underlying website.
+* Add smooth scrolling (based on sVim implementation).
 
 ### 2.0.3 (2019-09-26)
 
