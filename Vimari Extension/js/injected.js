@@ -25,16 +25,18 @@ var topWindow = (window.top === window),
     extensionActive = true,
     insertMode = false,
     shiftKeyToggle = false,
-    hudDuration = 5000,
+//     hudDuration = 5000,
     extensionCommunicator = SafariExtensionCommunicator(messageHandler);
 
 var actionMap = {
     'hintToggle' : function() {
-        HUD.showForDuration('Open link in current tab', hudDuration);
+        vNotify.notify({text: 'Current Tab', title:'Vimari', visibleDuration: 2000, showClose: false});
+//        HUD.showForDuration('Open link in current tab', hudDuration);
         activateLinkHintsMode(false, false); },
 
     'newTabHintToggle' : function() {
-        HUD.showForDuration('Open link in new tab', hudDuration);
+        vNotify.notify({text: 'New Tab', title:'Vimari', visibleDuration: 2000, showClose: false});
+//        HUD.showForDuration('Open link in new tab', hudDuration);
         activateLinkHintsMode(true, false); },
 
     'tabForward':
