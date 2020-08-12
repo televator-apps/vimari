@@ -2,6 +2,7 @@
 .vnotify-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
   font-size: 12px !important;
+  line-height: 1.5 !important;
   position: fixed !important; }
 /*
   .vnotify-container.vn-top-right {
