@@ -182,7 +182,7 @@ var vNotify = (function() {
     item = null;
   };
 
-  //New fade - based on http://toddmotto.com/raw-javascript-jquery-style-fadein-fadeout-functions-hugo-giraudel/
+  // New fade - based on http://toddmotto.com/raw-javascript-jquery-style-fadein-fadeout-functions-hugo-giraudel/
   var fade = function(type, ms, el) {
     var isIn = type === 'in',
       opacity = isIn ? 0 : el.style.opacity || 1,

@@ -1,0 +1,89 @@
+/* vNotify */
+.vnotify-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+  font-size: 12px !important;
+  position: fixed !important; }
+/*
+  .vnotify-container.vn-top-right {
+    right: 10px !important;
+    top: 10px !important; }
+  .vnotify-container.vn-top-left {
+    top: 10px !important;
+    left: 10px !important; }
+*/
+  .vnotify-container.vn-bottom-right {
+    bottom: 10px !important;
+    right: 10px !important; }
+/*
+  .vnotify-container.vn-bottom-left {
+    bottom: 10px !important;
+    left: 10px !important; }
+  .vnotify-container.vn-center {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; }
+ */
+  .vnotify-container .vn-close {
+    position: absolute !important;
+    top: 5px !important;
+    right: 10px !important;
+    width: 15px !important;
+    height: 15px !important;
+    padding: 2px !important;
+    cursor: pointer !important; }
+    .vnotify-container .vn-close: before, .vnotify-container .vn-close: after {
+      content: '' !important;
+      position: absolute !important;
+      width: 100% !important;
+      top: 50% !important;
+      height: 2px !important;
+      background: #fff !important; }
+    .vnotify-container .vn-close: before {
+      -webkit-transform: rotate(45deg) !important;
+/*      -moz-transform: rotate(45deg) !important;*/
+      transform: rotate(45deg) !important; }
+    .vnotify-container .vn-close: after {
+      -webkit-transform: rotate(-45deg) !important;
+/*      -moz-transform: rotate(-45deg) !important;*/
+      transform: rotate(-45deg) !important; }
+
+.vnotify-item {
+  width: 8em !important;
+  padding: 7.5px !important;
+  position: relative !important;
+  -webkit-border-radius: 5px !important;
+/*  -moz-border-radius: 5px !important;*/
+/*  -ms-border-radius: 5px !important;*/
+  border-radius: 5px !important;
+  margin-bottom: 7.5px !important;
+  opacity: 0.5 !important;
+/*  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=75)" !important;*/
+  filter: alpha(opacity=50) !important; }
+  .vnotify-item: hover {
+    opacity: 1 !important; }
+
+.vnotify-title {
+  font-weight: bold !important; }
+
+.vnotify-notify {
+background: #333 !important;
+color: #fff !important; }
+
+/*
+.vnotify-success {
+  background: #2ecc71 !important;
+  color: #fff !important; }
+
+.vnotify-error {
+  background: #e74c3c !important;
+  color: #fff !important; }
+
+.vnotify-warning {
+  background: #f39c12 !important;
+  color: #fff !important; }
+
+ .vnotify-info {
+ background: #3498db !important;
+ color: #fff !important; }
+
+*/

@@ -19,82 +19,82 @@
  */
 
 var topWindow = (window.top === window),
-	settings = {},
-	currentZoomLevel = 100,
-	linkHintCss = {},
-	extensionActive = true,
-	insertMode = false,
-	shiftKeyToggle = false,
-	hudDuration = 5000,
+    settings = {},
+    currentZoomLevel = 100,
+    linkHintCss = {},
+    extensionActive = true,
+    insertMode = false,
+    shiftKeyToggle = false,
+    hudDuration = 5000,
     extensionCommunicator = SafariExtensionCommunicator(messageHandler);
 
 var actionMap = {
-	'hintToggle' : function() {
-		HUD.showForDuration('Open link in current tab', hudDuration);
-		activateLinkHintsMode(false, false); },
+    'hintToggle' : function() {
+        HUD.showForDuration('Open link in current tab', hudDuration);
+        activateLinkHintsMode(false, false); },
 
-	'newTabHintToggle' : function() {
-		HUD.showForDuration('Open link in new tab', hudDuration);
-		activateLinkHintsMode(true, false); },
+    'newTabHintToggle' : function() {
+        HUD.showForDuration('Open link in new tab', hudDuration);
+        activateLinkHintsMode(true, false); },
 
-	'tabForward':
+    'tabForward':
         function() { extensionCommunicator.requestTabForward(); },
 
-	'tabBack':
+    'tabBack':
         function() { extensionCommunicator.requestTabBackward() },
 
-	'scrollDown':
-		function() { window.scrollBy(0, settings.scrollSize); },
+    'scrollDown':
+        function() { window.scrollBy(0, settings.scrollSize); },
 
-	'scrollUp':
-		function() { window.scrollBy(0, -settings.scrollSize); },
+    'scrollUp':
+        function() { window.scrollBy(0, -settings.scrollSize); },
 
-	'scrollLeft':
-		function() { window.scrollBy(-settings.scrollSize, 0); },
+    'scrollLeft':
+        function() { window.scrollBy(-settings.scrollSize, 0); },
 
-	'scrollRight':
-		function() { window.scrollBy(settings.scrollSize, 0); },
+    'scrollRight':
+        function() { window.scrollBy(settings.scrollSize, 0); },
 
-	'goBack':
-		function() { window.history.back(); },
+    'goBack':
+        function() { window.history.back(); },
 
-	'goForward':
-		function() { window.history.forward(); },
+    'goForward':
+        function() { window.history.forward(); },
 
-	'reload':
-		function() { window.location.reload(); },
+    'reload':
+        function() { window.location.reload(); },
 
-	'openTab':
-		function() { extensionCommunicator.requestNewTab(); },
+    'openTab':
+        function() { extensionCommunicator.requestNewTab(); },
 
-	'closeTab':
-	    function() { extensionCommunicator.requestCloseTab(); },
+    'closeTab':
+        function() { extensionCommunicator.requestCloseTab(); },
 
-	'scrollDownHalfPage':
-		function() { window.scrollBy(0, window.innerHeight / 2); },
+    'scrollDownHalfPage':
+        function() { window.scrollBy(0, window.innerHeight / 2); },
 
-	'scrollUpHalfPage':
-		function() { window.scrollBy(0, window.innerHeight / -2); },
+    'scrollUpHalfPage':
+        function() { window.scrollBy(0, window.innerHeight / -2); },
 
-	'goToPageBottom':
-		function() { window.scrollBy(0, document.body.scrollHeight); },
+    'goToPageBottom':
+        function() { window.scrollBy(0, document.body.scrollHeight); },
 
-	'goToPageTop':
-		function() { window.scrollBy(0, -document.body.scrollHeight); }
+    'goToPageTop':
+        function() { window.scrollBy(0, -document.body.scrollHeight); }
 };
 
 // Meant to be overridden, but still has to be copy/pasted from the original...
 Mousetrap.prototype.stopCallback = function(e, element, combo) {
-	// Escape key is special, no need to stop. Vimari-specific.
-	if (combo === 'esc' || combo === 'ctrl+[') { return false; }
+    // Escape key is special, no need to stop. Vimari-specific.
+    if (combo === 'esc' || combo === 'ctrl+[') { return false; }
 
   // Preserve the behavior of allowing ex. ctrl-j in an input
   if (settings.modifier) { return false; }
 
-	// if the element has the class "mousetrap" then no need to stop
-	if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
-		return false;
-	}
+    // if the element has the class "mousetrap" then no need to stop
+    if ((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
+        return false;
+    }
 
     var tagName = element.tagName;
     var contentIsEditable = (element.contentEditable && element.contentEditable === 'true');
@@ -107,37 +107,33 @@ Mousetrap.prototype.stopCallback = function(e, element, combo) {
 function bindKeyCodesToActions(settings) {
     var excludedUrl = false
     if (typeof settings != "undefined") {
-        excludedUrl = isDesignatedUrl(settings.excludedUrls, document.URL);
-        insertModeUrl = isDesignatedUrl(settings.insertModeUrls, document.URL);
+        excludedUrl = isExcludedUrl(settings.excludedUrls, document.URL)
     }
-	// Only add if topWindow... not iframe
+    // Only add if topWindow... not iframe
     Mousetrap.reset();
-	if (topWindow && !excludedUrl) {
-		Mousetrap.bind('esc', enterNormalMode);
-		Mousetrap.bind('ctrl+[', enterNormalMode);
-		Mousetrap.bind('i', enterInsertMode);
-		for (var actionName in actionMap) {
-			if (actionMap.hasOwnProperty(actionName)) {
-				var keyCode = getKeyCode(actionName);
-				Mousetrap.bind(keyCode, executeAction(actionName), 'keydown');
-			}
-		}
-	}
-    if (insertModeUrl) {
-        enterInsertMode();
+    if (topWindow && !excludedUrl) {
+        Mousetrap.bind('esc', enterNormalMode);
+        Mousetrap.bind('ctrl+[', enterNormalMode);
+        Mousetrap.bind('i', enterInsertMode);
+        for (var actionName in actionMap) {
+            if (actionMap.hasOwnProperty(actionName)) {
+                var keyCode = getKeyCode(actionName);
+                Mousetrap.bind(keyCode, executeAction(actionName), 'keydown');
             }
+        }
+    }
 }
 
 function enterNormalMode() {
-	// Clear input focus
-	document.activeElement.blur();
+    // Clear input focus
+    document.activeElement.blur();
 
-	// Clear link hints (if any)
-	deactivateLinkHintsMode();
+    // Clear link hints (if any)
+    deactivateLinkHintsMode();
 
-	// Re-enable if in insert mode
-	insertMode = false;
-	Mousetrap.bind('i', enterInsertMode);
+    // Re-enable if in insert mode
+    insertMode = false;
+    Mousetrap.bind('i', enterInsertMode);
     var container = document.querySelectorAll('.vnotify-container');
     for (var i=0; i< container.length; i++) {
       container[i].outerHTML = '';
@@ -149,27 +145,27 @@ function enterNormalMode() {
 // Calling it 'insert mode', but it's really just a user-triggered
 // off switch for the actions.
 function enterInsertMode() {
-	insertMode = true;
-	Mousetrap.unbind('i');
+    insertMode = true;
+    Mousetrap.unbind('i');
     vNotify.notify({text: 'Insert Mode', title:'Vimari', visibleDuration: 500, showClose: false, sticky: true});
 }
 
 function executeAction(actionName) {
-	return function() {
-		// don't do anything if we're not supposed to
-		if (linkHintsModeActivated || !extensionActive || insertMode)
-			return;
+    return function() {
+        // don't do anything if we're not supposed to
+        if (linkHintsModeActivated || !extensionActive || insertMode)
+            return;
 
-		//Call the action function
-		actionMap[actionName]();
+        //Call the action function
+        actionMap[actionName]();
 
-		// Tell mousetrap to stop propagation
-		return false;
-	}
+        // Tell mousetrap to stop propagation
+        return false;
+    }
 }
 
 function unbindKeyCodes() {
-	Mousetrap.reset();
+    Mousetrap.reset();
     document.removeEventListener("keydown", stopSitePropagation);
 }
 
@@ -193,14 +189,14 @@ function isActiveElementEditable() {
 
 // Adds an optional modifier to the configured key code for the action
 function getKeyCode(actionName) {
-	var keyCode = '';
+    var keyCode = '';
     if (typeof settings != 'undefined') {
         if(settings.modifier) {
             keyCode += settings.modifier + '+';
         }
         return keyCode + settings["bindings"][actionName];
     }
-	return keyCode;
+    return keyCode;
 }
 
 
@@ -210,7 +206,7 @@ function getKeyCode(actionName) {
  * css is pre loaded into the page.
  */
 function addCssToPage(css) {
-	return;
+    return;
 }
 
 
@@ -222,10 +218,10 @@ function addCssToPage(css) {
  * can be controlled via the keyboard, particularly SELECT combo boxes.
  */
 function isEditable(target) {
-	if (target.getAttribute("contentEditable") === "true")
-		return true;
-	var focusableInputs = ["input", "textarea", "select", "button"];
-	return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
+    if (target.getAttribute("contentEditable") === "true")
+        return true;
+    var focusableInputs = ["input", "textarea", "select", "button"];
+    return focusableInputs.indexOf(target.tagName.toLowerCase()) >= 0;
 }
 
 
@@ -250,8 +246,8 @@ function messageHandler(event){
  * Callback to pass settings to injected script
  */
 function setSettings(msg) {
-	settings = msg;
-	activateExtension(settings);
+    settings = msg;
+    activateExtension(settings);
 }
 
 function activateExtension(settings) {
@@ -260,15 +256,15 @@ function activateExtension(settings) {
     bindKeyCodesToActions(settings);
 }
 
-function isDesignatedUrl(storedDesignatedUrls, currentUrl) {
-	if (!storedDesignatedUrls.length) {
-		return false;
-	}
+function isExcludedUrl(storedExcludedUrls, currentUrl) {
+    if (!storedExcludedUrls.length) {
+        return false;
+    }
 
-    var designatedUrls, regexp, url, formattedUrl, _i, _len;
-    designatedUrls = storedDesignatedUrls.split(",");
-    for (_i = 0, _len = designatedUrls.length; _i < _len; _i++) {
-        url = designatedUrls[_i];
+    var excludedUrls, regexp, url, formattedUrl, _i, _len;
+    excludedUrls = storedExcludedUrls.split(",");
+    for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
+        url = excludedUrls[_i];
         formattedUrl = stripProtocolAndWww(url);
         formattedUrl = formattedUrl.toLowerCase().trim();
         regexp = new RegExp('((.*)?(' + formattedUrl + ')+(.*))');
@@ -307,5 +303,5 @@ if(!inIframe()){
 }
                                  
 // Export to make it testable
-window.isDesignatedUrl = isDesignatedUrl;
+window.isExcludedUrl = isExcludedUrl;
 window.stripProtocolAndWww = stripProtocolAndWww;
