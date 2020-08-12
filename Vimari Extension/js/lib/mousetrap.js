@@ -1,7 +1,8 @@
 // Custom behaviour for Vimari implemented at line 185. Be aware of this
 // when upgrading mousetrap.
 
-/*global define:false */
+/* global define:false */
+
 /**
  * Copyright 2012-2017 Craig Campbell
  *
@@ -23,6 +24,7 @@
  * @version 1.6.5
  * @url craig.is/killing/mice
  */
+
 (function(window, document, undefined) {
 
     // Check if mousetrap is used inside browser, if not, return

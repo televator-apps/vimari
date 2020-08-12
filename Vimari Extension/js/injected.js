@@ -107,7 +107,8 @@ Mousetrap.prototype.stopCallback = function(e, element, combo) {
 function bindKeyCodesToActions(settings) {
     var excludedUrl = false
     if (typeof settings != "undefined") {
-        excludedUrl = isExcludedUrl(settings.excludedUrls, document.URL)
+        excludedUrl = isDesignatedUrl(settings.excludedUrls, document.URL);
+        insertModeUrl = isDesignatedUrl(settings.insertModeUrls, document.URL);
     }
 	// Only add if topWindow... not iframe
     Mousetrap.reset();
@@ -122,6 +123,9 @@ function bindKeyCodesToActions(settings) {
 			}
 		}
 	}
+    if (insertModeUrl) {
+        enterInsertMode();
+            }
 }
 
 function enterNormalMode() {
@@ -256,15 +260,15 @@ function activateExtension(settings) {
     bindKeyCodesToActions(settings);
 }
 
-function isExcludedUrl(storedExcludedUrls, currentUrl) {
-	if (!storedExcludedUrls.length) {
+function isDesignatedUrl(storedDesignatedUrls, currentUrl) {
+	if (!storedDesignatedUrls.length) {
 		return false;
 	}
 
-    var excludedUrls, regexp, url, formattedUrl, _i, _len;
-    excludedUrls = storedExcludedUrls.split(",");
-    for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
-        url = excludedUrls[_i];
+    var designatedUrls, regexp, url, formattedUrl, _i, _len;
+    designatedUrls = storedDesignatedUrls.split(",");
+    for (_i = 0, _len = designatedUrls.length; _i < _len; _i++) {
+        url = designatedUrls[_i];
         formattedUrl = stripProtocolAndWww(url);
         formattedUrl = formattedUrl.toLowerCase().trim();
         regexp = new RegExp('((.*)?(' + formattedUrl + ')+(.*))');
@@ -303,5 +307,5 @@ if(!inIframe()){
 }
                                  
 // Export to make it testable
-window.isExcludedUrl = isExcludedUrl;
+window.isDesignatedUrl = isDesignatedUrl;
 window.stripProtocolAndWww = stripProtocolAndWww;

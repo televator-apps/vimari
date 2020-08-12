@@ -1,3 +1,7 @@
+/*
+* Code in this file is taken directly from [Vanilla-Notify](https://github.com/MLaritz/Vanilla-Notify)
+*/
+
 var vNotify = (function() {
 
   var positionOption = {

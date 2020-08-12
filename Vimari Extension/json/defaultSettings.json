@@ -1,5 +1,6 @@
 {
   "excludedUrls": "",
+  "insertModeUrls": "",
   "linkHintCharacters": "asdfjklqwerzxc",
   "detectByCursorStyle": false,
   "scrollSize": 50,
