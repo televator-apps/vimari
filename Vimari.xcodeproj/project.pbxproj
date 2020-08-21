@@ -533,6 +533,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vimari/Info.plist;
@@ -540,6 +541,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = "2.1.0-beta2";
 				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -556,6 +558,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vimari/Info.plist;
@@ -563,6 +566,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = "2.1.0-beta2";
 				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
