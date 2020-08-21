@@ -184,15 +184,26 @@ function enterNormalMode() {
 	// Clear link hints (if any)
 	deactivateLinkHintsMode();
 
+
+    if (insertMode === false) {
+        return // We are already in normal mode.
+    }
+
 	// Re-enable if in insert mode
 	insertMode = false;
+    HUD.showForDuration('Normal Mode', hudDuration);
+
 	Mousetrap.bind('i', enterInsertMode);
 }
 
 // Calling it 'insert mode', but it's really just a user-triggered
 // off switch for the actions.
 function enterInsertMode() {
-	insertMode = true;
+    if (insertMode === true) {
+        return // We are already in insert mode.
+    }
+    insertMode = true;
+    HUD.showForDuration('Insert Mode', hudDuration);
 	Mousetrap.unbind('i');
 }
 
