@@ -9,6 +9,7 @@ Changelog
 * You can enter insert mode by pressing <kbd>i</kbd> and exit the mode by pressing <kbd>esc</kbd>. Activating either mode will display the HUD.
 * In insert mode Vimari keybindings are disabled (except for <kbd>esc</kbd> which brings you back to normal mode) allowing you to interact with the underlying website.
 * Add `goToFirstInput` action on <kbd>g i</kbd> by default (by [isundaylee](https://github.com/isundaylee)).
+* Add smooth scrolling (based on sVim implementation).
 
 ### 2.0.3 (2019-09-26)
 

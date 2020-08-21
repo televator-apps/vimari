@@ -5,6 +5,8 @@
   "scrollSize": 50,
   "openTabUrl": "https://duckduckgo.com/",
   "modifier": "",
+  "smoothScroll": true,
+  "scrollDuration": 25,
   "bindings": {
       "hintToggle": "f",
       "newTabHintToggle": "shift+f",
