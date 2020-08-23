@@ -33,6 +33,7 @@
 			<dict>
 				<key>Script</key>
 				<string>vnotify.js</string>
+				<string>svim-scripts.js</string>
 			</dict>
 			<dict>
 				<key>Script</key>

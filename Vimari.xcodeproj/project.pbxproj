@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C15F22C24E4441C009DC451 /* vnotify.css in Resources */ = {isa = PBXBuildFile; fileRef = 4C15F22B24E4441C009DC451 /* vnotify.css */; };
 		4C9DFE0C24E37A60002B9455 /* vnotify.js in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DFE0B24E37A60002B9455 /* vnotify.js */; };
+		659033F124E2B77400432D0E /* svim-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = 659033F024E2B77400432D0E /* svim-scripts.js */; };
 		65E444F324CC3A1B008EA1DC /* SafariExtensionCommunicator.js in Resources */ = {isa = PBXBuildFile; fileRef = 65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */; };
 		B1E3C17023A65ED400A56807 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */; };
 		B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = B1FD3B9823A588DE00677A52 /* defaultSettings.json */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		4C15F22B24E4441C009DC451 /* vnotify.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = vnotify.css; sourceTree = "<group>"; };
 		4C9DFE0B24E37A60002B9455 /* vnotify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = vnotify.js; sourceTree = "<group>"; };
+		659033F024E2B77400432D0E /* svim-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "svim-scripts.js"; sourceTree = "<group>"; };
 		65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = SafariExtensionCommunicator.js; sourceTree = "<group>"; };
 		B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
 		B1FD3B9823A588DE00677A52 /* defaultSettings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultSettings.json; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		E380F27D233183EE00640547 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				659033F024E2B77400432D0E /* svim-scripts.js */,
 				E380F27E233183EE00640547 /* mousetrap.js */,
 				E380F27F233183EE00640547 /* vimium-scripts.js */,
 				4C9DFE0B24E37A60002B9455 /* vnotify.js */,
@@ -304,6 +307,7 @@
 				4C9DFE0C24E37A60002B9455 /* vnotify.js in Resources */,
 				E380F26C2331806500640547 /* ToolbarItemIcon.pdf in Resources */,
 				B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */,
+				659033F124E2B77400432D0E /* svim-scripts.js in Resources */,
 				65E444F324CC3A1B008EA1DC /* SafariExtensionCommunicator.js in Resources */,
 				E380F28B233183EF00640547 /* injected.css in Resources */,
 				E380F285233183EF00640547 /* injected.js in Resources */,
@@ -537,13 +541,15 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 98QL363Q8S;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vimari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = "2.1.0-beta2";
 				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -560,13 +566,15 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 98QL363Q8S;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vimari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = "2.1.0-beta2";
 				PRODUCT_BUNDLE_IDENTIFIER = net.televator.Vimari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
