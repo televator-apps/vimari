@@ -1,7 +1,5 @@
 # Vimari - Keyboard Shortcuts extension for Safari
 
-[![Actions Status](https://github.com/danielcompton/vimari/workflows/Node%20CI/badge.svg)](https://github.com/danielcompton/vimari/actions)
-
 [![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US.svg)](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12)
 
 Vimari is a Safari extension that provides keyboard based navigation.

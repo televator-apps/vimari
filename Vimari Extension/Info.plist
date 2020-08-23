@@ -32,6 +32,10 @@
 		<array>
 			<dict>
 				<key>Script</key>
+				<string>vnotify.js</string>
+			</dict>
+			<dict>
+				<key>Script</key>
 				<string>svim-scripts.js</string>
 			</dict>
 			<dict>
@@ -61,6 +65,10 @@
 		</array>
 		<key>SFSafariStyleSheet</key>
 		<array>
+			<dict>
+				<key>Style Sheet</key>
+				<string>vnotify.css</string>
+			</dict>
 			<dict>
 				<key>Style Sheet</key>
 				<string>injected.css</string>

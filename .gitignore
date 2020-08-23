@@ -19,3 +19,4 @@ timeline.xctimeline
 playground.xcworkspace
 
 .vscode/
+.DS_Store

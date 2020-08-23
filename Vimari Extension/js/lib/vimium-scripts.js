@@ -2,11 +2,11 @@
  * Code in this file is taken directly from vimium
  */
 
-
 /*
  * A heads-up-display (HUD) for showing Vimium page operations.
  * Note: you cannot interact with the HUD until document.body is available.
  */
+
 HUD = {
   _tweenId: -1,
   _displayElement: null,
