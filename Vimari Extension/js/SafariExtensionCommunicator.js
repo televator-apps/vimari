@@ -12,9 +12,6 @@ var SafariExtensionCommunicator = (function (msgHandler) {
     publicAPI.requestSettingsUpdate = function() {
         sendMessage("updateSettings")
     }
-    publicAPI.requestNewTab = function() {
-        sendMessage("openNewTab")
-    }
     publicAPI.requestTabForward = function() {
         sendMessage("tabForward")
     }
