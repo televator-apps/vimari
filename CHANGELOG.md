@@ -2,6 +2,7 @@ Changelog
 -------------
 
 ### Unreleased
+* Remove eager link hint triggering [#190](https://github.com/televator-apps/vimari/issues/190)
 * Add user customisation (based on the work of @nieldm [#163](https://github.com/televator-apps/vimari/pull/163)).
 * Update Vimari interface to allow users access to their configuration.
 * Remove `closeTabReverse` action.
