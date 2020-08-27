@@ -1,1 +1,2 @@
 --disable wrapMultilineStatementBraces
+--exclude .build/
