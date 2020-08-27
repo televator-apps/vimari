@@ -9,7 +9,7 @@ on: push
   #     - '**/*.swift'
 
 jobs:
-  build:
+  format:
     runs-on: ubuntu-latest
     steps:
     # Setup
@@ -24,7 +24,13 @@ jobs:
     # Run SwiftFormat in linting mode.
     - name: SwiftFormat
       run: swift run swiftformat --lint .
-      
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    # Setup
+    - uses: actions/checkout@v1
+
     # Use custom SwiftLint action for GitHub inline comments.
     - name: SwiftLint
       uses: norio-nomura/action-swiftlint@3.1.0
