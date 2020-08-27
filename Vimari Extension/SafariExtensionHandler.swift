@@ -2,7 +2,6 @@ import SafariServices
 
 enum ActionType: String {
     case openLinkInTab
-    case openNewTab
     case tabForward
     case tabBackward
     case closeTab
@@ -54,8 +53,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         case .openLinkInTab:
             let url = URL(string: userInfo?["url"] as! String)
             openInNewTab(url: url!)
-        case .openNewTab:
-            openNewTab()
         case .tabForward:
             changeTab(withDirection: .forward, from: page)
         case .tabBackward:
@@ -89,19 +86,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     private func openInNewTab(url: URL) {
         SFSafariApplication.getActiveWindow { activeWindow in
             activeWindow?.openTab(with: url, makeActiveIfPossible: false, completionHandler: { _ in
-                // Perform some action here after the page loads
-            })
-        }
-    }
-
-    private func openNewTab() {
-        var newPageUrl: String? = getSetting("openTabUrl") as? String
-        if newPageUrl == nil || newPageUrl!.isEmpty {
-            newPageUrl = Constant.newTabPageURL
-        }
-        let url = URL(string: newPageUrl!)!
-        SFSafariApplication.getActiveWindow { activeWindow in
-            activeWindow?.openTab(with: url, makeActiveIfPossible: true, completionHandler: { _ in
                 // Perform some action here after the page loads
             })
         }

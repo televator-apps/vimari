@@ -65,7 +65,7 @@ var actionMap = {
 		function() { window.location.reload(); },
 
 	'openTab':
-		function() { extensionCommunicator.requestNewTab(); },
+		function() { window.open(settings.openTabUrl); },
 
 	'closeTab':
 	    function() { extensionCommunicator.requestCloseTab(); },
