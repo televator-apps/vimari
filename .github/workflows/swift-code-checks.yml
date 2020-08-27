@@ -1,0 +1,32 @@
+name: Swift Code Checks
+
+on: push
+  # pull_request:
+  #   paths:
+  #     - '.github/workflows/swift-code-checks.yml'
+  #     - '.swiftformat.yml'
+  #     - '.swiftlint.yml'
+  #     - '**/*.swift'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Setup
+    - uses: actions/checkout@v1
+    - uses: actions/cache@v2
+      with:
+        path: .build
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+          
+    # Run SwiftFormat in linting mode.
+    - name: SwiftFormat
+      run: swift run swiftformat --lint .
+      
+    # Use custom SwiftLint action for GitHub inline comments.
+    - name: SwiftLint
+      uses: norio-nomura/action-swiftlint@3.1.0
+      env:
+        DIFF_BASE: ${{ github.base_ref }}

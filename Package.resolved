@@ -1,0 +1,88 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Commandant",
+        "repositoryURL": "https://github.com/Carthage/Commandant.git",
+        "state": {
+          "branch": null,
+          "revision": "ab68611013dec67413628ac87c1f29e8427bc8e4",
+          "version": "0.17.0"
+        }
+      },
+      {
+        "package": "Nimble",
+        "repositoryURL": "https://github.com/Quick/Nimble.git",
+        "state": {
+          "branch": null,
+          "revision": "2b1809051b4a65c1d7f5233331daa24572cd7fca",
+          "version": "8.1.1"
+        }
+      },
+      {
+        "package": "Quick",
+        "repositoryURL": "https://github.com/Quick/Quick.git",
+        "state": {
+          "branch": null,
+          "revision": "09b3becb37cb2163919a3842a4c5fa6ec7130792",
+          "version": "2.2.1"
+        }
+      },
+      {
+        "package": "SourceKitten",
+        "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
+        "state": {
+          "branch": null,
+          "revision": "77a4dbbb477a8110eb8765e3c44c70fb4929098f",
+          "version": "0.29.0"
+        }
+      },
+      {
+        "package": "SwiftFormat",
+        "repositoryURL": "https://github.com/nicklockwood/SwiftFormat",
+        "state": {
+          "branch": null,
+          "revision": "e5675ae49383e0d248d495bcfbedaa6f9b1f5375",
+          "version": "0.45.6"
+        }
+      },
+      {
+        "package": "SwiftLint",
+        "repositoryURL": "https://github.com/Realm/SwiftLint",
+        "state": {
+          "branch": null,
+          "revision": "da66a81710714112d51041264440987b992849c3",
+          "version": "0.40.0"
+        }
+      },
+      {
+        "package": "SwiftyTextTable",
+        "repositoryURL": "https://github.com/scottrhoyt/SwiftyTextTable.git",
+        "state": {
+          "branch": null,
+          "revision": "c6df6cf533d120716bff38f8ff9885e1ce2a4ac3",
+          "version": "0.9.0"
+        }
+      },
+      {
+        "package": "SWXMLHash",
+        "repositoryURL": "https://github.com/drmohundro/SWXMLHash.git",
+        "state": {
+          "branch": null,
+          "revision": "a4931e5c3bafbedeb1601d3bb76bbe835c6d475a",
+          "version": "5.0.1"
+        }
+      },
+      {
+        "package": "Yams",
+        "repositoryURL": "https://github.com/jpsim/Yams.git",
+        "state": {
+          "branch": null,
+          "revision": "c947a306d2e80ecb2c0859047b35c73b8e1ca27f",
+          "version": "2.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

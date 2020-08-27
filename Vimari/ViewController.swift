@@ -1,11 +1,11 @@
 import Cocoa
-import SafariServices.SFSafariApplication
 import OSLog
+import SafariServices.SFSafariApplication
 
 class ViewController: NSViewController {
     @IBOutlet var extensionStatus: NSTextField!
     @IBOutlet var spinner: NSProgressIndicator!
-    
+
     private enum Constant {
         static let extensionIdentifier = "net.televator.Vimari.SafariExtension"
         static let openSettings = "openSettings"
@@ -19,12 +19,10 @@ class ViewController: NSViewController {
 
         if SFSafariServicesAvailable() {
             SFSafariExtensionManager.getStateOfSafariExtension(
-            withIdentifier: Constant.extensionIdentifier) {
-                state, error in
+                withIdentifier: Constant.extensionIdentifier) { state, error in
                 print("State", state as Any, "Error", error as Any, state?.isEnabled as Any)
 
                 DispatchQueue.main.async {
-                    // TODO: handle this getting updated in the Safari preferences too.
                     if let state = state {
                         if state.isEnabled {
                             self.extensionStatus.stringValue = "Enabled"
@@ -59,39 +57,41 @@ class ViewController: NSViewController {
     @IBAction func openSafariExtensionPreferences(_: AnyObject?) {
         SFSafariApplication.showPreferencesForExtension(
             withIdentifier: Constant.extensionIdentifier) { error in
-            if let _ = error {
+            if error != nil {
                 // Insert code to inform the user that something went wrong.
             }
         }
     }
-    
-    @IBAction func openSettingsAction(_ sender: Any) {
+
+    @IBAction func openSettingsAction(_: Any) {
         dispatchOpenSettings()
     }
-    
-    @IBAction func resetSettingsAction(_ sender: Any) {
+
+    @IBAction func resetSettingsAction(_: Any) {
         dispatchResetSettings()
     }
-    
+
     func dispatchOpenSettings() {
         SFSafariApplication.dispatchMessage(
             withName: Constant.openSettings,
             toExtensionWithIdentifier: Constant.extensionIdentifier,
-            userInfo: nil) { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
+            userInfo: nil
+        ) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
         }
     }
-    
+
     func dispatchResetSettings() {
         SFSafariApplication.dispatchMessage(
             withName: Constant.resetSettings,
             toExtensionWithIdentifier: Constant.extensionIdentifier,
-            userInfo: nil) { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
+            userInfo: nil
+        ) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
         }
     }
 }
