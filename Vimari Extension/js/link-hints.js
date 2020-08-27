@@ -263,15 +263,17 @@ function onKeyUpInLinkHintsMode(event) {
 }
 
 /*
- * Updates the visibility of link hints on screen based on the keystrokes typed thus far. If only one
- * link hint remains, click on that link and exit link hints mode.
+ * Updates the visibility of link hints on screen based on the keystrokes typed
+ * thus far. If the provided keystrokes match exactly with one LinkHint, click
+ * on that link and exit link hints mode.
  */
 function updateLinkHints() {
+  var hintStringLength = hintMarkers[0].getAttribute("hintString").length
   var matchString = hintKeystrokeQueue.join("");
   var linksMatched = highlightLinkMatches(matchString);
-  if (linksMatched.length === 0)
+  if (linksMatched.length === 0) {
     deactivateLinkHintsMode();
-  else if (linksMatched.length === 1) {
+  } else if (linksMatched.length === 1 && matchString.length === hintStringLength) {
     var matchedLink = linksMatched[0];
     if (isSelectable(matchedLink)) {
       matchedLink.focus();
