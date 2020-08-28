@@ -1,13 +1,12 @@
 name: Swift Code Checks
 
 on:
-  push
-  # pull_request:
-  #   paths:
-  #     - '.github/workflows/swift-code-checks.yml'
-  #     - '.swiftformat.yml'
-  #     - '.swiftlint.yml'
-  #     - '**/*.swift'
+  pull_request:
+    paths:
+      - '.github/workflows/swift-code-checks.yml'
+      - '.swiftformat.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
 
 jobs:
   format:

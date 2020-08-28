@@ -1,14 +1,13 @@
 name: JavaScript Code Checks
 
 on:
-  push
-  # pull_request:
-  #   paths:
-  #     - '.github/workflows/js-code-checks.yml'
-  #     - '.eslintrc.yml'
-  #     - '.prettierigore'
-  #     - '.prettierrc.json'
-  #     - '**/*.(js|json|css|md)'
+  pull_request:
+    paths:
+      - '.github/workflows/js-code-checks.yml'
+      - '.eslintrc.yml'
+      - '.prettierigore'
+      - '.prettierrc.json'
+      - '**/*.(js|json|css|md)'
 
 jobs:
   format:
