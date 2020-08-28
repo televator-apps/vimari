@@ -4,6 +4,7 @@ node_modules/
 ## Build generated
 build/
 DerivedData/
+.build/
 
 ## Various settings
 xcuserdata/

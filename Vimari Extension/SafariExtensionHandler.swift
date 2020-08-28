@@ -1,7 +1,6 @@
 import SafariServices
 
 enum ActionType: String {
-    case openLinkInTab
     case tabForward
     case tabBackward
     case closeTab
@@ -19,18 +18,17 @@ enum TabDirection: String {
 }
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    
     private enum Constant {
         static let mainAppName = "Vimari"
-        static let newTabPageURL = "https://duckduckgo.com" //Try it :D
+        static let newTabPageURL = "https://duckduckgo.com" // Try it :D
     }
-    
+
     let configuration: ConfigurationModelProtocol = ConfigurationModel()
-    
-    //MARK: Overrides
+
+    // MARK: Overrides
 
     // This method handles messages from the Vimari App (located /Vimari in the repository)
-    override func messageReceivedFromContainingApp(withName messageName: String, userInfo: [String : Any]? = nil) {
+    override func messageReceivedFromContainingApp(withName messageName: String, userInfo _: [String: Any]? = nil) {
         do {
             switch InputAction(rawValue: messageName) {
             case .openSettings:
@@ -43,16 +41,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         } catch {
             NSLog(error.localizedDescription)
         }
-
     }
 
     // This method handles messages from the extension (in the browser page)
-    override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
+    override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo _: [String: Any]?) {
         NSLog("Received message: \(messageName)")
         switch ActionType(rawValue: messageName) {
-        case .openLinkInTab:
-            let url = URL(string: userInfo?["url"] as! String)
-            openInNewTab(url: url!)
         case .tabForward:
             changeTab(withDirection: .forward, from: page)
         case .tabBackward:
@@ -73,16 +67,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     override func validateToolbarItem(in _: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-        // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
+        // This is called when Safari's state changed in some way that
+        // would require the extension's toolbar item to be validated
+        // again.
         validationHandler(true, "")
     }
 
     override func popoverViewController() -> SFSafariExtensionViewController {
         return SafariExtensionViewController.shared
     }
-    
+
     // MARK: Tabs Methods
-    
+
     private func openInNewTab(url: URL) {
         SFSafariApplication.getActiveWindow { activeWindow in
             activeWindow?.openTab(with: url, makeActiveIfPossible: false, completionHandler: { _ in
@@ -91,11 +87,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
 
-    private func changeTab(withDirection direction: TabDirection, from page: SFSafariPage, completionHandler: (() -> Void)? = nil ) {
-        page.getContainingTab() { currentTab in
-            // Using .currentWindow instead of .containingWindow, this prevents the window being nil in the case of a pinned tab.
+    private func changeTab(withDirection direction: TabDirection,
+                           from page: SFSafariPage, completionHandler: (() -> Void)? = nil) {
+        page.getContainingTab { currentTab in
+            // Using .currentWindow instead of .containingWindow, this
+            // prevents the window being nil in the case of a pinned
+            // tab.
             self.currentWindow(from: page) { window in
-                window?.getAllTabs() { tabs in
+                window?.getAllTabs { tabs in
                     tabs.forEach { tab in NSLog(tab.description) }
                     if let currentIndex = tabs.firstIndex(of: currentTab) {
                         let indexStep = direction == TabDirection.forward ? 1 : -1
@@ -106,7 +105,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         let newIndex = mod(currentIndex + indexStep, tabs.count)
 
                         tabs[newIndex].activate(completionHandler: completionHandler ?? {})
-
                     }
                 }
             }
@@ -117,24 +115,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
      Returns the containing window of a SFSafariPage, if not available default to the current active window.
      */
     private func currentWindow(from page: SFSafariPage, completionHandler: @escaping ((SFSafariWindow?) -> Void)) {
-        page.getContainingTab() { $0.getContainingWindow() { window in
+        page.getContainingTab { $0.getContainingWindow { window in
             if window != nil {
                 return completionHandler(window)
             } else {
-                SFSafariApplication.getActiveWindow() { window in
-                    return completionHandler(window)
+                SFSafariApplication.getActiveWindow { window in
+                    completionHandler(window)
                 }
             }
         }}
     }
-    
+
     private func closeTab(from page: SFSafariPage) {
-        page.getContainingTab {
-            tab in
+        page.getContainingTab { tab in
             tab.close()
         }
     }
-    
+
     // MARK: Settings
 
     private func getSetting(_ settingKey: String) -> Any? {
@@ -146,7 +143,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             return nil
         }
     }
-    
+
     private func updateSettings(page: SFSafariPage) {
         do {
             let settings: [String: Any]
@@ -160,7 +157,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             NSLog(error.localizedDescription)
         }
     }
-    
+
     private func fallbackSettings(page: SFSafariPage) {
         do {
             let settings = try configuration.getUserSettings()
@@ -173,6 +170,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
 // MARK: Helpers
 
+// swiftlint:disable identifier_name
 private func mod(_ a: Int, _ n: Int) -> Int {
     // https://stackoverflow.com/questions/41180292/negative-number-modulo-in-swift
     precondition(n > 0, "modulus must be positive")
@@ -180,9 +178,11 @@ private func mod(_ a: Int, _ n: Int) -> Int {
     return r >= 0 ? r : r + n
 }
 
+// swiftlint:enable identifier_name
+
 private extension SFSafariPage {
     func dispatch(settings: [String: Any]) {
-        self.dispatchMessageToScript(
+        dispatchMessageToScript(
             withName: "updateSettingsEvent",
             userInfo: settings
         )
@@ -198,4 +198,3 @@ private extension SFSafariApplication {
         }
     }
 }
-

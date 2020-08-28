@@ -1,0 +1,12 @@
+# Ignore build artifacts
+.build/
+build/
+
+# Ignore packages
+node_modules/
+
+# Ignore imported libraries
+Vimari Extension/js/lib/
+
+# Ignore any asset files
+**/*.xcassets/

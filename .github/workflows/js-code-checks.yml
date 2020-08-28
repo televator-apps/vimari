@@ -1,0 +1,39 @@
+name: JavaScript Code Checks
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/js-code-checks.yml'
+      - '.eslintrc.yml'
+      - '.prettierigore'
+      - '.prettierrc.json'
+      - '**/*.(js|json|css|md)'
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - uses: actions/checkout@v2
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+
+      # Run Prettier in linting mode.
+      - name: Prettier
+        uses: creyD/prettier_action@v3.0
+        with:
+          # Report unprettified files.
+          prettier_options: --check **/*.js
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - uses: actions/checkout@v2
+
+      # Run ESLint
+      - name: ESLint
+        uses: bradennapier/eslint-plus-action@v3.4.2
+        with:
+          issueSummary: false

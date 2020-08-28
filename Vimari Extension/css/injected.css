@@ -7,7 +7,7 @@
   cursor: auto;
   display: inline;
   float: none;
-  font-family : "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: inherit;
   font-style: normal;
   font-variant: normal;
@@ -62,7 +62,8 @@ div.internalVimiumHintMarker > .matchingCharacter {
   color: #dcbc2a;
 }
 
-.vimiumHUD, .vimiumHUD * {
+.vimiumHUD,
+.vimiumHUD * {
   line-height: 100%;
   font-size: 11px;
   font-weight: normal;
@@ -84,31 +85,31 @@ div.internalVimiumHintMarker > .matchingCharacter {
   font-family: Lucida Grande, Arial, Sans;
   /* One less than vimium's hint markers, so link hints can be shown e.g. for the panel's close button. */
   z-index: 99999998;
-  text-shadow: 0px 1px 2px #FFF;
-  line-height: 1.0;
+  text-shadow: 0px 1px 2px #fff;
+  line-height: 1;
   opacity: 0;
 }
 
-.vimiumHUD a, .vimiumHUD a:hover {
+.vimiumHUD a,
+.vimiumHUD a:hover {
   background: transparent;
   color: blue;
   text-decoration: underline;
 }
 
 .vimiumHUD a.close-button {
-  float:right;
-  font-family:courier new;
-  font-weight:bold;
-  color:#9C9A9A;
-  text-decoration:none;
-  padding-left:10px;
-  margin-top:-1px;
-  font-size:14px;
+  float: right;
+  font-family: courier new;
+  font-weight: bold;
+  color: #9c9a9a;
+  text-decoration: none;
+  padding-left: 10px;
+  margin-top: -1px;
+  font-size: 14px;
 }
 
 .vimiumHUD a.close-button:hover {
-  color:#333333;
-  cursor:default;
-  -webkit-user-select:none;
+  color: #333333;
+  cursor: default;
+  -webkit-user-select: none;
 }
-
