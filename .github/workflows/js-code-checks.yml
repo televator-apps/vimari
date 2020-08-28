@@ -4,10 +4,11 @@ on:
   push
   # pull_request:
   #   paths:
-  #     - '.github/workflows/swift-code-checks.yml'
-  #     - '.swiftformat.yml'
-  #     - '.swiftlint.yml'
-  #     - '**/*.swift'
+  #     - '.github/workflows/js-code-checks.yml'
+  #     - '.eslintrc.yml'
+  #     - '.prettierigore'
+  #     - '.prettierrc.json'
+  #     - '**/*.(js|json|css|md)'
 
 jobs:
   format:
@@ -26,8 +27,12 @@ jobs:
           # Report unprettified files.
           prettier_options: --check **/*.js
 
-  # lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # Setup
-  #     - uses: actions/checkout@v1
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - uses: actions/checkout@v2
+
+      # Run ESLint
+      - name: ESLint
+        uses: brandennapier/eslint-plus-action@v3.4.2

@@ -1,3 +1,5 @@
+/* global it, describe */
+
 const expect = require("expect.js");
 
 describe("isExcludedUrl", () => {

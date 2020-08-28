@@ -1,3 +1,4 @@
+/* global settings, currentZoomLevel, keyCodes, getKeyChar, isEscape, safari */
 /*
  * This implements link hinting. Typing "F" will enter link-hinting mode, where all clickable items on
  * the page have a hint marker displayed containing a sequence of letters. Typing those letters will select
@@ -11,26 +12,19 @@ var hintMarkers = [];
 var hintMarkerContainingDiv = null;
 // The characters that were typed in while in "link hints" mode.
 var hintKeystrokeQueue = [];
-var linkHintsModeActivated = false;
 var shouldOpenLinkHintInNewTab = false;
 var shouldOpenLinkHintWithQueue = false;
 // Whether link hint's "open in current/new tab" setting is currently toggled
 var openLinkModeToggle = false;
-// Whether we have added to the page the CSS needed to display link hints.
-var linkHintsCssAdded = false;
+var linkHintsModeActivated = false;
 
 // We need this as a top-level function because our command system doesn't yet support arguments.
-function activateLinkHintsModeToOpenInNewTab() {
-  activateLinkHintsMode(true, false);
-}
 
 function activateLinkHintsModeWithQueue() {
   activateLinkHintsMode(true, true);
 }
 
 function activateLinkHintsMode(openInNewTab, withQueue) {
-  if (!linkHintsCssAdded) addCssToPage(linkHintCss); // linkHintCss is declared by vimiumFrontend.js
-  linkHintCssAdded = true;
   linkHintsModeActivated = true;
   setOpenLinkMode(openInNewTab, withQueue);
   buildLinkHints();
@@ -41,7 +35,6 @@ function activateLinkHintsMode(openInNewTab, withQueue) {
 function setOpenLinkMode(openInNewTab, withQueue) {
   shouldOpenLinkHintInNewTab = openInNewTab;
   shouldOpenLinkHintWithQueue = withQueue;
-  return;
 }
 
 /*
@@ -69,8 +62,9 @@ function buildLinkHints() {
   hintMarkerContainingDiv = document.createElement("div");
   hintMarkerContainingDiv.id = "vimiumHintMarkerContainer";
   hintMarkerContainingDiv.className = "vimiumReset";
-  for (var i = 0; i < hintMarkers.length; i++)
-    hintMarkerContainingDiv.appendChild(hintMarkers[i]);
+  for (var idx = 0; idx < hintMarkers.length; idx++) {
+    hintMarkerContainingDiv.appendChild(hintMarkers[idx]);
+  }
   document.body.appendChild(hintMarkerContainingDiv);
 }
 
@@ -191,8 +185,9 @@ function isVisible(element, clientRect) {
     clientRect.top * zoomFactor >= window.innerHeight - 4 ||
     clientRect.left < 0 ||
     clientRect.left * zoomFactor >= window.innerWidth - 4
-  )
+  ) {
     return false;
+  }
 
   if (clientRect.width < 3 || clientRect.height < 3) return false;
 
@@ -201,8 +196,9 @@ function isVisible(element, clientRect) {
   if (
     computedStyle.getPropertyValue("visibility") !== "visible" ||
     computedStyle.getPropertyValue("display") === "none"
-  )
+  ) {
     return false;
+  }
 
   // Eliminate elements hidden by another overlapping element.
   // To do that, get topmost element at some offset from upper-left corner of clientRect
@@ -216,13 +212,13 @@ function isVisible(element, clientRect) {
   //
   // For elements with a rounded topleft border, the upper left corner lies outside the element.
   // Then, we need an offset to get to the point nearest to the upper left corner, but within border.
-  var coordTruncationOffset = 2, // A value of 1 has been observed not to be enough,
-    // so we heuristically choose 2, which seems to work well.
-    // We know a value of 2 is still safe (lies within the element) because,
-    // from the code above, widht & height are >= 3.
-    radius = parseFloat(computedStyle.borderTopLeftRadius),
-    roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4))),
-    offset = Math.max(coordTruncationOffset, roundedBorderOffset);
+  var coordTruncationOffset = 2; // A value of 1 has been observed not to be enough,
+  // so we heuristically choose 2, which seems to work well.
+  // We know a value of 2 is still safe (lies within the element) because,
+  // from the code above, widht & height are >= 3.
+  var radius = parseFloat(computedStyle.borderTopLeftRadius);
+  var roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4)));
+  var offset = Math.max(coordTruncationOffset, roundedBorderOffset);
   if (offset >= clientRect.width || offset >= clientRect.height) return false;
   var el = document.elementFromPoint(
     clientRect.left + offset,
@@ -346,9 +342,10 @@ function highlightLinkMatches(searchString) {
     var linkMarker = hintMarkers[i];
     if (linkMarker.getAttribute("hintString").indexOf(searchString) === 0) {
       if (linkMarker.style.display === "none") linkMarker.style.display = "";
-      for (var j = 0; j < linkMarker.childNodes.length; j++)
+      for (var j = 0; j < linkMarker.childNodes.length; j++) {
         linkMarker.childNodes[j].className =
           j >= searchString.length ? "" : "matchingCharacter";
+      }
       linksMatched.push(linkMarker.clickableItem);
     } else {
       linkMarker.style.display = "none";
@@ -374,8 +371,9 @@ function numberToHintString(number, numHintDigits) {
 
   // Pad the hint string we're returning so that it matches numHintDigits.
   var hintStringLength = hintString.length;
-  for (var i = 0; i < numHintDigits - hintStringLength; i++)
+  for (var i = 0; i < numHintDigits - hintStringLength; i++) {
     hintString.unshift(settings.linkHintCharacters[0]);
+  }
   return hintString.reverse().join("");
 }
 
@@ -393,13 +391,15 @@ function simulateClick(link, openInNewTab) {
 }
 
 function deactivateLinkHintsMode() {
-  if (hintMarkerContainingDiv)
+  if (hintMarkerContainingDiv) {
     hintMarkerContainingDiv.parentNode.removeChild(hintMarkerContainingDiv);
+  }
   hintMarkerContainingDiv = null;
   hintMarkers = [];
   hintKeystrokeQueue = [];
   document.removeEventListener("keydown", onKeyDownInLinkHintsMode, true);
   document.removeEventListener("keyup", onKeyUpInLinkHintsMode, true);
+  // eslint-disable-next-line no-unused-vars
   linkHintsModeActivated = false;
 }
 
@@ -417,10 +417,11 @@ function createMarkerFor(link, linkHintNumber, linkHintDigits) {
   marker.className = "internalVimiumHintMarker vimiumReset";
   var innerHTML = [];
   // Make each hint character a span, so that we can highlight the typed characters as you type them.
-  for (var i = 0; i < hintString.length; i++)
+  for (var i = 0; i < hintString.length; i++) {
     innerHTML.push(
       '<span class="vimiumReset">' + hintString[i].toUpperCase() + "</span>"
     );
+  }
   marker.innerHTML = innerHTML.join("");
   marker.setAttribute("hintString", hintString);
 

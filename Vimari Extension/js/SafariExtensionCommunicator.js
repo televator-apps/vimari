@@ -1,3 +1,7 @@
+/* global safari */
+
+// The variable is used in other files.
+// eslint-disable-next-line no-unused-vars
 var SafariExtensionCommunicator = function (msgHandler) {
   "use strict";
   var publicAPI = {};

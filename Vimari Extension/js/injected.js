@@ -1,3 +1,5 @@
+/* global Mousetrap, activateLinkHintsMode, deactivateLinkHintsMode, HUD, linkHintsModeActivated, customScrollBy, SafariExtensionCommunicator */
+
 /*
  * Vimari injected script.
  *
@@ -12,20 +14,22 @@
  * topWindow        - true if top window, false if iframe
  * settings         - stores user settings
  * currentZoomLevel - required for vimium scripts to run correctly
- * linkHintCss      - required from vimium scripts
  * extensionActive  - is the extension currently enabled (should only be true when tab is active)
  * shiftKeyToggle   - is shift key currently toggled
  */
 
-var topWindow = window.top === window,
-  settings = {},
-  currentZoomLevel = 100,
-  linkHintCss = {},
-  extensionActive = true,
-  insertMode = false,
-  shiftKeyToggle = false,
-  hudDuration = 5000,
-  extensionCommunicator = SafariExtensionCommunicator(messageHandler);
+var topWindow = window.top === window;
+var settings = {};
+var extensionActive = true;
+var insertMode = false;
+var hudDuration = 5000;
+var extensionCommunicator = SafariExtensionCommunicator(messageHandler);
+
+// The variables are used in other files.
+/* eslint-disable no-unused-vars */
+var currentZoomLevel = 100;
+var shiftKeyToggle = false;
+/* eslint-enable */
 
 var actionMap = {
   hintToggle: function () {
@@ -163,6 +167,7 @@ function goToFirstInput() {
 }
 
 // Meant to be overridden, but still has to be copy/pasted from the original...
+// eslint-disable-next-line no-prototype-builtins
 Mousetrap.prototype.stopCallback = function (e, element, combo) {
   // Escape key is special, no need to stop. Vimari-specific.
   if (combo === "esc" || combo === "ctrl+[") {
@@ -195,7 +200,7 @@ Mousetrap.prototype.stopCallback = function (e, element, combo) {
 // Set up key codes to event handlers
 function bindKeyCodesToActions(settings) {
   var excludedUrl = false;
-  if (typeof settings != "undefined") {
+  if (typeof settings !== "undefined") {
     excludedUrl = isExcludedUrl(settings.excludedUrls, document.URL);
   }
   // Only add if topWindow... not iframe
@@ -205,10 +210,8 @@ function bindKeyCodesToActions(settings) {
     Mousetrap.bind("ctrl+[", enterNormalMode);
     Mousetrap.bind("i", enterInsertMode);
     for (var actionName in actionMap) {
-      if (actionMap.hasOwnProperty(actionName)) {
-        var keyCode = getKeyCode(actionName);
-        Mousetrap.bind(keyCode, executeAction(actionName), "keydown");
-      }
+      var keyCode = getKeyCode(actionName);
+      Mousetrap.bind(keyCode, executeAction(actionName), "keydown");
     }
   }
 }
@@ -247,7 +250,7 @@ function executeAction(actionName) {
     // don't do anything if we're not supposed to
     if (linkHintsModeActivated || !extensionActive || insertMode) return;
 
-    //Call the action function
+    // Call the action function
     actionMap[actionName]();
 
     // Tell mousetrap to stop propagation
@@ -255,6 +258,8 @@ function executeAction(actionName) {
   };
 }
 
+// The function is used in other files.
+// eslint-disable-next-line no-unused-vars
 function unbindKeyCodes() {
   Mousetrap.reset();
   document.removeEventListener("keydown", stopSitePropagation);
@@ -265,7 +270,7 @@ function unbindKeyCodes() {
 // prevent custom key behaviour implemented by the underlying website.
 function stopSitePropagation() {
   return function (e) {
-    if (insertMode == false && !isActiveElementEditable()) {
+    if (insertMode === false && !isActiveElementEditable()) {
       e.stopPropagation();
     }
   };
@@ -280,22 +285,13 @@ function isActiveElementEditable() {
 // Adds an optional modifier to the configured key code for the action
 function getKeyCode(actionName) {
   var keyCode = "";
-  if (typeof settings != "undefined") {
+  if (typeof settings !== "undefined") {
     if (settings.modifier) {
       keyCode += settings.modifier + "+";
     }
-    return keyCode + settings["bindings"][actionName];
+    return keyCode + settings.bindings[actionName];
   }
   return keyCode;
-}
-
-/*
- * Adds the given CSS to the page.
- * This function is required by vimium but depracated for vimari as the
- * css is pre loaded into the page.
- */
-function addCssToPage(css) {
-  return;
 }
 
 /*
@@ -315,6 +311,8 @@ function isEditable(target) {
  * Embedded elements like Flash and quicktime players can obtain focus but cannot be programmatically
  * unfocused.
  */
+// The function is used in other files.
+// eslint-disable-next-line no-unused-vars
 function isEmbed(element) {
   return ["EMBED", "OBJECT"].indexOf(element.tagName) > 0;
 }
@@ -324,7 +322,7 @@ function isEmbed(element) {
 // ==========================
 
 function messageHandler(event) {
-  if (event.name == "updateSettingsEvent") {
+  if (event.name === "updateSettingsEvent") {
     setSettings(event.message);
   }
 }

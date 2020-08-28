@@ -1,0 +1,32 @@
+env:
+  browser: true
+  es2020: true
+extends:
+  - standard
+parserOptions:
+  ecmaVersion: 12
+ignorePatterns:
+  - ".build"
+  - "build"
+  - "node_modules/"
+  - "Vimari Extension/js/lib/**"
+  - "**/*.xcassets/"
+rules:
+  semi: ["error", "always"]
+  quotes: ["error", "double", { "avoidEscape": true }]
+  space-before-function-paren:
+    [
+      "error",
+      { "anonymous": "always", "named": "never", "asyncArrow": "always" },
+    ]
+  comma-dangle:
+    [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never",
+      },
+    ]

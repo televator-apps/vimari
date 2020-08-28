@@ -1,3 +1,5 @@
+/* global correctedIdentifiers:writable  */
+
 var keyCodes = {
   ESC: 27,
   backspace: 8,
@@ -61,11 +63,15 @@ function getKeyChar(event) {
   return String.fromCharCode(parseInt(unicodeKeyInHex)).toLowerCase();
 }
 
+// The function is used in other files.
+// eslint-disable-next-line no-unused-vars
 function isPrimaryModifierKey(event) {
   if (platform === "Mac") return event.metaKey;
   else return event.ctrlKey;
 }
 
+// The function is used in other files.
+// eslint-disable-next-line no-unused-vars
 function isEscape(event) {
   return (
     event.keyCode === keyCodes.ESC ||
