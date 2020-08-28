@@ -230,7 +230,7 @@ function unbindKeyCodes() {
 function boundKeys() {
     var bindings = Object.values(settings.bindings)
         // Split multi-key bindings.
-        .flatMap(s => s.split("+"))
+        .flatMap(s => s.split(/\+| /i))
     bindings.push(settings.modifier)
     // Use a set to remove duplicates.
     return new Set(bindings)
