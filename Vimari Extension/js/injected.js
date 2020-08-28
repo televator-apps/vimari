@@ -241,7 +241,19 @@ function boundKeys() {
 // prevent custom key behaviour implemented by the underlying website.
 function stopSitePropagation() {
     return function (e) {
-        if (boundKeys().has(e.key) && !insertMode && !isActiveElementEditable()) {
+        if (insertMode) {
+            // Never stop propagation in insert mode.
+            return
+        }
+
+        if (settings.transparentBindings === true) {
+            if (boundKeys().has(e.key) && !isActiveElementEditable()) {
+                // If we are in normal mode with transparentBindings enabled we
+                // should only stop propagation in an editable element or if the
+                // key is bound to a Vimari action.
+                e.stopPropagation()
+            }
+        } else if (!isActiveElementEditable()) {
             e.stopPropagation()
         }
     }
