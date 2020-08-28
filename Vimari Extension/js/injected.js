@@ -228,9 +228,16 @@ function unbindKeyCodes() {
 
 // Returns all keys bound in the settings.
 function boundKeys() {
+    const splitBinding = s => s.split(/\+| /i)
     var bindings = Object.values(settings.bindings)
         // Split multi-key bindings.
-        .flatMap(s => s.split(/\+| /i))
+        .flatMap(s => {
+            if (typeof s === "string" || s instanceof String) {
+                return splitBinding(s)
+            } else if (Array.isArray(s)) {
+                return s.flatMap(splitBinding)
+            }
+        })
 
     // Manually add the modifier, i, esc, and ctr+[.
     bindings.push(settings.modifier)
@@ -275,14 +282,24 @@ function isActiveElementEditable() {
 
 // Adds an optional modifier to the configured key code for the action
 function getKeyCode(actionName) {
-	var keyCode = '';
-    if (typeof settings != 'undefined') {
-        if(settings.modifier) {
-            keyCode += settings.modifier + '+';
-        }
-        return keyCode + settings["bindings"][actionName];
+    if (settings === undefined) {
+        return ''
     }
-	return keyCode;
+
+	var keyCode = settings["bindings"][actionName];
+    const addModifier = s => {
+        if (settings.modifier && settings.modifier.length > 0) {
+            return `${settings.modifier}+${s}`
+        } else {
+            return s
+        }
+    }
+
+    if (Array.isArray(keyCode)) {
+        return keyCode.map(addModifier)
+    } else {
+        return addModifier(keyCode)
+    }
 }
 
 
