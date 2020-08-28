@@ -1,0 +1,31 @@
+name: JavaScript Code Checks
+
+on:
+  push
+  # pull_request:
+  #   paths:
+  #     - '.github/workflows/swift-code-checks.yml'
+  #     - '.swiftformat.yml'
+  #     - '.swiftlint.yml'
+  #     - '**/*.swift'
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - uses: actions/checkout@v1
+
+      # Run Prettier in linting mode.
+      - name: Prettier
+        uses: creyD/prettier_action@v3.0
+        with:
+          # Report unprettified files.
+          dry: true
+
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # Setup
+  #     - uses: actions/checkout@v1
+
