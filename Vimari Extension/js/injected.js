@@ -236,7 +236,7 @@ function boundKeys() {
     bindings.push(settings.modifier)
     bindings.push("i")
     bindings.push("Escape")
-    bindinsg.push("Control")
+    bindings.push("Control")
     bindings.push("[")
 
     // Use a set to remove duplicates.
