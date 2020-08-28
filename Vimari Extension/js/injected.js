@@ -226,12 +226,22 @@ function unbindKeyCodes() {
     document.removeEventListener("keydown", stopSitePropagation);
 }
 
-// Stops propagation of keyboard events in normal mode.  Adding this
+// Returns all keys bound in the settings.
+function boundKeys() {
+    var bindings = Object.values(settings.bindings)
+        // Split multi-key bindings.
+        .flatMap(s => s.split("+"))
+    bindings.push(settings.modifier)
+    // Use a set to remove duplicates.
+    return new Set(bindings)
+}
+
+// Stops propagation of keyboard events in normal mode. Adding this
 // callback to the document using the useCapture flag allows us to
 // prevent custom key behaviour implemented by the underlying website.
 function stopSitePropagation() {
     return function (e) {
-        if (insertMode == false && !isActiveElementEditable()) {
+        if (boundKeys().has(e.key) && !insertMode && !isActiveElementEditable()) {
             e.stopPropagation()
         }
     }
