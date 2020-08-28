@@ -231,7 +231,14 @@ function boundKeys() {
     var bindings = Object.values(settings.bindings)
         // Split multi-key bindings.
         .flatMap(s => s.split(/\+| /i))
+
+    // Manually add the modifier, i, esc, and ctr+[.
     bindings.push(settings.modifier)
+    bindings.push("i")
+    bindings.push("Escape")
+    bindinsg.push("Control")
+    bindings.push("[")
+
     // Use a set to remove duplicates.
     return new Set(bindings)
 }
