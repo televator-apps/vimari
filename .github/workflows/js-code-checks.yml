@@ -35,4 +35,4 @@ jobs:
 
       # Run ESLint
       - name: ESLint
-        uses: brandennapier/eslint-plus-action@v3.4.2
+        uses: bradennapier/eslint-plus-action@v3.4.2
