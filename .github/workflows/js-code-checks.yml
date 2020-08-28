@@ -14,18 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Setup
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
 
       # Run Prettier in linting mode.
       - name: Prettier
         uses: creyD/prettier_action@v3.0
         with:
           # Report unprettified files.
-          dry: true
+          prettier_options: --check **/*.js
 
   # lint:
   #   runs-on: ubuntu-latest
   #   steps:
   #     # Setup
   #     - uses: actions/checkout@v1
-

@@ -9,7 +9,7 @@ var safari = {
 window.safari = safari;
 
 global.SafariExtensionCommunicator = function () {
-    return {
-        requestSettingsUpdate: function() {}
-    }
-}
+  return {
+    requestSettingsUpdate: function () {},
+  };
+};
