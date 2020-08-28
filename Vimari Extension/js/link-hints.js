@@ -14,19 +14,22 @@ var hintKeystrokeQueue = [];
 var linkHintsModeActivated = false;
 var shouldOpenLinkHintInNewTab = false;
 var shouldOpenLinkHintWithQueue = false;
-// Whether link hint's "open in current/new tab" setting is currently toggled 
+// Whether link hint's "open in current/new tab" setting is currently toggled
 var openLinkModeToggle = false;
 // Whether we have added to the page the CSS needed to display link hints.
 var linkHintsCssAdded = false;
 
 // We need this as a top-level function because our command system doesn't yet support arguments.
-function activateLinkHintsModeToOpenInNewTab() { activateLinkHintsMode(true, false); }
+function activateLinkHintsModeToOpenInNewTab() {
+  activateLinkHintsMode(true, false);
+}
 
-function activateLinkHintsModeWithQueue() { activateLinkHintsMode(true, true); }
+function activateLinkHintsModeWithQueue() {
+  activateLinkHintsMode(true, true);
+}
 
 function activateLinkHintsMode(openInNewTab, withQueue) {
-  if (!linkHintsCssAdded)
-    addCssToPage(linkHintCss); // linkHintCss is declared by vimiumFrontend.js
+  if (!linkHintsCssAdded) addCssToPage(linkHintCss); // linkHintCss is declared by vimiumFrontend.js
   linkHintCssAdded = true;
   linkHintsModeActivated = true;
   setOpenLinkMode(openInNewTab, withQueue);
@@ -49,10 +52,14 @@ function buildLinkHints() {
 
   // Initialize the number used to generate the character hints to be as many digits as we need to
   // highlight all the links on the page; we don't want some link hints to have more chars than others.
-  var digitsNeeded = Math.ceil(logXOfBase(visibleElements.length, settings.linkHintCharacters.length));
+  var digitsNeeded = Math.ceil(
+    logXOfBase(visibleElements.length, settings.linkHintCharacters.length)
+  );
   var linkHintNumber = 0;
   for (var i = 0; i < visibleElements.length; i++) {
-    hintMarkers.push(createMarkerFor(visibleElements[i], linkHintNumber, digitsNeeded));
+    hintMarkers.push(
+      createMarkerFor(visibleElements[i], linkHintNumber, digitsNeeded)
+    );
     linkHintNumber++;
   }
   // Note(philc): Append these markers as top level children instead of as child nodes to the link itself,
@@ -67,7 +74,9 @@ function buildLinkHints() {
   document.body.appendChild(hintMarkerContainingDiv);
 }
 
-function logXOfBase(x, base) { return Math.log(x) / Math.log(base); }
+function logXOfBase(x, base) {
+  return Math.log(x) / Math.log(base);
+}
 
 /*
  * Returns all clickable elements that are not hidden and are in the current viewport.
@@ -94,44 +103,44 @@ function getVisibleClickableElements() {
 }
 
 function getClickableElements() {
-  var elements = document.getElementsByTagName('*');
+  var elements = document.getElementsByTagName("*");
   var clickableElements = [];
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
-    if (isClickable(element))
-      clickableElements.push(element);
+    if (isClickable(element)) clickableElements.push(element);
   }
   return clickableElements;
 }
 
 function isClickable(element) {
   var name = element.nodeName.toLowerCase();
-  var role = element.getAttribute('role');
+  var role = element.getAttribute("role");
 
   return (
     // normal html elements that can be clicked
-    name === 'a' ||
-    name === 'button' ||
-    name === 'input' && element.getAttribute('type') !== 'hidden' ||
-    name === 'select' ||
-    name === 'textarea' ||
+    name === "a" ||
+    name === "button" ||
+    (name === "input" && element.getAttribute("type") !== "hidden") ||
+    name === "select" ||
+    name === "textarea" ||
     // elements having an ARIA role implying clickability
     // (see http://www.w3.org/TR/wai-aria/roles#widget_roles)
-    role === 'button' ||
-    role === 'checkbox' ||
-    role === 'combobox' ||
-    role === 'link' ||
-    role === 'menuitem' ||
-    role === 'menuitemcheckbox' ||
-    role === 'menuitemradio' ||
-    role === 'radio' ||
-    role === 'tab' ||
-    role === 'textbox' ||
+    role === "button" ||
+    role === "checkbox" ||
+    role === "combobox" ||
+    role === "link" ||
+    role === "menuitem" ||
+    role === "menuitemcheckbox" ||
+    role === "menuitemradio" ||
+    role === "radio" ||
+    role === "tab" ||
+    role === "textbox" ||
     // other ways by which we can know an element is clickable
-    element.hasAttribute('onclick') || 
-    settings.detectByCursorStyle && window.getComputedStyle(element).cursor === 'pointer' &&
-      (!element.parentNode || 
-       window.getComputedStyle(element.parentNode).cursor !== 'pointer')
+    element.hasAttribute("onclick") ||
+    (settings.detectByCursorStyle &&
+      window.getComputedStyle(element).cursor === "pointer" &&
+      (!element.parentNode ||
+        window.getComputedStyle(element.parentNode).cursor !== "pointer"))
   );
 }
 
@@ -141,7 +150,7 @@ function isClickable(element) {
  * Inline elements can have more than one rect.
  * Block elemens only have one rect.
  * So, in general, add element's first visible rect, if any.
- * If element does not have any visible rect, 
+ * If element does not have any visible rect,
  * it can still be wrapping other visible children.
  * So, in that case, recurse to get the first visible rect
  * of the first child that has one.
@@ -152,7 +161,7 @@ function getFirstVisibleRect(element) {
   for (var i = 0; i < clientRects.length; i++) {
     var clientRect = clientRects[i];
     if (isVisible(element, clientRect)) {
-      return {element: element, rect: clientRect};
+      return { element: element, rect: clientRect };
     }
   }
   // Only iterate over elements with a children property. This is mainly to
@@ -176,51 +185,57 @@ function getFirstVisibleRect(element) {
 function isVisible(element, clientRect) {
   // Exclude links which have just a few pixels on screen, because the link hints won't show for them anyway.
   var zoomFactor = currentZoomLevel / 100.0;
-  if (!clientRect || clientRect.top < 0 || clientRect.top * zoomFactor >= window.innerHeight - 4 ||
-      clientRect.left < 0 || clientRect.left * zoomFactor >= window.innerWidth - 4)
+  if (
+    !clientRect ||
+    clientRect.top < 0 ||
+    clientRect.top * zoomFactor >= window.innerHeight - 4 ||
+    clientRect.left < 0 ||
+    clientRect.left * zoomFactor >= window.innerWidth - 4
+  )
     return false;
 
-  if (clientRect.width < 3 || clientRect.height < 3)
-    return false;
+  if (clientRect.width < 3 || clientRect.height < 3) return false;
 
   // eliminate invisible elements (see test_harnesses/visibility_test.html)
   var computedStyle = window.getComputedStyle(element, null);
-  if (computedStyle.getPropertyValue('visibility') !== 'visible' ||
-      computedStyle.getPropertyValue('display') === 'none')
+  if (
+    computedStyle.getPropertyValue("visibility") !== "visible" ||
+    computedStyle.getPropertyValue("display") === "none"
+  )
     return false;
 
   // Eliminate elements hidden by another overlapping element.
   // To do that, get topmost element at some offset from upper-left corner of clientRect
   // and check whether it is the element itself or one of its descendants.
   // The offset is needed to account for coordinates truncation and elements with rounded borders.
-  // 
-  // Coordinates truncation occcurs when using zoom. In that case, clientRect coords should be float, 
+  //
+  // Coordinates truncation occcurs when using zoom. In that case, clientRect coords should be float,
   // but we get integers instead. That makes so that elementFromPoint(clientRect.left, clientRect.top)
   // sometimes returns an element different from the one clientRect was obtained from.
   // So we introduce an offset to make sure elementFromPoint hits the right element.
   //
   // For elements with a rounded topleft border, the upper left corner lies outside the element.
   // Then, we need an offset to get to the point nearest to the upper left corner, but within border.
-  var coordTruncationOffset = 2, // A value of 1 has been observed not to be enough, 
-                                 // so we heuristically choose 2, which seems to work well. 
-                                 // We know a value of 2 is still safe (lies within the element) because, 
-                                 // from the code above, widht & height are >= 3.
-      radius = parseFloat(computedStyle.borderTopLeftRadius), 
-      roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4))), 
-      offset = Math.max(coordTruncationOffset, roundedBorderOffset);
-  if (offset >= clientRect.width || offset >= clientRect.height) 
-    return false;
-  var el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
-  while (el && el !== element)
-    el = el.parentNode;
-  if (!el)
-    return false;
+  var coordTruncationOffset = 2, // A value of 1 has been observed not to be enough,
+    // so we heuristically choose 2, which seems to work well.
+    // We know a value of 2 is still safe (lies within the element) because,
+    // from the code above, widht & height are >= 3.
+    radius = parseFloat(computedStyle.borderTopLeftRadius),
+    roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4))),
+    offset = Math.max(coordTruncationOffset, roundedBorderOffset);
+  if (offset >= clientRect.width || offset >= clientRect.height) return false;
+  var el = document.elementFromPoint(
+    clientRect.left + offset,
+    clientRect.top + offset
+  );
+  while (el && el !== element) el = el.parentNode;
+  if (!el) return false;
 
   return true;
 }
 
 function onKeyDownInLinkHintsMode(event) {
-  console.log("-- key down pressed --")
+  console.log("-- key down pressed --");
   if (event.keyCode === keyCodes.shiftKey && !openLinkModeToggle) {
     // Toggle whether to open link in a new or current tab.
     setOpenLinkMode(!shouldOpenLinkHintInNewTab, shouldOpenLinkHintWithQueue);
@@ -228,13 +243,15 @@ function onKeyDownInLinkHintsMode(event) {
   }
 
   var keyChar = getKeyChar(event);
-  if (!keyChar)
-    return;
+  if (!keyChar) return;
 
   // TODO(philc): Ignore keys that have modifiers.
   if (isEscape(event)) {
     deactivateLinkHintsMode();
-  } else if (event.keyCode === keyCodes.backspace || event.keyCode === keyCodes.deleteKey) {
+  } else if (
+    event.keyCode === keyCodes.backspace ||
+    event.keyCode === keyCodes.deleteKey
+  ) {
     if (hintKeystrokeQueue.length === 0) {
       deactivateLinkHintsMode();
     } else {
@@ -254,7 +271,7 @@ function onKeyDownInLinkHintsMode(event) {
 
 function onKeyUpInLinkHintsMode(event) {
   if (event.keyCode === keyCodes.shiftKey && openLinkModeToggle) {
-    // Revert toggle on whether to open link in new or current tab. 
+    // Revert toggle on whether to open link in new or current tab.
     setOpenLinkMode(!shouldOpenLinkHintInNewTab, shouldOpenLinkHintWithQueue);
     openLinkModeToggle = false;
   }
@@ -268,17 +285,23 @@ function onKeyUpInLinkHintsMode(event) {
  * on that link and exit link hints mode.
  */
 function updateLinkHints() {
-  var hintStringLength = hintMarkers[0].getAttribute("hintString").length
+  var hintStringLength = hintMarkers[0].getAttribute("hintString").length;
   var matchString = hintKeystrokeQueue.join("");
   var linksMatched = highlightLinkMatches(matchString);
   if (linksMatched.length === 0) {
     deactivateLinkHintsMode();
-  } else if (linksMatched.length === 1 && matchString.length === hintStringLength) {
+  } else if (
+    linksMatched.length === 1 &&
+    matchString.length === hintStringLength
+  ) {
     var matchedLink = linksMatched[0];
     if (isSelectable(matchedLink)) {
       matchedLink.focus();
       // When focusing a textbox, put the selection caret at the end of the textbox's contents.
-      matchedLink.setSelectionRange(matchedLink.value.length, matchedLink.value.length);
+      matchedLink.setSelectionRange(
+        matchedLink.value.length,
+        matchedLink.value.length
+      );
       deactivateLinkHintsMode();
     } else {
       // When we're opening the link in the current tab, don't navigate to the selected link immediately;
@@ -291,7 +314,9 @@ function updateLinkHints() {
         matchedLink.focus();
         deactivateLinkHintsMode();
       } else {
-        setTimeout(function() { simulateClick(matchedLink, false); }, 400);
+        setTimeout(function () {
+          simulateClick(matchedLink, false);
+        }, 400);
         matchedLink.focus();
         deactivateLinkHintsMode();
       }
@@ -304,8 +329,11 @@ function updateLinkHints() {
  */
 function isSelectable(element) {
   var selectableTypes = ["search", "text", "password"];
-  return (element.tagName === "INPUT" && selectableTypes.indexOf(element.type) >= 0) ||
-      element.tagName === "TEXTAREA";
+  return (
+    (element.tagName === "INPUT" &&
+      selectableTypes.indexOf(element.type) >= 0) ||
+    element.tagName === "TEXTAREA"
+  );
 }
 
 /*
@@ -317,10 +345,10 @@ function highlightLinkMatches(searchString) {
   for (var i = 0; i < hintMarkers.length; i++) {
     var linkMarker = hintMarkers[i];
     if (linkMarker.getAttribute("hintString").indexOf(searchString) === 0) {
-      if (linkMarker.style.display === "none")
-        linkMarker.style.display = "";
+      if (linkMarker.style.display === "none") linkMarker.style.display = "";
       for (var j = 0; j < linkMarker.childNodes.length; j++)
-        linkMarker.childNodes[j].className = (j >= searchString.length) ? "" : "matchingCharacter";
+        linkMarker.childNodes[j].className =
+          j >= searchString.length ? "" : "matchingCharacter";
       linksMatched.push(linkMarker.clickableItem);
     } else {
       linkMarker.style.display = "none";
@@ -390,7 +418,9 @@ function createMarkerFor(link, linkHintNumber, linkHintDigits) {
   var innerHTML = [];
   // Make each hint character a span, so that we can highlight the typed characters as you type them.
   for (var i = 0; i < hintString.length; i++)
-    innerHTML.push('<span class="vimiumReset">' + hintString[i].toUpperCase() + '</span>');
+    innerHTML.push(
+      '<span class="vimiumReset">' + hintString[i].toUpperCase() + "</span>"
+    );
   marker.innerHTML = innerHTML.join("");
   marker.setAttribute("hintString", hintString);
 
@@ -400,7 +430,7 @@ function createMarkerFor(link, linkHintNumber, linkHintDigits) {
   // the document node.
   var zoomFactor = currentZoomLevel / 100.0;
   marker.style.left = clientRect.left + window.scrollX / zoomFactor + "px";
-  marker.style.top = clientRect.top  + window.scrollY / zoomFactor + "px";
+  marker.style.top = clientRect.top + window.scrollY / zoomFactor + "px";
 
   marker.clickableItem = link.element;
   return marker;

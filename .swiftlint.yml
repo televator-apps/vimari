@@ -2,5 +2,4 @@ disabled_rules:
   # Trailing comma conflicts with swift-format
   - trailing_comma
 
-excluded:
-  .build/**
+excluded: .build/**

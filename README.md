@@ -15,26 +15,27 @@ best components of vimium and adapting them to Safari.
 
 ## Releases
 
-### Safari 12 and 13
+### Safari 12+
 
 [![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US.svg)](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12)
 
 ### Safari 11 and below (DEPRECATED)
- - [v1.13](https://github.com/guyht/vimari/releases/tag/v1.13)
- - [v1.12](https://github.com/guyht/vimari/releases/tag/v1.12)
- - [v1.11](https://github.com/guyht/vimari/releases/tag/v1.11)
- - [v1.10](https://github.com/guyht/vimari/releases/tag/v1.10)
- - [v1.9](https://github.com/guyht/vimari/releases/tag/v1.9)
+
+- [v1.13](https://github.com/guyht/vimari/releases/tag/v1.13)
+- [v1.12](https://github.com/guyht/vimari/releases/tag/v1.12)
+- [v1.11](https://github.com/guyht/vimari/releases/tag/v1.11)
+- [v1.10](https://github.com/guyht/vimari/releases/tag/v1.10)
+- [v1.9](https://github.com/guyht/vimari/releases/tag/v1.9)
 
 ## Installation
 
-### Safari 12 and 13 (macOS Mojave and Catalina)
+### Safari 12+
 
 #### Mac App Store
 
 1. [Download Vimari](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12) for free from the Mac App Store
 2. Launch Vimari.app
-3. Click "Open in Safari Extensions Preferences...", Safari's Extension Preferences should open
+3. Click "Open in Safari Extensions Preferences", Safari's Extension Preferences should open
 4. Make sure that the checkbox for the Vimari extension is ticked
 5. Go back to Vimari.app and press the reload button to check the status of the app. If it says "Enabled" then it is ready.
 6. You may need to relaunch Safari for the extension to work
@@ -50,8 +51,6 @@ best components of vimium and adapting them to Safari.
 7. Go back to Vimari.app and press the reload button to check the status of the app. If it says "Enabled" then it is ready.
 8. You may need to relaunch Safari for the extension to work
 
-
-
 ### Safari 11 (legacy Safari Extension method)
 
 [Download the Vimari 1.13](https://github.com/guyht/vimari/releases/tag/v1.13) and double-click
@@ -60,6 +59,7 @@ the file.
 ## Usage
 
 ### Settings
+
 **Command Prefix** - Modifier key to hold down with your action key. If
 you leave it blank you don't need to hold down anything (default
 setting).
@@ -80,6 +80,7 @@ for HTML elements having cursor style set to "pointer".
 ### Keyboard Bindings
 
 #### In-page navigation
+
     f       Toggle links
     F       Toggle links (open link in new tab)
     k       Scroll up
@@ -92,6 +93,7 @@ for HTML elements having cursor style set to "pointer".
     G       Go to bottom of page
 
 #### Page/Tab navigation
+
     H       History back
     L       History forward
     r       Reload
