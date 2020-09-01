@@ -1,12 +1,12 @@
-<img align="left" width=128 src="assets/logo.svg">
+<img align="left" width=140 style="padding: 10px" src="assets/logo.svg"></img>
 
 ## Vimari
 _Keyboard Shortcuts extension for Safari_
 
+[![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US.svg)](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12)
+
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/televator-apps/vimari)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/televator-apps/vimari?include_prereleases&label=pre%20release)
-
-[![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US.svg)](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12)
 
 Vimari is a Safari extension that provides keyboard based navigation.
 The code is heavily based on [vimium](https://github.com/philc/vimium), a
