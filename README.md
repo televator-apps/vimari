@@ -77,6 +77,8 @@ for HTML elements having cursor style set to "pointer".
 
 **Scroll Size** - How much each scroll will move on the page.
 
+**Transparent Bindings** - Instead of fully isolating all keybindings in normal mode, the transparent bindings setting (when enabled)  allows you to use all non-Vimari-bound keys to interact with the web page as if you were in insert mode.
+
 ### Keyboard Bindings
 
 #### In-page navigation
