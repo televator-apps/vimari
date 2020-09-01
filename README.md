@@ -1,4 +1,4 @@
-<img align="left" width=140 style="padding: 10px" src="assets/logo.svg"></img>
+<img align="left" width=160 style="padding: 10px" src="assets/logo.svg"></img>
 
 ## Vimari
 _Keyboard Shortcuts extension for Safari_
