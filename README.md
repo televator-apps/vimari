@@ -1,6 +1,10 @@
-# Vimari - Keyboard Shortcuts extension for Safari
+<img align="left" width=128 src="assets/logo.svg">
 
-[![Actions Status](https://github.com/danielcompton/vimari/workflows/Node%20CI/badge.svg)](https://github.com/danielcompton/vimari/actions)
+## Vimari
+_Keyboard Shortcuts extension for Safari_
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/televator-apps/vimari)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/televator-apps/vimari?include_prereleases&label=pre%20release)
 
 [![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US.svg)](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12)
 
@@ -11,11 +15,11 @@ Chrome extension that provides much more extensive features.
 Vimari attempts to provide a lightweight port of vimium to Safari, taking the
 best components of vimium and adapting them to Safari.
 
-![Screenshot](assets/screenshot.png)
+<img src="assets/screenshot.png"></img>
 
 ## Releases
 
-### Safari 12 and 13
+### Safari 12 and above
 
 [![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US.svg)](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12)
 
@@ -28,13 +32,13 @@ best components of vimium and adapting them to Safari.
 
 ## Installation
 
-### Safari 12 and 13 (macOS Mojave and Catalina)
+### Safari 12 and above (macOS Mojave or above)
 
 #### Mac App Store
 
 1. [Download Vimari](https://apps.apple.com/us/app/vimari/id1480933944?ls=1&mt=12) for free from the Mac App Store
 2. Launch Vimari.app
-3. Click "Open in Safari Extensions Preferences...", Safari's Extension Preferences should open
+3. Click "Open in Safari Extensions Preferences", Safari's Extension Preferences should open
 4. Make sure that the checkbox for the Vimari extension is ticked
 5. Go back to Vimari.app and press the reload button to check the status of the app. If it says "Enabled" then it is ready.
 6. You may need to relaunch Safari for the extension to work
@@ -60,7 +64,7 @@ the file.
 ## Usage
 
 ### Settings
-**Command Prefix** - Modifier key to hold down with your action key. If
+**Modifier** - Modifier key to hold down with your action key. If
 you leave it blank you don't need to hold down anything (default
 setting).
 
@@ -77,7 +81,22 @@ for HTML elements having cursor style set to "pointer".
 
 **Scroll Size** - How much each scroll will move on the page.
 
+`Vimari v2.1+`
+
+**Smooth Scroll** - Scroll smoothly through the page.
+
+ **Normal vs Insert mode** - Isolate website keybindings from the
+Vimari keybindings. In normal mode you can use the Vimari keybindings
+while in insert mode you can use the websites own keybindings.
+
+**Transparent Bindings** - Full keybinding isolation might not
+be your style, instead the transparent bindings setting (when enabled)
+allows you to use all **non-Vimari-bound** keys to interact with the web
+page as if you were in insert mode.
+
 ### Keyboard Bindings
+
+These bindings are the ones set by default, however you are able to change them in the settings.
 
 #### In-page navigation
     f       Toggle links
@@ -90,6 +109,7 @@ for HTML elements having cursor style set to "pointer".
     d       Scroll down half page
     g g     Go to top of page
     G       Go to bottom of page
+    g i     Go to first input
 
 #### Page/Tab navigation
     H       History back
@@ -99,6 +119,13 @@ for HTML elements having cursor style set to "pointer".
     q       Previous tab
     x       Close current tab
     t       Open new tab
+
+`Vimari v2.1+`
+
+#### Vimari Modes
+    i       Enter insert mode
+    ESC     Enter normal mode
+    CTRL+[  Enter normal mode
 
 ## License
 
