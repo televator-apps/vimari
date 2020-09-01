@@ -2,6 +2,7 @@ Changelog
 -------------
 
 ### Unreleased
+* Add `transparentBindings` setting that allows the use of non-bound keys in normal mode ([#188](https://github.com/televator-apps/vimari/issues/188)).
 * Remove eager link hint triggering [#190](https://github.com/televator-apps/vimari/issues/190)
 * Use `window.open` for `openNewTab` action [#189](https://github.com/televator-apps/vimari/issues/189)
 * Add user customisation (based on the work of @nieldm [#163](https://github.com/televator-apps/vimari/pull/163)).

@@ -226,12 +226,41 @@ function unbindKeyCodes() {
     document.removeEventListener("keydown", stopSitePropagation);
 }
 
-// Stops propagation of keyboard events in normal mode.  Adding this
+// Returns all keys bound in the settings.
+function boundKeys() {
+    var bindings = Object.values(settings.bindings)
+        // Split multi-key bindings.
+        .flatMap(s => s.split(/\+| /i))
+
+    // Manually add the modifier, i, esc, and ctr+[.
+    bindings.push(settings.modifier)
+    bindings.push("i")
+    bindings.push("Escape")
+    bindings.push("Control")
+    bindings.push("[")
+
+    // Use a set to remove duplicates.
+    return new Set(bindings)
+}
+
+// Stops propagation of keyboard events in normal mode. Adding this
 // callback to the document using the useCapture flag allows us to
 // prevent custom key behaviour implemented by the underlying website.
 function stopSitePropagation() {
     return function (e) {
-        if (insertMode == false && !isActiveElementEditable()) {
+        if (insertMode) {
+            // Never stop propagation in insert mode.
+            return
+        }
+
+        if (settings.transparentBindings === true) {
+            if (boundKeys().has(e.key) && !isActiveElementEditable()) {
+                // If we are in normal mode with transparentBindings enabled we
+                // should only stop propagation in an editable element or if the
+                // key is bound to a Vimari action.
+                e.stopPropagation()
+            }
+        } else if (!isActiveElementEditable()) {
             e.stopPropagation()
         }
     }
