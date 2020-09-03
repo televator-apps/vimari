@@ -94,6 +94,11 @@ be your style, instead the transparent bindings setting (when enabled)
 allows you to use all **non-Vimari-bound** keys to interact with the web
 page as if you were in insert mode.
 
+**Multiple Bindings** - You can bind multiple keybindings to a Vimari
+action. This is done by specifying an array of bindings in the 
+configuration file, like so: `"goToPageTop": ["g g", "shift+k"]`.
+
+
 ### Keyboard Bindings
 
 These bindings are the ones set by default, however you are able to change them in the settings.
