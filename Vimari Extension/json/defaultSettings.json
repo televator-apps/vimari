@@ -2,7 +2,7 @@
   "excludedUrls": "",
   "linkHintCharacters": "asdfjklqwerzxc",
   "detectByCursorStyle": false,
-  "scrollSize": 50,
+  "scrollSize": 150,
   "openTabUrl": "https://duckduckgo.com/",
   "modifier": "",
   "smoothScroll": true,
