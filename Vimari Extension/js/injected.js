@@ -158,13 +158,9 @@ Mousetrap.prototype.stopCallback = function(e, element, combo) {
 
 // Set up key codes to event handlers
 function bindKeyCodesToActions(settings) {
-    var excludedUrl = false
-    if (typeof settings != "undefined") {
-        excludedUrl = isExcludedUrl(settings.excludedUrls, document.URL)
-    }
 	// Only add if topWindow... not iframe
     Mousetrap.reset();
-	if (topWindow && !excludedUrl) {
+	if (topWindow) {
 		Mousetrap.bind('esc', enterNormalMode);
 		Mousetrap.bind('ctrl+[', enterNormalMode);
 		Mousetrap.bind('i', enterInsertMode);
@@ -354,6 +350,11 @@ function setSettings(msg) {
 }
 
 function activateExtension(settings) {
+    if ((typeof settings != "undefined") &&
+        isExcludedUrl(settings.excludedUrls, document.URL)) {
+        return;
+    }
+
     // Stop keydown propagation
     document.addEventListener("keydown", stopSitePropagation(), true);
     bindKeyCodesToActions(settings);
