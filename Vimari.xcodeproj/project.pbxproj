@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		654AAF3E2517A37D00AB44D9 /* SettingsMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AAF3D2517A37D00AB44D9 /* SettingsMerger.swift */; };
+		654AAF4B2517A81200AB44D9 /* SettingsMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654AAF3D2517A37D00AB44D9 /* SettingsMerger.swift */; };
 		659033F124E2B77400432D0E /* svim-scripts.js in Resources */ = {isa = PBXBuildFile; fileRef = 659033F024E2B77400432D0E /* svim-scripts.js */; };
 		65E444F324CC3A1B008EA1DC /* SafariExtensionCommunicator.js in Resources */ = {isa = PBXBuildFile; fileRef = 65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */; };
 		B1E3C17023A65ED400A56807 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */; };
@@ -58,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		654AAF3D2517A37D00AB44D9 /* SettingsMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMerger.swift; sourceTree = "<group>"; };
 		659033F024E2B77400432D0E /* svim-scripts.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "svim-scripts.js"; sourceTree = "<group>"; };
 		65E444F224CC3A1B008EA1DC /* SafariExtensionCommunicator.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = SafariExtensionCommunicator.js; sourceTree = "<group>"; };
 		B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 				E380F2612331806500640547 /* SafariExtensionHandler.swift */,
 				B1E3C16F23A65ED400A56807 /* ConfigurationModel.swift */,
 				E380F2632331806500640547 /* SafariExtensionViewController.swift */,
+				654AAF3D2517A37D00AB44D9 /* SettingsMerger.swift */,
 				E380F2652331806500640547 /* SafariExtensionViewController.xib */,
 				B1FD3B9723A588DE00677A52 /* json */,
 				E380F281233183EE00640547 /* css */,
@@ -322,6 +326,7 @@
 			files = (
 				E380F2512331806400640547 /* ViewController.swift in Sources */,
 				E380F24C2331806400640547 /* AppDelegate.swift in Sources */,
+				654AAF4B2517A81200AB44D9 /* SettingsMerger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +336,7 @@
 			files = (
 				E380F2642331806500640547 /* SafariExtensionViewController.swift in Sources */,
 				E380F2622331806500640547 /* SafariExtensionHandler.swift in Sources */,
+				654AAF3E2517A37D00AB44D9 /* SettingsMerger.swift in Sources */,
 				B1E3C17023A65ED400A56807 /* ConfigurationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -150,20 +150,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     private func updateSettings(page: SFSafariPage) {
         do {
             let settings: [String: Any]
-            if let userSettings = try? configuration.getUserSettings() {
+            if let userSettings = try? configuration.getMergedSettings() {
                 settings = userSettings
             } else {
                 settings = try configuration.getDefaultSettings()
             }
-            page.dispatch(settings: settings)
-        } catch {
-            NSLog(error.localizedDescription)
-        }
-    }
-    
-    private func fallbackSettings(page: SFSafariPage) {
-        do {
-            let settings = try configuration.getUserSettings()
             page.dispatch(settings: settings)
         } catch {
             NSLog(error.localizedDescription)
