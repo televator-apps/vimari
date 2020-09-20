@@ -27,5 +27,7 @@
       "tabBack": "q",
       "closeTab": "x",
       "openTab": "t"
-  }
+  },
+  "insertModeKey": "i",
+  "normalModeKey": ["esc", "ctrl+["]
 }

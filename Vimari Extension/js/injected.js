@@ -161,9 +161,8 @@ function bindKeyCodesToActions(settings) {
 	// Only add if topWindow... not iframe
     Mousetrap.reset();
 	if (topWindow) {
-		Mousetrap.bind('esc', enterNormalMode);
-		Mousetrap.bind('ctrl+[', enterNormalMode);
-		Mousetrap.bind('i', enterInsertMode);
+		Mousetrap.bind(settings.normalModeKey, enterNormalMode);
+		Mousetrap.bind(settings.insertModeKey, enterInsertMode);
 		for (var actionName in actionMap) {
 			if (actionMap.hasOwnProperty(actionName)) {
 				var keyCode = getKeyCode(actionName);
@@ -173,7 +172,7 @@ function bindKeyCodesToActions(settings) {
 	}
 }
 
-function enterNormalMode() {
+function enterNormalMode(event) {
 	// Clear input focus
 	document.activeElement.blur();
 
@@ -188,23 +187,20 @@ function enterNormalMode() {
 	// Re-enable if in insert mode
 	insertMode = false;
     HUD.showForDuration('Normal Mode', hudDuration);
-
-	Mousetrap.bind('i', enterInsertMode);
 }
 
 // Calling it 'insert mode', but it's really just a user-triggered
 // off switch for the actions.
-function enterInsertMode() {
+function enterInsertMode(event) {
     if (insertMode === true) {
         return // We are already in insert mode.
     }
     insertMode = true;
     HUD.showForDuration('Insert Mode', hudDuration);
-	Mousetrap.unbind('i');
 }
 
 function executeAction(actionName) {
-	return function() {
+	return function(e) {
 		// don't do anything if we're not supposed to
 		if (linkHintsModeActivated || !extensionActive || insertMode)
 			return;
@@ -226,6 +222,11 @@ function unbindKeyCodes() {
 function boundKeys() {
     const splitBinding = s => s.split(/\+| /i)
     var bindings = Object.values(settings.bindings)
+        // Manually add the modifier and insert/normal mode keys as 
+        // they are special.
+        + settings.modifier
+        // Depending on state of insertmode add 
+        + (insertMode ? settings.normalModeKey : settings.insertModeKey)
         // Split multi-key bindings.
         .flatMap(s => {
             if (typeof s === "string" || s instanceof String) {
@@ -234,14 +235,7 @@ function boundKeys() {
                 return s.flatMap(splitBinding)
             }
         })
-
-    // Manually add the modifier, i, esc, and ctr+[.
-    bindings.push(settings.modifier)
-    bindings.push("i")
-    bindings.push("Escape")
-    bindings.push("Control")
-    bindings.push("[")
-
+    
     // Use a set to remove duplicates.
     return new Set(bindings)
 }
