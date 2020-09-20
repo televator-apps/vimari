@@ -10,7 +10,8 @@ protocol ConfigurationModelProtocol {
     func editConfigFile() throws
     func resetConfigFile() throws
     func getDefaultSettings() throws -> [String: Any]
-    func getUserSettings() throws -> [String : Any]
+    func getUserSettings() throws -> [String: Any]
+    func getMergedSettings() throws -> [String: Any]
 }
 
 import Foundation
@@ -54,7 +55,13 @@ class ConfigurationModel: ConfigurationModelProtocol {
         let settingsData = try Data(contentsOf: urlSettingsFile)
         return try settingsData.toJSONObject()
     }
-    
+
+    func getMergedSettings() throws -> [String: Any] {
+        let userSettings = try getUserSettings()
+        let defaults = try getDefaultSettings()
+        return SettingsMerger.mergeWithDefaults(userSettings, defaults: defaults)
+    }
+
     private func loadSettings(fromFile file: String) throws -> [String : Any] {
         let settingsData = try Bundle.main.getJSONData(from: file)
         return try settingsData.toJSONObject()
