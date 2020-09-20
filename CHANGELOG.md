@@ -2,6 +2,9 @@ Changelog
 -------------
 
 ### Unreleased
+* Fill missing configuration with default values [#204](https://github.com/televator-apps/vimari/pull/204). This allows users to reduce the size of their configuration when using the default values. It allows us to introduce new settings without breaking user configurations because they miss this setting in their configuration.
+
+### 2.1.0 (2020-09-10)
 * Add `transparentBindings` setting that allows the use of non-bound keys in normal mode ([#188](https://github.com/televator-apps/vimari/issues/188)).
 * Remove eager link hint triggering [#190](https://github.com/televator-apps/vimari/issues/190)
 * Use `window.open` for `openNewTab` action [#189](https://github.com/televator-apps/vimari/issues/189)
