@@ -30,18 +30,32 @@ class ConfigurationModel: ConfigurationModelProtocol {
     
     func editConfigFile() throws {
         let settingsFilePath = try findOrCreateUserSettings()
-        NSWorkspace.shared.openFile(
-            settingsFilePath,
-            withApplication: Constant.defaultEditor
-        )
+        openFileInPreferredEditor(filePath: settingsFilePath)
     }
     
     func resetConfigFile() throws {
         let settingsFilePath = try overwriteUserSettings()
-        NSWorkspace.shared.openFile(
-            settingsFilePath,
-            withApplication: Constant.defaultEditor
-        )
+        openFileInPreferredEditor(filePath: settingsFilePath)
+    }
+
+    func openFileInPreferredEditor(filePath: String) {
+        let fileUrl = URL(fileURLWithPath: filePath)
+        let app = NSWorkspace.shared.urlForApplication(toOpen: fileUrl)
+
+        if #available(OSXApplicationExtension 10.15, *), let app = app {
+            NSLog("opening \(fileUrl) with \(String(describing: app))")
+
+            let config = NSWorkspace.OpenConfiguration()
+            config.promptsUserIfNeeded = true
+
+            NSWorkspace.shared.open([fileUrl], withApplicationAt: app, configuration: config, completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+            NSWorkspace.shared.openFile(
+                filePath,
+                withApplication: Constant.defaultEditor
+            )
+        }
     }
     
     func getDefaultSettings() throws -> [String : Any] {
