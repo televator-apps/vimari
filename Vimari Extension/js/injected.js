@@ -249,23 +249,21 @@ function boundKeys() {
 // Stops propagation of keyboard events in normal mode. Adding this
 // callback to the document using the useCapture flag allows us to
 // prevent custom key behaviour implemented by the underlying website.
-function stopSitePropagation() {
-    return function (e) {
-        if (insertMode) {
-            // Never stop propagation in insert mode.
-            return
-        }
+function stopSitePropagation(e) {
+    if (insertMode) {
+        // Never stop propagation in insert mode.
+        return
+    }
 
-        if (settings.transparentBindings === true) {
-            if (boundKeys().has(e.key) && !isActiveElementEditable()) {
-                // If we are in normal mode with transparentBindings enabled we
-                // should only stop propagation in an editable element or if the
-                // key is bound to a Vimari action.
-                e.stopPropagation()
-            }
-        } else if (!isActiveElementEditable()) {
+    if (settings.transparentBindings === true) {
+        if (boundKeys().has(e.key) && !isActiveElementEditable()) {
+            // If we are in normal mode with transparentBindings enabled we
+            // should only stop propagation in an editable element or if the
+            // key is bound to a Vimari action.
             e.stopPropagation()
         }
+    } else if (!isActiveElementEditable()) {
+        e.stopPropagation()
     }
 }
 
@@ -355,8 +353,11 @@ function activateExtension(settings) {
         return;
     }
 
+    // Clear any existing events
+    unbindKeyCodes();
+
     // Stop keydown propagation
-    document.addEventListener("keydown", stopSitePropagation(), true);
+    document.addEventListener("keydown", stopSitePropagation, true);
     bindKeyCodesToActions(settings);
 }
 
