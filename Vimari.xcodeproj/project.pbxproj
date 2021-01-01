@@ -485,6 +485,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Vimari Extension/Vimari_Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Vimari Extension/Info.plist";
@@ -509,6 +510,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Vimari Extension/Vimari_Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Vimari Extension/Info.plist";
@@ -535,7 +537,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vimari/Info.plist;
@@ -560,7 +562,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = Y48UDGWSSQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vimari/Info.plist;
