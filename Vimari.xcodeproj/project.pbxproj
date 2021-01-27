@@ -13,7 +13,6 @@
 		B1FD3B9923A588DE00677A52 /* defaultSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = B1FD3B9823A588DE00677A52 /* defaultSettings.json */; };
 		E320D0662337FC9800F2C3A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E320D0652337FC9800F2C3A4 /* Credits.rtf */; };
 		E320D06823397C5C00F2C3A4 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = E320D06723397C5C00F2C3A4 /* CHANGELOG.md */; };
-		E380F24A2331806400640547 /* Vimari.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E380F2492331806400640547 /* Vimari.entitlements */; };
 		E380F24C2331806400640547 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F24B2331806400640547 /* AppDelegate.swift */; };
 		E380F24F2331806400640547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E380F24D2331806400640547 /* Main.storyboard */; };
 		E380F2512331806400640547 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380F2502331806400640547 /* ViewController.swift */; };
@@ -251,7 +250,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = net.televator;
 				TargetAttributes = {
 					E380F2452331806400640547 = {
@@ -286,7 +285,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E380F24A2331806400640547 /* Vimari.entitlements in Resources */,
 				E320D06823397C5C00F2C3A4 /* CHANGELOG.md in Resources */,
 				E380F2532331806500640547 /* Assets.xcassets in Resources */,
 				E380F24F2331806400640547 /* Main.storyboard in Resources */,
@@ -391,6 +389,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -451,6 +450,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
