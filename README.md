@@ -8,7 +8,8 @@ _Keyboard Shortcuts extension for Safari_
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/televator-apps/vimari)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/televator-apps/vimari?include_prereleases&label=pre%20release)
 
-Vimari is a Safari extension that provides keyboard based navigation.
+Vimari is a Safari extension that provides vim style keyboard based navigation.
+This lets you control Safari from your keyboard instead of having to use your mouse to open links, scroll, etc.
 The code is heavily based on [vimium](https://github.com/philc/vimium), a
 Chrome extension that provides much more extensive features.
 
