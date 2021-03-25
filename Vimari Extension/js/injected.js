@@ -76,10 +76,10 @@ var actionMap = {
 	'scrollUpHalfPage':
 		function() { customScrollBy(0, window.innerHeight / -2); },
 
-	'scrollDownPage':
+	'scrollDownFullPage':
 		function() { customScrollBy(0, window.innerHeight - settings.scrollSize); },
 
-	'scrollUpPage':
+	'scrollUpFullPage':
 		function() { customScrollBy(0, settings.scrollSize - window.innerHeight); },
 
 	'goToPageBottom':
