@@ -76,6 +76,12 @@ var actionMap = {
 	'scrollUpHalfPage':
 		function() { customScrollBy(0, window.innerHeight / -2); },
 
+	'scrollDownFullPage':
+		function() { customScrollBy(0, window.innerHeight - settings.scrollSize); },
+
+	'scrollUpFullPage':
+		function() { customScrollBy(0, settings.scrollSize - window.innerHeight); },
+
 	'goToPageBottom':
 		function() { customScrollBy(0, document.body.scrollHeight); },
 
