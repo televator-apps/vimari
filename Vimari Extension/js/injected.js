@@ -70,6 +70,9 @@ var actionMap = {
 	'closeTab':
 	    function() { extensionCommunicator.requestCloseTab(); },
 
+	'duplicateTab':
+		function() { window.open(window.location.href); },
+
 	'scrollDownHalfPage':
 		function() { customScrollBy(0, window.innerHeight / 2); },
 

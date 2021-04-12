@@ -26,6 +26,7 @@
       "tabForward": "w",
       "tabBack": "q",
       "closeTab": "x",
-      "openTab": "t"
+      "openTab": "t",
+      "duplicateTab": "y t"
   }
 }
