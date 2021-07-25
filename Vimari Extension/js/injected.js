@@ -354,7 +354,7 @@ function setSettings(msg) {
 
 function activateExtension(settings) {
     if ((typeof settings != "undefined") &&
-        isExcludedUrl(settings.excludedUrls, document.URL)) {
+        isExcludedUrl(settings.excludedUrls, settings.excludedUrlsRegex, document.URL)) {
         return;
     }
 
@@ -363,22 +363,28 @@ function activateExtension(settings) {
     bindKeyCodesToActions(settings);
 }
 
-function isExcludedUrl(storedExcludedUrls, currentUrl) {
-	if (!storedExcludedUrls.length) {
-		return false;
-	}
+function isExcludedUrl(storedExcludedUrls, storedExcludedUrlsRegex, currentUrl) {
+	if (storedExcludedUrls.length > 0) {
+        var excludedUrls, regexp, url, formattedUrl, _i, _len;
+        excludedUrls = storedExcludedUrls.split(",");
+        for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
+            url = excludedUrls[_i];
+            formattedUrl = stripProtocolAndWww(url);
+            formattedUrl = formattedUrl.toLowerCase().trim();
+            regexp = new RegExp('((.*)?(' + formattedUrl + ')+(.*))');
+            if (currentUrl.toLowerCase().match(regexp)) {
+                return true;
+            }
+        }
+    }
 
-    var excludedUrls, regexp, url, formattedUrl, _i, _len;
-    excludedUrls = storedExcludedUrls.split(",");
-    for (_i = 0, _len = excludedUrls.length; _i < _len; _i++) {
-        url = excludedUrls[_i];
-        formattedUrl = stripProtocolAndWww(url);
-        formattedUrl = formattedUrl.toLowerCase().trim();
-        regexp = new RegExp('((.*)?(' + formattedUrl + ')+(.*))');
-        if (currentUrl.toLowerCase().match(regexp)) {
+    if (storedExcludedUrlsRegex.length > 0) {
+        var regexp = new RegExp(storedExcludedUrlsRegex, 'i');
+        if (currentUrl.match(regexp)) {
             return true;
         }
     }
+
     return false;
 }
 
