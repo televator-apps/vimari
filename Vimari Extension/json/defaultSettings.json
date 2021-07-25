@@ -1,5 +1,6 @@
 {
   "excludedUrls": "",
+  "excludedUrlsRegex": "",
   "linkHintCharacters": "asdfjklqwerzxc",
   "detectByCursorStyle": false,
   "scrollSize": 150,
